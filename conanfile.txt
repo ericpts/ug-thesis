@@ -1,0 +1,5 @@
+[requires]
+cli11/1.5.3@bincrafters/stable
+
+[generators]
+cmake
