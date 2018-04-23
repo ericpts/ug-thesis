@@ -1,2 +1,4 @@
 **/*.class
 build/*
+.ycm_extra_conf.py
+conan_ycm_flags.json
