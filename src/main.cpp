@@ -1,5 +1,6 @@
 #include <CLI11.hpp>
 
+#include <iterator>
 #include <cassert>
 #include <vector>
 #include <cstring>
@@ -15,8 +16,8 @@ int main(int argc, char** argv)
 {
     std::ifstream fin(argv[1], std::ios::binary);
     std::vector<u1> data(
-            (std::istream_iterator<u1>(fin)),
-             std::istream_iterator<u1>());
+            (std::istreambuf_iterator<char>(fin)),
+             std::istreambuf_iterator<char>());
 
     ClassFile file = ClassFile::deserialize(data);
     return 0;

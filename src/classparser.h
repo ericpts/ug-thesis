@@ -24,6 +24,9 @@ private:
     /// Iterator to the current byte being parsed.
     std::vector<uint8_t>::const_iterator m_it;
 
+    /// The class file that is being populated as the parsing progresses.
+    ClassFile cf;
+
 public:
     /// Initialize the parser, with the binary `data` of the class file.
     ClassParser(const std::vector<uint8_t>& data);
@@ -47,5 +50,17 @@ private:
 
     /// Parses a constant from the data buffer, and returns the data
     /// and how many slots it takes up in the constant table.
-    std::pair<Constant, int> parse_constant();
+    std::pair<cp_info, int> parse_cp_info();
+
+    /// Parses an attribute_info struct from the data buffer.
+    attribute_info parse_attribute_info();
+
+    /// Parses a field_info struct from the data buffer.
+    field_info parse_field_info();
+
+    /// Parses a method_info struct from the data buffer.
+    method_info parse_method_info();
+
+    /// Asserts that `idx` is an index into the constant pool, tagged with `tag`.
+    void expect_cpool_entry(int idx, cp_info::Tag tag) const;
 };

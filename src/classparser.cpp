@@ -13,6 +13,63 @@ ClassParser::ClassParser(const std::vector<uint8_t>& data):
     m_it(m_data.begin())
 { }
 
+ClassFile ClassParser::parse_class()
+{
+    ClassFile& cf = this->cf;
+    cf.magic = this->next_u4();
+    assert (cf.magic == 0xCAFEBABE);
+
+    cf.minor_version = this->next_u2();
+    cf.major_version = this->next_u2();
+
+    cf.constant_pool_count = this->next_u2();
+    cf.constant_pool.resize(cf.constant_pool_count);
+    // The constant pool is indexed from  to ncpool - 1.
+    for (auto it = cf.constant_pool.begin() + 1; it != cf.constant_pool.end(); ) {
+        int nslots;
+        std::tie(*it, nslots) = parse_cp_info();
+        it += nslots;
+    }
+    std::cerr << "Done parsing constants.\n";
+
+    cf.access_flags = this->next_u2();
+    cf.this_class = this->next_u2();
+    cf.super_class = this->next_u2();
+
+    cf.interface_count = this->next_u2();
+    cf.interfaces.resize(cf.interface_count);
+    for (interface_info& i : cf.interfaces) {
+        i.idx = this->next_u2();
+        expect_cpool_entry(i.idx, cp_info::Tag::CONSTANT_Class);
+    }
+    std::cerr << "Done parsing interfaces.\n";
+
+    cf.field_count = this->next_u2();
+    cf.fields.resize(cf.field_count);
+    for (field_info& f : cf.fields) {
+        f = this->parse_field_info();
+    }
+    std::cerr << "Done parsing fields.\n";
+
+    cf.method_count = this->next_u2();
+    cf.methods.resize(cf.method_count);
+    for (method_info& m : cf.methods) {
+        m = this->parse_method_info();
+    }
+    std::cerr << "Done parsing methods.\n";
+
+    cf.attribute_count = this->next_u2();
+    cf.attributes.resize(cf.attribute_count);
+    for (attribute_info& attr: cf.attributes) {
+        attr = this->parse_attribute_info();
+    }
+    std::cerr << "Done parsing attributs.\n";
+
+    assert (m_it == m_data.end()); // We should have no data left.
+
+    return cf;
+}
+
 u1 ClassParser::next_u1()
 {
     assert (m_it != m_data.end());
@@ -46,135 +103,148 @@ std::vector<u1> ClassParser::next_n(int n)
 
 /// Parses a constant from the data buffer, and returns the data
 /// and how many slots it takes up in the constant table.
-std::pair<Constant, int> ClassParser::parse_constant()
+std::pair<cp_info, int> ClassParser::parse_cp_info()
 {
-    Constant c;
+    cp_info c;
 
-    Constant::Tag& tag = c.tag;
+    cp_info::Tag& tag = c.tag;
     std::vector<u1>& data = c.data;
 
     // By default, most types of constants only take up one slot.
     int slots = 1;
+    tag = static_cast<cp_info::Tag>(this->next_u1());
 
-    tag = static_cast<Constant::Tag>(next_u1());
     switch (tag) {
-        case Constant::Tag::utf8: {
+        case cp_info::Tag::CONSTANT_Utf8_info: {
             u2 u = next_u2();
             data = next_n(u);
             break;
         }
-        case Constant::Tag::i32: {
+        case cp_info::Tag::CONSTANT_Integer: {
             static_assert (sizeof(int32_t) == 4, "Signed 32 bit integer must be 4 bytes.");
             data = next_n(sizeof(int32_t));
             break;
         }
-        case Constant::Tag::f32: {
+        case cp_info::Tag::CONSTANT_Float: {
             static_assert (sizeof(float) == 4, "32 bit floating pointer number must be 4 bytes.");
             data = next_n(sizeof(float));
             break;
         }
-        case Constant::Tag::i64: {
+        case cp_info::Tag::CONSTANT_Long: {
             static_assert (sizeof(int64_t) == 8, "Signed 64 bit integer must be 8 bytes.");
             data = next_n(sizeof(int64_t));
             slots = 2;
             break;
         }
-        case Constant::Tag::f64: {
+        case cp_info::Tag::CONSTANT_Double: {
             static_assert (sizeof(double) == 8, "64 bit floating point number must be 8 bytes.");
             data = next_n(sizeof(double));
             slots = 2;
             break;
         }
-        case Constant::Tag::cref: {
+        case cp_info::Tag::CONSTANT_Class: {
             data = next_n(2);
             break;
         }
-        case Constant::Tag::sref: {
+        case cp_info::Tag::CONSTANT_String: {
             data = next_n(2);
             break;
         }
-        case Constant::Tag::fref: {
+        case cp_info::Tag::CONSTANT_Fieldref: {
             data = next_n(4);
             break;
         }
-        case Constant::Tag::mref: {
+        case cp_info::Tag::CONSTANT_Methodref: {
             data = next_n(4);
             break;
         }
-        case Constant::Tag::iref: {
+        case cp_info::Tag::CONSTANT_InterfaceMethodref: {
             data = next_n(4);
             break;
         }
-        case Constant::Tag::ntdesc: {
+        case cp_info::Tag::CONSTANT_NameAndType: {
             data = next_n(4);
             break;
         }
-        case Constant::Tag::mhandle: {
+        case cp_info::Tag::CONSTANT_MethodHandle: {
             data = next_n(3);
             break;
         }
-        case Constant::Tag::mtype: {
+        case cp_info::Tag::CONSTANT_MethodType: {
             data = next_n(2);
             break;
         }
-        case Constant::Tag::idynamic: {
+        case cp_info::Tag::CONSTANT_InvokeDynamic: {
             data = next_n(4);
             break;
+        }
+        default: {
+            assert (false);
         }
     }
     return {c, slots};
 }
 
-ClassFile ClassParser::parse_class()
+field_info ClassParser::parse_field_info()
 {
-    const u4 magic = next_u4();
-    assert (magic == 0xCAFEBABE);
+    field_info f;
+    f.access_flags = this->next_u2();
 
-    const u2 minv = next_u2();
-    const u2 majv = next_u2();
+    f.name_index = this->next_u2();
+    this->expect_cpool_entry(f.name_index, cp_info::Tag::CONSTANT_Utf8_info);
 
-    const u2 ncpool = next_u2();
-    std::vector<Constant> cpool(ncpool);
-    // The constant pool is indexed from  to ncpool - 1.
-    for (auto it = cpool.begin() + 1; it != cpool.end(); ) {
-        int nslots;
-        std::tie(*it, nslots) = parse_constant();
-        it += nslots;
-    }
-    std::cerr << "Done parsing constants.\n";
+    f.descriptor_index = this->next_u2();
+    this->expect_cpool_entry(f.descriptor_index, cp_info::Tag::CONSTANT_Utf8_info);
 
-    const u2 aflags = next_u2();
-    const u2 this_class = next_u2();
-    const u2 super_class = next_u2();
-
-    const u2 icount = next_u2();
-    std::vector<Interface> ipool(icount);
-    for (Interface& i : ipool) {
-        int idx = next_u2();
-        assert (1 <= idx && idx <= ncpool - 1); // It is an index into the constant pool.
-        assert (cpool[idx].tag == Constant::Tag::cref);
-        i.idx = idx;
-    }
-    std::cerr << "Done parsing interfaces.\n";
-
-    const u2 fcount = next_u2();
-    std::vector<Field> fpool(fcount);
-    for (Field& f : fpool) {
-
+    f.attributes_count = this->next_u2();
+    f.attributes.resize(f.attributes_count);
+    for (attribute_info& attr : f.attributes) {
+        attr = this->parse_attribute_info();
     }
 
-    return ClassFile {
-        magic,
-        minv,
-        majv,
-        ncpool,
-        cpool,
-        aflags,
-        this_class,
-        super_class,
-        icount,
-        ipool,
-        fcount,
-        fpool,
+    return f;
+}
+
+attribute_info ClassParser::parse_attribute_info()
+{
+    u2 attribute_name_index = this->next_u2();
+    u4 attribute_length = this->next_u4();
+    std::vector<u1> info = this->next_n(attribute_length);
+
+    return attribute_info {
+        attribute_name_index,
+        attribute_length,
+        info
     };
 }
+
+method_info ClassParser::parse_method_info()
+{
+    u2 access_flags = this->next_u2();
+
+    u2 name_index = this->next_u2();
+    this->expect_cpool_entry(name_index, cp_info::Tag::CONSTANT_Utf8_info);
+
+    u2 descriptor_index = this->next_u2();
+    this->expect_cpool_entry(descriptor_index, cp_info::Tag::CONSTANT_Utf8_info);
+
+    u2 attributes_count = this->next_u2();
+    std::vector<attribute_info> attributes(attributes_count);
+    for (attribute_info& attr: attributes) {
+        attr = this->parse_attribute_info();
+    }
+
+    return method_info {
+        access_flags,
+        name_index,
+        descriptor_index,
+        attributes_count,
+        attributes
+    };
+}
+
+void ClassParser::expect_cpool_entry(int idx, cp_info::Tag tag) const
+{
+    assert (1 <= idx && idx <= this->cf.constant_pool_count - 1);
+    assert (this->cf.constant_pool[idx].tag == tag);
+};

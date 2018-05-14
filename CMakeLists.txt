@@ -5,7 +5,7 @@ include(ExternalProject)
 ##################################
 # Register the thesis binary.
 
-add_definitions("-std=c++17")
+add_definitions("-std=c++17 -Wall -Werror")
 add_executable(thesis
     src/main.cpp
     src/types.h

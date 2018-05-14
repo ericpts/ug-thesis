@@ -9,5 +9,5 @@ ClassFile ClassFile::deserialize(const std::vector<uint8_t>& data)
 
 std::vector<uint8_t> ClassFile::serialize() const
 {
-
+    assert (false);
 }
