@@ -1,8 +1,6 @@
 #include "classwriter.h"
 
-ClassWriter::ClassWriter(const ClassFile& cf):
-    m_cf(cf),
-    m_data()
+ClassWriter::ClassWriter(const ClassFile &cf) : m_cf(cf), m_data()
 {
     // Speed up the process by preallocating a decent amount of memory.
     this->m_data.reserve(sizeof(cf));
@@ -38,32 +36,27 @@ void ClassWriter::put_u4(u4 x)
 
 void ClassWriter::put_n(const std::vector<u1> &v)
 {
-    for (u1 x: v) {
+    for (u1 x : v) {
         this->put_u1(x);
     }
 }
 
 void ClassWriter::put_cp_info(std::pair<cp_info, int> info)
 {
-
 }
 
 void ClassWriter::put_attribute_info(attribute_info info)
 {
-
 }
 
 void ClassWriter::put_field_info(field_info info)
 {
-
 }
 
 void ClassWriter::put_method_info(method_info info)
 {
-
 }
 
 void ClassWriter::expect_cpool_entry(int idx, cp_info::Tag tag) const
 {
-
 }

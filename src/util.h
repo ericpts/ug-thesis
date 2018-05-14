@@ -1,6 +1,6 @@
 #pragma once
-#include <vector>
 #include <string>
+#include <vector>
 
 #include "types.h"
 
@@ -9,4 +9,4 @@ struct JavaProject {
     std::vector<std::string> class_files;
 };
 
-std::vector<u1> read_entire_file(const std::string& filename);
+std::vector<u1> read_entire_file(const std::string &filename);

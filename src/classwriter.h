@@ -22,7 +22,7 @@ struct ClassWriter {
 
   public:
     /// Initialize the parser, with the binary `data` of the class file.
-    ClassWriter(const ClassFile& cf);
+    ClassWriter(const ClassFile &cf);
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.
