@@ -50,7 +50,7 @@ struct ClassReader {
 
     /// Parses a constant from the data buffer, and returns the data
     /// and how many slots it takes up in the constant table.
-    std::pair<cp_info, int> parse_cp_info();
+    cp_info parse_cp_info();
 
     /// Parses an attribute_info struct from the data buffer.
     attribute_info parse_attribute_info();

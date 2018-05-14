@@ -27,9 +27,8 @@ ClassFile ClassReader::deserialize()
     // The constant pool is indexed from  to ncpool - 1.
     for (auto it = cf.constant_pool.begin() + 1;
          it != cf.constant_pool.end();) {
-        int nslots;
-        std::tie(*it, nslots) = parse_cp_info();
-        it += nslots;
+        *it = parse_cp_info();
+        it += it->slots();
     }
     std::cerr << "Done parsing constants.\n";
 
@@ -104,17 +103,14 @@ std::vector<u1> ClassReader::next_n(int n)
 
 /// Parses a constant from the data buffer, and returns the data
 /// and how many slots it takes up in the constant table.
-std::pair<cp_info, int> ClassReader::parse_cp_info()
+cp_info ClassReader::parse_cp_info()
 {
     cp_info c;
 
     cp_info::Tag &tag = c.tag;
     std::vector<u1> &data = c.data;
 
-    // By default, most types of constants only take up one slot.
-    int slots = 1;
     tag = static_cast<cp_info::Tag>(this->next_u1());
-
     switch (tag) {
     case cp_info::Tag::CONSTANT_Utf8_info: {
         u2 u = next_u2();
@@ -137,14 +133,12 @@ std::pair<cp_info, int> ClassReader::parse_cp_info()
         static_assert(sizeof(int64_t) == 8,
                       "Signed 64 bit integer must be 8 bytes.");
         data = next_n(sizeof(int64_t));
-        slots = 2;
         break;
     }
     case cp_info::Tag::CONSTANT_Double: {
         static_assert(sizeof(double) == 8,
                       "64 bit floating point number must be 8 bytes.");
         data = next_n(sizeof(double));
-        slots = 2;
         break;
     }
     case cp_info::Tag::CONSTANT_Class: {
@@ -187,7 +181,7 @@ std::pair<cp_info, int> ClassReader::parse_cp_info()
         assert(false);
     }
     }
-    return {c, slots};
+    return c;
 }
 
 field_info ClassReader::parse_field_info()

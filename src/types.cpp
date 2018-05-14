@@ -1,8 +1,19 @@
 #include "types.h"
+#include <cassert>
 
 bool cp_info::operator==(const cp_info &other) const
 {
     return this->tag == other.tag && this->data == other.data;
+}
+
+int cp_info::slots() const
+{
+    assert(this->tag);
+    if (this->tag == cp_info::Tag::CONSTANT_Long ||
+        this->tag == cp_info::Tag::CONSTANT_Double) {
+        return 2;
+    }
+    return 1;
 }
 
 bool interface_info::operator==(const interface_info &other) const

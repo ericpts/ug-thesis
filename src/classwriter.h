@@ -43,7 +43,7 @@ struct ClassWriter {
 
     /// Puts a constant from the data buffer, and returns the data
     /// and how many slots it takes up in the constant table.
-    void put_cp_info(std::pair<cp_info, int> info);
+    void put_cp_info(cp_info info);
 
     /// Puts an attribute_info struct into the data buffer.
     void put_attribute_info(attribute_info info);

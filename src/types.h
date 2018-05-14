@@ -45,6 +45,10 @@ struct cp_info {
     std::vector<u1> data;
 
     bool operator==(const cp_info &other) const;
+
+    /// Returns the number of constant pool slots this constant takes up.
+    /// By default, most types of constants only take up 1 slot, but some of them have 2.
+    int slots() const;
 };
 
 // Each value in the interfaces array must be a valid index into the
