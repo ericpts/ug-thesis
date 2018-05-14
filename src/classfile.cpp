@@ -4,7 +4,7 @@
 ClassFile ClassFile::deserialize(const std::vector<uint8_t> &data)
 {
     ClassReader parser(data);
-    return parser.parse_class();
+    return parser.deserialize();
 }
 
 std::vector<uint8_t> ClassFile::serialize() const

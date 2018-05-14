@@ -33,7 +33,7 @@ struct ClassReader {
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.
-    ClassFile parse_class();
+    ClassFile deserialize();
 
   private:
     /// Consumes and returns the next unsigned char, in network order.

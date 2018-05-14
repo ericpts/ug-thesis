@@ -13,7 +13,7 @@ ClassReader::ClassReader(const std::vector<uint8_t> &data)
 {
 }
 
-ClassFile ClassReader::parse_class()
+ClassFile ClassReader::deserialize()
 {
     ClassFile &cf = this->cf;
     cf.magic = this->next_u4();
