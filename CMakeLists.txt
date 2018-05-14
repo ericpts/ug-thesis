@@ -1,10 +1,11 @@
 project(thesis)
 cmake_minimum_required (VERSION 3.1)
+include(ExternalProject)
+
+##################################
+# Register the thesis binary.
+
 add_definitions("-std=c++17")
-
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
-
 add_executable(thesis
     src/main.cpp
     src/types.h
@@ -13,14 +14,13 @@ add_executable(thesis
     src/classparser.cpp
     src/classfile.h
     src/classfile.cpp
+    extern/CLI11.hpp
 )
-
-target_link_libraries(thesis ${CONAN_LIBS})
+target_include_directories(thesis PUBLIC "extern/")
 
 ##################################
 # Download and install GoogleTest
 
-include(ExternalProject)
 ExternalProject_Add(gtest
   # Comment above line, and uncomment line below to use subversion.
   GIT_REPOSITORY https://github.com/google/googletest

@@ -1,6 +1,12 @@
 #!/bin/bash
 
+set -e
+
 ./build.sh
+
+pushd build
+make test
+popd
 
 exe=$PWD/build/bin/thesis
 pushd test
