@@ -6,14 +6,14 @@
 #include <tuple>
 #include <vector>
 
-#include "classparser.h"
+#include "classreader.h"
 
-ClassParser::ClassParser(const std::vector<uint8_t> &data)
+ClassReader::ClassReader(const std::vector<uint8_t> &data)
     : m_data(data), m_it(m_data.begin())
 {
 }
 
-ClassFile ClassParser::parse_class()
+ClassFile ClassReader::parse_class()
 {
     ClassFile &cf = this->cf;
     cf.magic = this->next_u4();
@@ -71,14 +71,14 @@ ClassFile ClassParser::parse_class()
     return cf;
 }
 
-u1 ClassParser::next_u1()
+u1 ClassReader::next_u1()
 {
     assert(m_it != m_data.end());
     return *(m_it++);
 }
 
 // Returns the next unsigned short, in network order.
-u2 ClassParser::next_u2()
+u2 ClassReader::next_u2()
 {
     uint8_t b1 = next_u1();
     uint8_t b2 = next_u1();
@@ -86,14 +86,14 @@ u2 ClassParser::next_u2()
 }
 
 // Returns the next unsigned int, in network order.
-u4 ClassParser::next_u4()
+u4 ClassReader::next_u4()
 {
     uint16_t s1 = next_u2();
     uint16_t s2 = next_u2();
     return (s1 << 16u) | s2;
 }
 
-std::vector<u1> ClassParser::next_n(int n)
+std::vector<u1> ClassReader::next_n(int n)
 {
     std::vector<u1> ret(n);
     for (u1 &u : ret) {
@@ -104,7 +104,7 @@ std::vector<u1> ClassParser::next_n(int n)
 
 /// Parses a constant from the data buffer, and returns the data
 /// and how many slots it takes up in the constant table.
-std::pair<cp_info, int> ClassParser::parse_cp_info()
+std::pair<cp_info, int> ClassReader::parse_cp_info()
 {
     cp_info c;
 
@@ -190,7 +190,7 @@ std::pair<cp_info, int> ClassParser::parse_cp_info()
     return {c, slots};
 }
 
-field_info ClassParser::parse_field_info()
+field_info ClassReader::parse_field_info()
 {
     field_info f;
     f.access_flags = this->next_u2();
@@ -211,7 +211,7 @@ field_info ClassParser::parse_field_info()
     return f;
 }
 
-attribute_info ClassParser::parse_attribute_info()
+attribute_info ClassReader::parse_attribute_info()
 {
     u2 attribute_name_index = this->next_u2();
     u4 attribute_length = this->next_u4();
@@ -220,7 +220,7 @@ attribute_info ClassParser::parse_attribute_info()
     return attribute_info{attribute_name_index, attribute_length, info};
 }
 
-method_info ClassParser::parse_method_info()
+method_info ClassReader::parse_method_info()
 {
     u2 access_flags = this->next_u2();
 
@@ -241,7 +241,7 @@ method_info ClassParser::parse_method_info()
                        attributes_count, attributes};
 }
 
-void ClassParser::expect_cpool_entry(int idx, cp_info::Tag tag) const
+void ClassReader::expect_cpool_entry(int idx, cp_info::Tag tag) const
 {
     assert(1 <= idx && idx <= this->cf.constant_pool_count - 1);
     assert(this->cf.constant_pool[idx].tag == tag);

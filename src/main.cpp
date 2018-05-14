@@ -9,7 +9,7 @@
 #include <vector>
 
 #include "classfile.h"
-#include "classparser.h"
+#include "classreader.h"
 #include "types.h"
 
 int main(int argc, char **argv)

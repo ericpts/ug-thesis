@@ -14,9 +14,9 @@
 /// Java's .class files.
 /// Normal usage should be:
 /// 1. Reading the binary data (for example, from a file on disk)
-/// 2. Instantiating this ClassParser.
+/// 2. Instantiating this ClassReader.
 /// 3. Parsing the actual file.
-struct ClassParser {
+struct ClassReader {
   private:
     /// The binary representation of the class being parser.
     const std::vector<uint8_t> &m_data;
@@ -29,7 +29,7 @@ struct ClassParser {
 
   public:
     /// Initialize the parser, with the binary `data` of the class file.
-    ClassParser(const std::vector<uint8_t> &data);
+    ClassReader(const std::vector<uint8_t> &data);
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.

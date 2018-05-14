@@ -8,7 +8,7 @@ pushd build
 make test
 popd
 
-exe=$PWD/build/bin/thesis
+exe=$PWD/build/thesis
 pushd test
 make
 

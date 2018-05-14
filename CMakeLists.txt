@@ -10,8 +10,8 @@ add_executable(thesis
     src/main.cpp
     src/types.h
     src/types.cpp
-    src/classparser.h
-    src/classparser.cpp
+    src/classreader.h
+    src/classreader.cpp
     src/classfile.h
     src/classfile.cpp
     extern/CLI11.hpp
@@ -37,8 +37,8 @@ add_executable(registerer_test
     test/src/test_classfile.cpp
     src/types.h
     src/types.cpp
-    src/classparser.h
-    src/classparser.cpp
+    src/classreader.h
+    src/classreader.cpp
     src/classfile.h
     src/classfile.cpp
 )
