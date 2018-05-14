@@ -39,7 +39,7 @@ struct ClassWriter {
     void put_u4(u4 x);
 
     /// Puts the given vector into the data buffer.
-    void put_n(std::vector<u1> x);
+    void put_n(const std::vector<u1> &x);
 
     /// Puts a constant from the data buffer, and returns the data
     /// and how many slots it takes up in the constant table.

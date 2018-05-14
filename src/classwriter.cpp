@@ -36,9 +36,11 @@ void ClassWriter::put_u4(u4 x)
     this->put_u2(p2);
 }
 
-void ClassWriter::put_n(std::vector<u1> v)
+void ClassWriter::put_n(const std::vector<u1> &v)
 {
-
+    for (u1 x: v) {
+        this->put_u1(x);
+    }
 }
 
 void ClassWriter::put_cp_info(std::pair<cp_info, int> info)

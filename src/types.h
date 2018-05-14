@@ -43,6 +43,8 @@ struct cp_info {
 
     Tag tag;
     std::vector<u1> data;
+
+    bool operator==(const cp_info& other) const;
 };
 
 // Each value in the interfaces array must be a valid index into the
@@ -56,6 +58,8 @@ struct cp_info {
 // in the source for the type.
 struct interface_info {
     u2 idx;
+
+    bool operator==(const interface_info& other) const;
 };
 
 struct field_info {
@@ -64,6 +68,8 @@ struct field_info {
     u2 descriptor_index;
     u2 attributes_count;
     std::vector<attribute_info> attributes;
+
+    bool operator==(const field_info& other) const;
 };
 
 struct method_info {
@@ -72,6 +78,8 @@ struct method_info {
     u2 descriptor_index;
     u2 attributes_count;
     std::vector<attribute_info> attributes;
+
+    bool operator==(const method_info& other) const;
 };
 
 /// Attributes are used in the ClassFile, field_info, method_info, and
@@ -81,4 +89,6 @@ struct attribute_info {
     u2 attribute_name_index;
     u4 attribute_length;
     std::vector<u1> info;
+
+    bool operator==(const attribute_info& other) const;
 };
