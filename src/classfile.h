@@ -2,9 +2,8 @@
 
 #include "types.h"
 
-struct ClassFile
-{
-public:
+struct ClassFile {
+  public:
     // field_infos
     u4 magic; // Should be 0xCAFEBABE.
 
@@ -12,7 +11,8 @@ public:
     u2 major_version;
 
     u2 constant_pool_count;
-    std::vector<cp_info> constant_pool; // This is indexed from 1 to constant_pool_count - 1.
+    std::vector<cp_info>
+        constant_pool; // This is indexed from 1 to constant_pool_count - 1.
 
     u2 access_flags;
 
@@ -31,13 +31,12 @@ public:
     u2 attribute_count;
     std::vector<attribute_info> attributes;
 
-public:
+  public:
     // method_infos.
 
     /// Deserialize the binary data into a class file.
-    static ClassFile deserialize(const std::vector<uint8_t>& data);
+    static ClassFile deserialize(const std::vector<uint8_t> &data);
 
     /// Serialize the class file into binary data.
     std::vector<uint8_t> serialize() const;
 };
-

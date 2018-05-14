@@ -1,25 +1,25 @@
 #pragma once
 
 #include <cassert>
-#include <vector>
 #include <cstring>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <vector>
 
-#include "types.h"
 #include "classfile.h"
+#include "types.h"
 
-/// This class handles the parsation (deserialization and serialization) of Java's .class files.
+/// This class handles the parsation (deserialization and serialization) of
+/// Java's .class files.
 /// Normal usage should be:
 /// 1. Reading the binary data (for example, from a file on disk)
 /// 2. Instantiating this ClassParser.
 /// 3. Parsing the actual file.
-struct ClassParser
-{
-private:
+struct ClassParser {
+  private:
     /// The binary representation of the class being parser.
-    const std::vector<uint8_t>& m_data;
+    const std::vector<uint8_t> &m_data;
 
     /// Iterator to the current byte being parsed.
     std::vector<uint8_t>::const_iterator m_it;
@@ -27,15 +27,15 @@ private:
     /// The class file that is being populated as the parsing progresses.
     ClassFile cf;
 
-public:
+  public:
     /// Initialize the parser, with the binary `data` of the class file.
-    ClassParser(const std::vector<uint8_t>& data);
+    ClassParser(const std::vector<uint8_t> &data);
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.
     ClassFile parse_class();
 
-private:
+  private:
     /// Consumes and returns the next unsigned char, in network order.
     u1 next_u1();
 
@@ -61,6 +61,7 @@ private:
     /// Parses a method_info struct from the data buffer.
     method_info parse_method_info();
 
-    /// Asserts that `idx` is an index into the constant pool, tagged with `tag`.
+    /// Asserts that `idx` is an index into the constant pool, tagged with
+    /// `tag`.
     void expect_cpool_entry(int idx, cp_info::Tag tag) const;
 };
