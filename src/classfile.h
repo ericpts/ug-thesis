@@ -4,6 +4,8 @@
 
 struct ClassFile
 {
+public:
+    // Fields
     u4 magic; // Should be 0xCAFEBABE.
 
     u2 minor_version;
@@ -28,4 +30,14 @@ struct ClassFile
 
     u2 attribute_count;
     std::vector<Attribute> attribute_table;
+
+public:
+    // Methods.
+
+    /// Deserialize the binary data into a class file.
+    static ClassFile deserialize(const std::vector<uint8_t>& data);
+
+    /// Serialize the class file into binary data.
+    std::vector<uint8_t> serialize() const;
 };
+
