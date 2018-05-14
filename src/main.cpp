@@ -1,23 +1,13 @@
 #include <CLI11.hpp>
 
-#include <cassert>
-#include <cstring>
-#include <fstream>
-#include <iostream>
-#include <iterator>
-#include <sstream>
-#include <vector>
-
 #include "classfile.h"
 #include "classreader.h"
 #include "types.h"
+#include "util.h"
 
 int main(int argc, char **argv)
 {
-    std::ifstream fin(argv[1], std::ios::binary);
-    std::vector<u1> data((std::istreambuf_iterator<char>(fin)),
-                         std::istreambuf_iterator<char>());
-
-    ClassFile file = ClassFile::deserialize(data);
+    std::string filename = argv[1];
+    ClassFile file = ClassFile::deserialize(read_entire_file(filename));
     return 0;
 }

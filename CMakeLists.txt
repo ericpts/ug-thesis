@@ -5,15 +5,19 @@ include(ExternalProject)
 ##################################
 # Register the thesis binary.
 
-add_definitions("-std=c++17 -Wall -Werror")
+add_definitions("-std=c++17 -Wall")
 add_executable(thesis
     src/main.cpp
     src/types.h
     src/types.cpp
     src/classreader.h
     src/classreader.cpp
+    src/classwriter.h
+    src/classwriter.cpp
     src/classfile.h
     src/classfile.cpp
+    src/util.h
+    src/util.cpp
     extern/CLI11.hpp
 )
 target_include_directories(thesis PUBLIC "extern/")
@@ -39,8 +43,12 @@ add_executable(registerer_test
     src/types.cpp
     src/classreader.h
     src/classreader.cpp
+    src/classwriter.h
+    src/classwriter.cpp
     src/classfile.h
     src/classfile.cpp
+    src/util.h
+    src/util.cpp
 )
 
 ######################################
@@ -56,7 +64,9 @@ target_include_directories(registerer_test
 target_link_libraries(registerer_test
     ${binary_dir}/googlemock/gtest/libgtest.a
     ${binary_dir}/googlemock/gtest/libgtest_main.a
-    pthread)
+    pthread
+    stdc++fs
+)
 
 ##################################
 # Just make the test runnable with
