@@ -9,6 +9,7 @@
 
 #include "classfile.h"
 #include "types.h"
+#include "bytesparser.h"
 
 /// This class handles the parsation (deserialization and serialization) of
 /// Java's .class files.
@@ -19,41 +20,23 @@
 struct ClassReader {
   private:
     /// The binary representation of the class being parser.
-    const std::vector<uint8_t> &m_data;
-
-    /// Iterator to the current byte being parsed.
-    std::vector<uint8_t>::const_iterator m_it;
+    BytesParser m_bparser;
 
     /// The class file that is being populated as the parsing progresses.
-    ClassFile cf;
+    ClassFile m_cf;
 
   public:
-    /// Initialize the parser, with the binary `data` of the class file.
-    ClassReader(const std::vector<uint8_t> &data);
+    /// Initialize the reader, with the binary `data` of the class file.
+    ClassReader(std::vector<uint8_t> data);
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.
     ClassFile deserialize();
 
   private:
-    /// Consumes and returns the next unsigned char, in network order.
-    u1 next_u1();
-
-    /// Consumes and returns the next unsigned short, in network order.
-    u2 next_u2();
-
-    /// Consumes and returns the next unsigned int, in network order.
-    u4 next_u4();
-
-    /// Consumes and returns the next `n` bytes.
-    std::vector<u1> next_n(int n);
-
     /// Parses a constant from the data buffer, and returns the data
     /// and how many slots it takes up in the constant table.
     cp_info parse_cp_info();
-
-    /// Parses an attribute_info struct from the data buffer.
-    attribute_info parse_attribute_info();
 
     /// Parses a field_info struct from the data buffer.
     field_info parse_field_info();

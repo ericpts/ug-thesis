@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include "types.h"
 
 struct ClassFile {
@@ -30,6 +31,15 @@ struct ClassFile {
 
     u2 attribute_count;
     std::vector<attribute_info> attributes;
+
+  public:
+
+    // Returns whether the index `index` is a string, and corresponds to the string `s`.
+    // Note that this asserts that the index is actually contained within the constant pool.
+    bool cp_index_is_string(int index, const std::string& s) const;
+
+    // Tries to retrieve the Code_attribute of the method residing at `method_index`.
+    std::optional<Code_attribute> code_attribute(int method_index) const;
 
   public:
     // method_infos.

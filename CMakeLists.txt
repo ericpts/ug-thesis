@@ -16,6 +16,8 @@ add_executable(thesis
     src/classwriter.cpp
     src/classfile.h
     src/classfile.cpp
+    src/bytesparser.h
+    src/bytesparser.cpp
     src/util.h
     src/util.cpp
     extern/CLI11.hpp
@@ -47,6 +49,8 @@ add_executable(registerer_test
     src/classwriter.cpp
     src/classfile.h
     src/classfile.cpp
+    src/bytesparser.h
+    src/bytesparser.cpp
     src/util.h
     src/util.cpp
 )

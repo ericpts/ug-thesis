@@ -2,12 +2,23 @@
 
 #include <cstdint>
 #include <vector>
+#include <string>
+#include <optional>
 
 #include <arpa/inet.h>
 
 using u1 = uint8_t;
 using u2 = uint16_t;
 using u4 = uint32_t;
+
+struct cp_info;
+struct method_info;
+struct field_info;
+struct interface_info;
+
+// Attribute informations, and all of its subclasses.
+struct attribute_info;
+struct Code_attribute;
 
 // Each item in the constant_pool table must begin with a 1-byte tag indicating
 // the kind of cp_info entry.
@@ -17,12 +28,6 @@ using u4 = uint32_t;
 // the specific constant.
 // The format of the additional information varies with the tag value.
 //
-struct cp_info;
-struct attribute_info;
-struct method_info;
-struct field_info;
-struct interface_info;
-
 struct cp_info {
     enum class Tag : u1 {
         CONSTANT_Class = 7,
@@ -49,6 +54,9 @@ struct cp_info {
     /// Returns the number of constant pool slots this constant takes up.
     /// By default, most types of constants only take up 1 slot, but some of them have 2.
     int slots() const;
+
+    // Returns whether this `cp_info` struct contains the given string.
+    bool is_string(const std::string& s) const;
 };
 
 // Each value in the interfaces array must be a valid index into the
@@ -95,4 +103,30 @@ struct attribute_info {
     std::vector<u1> info;
 
     bool operator==(const attribute_info &other) const;
+
+    // This template will be explicitly specialized for the possible types.
+    template<typename T>
+    T as() const;
+};
+
+struct Code_attribute {
+    u2 attribute_name_index;
+    u4 attribute_length;
+
+    u2 max_stack;
+    u2 max_locals;
+
+    u4 code_length;
+    std::vector<u1> code;
+
+    u2 exception_table_length;
+    struct exception {
+        u2 start_pc;
+        u2 end_pc;
+        u2 handler_pc;
+        u2 catch_type;
+    };
+    std::vector<exception> exception_table; // of length exception_table_length.
+    u2 attributes_count;
+    std::vector<attribute_info> attributes; // of length attributes_count.
 };
