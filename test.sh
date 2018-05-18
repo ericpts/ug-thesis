@@ -12,9 +12,11 @@ exe=$PWD/build/thesis
 pushd test
 make
 
-for f in $(find . -type f -name "*\.class"); do
-    echo "Running test $f"
-    $exe $f
+pushd fixtures
+
+for f in *; do
+    $exe $f/*.class
 done
 
-popd
+popd # fixtures
+popd # test

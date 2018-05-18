@@ -12,8 +12,7 @@ struct ClassFile {
     u2 major_version;
 
     u2 constant_pool_count;
-    std::vector<cp_info>
-        constant_pool; // This is indexed from 1 to constant_pool_count - 1.
+    std::vector<cp_info> constant_pool; // This is indexed from 1 to constant_pool_count - 1.
 
     u2 access_flags;
 
@@ -34,6 +33,9 @@ struct ClassFile {
 
   public:
 
+    // Returns whether `index` is actually an index into the constant pool array.
+    bool is_cp_index(int index) const;
+
     // Returns whether the index `index` is a string, and corresponds to the string `s`.
     // Note that this asserts that the index is actually contained within the constant pool.
     bool cp_index_is_string(int index, const std::string& s) const;
@@ -43,6 +45,9 @@ struct ClassFile {
 
     // Tries to retrieve the Code_attribute of the method residing at `method_index`.
     std::optional<Code_attribute> code_attribute(int method_index) const;
+
+    // Returns the name of the class corresponding to this classfile.
+    std::string class_name() const;
 
   public:
     // method_infos.
