@@ -4,9 +4,14 @@
 
 bool ClassFile::cp_index_is_string(int index, const std::string& s) const
 {
+    return this->cp_index_as_string(index) == s;
+}
+
+std::string ClassFile::cp_index_as_string(int index) const
+{
     assert (1 <= index);
     assert (index < this->constant_pool_count);
-    return this->constant_pool[index].is_string(s);
+    return this->constant_pool[index].as_string();
 }
 
 std::optional<Code_attribute> ClassFile::code_attribute(int method_index) const

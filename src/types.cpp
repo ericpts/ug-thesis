@@ -18,12 +18,10 @@ int cp_info::slots() const
     return 1;
 }
 
-
-bool cp_info::is_string(const std::string& s) const
+std::string cp_info::as_string() const
 {
-    assert (this->tag);
-    return this->tag == Tag::CONSTANT_Utf8_info &&
-        std::string(this->data.begin(), this->data.end()) == s;
+    assert (this->tag == Tag::CONSTANT_Utf8_info);
+    return std::string(this->data.begin(), this->data.end());
 }
 
 bool interface_info::operator==(const interface_info &other) const
@@ -87,4 +85,43 @@ Code_attribute attribute_info::as() const
     }
 
     return t;
+}
+
+
+template<>
+CONSTANT_Methodref_info cp_info::as() const
+{
+    assert (this->tag == cp_info::Tag::CONSTANT_Methodref);
+
+    BytesParser bp{this->data};
+    CONSTANT_Methodref_info ret;
+    ret.tag = this->tag;
+    ret.class_index = bp.next_u2();
+    ret.name_and_type_index = bp.next_u2();
+    return ret;
+}
+
+template<>
+CONSTANT_Class_info cp_info::as() const
+{
+    assert (this->tag == cp_info::Tag::CONSTANT_Class);
+
+    BytesParser bp{this->data};
+    CONSTANT_Class_info ret;
+    ret.tag = this->tag;
+    ret.name_index = bp.next_u2();
+    return ret;
+}
+
+template<>
+CONSTANT_NameAndType_info cp_info::as() const
+{
+    assert (this->tag == cp_info::Tag::CONSTANT_NameAndType);
+
+    BytesParser bp{this->data};
+    CONSTANT_NameAndType_info ret;
+    ret.tag = this->tag;
+    ret.name_index = bp.next_u2();
+    ret.descriptor_index = bp.next_u2();
+    return ret;
 }

@@ -38,6 +38,9 @@ struct ClassFile {
     // Note that this asserts that the index is actually contained within the constant pool.
     bool cp_index_is_string(int index, const std::string& s) const;
 
+    // Asserts that the constant at index `index` is an utf8 string, and returns it.
+    std::string cp_index_as_string(int index) const;
+
     // Tries to retrieve the Code_attribute of the method residing at `method_index`.
     std::optional<Code_attribute> code_attribute(int method_index) const;
 

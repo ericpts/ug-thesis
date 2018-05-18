@@ -11,7 +11,11 @@ using u1 = uint8_t;
 using u2 = uint16_t;
 using u4 = uint32_t;
 
+// Constant pool info and its subclasses.
 struct cp_info;
+struct CONSTANT_Methodref_info;
+
+
 struct method_info;
 struct field_info;
 struct interface_info;
@@ -55,8 +59,29 @@ struct cp_info {
     /// By default, most types of constants only take up 1 slot, but some of them have 2.
     int slots() const;
 
-    // Returns whether this `cp_info` struct contains the given string.
-    bool is_string(const std::string& s) const;
+    // Returns *this* as string.
+    std::string as_string() const;
+
+    // This template will be explicitly specialized for the possible types.
+    template<typename T>
+    T as() const;
+};
+
+struct CONSTANT_Methodref_info {
+    cp_info::Tag tag;
+    u2 class_index;
+    u2 name_and_type_index;
+};
+
+struct CONSTANT_Class_info {
+    cp_info::Tag tag;
+    u2 name_index;
+};
+
+struct CONSTANT_NameAndType_info {
+    cp_info::Tag tag;
+    u2 name_index;
+    u2 descriptor_index;
 };
 
 // Each value in the interfaces array must be a valid index into the
