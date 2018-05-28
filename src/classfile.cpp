@@ -2,29 +2,28 @@
 #include "classreader.h"
 #include "classwriter.h"
 
-bool ClassFile::cp_index_is_string(int index, const std::string& s) const
+bool ClassFile::cp_index_is_string(int index, const std::string &s) const
 {
     return this->cp_index_as_string(index) == s;
 }
 
 bool ClassFile::is_cp_index(int index) const
 {
-    return 1 <= index &&
-        index < this->constant_pool_count;
+    return 1 <= index && index < this->constant_pool_count;
 }
 
 std::string ClassFile::cp_index_as_string(int index) const
 {
-    assert (this->is_cp_index(index));
+    assert(this->is_cp_index(index));
     return this->constant_pool[index].as_string();
 }
 
 std::optional<Code_attribute> ClassFile::code_attribute(int method_index) const
 {
-    assert (0 <= method_index);
-    assert (method_index < this->method_count);
-    const method_info& m = this->methods[method_index];
-    for (const attribute_info& attr: m.attributes) {
+    assert(0 <= method_index);
+    assert(method_index < this->method_count);
+    const method_info &m = this->methods[method_index];
+    for (const attribute_info &attr : m.attributes) {
         if (!this->cp_index_is_string(attr.attribute_name_index, "Code")) {
             continue;
         }
@@ -36,9 +35,10 @@ std::optional<Code_attribute> ClassFile::code_attribute(int method_index) const
 
 std::string ClassFile::class_name() const
 {
-    assert (this->is_cp_index(this->this_class));
+    assert(this->is_cp_index(this->this_class));
 
-    const CONSTANT_Class_info cinfo = this->constant_pool[this->this_class].as<CONSTANT_Class_info>();
+    const CONSTANT_Class_info cinfo =
+        this->constant_pool[this->this_class].as<CONSTANT_Class_info>();
     return this->cp_index_as_string(cinfo.name_index);
 }
 

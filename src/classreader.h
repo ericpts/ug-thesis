@@ -7,9 +7,9 @@
 #include <sstream>
 #include <vector>
 
+#include "bytesparser.h"
 #include "classfile.h"
 #include "types.h"
-#include "bytesparser.h"
 
 /// This class handles the parsation (deserialization and serialization) of
 /// Java's .class files.

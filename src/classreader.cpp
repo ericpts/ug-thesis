@@ -8,8 +8,7 @@
 
 #include "classreader.h"
 
-ClassReader::ClassReader(std::vector<uint8_t> data)
-    : m_bparser(data)
+ClassReader::ClassReader(std::vector<uint8_t> data) : m_bparser(data)
 {
 }
 

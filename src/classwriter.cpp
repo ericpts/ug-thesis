@@ -16,10 +16,9 @@ std::vector<uint8_t> ClassWriter::serialize()
     this->put_u2(cf.major_version);
 
     this->put_u2(cf.constant_pool_count);
-    assert (cf.constant_pool_count == cf.constant_pool.size());
+    assert(cf.constant_pool_count == cf.constant_pool.size());
     // The constant pool is indexed from  to ncpool - 1.
-    for (auto it = cf.constant_pool.begin() + 1;
-         it != cf.constant_pool.end();
+    for (auto it = cf.constant_pool.begin() + 1; it != cf.constant_pool.end();
          it += it->slots()) {
         this->put_cp_info(*it);
     }
@@ -30,7 +29,7 @@ std::vector<uint8_t> ClassWriter::serialize()
     this->put_u2(cf.super_class);
 
     this->put_u2(cf.interface_count);
-    assert (cf.interface_count == cf.interfaces.size());
+    assert(cf.interface_count == cf.interfaces.size());
 
     for (const interface_info &i : cf.interfaces) {
         expect_cpool_entry(i.idx, cp_info::Tag::CONSTANT_Class);
@@ -39,21 +38,21 @@ std::vector<uint8_t> ClassWriter::serialize()
     std::cerr << "Done putting interfaces.\n";
 
     this->put_u2(cf.field_count);
-    assert (cf.field_count == cf.fields.size());
+    assert(cf.field_count == cf.fields.size());
     for (const field_info &f : cf.fields) {
         this->put_field_info(f);
     }
     std::cerr << "Done putting fields.\n";
 
     this->put_u2(cf.method_count);
-    assert (cf.method_count == cf.methods.size());
+    assert(cf.method_count == cf.methods.size());
     for (const method_info &m : cf.methods) {
         this->put_method_info(m);
     }
     std::cerr << "Done parsing methods.\n";
 
     this->put_u2(cf.attribute_count);
-    assert (cf.attribute_count == cf.attributes.size());
+    assert(cf.attribute_count == cf.attributes.size());
     for (const attribute_info &attr : cf.attributes) {
         this->put_attribute_info(attr);
     }
@@ -211,7 +210,7 @@ void ClassWriter::put_method_info(method_info info)
                              cp_info::Tag::CONSTANT_Utf8_info);
 
     this->put_u2(info.attributes_count);
-    assert (info.attributes_count == info.attributes.size());
+    assert(info.attributes_count == info.attributes.size());
     for (const attribute_info &attr : info.attributes) {
         this->put_attribute_info(attr);
     }

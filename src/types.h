@@ -1,9 +1,9 @@
 #pragma once
 
 #include <cstdint>
-#include <vector>
-#include <string>
 #include <optional>
+#include <string>
+#include <vector>
 
 #include <arpa/inet.h>
 
@@ -14,7 +14,6 @@ using u4 = uint32_t;
 // Constant pool info and its subclasses.
 struct cp_info;
 struct CONSTANT_Methodref_info;
-
 
 struct method_info;
 struct field_info;
@@ -56,15 +55,15 @@ struct cp_info {
     bool operator==(const cp_info &other) const;
 
     /// Returns the number of constant pool slots this constant takes up.
-    /// By default, most types of constants only take up 1 slot, but some of them have 2.
+    /// By default, most types of constants only take up 1 slot, but some of
+    /// them have 2.
     int slots() const;
 
     // Returns *this* as string.
     std::string as_string() const;
 
     // This template will be explicitly specialized for the possible types.
-    template<typename T>
-    T as() const;
+    template <typename T> T as() const;
 };
 
 struct CONSTANT_Methodref_info {
@@ -130,8 +129,7 @@ struct attribute_info {
     bool operator==(const attribute_info &other) const;
 
     // This template will be explicitly specialized for the possible types.
-    template<typename T>
-    T as() const;
+    template <typename T> T as() const;
 };
 
 struct Code_attribute {

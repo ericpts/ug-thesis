@@ -5,11 +5,11 @@
 
 // This struct handles the byte-by-byte parsing of a byte array.
 struct BytesParser {
-private:
+  private:
     std::vector<u1> m_data;
     std::vector<u1>::iterator m_it;
 
-public:
+  public:
     BytesParser(std::vector<u1> data);
 
     /// Consumes and returns the next unsigned char, in network order.

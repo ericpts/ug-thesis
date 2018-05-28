@@ -1,7 +1,7 @@
 #pragma once
 
-#include <optional>
 #include "types.h"
+#include <optional>
 
 struct ClassFile {
   public:
@@ -12,7 +12,8 @@ struct ClassFile {
     u2 major_version;
 
     u2 constant_pool_count;
-    std::vector<cp_info> constant_pool; // This is indexed from 1 to constant_pool_count - 1.
+    std::vector<cp_info>
+        constant_pool; // This is indexed from 1 to constant_pool_count - 1.
 
     u2 access_flags;
 
@@ -32,18 +33,22 @@ struct ClassFile {
     std::vector<attribute_info> attributes;
 
   public:
-
-    // Returns whether `index` is actually an index into the constant pool array.
+    // Returns whether `index` is actually an index into the constant pool
+    // array.
     bool is_cp_index(int index) const;
 
-    // Returns whether the index `index` is a string, and corresponds to the string `s`.
-    // Note that this asserts that the index is actually contained within the constant pool.
-    bool cp_index_is_string(int index, const std::string& s) const;
+    // Returns whether the index `index` is a string, and corresponds to the
+    // string `s`.
+    // Note that this asserts that the index is actually contained within the
+    // constant pool.
+    bool cp_index_is_string(int index, const std::string &s) const;
 
-    // Asserts that the constant at index `index` is an utf8 string, and returns it.
+    // Asserts that the constant at index `index` is an utf8 string, and returns
+    // it.
     std::string cp_index_as_string(int index) const;
 
-    // Tries to retrieve the Code_attribute of the method residing at `method_index`.
+    // Tries to retrieve the Code_attribute of the method residing at
+    // `method_index`.
     std::optional<Code_attribute> code_attribute(int method_index) const;
 
     // Returns the name of the class corresponding to this classfile.

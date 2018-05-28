@@ -20,7 +20,7 @@ int cp_info::slots() const
 
 std::string cp_info::as_string() const
 {
-    assert (this->tag == Tag::CONSTANT_Utf8_info);
+    assert(this->tag == Tag::CONSTANT_Utf8_info);
     return std::string(this->data.begin(), this->data.end());
 }
 
@@ -54,9 +54,7 @@ bool attribute_info::operator==(const attribute_info &other) const
            this->info == other.info;
 }
 
-
-template<>
-Code_attribute attribute_info::as() const
+template <> Code_attribute attribute_info::as() const
 {
     Code_attribute t;
     t.attribute_name_index = this->attribute_name_index;
@@ -71,7 +69,7 @@ Code_attribute attribute_info::as() const
 
     t.exception_table_length = bp.next_u2();
     t.exception_table.resize(t.exception_table_length);
-    for (Code_attribute::exception& ex: t.exception_table) {
+    for (Code_attribute::exception &ex : t.exception_table) {
         ex.start_pc = bp.next_u2();
         ex.end_pc = bp.next_u2();
         ex.handler_pc = bp.next_u2();
@@ -80,18 +78,16 @@ Code_attribute attribute_info::as() const
 
     t.attributes_count = bp.next_u2();
     t.attributes.resize(t.attributes_count);
-    for (attribute_info& attr: t.attributes) {
+    for (attribute_info &attr : t.attributes) {
         attr = bp.parse_attribute_info();
     }
 
     return t;
 }
 
-
-template<>
-CONSTANT_Methodref_info cp_info::as() const
+template <> CONSTANT_Methodref_info cp_info::as() const
 {
-    assert (this->tag == cp_info::Tag::CONSTANT_Methodref);
+    assert(this->tag == cp_info::Tag::CONSTANT_Methodref);
 
     BytesParser bp{this->data};
     CONSTANT_Methodref_info ret;
@@ -101,10 +97,9 @@ CONSTANT_Methodref_info cp_info::as() const
     return ret;
 }
 
-template<>
-CONSTANT_Class_info cp_info::as() const
+template <> CONSTANT_Class_info cp_info::as() const
 {
-    assert (this->tag == cp_info::Tag::CONSTANT_Class);
+    assert(this->tag == cp_info::Tag::CONSTANT_Class);
 
     BytesParser bp{this->data};
     CONSTANT_Class_info ret;
@@ -113,10 +108,9 @@ CONSTANT_Class_info cp_info::as() const
     return ret;
 }
 
-template<>
-CONSTANT_NameAndType_info cp_info::as() const
+template <> CONSTANT_NameAndType_info cp_info::as() const
 {
-    assert (this->tag == cp_info::Tag::CONSTANT_NameAndType);
+    assert(this->tag == cp_info::Tag::CONSTANT_NameAndType);
 
     BytesParser bp{this->data};
     CONSTANT_NameAndType_info ret;

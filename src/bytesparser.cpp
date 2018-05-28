@@ -2,11 +2,9 @@
 
 #include <cassert>
 
-BytesParser::BytesParser(std::vector<u1> data):
-    m_data(data),
-    m_it(m_data.begin())
+BytesParser::BytesParser(std::vector<u1> data)
+    : m_data(data), m_it(m_data.begin())
 {
-
 }
 
 u1 BytesParser::next_u1()
@@ -53,4 +51,3 @@ attribute_info BytesParser::parse_attribute_info()
 
     return attribute_info{attribute_name_index, attribute_length, info};
 }
-
