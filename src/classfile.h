@@ -49,7 +49,8 @@ struct ClassFile {
 
     // Tries to retrieve the Code_attribute of the method residing at
     // `method_index`.
-    std::optional<Code_attribute> code_attribute(int method_index) const;
+    std::optional<Code_attribute>
+    code_attribute_for_method_index(int method_index) const;
 
     // Returns the name of the class corresponding to this classfile.
     std::string class_name() const;

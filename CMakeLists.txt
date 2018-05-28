@@ -16,6 +16,10 @@ add_executable(thesis
     src/classwriter.cpp
     src/classfile.h
     src/classfile.cpp
+    src/method.h
+    src/method.cpp
+    src/code.h
+    src/code.cpp
     src/bytesparser.h
     src/bytesparser.cpp
     src/util.h
@@ -49,6 +53,10 @@ add_executable(registerer_test
     src/classwriter.cpp
     src/classfile.h
     src/classfile.cpp
+    src/method.h
+    src/method.cpp
+    src/code.h
+    src/code.cpp
     src/bytesparser.h
     src/bytesparser.cpp
     src/util.h

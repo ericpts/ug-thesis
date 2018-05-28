@@ -18,7 +18,8 @@ std::string ClassFile::cp_index_as_string(int index) const
     return this->constant_pool[index].as_string();
 }
 
-std::optional<Code_attribute> ClassFile::code_attribute(int method_index) const
+std::optional<Code_attribute>
+ClassFile::code_attribute_for_method_index(int method_index) const
 {
     assert(0 <= method_index);
     assert(method_index < this->method_count);
