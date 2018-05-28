@@ -20,6 +20,8 @@ add_executable(thesis
     src/method.cpp
     src/code.h
     src/code.cpp
+    src/project.h
+    src/project.cpp
     src/bytesparser.h
     src/bytesparser.cpp
     src/util.h
@@ -57,6 +59,8 @@ add_executable(registerer_test
     src/method.cpp
     src/code.h
     src/code.cpp
+    src/project.h
+    src/project.cpp
     src/bytesparser.h
     src/bytesparser.cpp
     src/util.h

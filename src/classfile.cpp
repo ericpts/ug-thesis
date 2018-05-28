@@ -12,26 +12,16 @@ bool ClassFile::is_cp_index(int index) const
     return 1 <= index && index < this->constant_pool_count;
 }
 
+bool ClassFile::is_method_index(int index) const
+{
+    return 0 <= index && index < this->method_count;
+}
+
+
 std::string ClassFile::cp_index_as_string(int index) const
 {
     assert(this->is_cp_index(index));
     return this->constant_pool[index].as_string();
-}
-
-std::optional<Code_attribute>
-ClassFile::code_attribute_for_method_index(int method_index) const
-{
-    assert(0 <= method_index);
-    assert(method_index < this->method_count);
-    const method_info &m = this->methods[method_index];
-    for (const attribute_info &attr : m.attributes) {
-        if (!this->cp_index_is_string(attr.attribute_name_index, "Code")) {
-            continue;
-        }
-        Code_attribute code = attr.as<Code_attribute>();
-        return code;
-    }
-    return {};
 }
 
 std::string ClassFile::class_name() const

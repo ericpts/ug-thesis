@@ -37,6 +37,9 @@ struct ClassFile {
     // array.
     bool is_cp_index(int index) const;
 
+    // Returns whether `index` is actually an index into the methods array.
+    bool is_method_index(int index) const;
+
     // Returns whether the index `index` is a string, and corresponds to the
     // string `s`.
     // Note that this asserts that the index is actually contained within the
@@ -46,11 +49,6 @@ struct ClassFile {
     // Asserts that the constant at index `index` is an utf8 string, and returns
     // it.
     std::string cp_index_as_string(int index) const;
-
-    // Tries to retrieve the Code_attribute of the method residing at
-    // `method_index`.
-    std::optional<Code_attribute>
-    code_attribute_for_method_index(int method_index) const;
 
     // Returns the name of the class corresponding to this classfile.
     std::string class_name() const;
