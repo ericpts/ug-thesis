@@ -38,4 +38,25 @@ acesta salveaza rezultatul in fisiere de tip clasa (.class) in format binar.
 
 Odata generate fisierele binare, acestea sunt executate pe o masina virtuala specifica limbajului Java - numita JVM sau `The JVM` (eng. Java Virtual Machine).
 
-Masina virtuala insusi este implementata in C si in C++, si este compilata in cod binar direct, dependent de arhitectura.
+Aceasta masina virtuala are rolul de a citi fisierele de clasa binare si de a le interpreta.
+
+Masina virtuala este implementata ca o "masina cu stiva" (eng. stack machine),
+unde toate instructiunile limbajului bytecode interactioneaza cu datele de pe o stiva controlata de aplicatie.
+
+Masina virtuala insusi este implementata in C/C++, si este compilata in cod binar direct, dependent de arhitectura.
+Dezvoltatorii limbajului Java sunt responsabili pentru corectitudinea si siguranta
+masinii virtuale, in timp ce dezvoltatorii de aplicatii Java au garantia ca daca
+codul lor Java este corect, atunci acesta va rula la fel, deterministic, pe orice platforma.
+
+In acest regard, limbajul Java poate fi vazut ca un limbaj interpretat.
+Comparand cu alte limbaje populare interpretate, ca de exemplu Python, Ruby, sau Perl, ne-am astepta ca si Java sa fie la fel de incet ca acestea [1].
+Totusi, Java obtine performante mult mai bune decat aceastea. Acest fapt se datoreaza
+compilarii tocmai-la-timp (eng. just-in-time), in care atunci cand interpretorul
+observa o secventa de cod care este interpretata repetitiv de foarte multe ori,
+va genera direct cod binary pentru aceasta.
+
+
+
+
+
+[1] https://github.com/trizen/language-benchmarks
