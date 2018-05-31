@@ -94,7 +94,6 @@ struct CONSTANT_NameAndType_info {
 // in the source for the type.
 struct interface_info {
     u2 idx;
-
     bool operator==(const interface_info &other) const;
 };
 

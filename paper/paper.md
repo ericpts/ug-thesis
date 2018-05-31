@@ -121,24 +121,66 @@ Reprezinta un indice in tabela de constante, unde sunt stocate informatii despre
 Reprezinta un indice in tabela de consatante, cu informatii despre clasa din care a mostenit clasa curenta.
 Daca este 0, inseamna ca clasa curenta nu mosteneste nimic: singura clasa fara o superclasa este clasa `Object`.
 
+E.g. pentru
+```java
+class MyClass extends SuperClass implements Interface1, Interface {
+    ....
+}
+```
+Indicele corespunde lui `SuperClass`.
 
-    u2             this_class;
-    u2             super_class;
-    u2             interfaces_count;
-    u2             interfaces[interfaces_count];
-    u2             fields_count;
-    field_info     fields[fields_count];
-    u2             methods_count;
-    method_info    methods[methods_count];
-    u2             attributes_count;
-    attribute_info attributes[attributes_count];
+### Interfetele
+
+Reprezinta o colectie de indici in tabela de constante. Fiecare valoare de la acei indici reprezinta o interfata implementata in mod direct de catre clasa curenta.
+Interfetele apar in ordinea declarata in fisierele java.
+
+E.g. pentru
+```java
+class MyClass extends SuperClass implements Interface1, Interface2 {
+    ...
+}
+```
+Primul indice ar corespunde lui `Interface`, iar al doilea lui `Interface2`.
 
 
-Asadar, putem rezuma tipuri de date intalnite in fisierele de clasa in urmatoarele tabele:
+### Campurile
+
+Reprezinta informatii despre campurile (eng. fields) clasei:
+    * Permisiunile de acces: daca este public sau privat, etc.
+    * Numele campului.
+    * Tipul campului.
+    * Alte atribute: daca este deprecat, daca are o valoare constanta, etc.
+
+
+### Metodele
+
+Reprezinta informtii despre toate metodele clasei, si include si constructorii:
+
+    * Permisiuni de acces: daca este public sau privat, daca este finala, daca este abstracta.
+    * Numele metodei.
+    * Tipul metodei.
+    * In caz ca nu este abstracta, byte codul metodei.
+    * Alte atribute:
+        * Ce exceptii poate arunca.
+        * Daca este deprecata.
+
+
+Codul metodei este partea cea mai importanta, iar formatul acestuia urmeaza sa fie detaliat ulterior.
+
+### Atributele
+
+Reprezinta alte informatii despre clasa, cum ar fi:
+    * Clasele definite in interiorul acesteia.
+    * In caz ca este o clasa anonima sau definita local, metoda in care este definita.
+    * Numele fisierul sursa din care a fost compilata clasa.
+
+
+In continuare, voi descrie din punct de vedere tehnic tipurile de date intalnite
+in fisierele de clasa:
 
 ### Tipurile de baza
 
-In fisiere clasa exista trei tipuri de baza, toate bazate pe intregi.
+In formatul fisierelor clasa exista trei tipuri de baza, toate bazate pe intregi.
 In caz ca un intreg are mai multi octeti, acestia au ordinea de `big-endian`: cel mai semnificativ octet va fi mereu primul in memorie.
 
 
@@ -149,37 +191,287 @@ In caz ca un intreg are mai multi octeti, acestia au ordinea de `big-endian`: ce
 | `u4` | intreg pe un octet, fara semn   | `unsigned int` sau `uint32_t`   |
 
 
+In codul sursa al proiectului, acestea sunt tratate astfel:
+
+```cpp
+using u1 = uint8_t;
+using u2 = uint16_t;
+using u4 = uint32_t;
+```
+
 ### Tipuri de date compuse
 
 
 #### cp\_info
-#### field\_info
-#### method\_info
-#### attribute\_info
 
-In C/C++, acesta ar arata astfel:
+Fiecare constanta din tabela de constante incepe cu o eticheta de 1 octet, care
+reprezinta datele si tipul structurii.
+Continutul acesteia variaza in functie de eticheta, insa indiferent de eticheta, continutul trebuie sa aiba cel putin 2 octeti.
+
+Aproape toate tipurile de constante ocupa un singur slot in tabela. Insa, din motive istorice, unele constante ocupa doua sloturi.
+
+Totodata, tot din motive istorice, tabela este indexata de la 1, si nu de la 0, cum sunt celelalte.
+
+##### Tipurile de constante
+###### `CONSTANT_Class`
+Corespunde valorii etichetei de 7 si contine un indice spre un alt camp in
+tabela de constante, de tipul `CONSTANT_Utf8` - un sir de caractere.
+Acel sir de caractere va contine numele clasei.
+
+###### `CONSTANT_Fieldref`
+Corespunde valorii etichetei de 9 si contine o referinta spre campul unei
+clase.
+Referinta conta in doi indici, amandoi care arata spre tabela de contante.
+Primul indice arata spre o constanta `CONSTANT_Class`, care reprezinta clasa
+sau interfata careia apartine metoda.
+Al doilea indice arata spre o constanta `CONSTANT_NameAndType`, care contine
+informatii despre numele si tipul campului.
+
+###### `CONSTANT_Methodref`
+Corespunde valorii etichetei de 10 si contine o referinta spre metoda unei
+clase.
+Are o structura identica cu `CONSTANT_Fieldref`, doar ca primul indice arata
+neaparat spre o clasa, in timp ce al doilea indice arata spre numele si tipul
+metodei.
+
+###### `CONSTANT_InterfaceMethodref`
+Corespunde valorii etichetei de 11 si contine o refereinta spre metoda unei
+interfete.
+Are o structura identica cu `CONSTANT_Methodref`, doar ca primul indice arata spre o interfata.
+
+###### `CONSTANT_String`
+Corespunde valorii etichetei de 8 si reprezinta un sir de caractere.
+Contine un indice, catre o structura de tipul `CONSTANT_Utf8`.
+
+###### `CONSTANT_Integer`
+Corespunde valorii etichetei de 3 si contine un intreg pe 4 octeti.
+
+###### `CONSTANT_Float`
+Corespunde valorii etichetei de 4 si contine un numar cu virgula mobila pe 4 octeti.
+
+###### `CONSTANT_Long`
+Corespunde valorii etichetei de 5 si contine un intreg pe 8 octeti.
+Din motive istorice, ocupa 2 spatii in tabela de constante.
+
+###### `CONSTANT_Double`
+Corespunde valorii etichetei de 6 si contine un numar cu virgula mobila pe 8
+octeti.
+Din motive istorice, ocupa 2 spatii in tabela de constante.
+
+###### `CONSTANT_NameAndType`
+Corespunde valorii etichetei de 12.
+Descrie numele si tipul unui camp sau al unei metode, fara informatii despre
+clasa.
+Contine doi indici, amandoi catre structuri de tipul `CONSTANT_Utf8`.
+Primul reprezinta numele, iar al doilea tipul.
+
+###### `CONSTANT_Utf8`
+Corespunde valorii etichetei de 1.
+Reprezinta un sir de caractere encodat in formatul UTF-8.
+Contine un intreg `length`, de tipul `u2`, si apoi `length` octeti care descriu
+sirul in sine.
+Din cauza ca este encodat ca UTF-8, un singur caracter poate fi format din mai
+multi octeti.
+
+###### `CONSTANT_MethodHandle`
+Corespunde valorii etichetei de 15 si contine o referinte catre un camp, o metoda de clasa, sau o metoda de interfata.
+
+###### `CONSTANT_MethodType`
+Corespunde valorii etichetei de 16 si contine un indice catre o constanta `CONSTANT_UTf8`, ce reprezinta tipul unei metode.
+
+###### `CONSTANT_InvokeDynamic`
+Corespunde valorii etichetei de 18 si este folosit de catre `JVM` pentru a invoka o metoda polimorfica.
+
+
+In cod `C++`, am reprezentat `cp_info` astfel:
+
+```cpp
+struct cp_info {
+    enum class Tag : u1 {
+        CONSTANT_Class = 7,
+        CONSTANT_Fieldref = 9,
+        CONSTANT_Methodref = 10,
+        CONSTANT_InterfaceMethodref = 11,
+        CONSTANT_String = 8,
+        CONSTANT_Integer = 3,
+        CONSTANT_Float = 4,
+        CONSTANT_Long = 5,
+        CONSTANT_Double = 6,
+        CONSTANT_NameAndType = 12,
+        CONSTANT_Utf8_info = 1,
+        CONSTANT_MethodHandle = 15,
+        CONSTANT_MethodType = 16,
+        CONSTANT_InvokeDynamic = 18,
+    };
+
+    Tag tag;
+    std::vector<u1> data;
+};
+```
+
+Iar structurile folosite pentru obiectivul propus au fost reprezentate astfel:
+
+
+```cpp
+struct CONSTANT_Methodref_info {
+    cp_info::Tag tag;
+    u2 class_index;
+    u2 name_and_type_index;
+};
+struct CONSTANT_Class_info {
+    cp_info::Tag tag;
+    u2 name_index;
+};
+struct CONSTANT_NameAndType_info {
+    cp_info::Tag tag;
+    u2 name_index;
+    u2 descriptor_index;
+};
+```
+
+
+#### `field_info`
+
+Fiecare camp din cadrul unei clase este reprezentat printr-o structura de tipul `field_info`.
+
+In cod `C++`, aceasta structura a fost reprezentata astfel:
+
+```cpp
+struct field_info {
+    u2 access_flags;
+    u2 name_index;
+    u2 descriptor_index;
+    u2 attributes_count;
+    std::vector<attribute_info> attributes;
+};
+```
+Unde:
+    * `name_index` este o intrare in tabela de constante unde se afla o constanta de tipul `CONSTANT_Utf8`.
+    * `descriptor_index` arata spre o constanta de tipul `CONSTANT_Utf8` si reprezinta tipul campului.
+
+#### `method_info`
+
+Fiecare metoda a unei clase/interfete este descrisa prin aceasta structura.
+
+In cod `C++`, am implementat-o asa:
+
+```cpp
+struct method_info {
+    u2 access_flags;
+    u2 name_index;
+    u2 descriptor_index;
+    u2 attributes_count;
+    std::vector<attribute_info> attributes;
+};
+```
+
+Unde `name_index` si `descriptor_index` au aceeasi interpretare ca si la `field_info`.
+
+Daca metoda nu este abstracta, atunci in vectorul `attributes` se va gasi un attribut de tipul `Code`, care contine bytecode-ul corespunzator acestei metode.
+
+
+#### `attribute_info`
+
+In `C++`, a fost implementata astfel:
+
+```cpp
+struct attribute_info {
+    u2 attribute_name_index;
+    u4 attribute_length;
+    std::vector<u1> info;
+};
+```
+
+Numele atributului determina modul in care octetii din vectorul `info` sunt interpretati.
+Pentru intentiile noastre, atributul de interes este cel de cod:
+
+
+##### `Code_attribute`
+```cpp
+struct Code_attribute {
+    u2 attribute_name_index;
+    u4 attribute_length;
+
+    u2 max_stack;
+    u2 max_locals;
+
+    u4 code_length;
+    std::vector<u1> code;
+
+    u2 exception_table_length;
+    struct exception {
+        u2 start_pc;
+        u2 end_pc;
+        u2 handler_pc;
+        u2 catch_type;
+    };
+    std::vector<exception> exception_table; // of length exception_table_length.
+    u2 attributes_count;
+    std::vector<attribute_info> attributes; // of length attributes_count.
+};
+```
+
+Aceasta structura este piesa centrala a lucrarii.
+In continuare, o voi descrie detaliat:
+
+
+* `max_stack`: Reprezinta adancimea maxima a stivei masinii virtuale cand aceasta bucata de cod este interpretata.
+* `max_locals`: Reprezinta numarul maxim de variabile locale alocate in acelasi timp cand aceasta bucata de cod este interpretata.
+* `code`: Codul metodei.
+* `exception_table`: Exceptiile pe care le poate arunca metoda.
+
+###### `Code`
+
+Vectorul `code` din cadrul atributului `Code` reprezinta bytecode-ul propriu-zis al metodei.
+
+Acest vector contine instructiunile care sunt executate de catre masina
+virtuala.
+
+Deoarece JVM-ul ruleaza ca o masina cu stiva, toate instructiunile opereaza pe aceasta stiva.
+Dintre cele peste o suta de instructiuni, noi suntem preocupati doar de 5 dintre acestea, cele care au de a face cu invocarea unei metode.
+
+####### invokedynamic
+####### invokeinterface
+####### invokespecial
+####### invokestatic
+####### invokevirtual
+
+
+### ClassFile
+
+Folosind definitile anterioare, putem descrie un fisier de clasa binar in C++:
 ```cpp
 struct ClassFile {
-    u4             magic;
-    u2             minor_version;
-    u2             major_version;
-    u2             constant_pool_count;
-    cp_info        constant_pool[constant_pool_count-1];
-    u2             access_flags;
-    u2             this_class;
-    u2             super_class;
-    u2             interfaces_count;
-    u2             interfaces[interfaces_count];
-    u2             fields_count;
-    field_info     fields[fields_count];
-    u2             methods_count;
-    method_info    methods[methods_count];
-    u2             attributes_count;
-    attribute_info attributes[attributes_count];
-}
+    u4 magic; // Should be 0xCAFEBABE.
+
+    u2 minor_version;
+    u2 major_version;
+
+    u2 constant_pool_count;
+    std::vector<cp_info> constant_pool;
+
+    u2 access_flags;
+
+    u2 this_class;
+    u2 super_class;
+
+    u2 interface_count;
+    std::vector<interface_info> interfaces;
+
+    u2 field_count;
+    std::vector<field_info> fields;
+
+    u2 method_count;
+    std::vector<method_info> methods;
+
+    u2 attribute_count;
+    std::vector<attribute_info> attributes;
+};
 ```
 
 
 [1] https://github.com/trizen/language-benchmarks
 
 [2] https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html
+
+[3] https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html
