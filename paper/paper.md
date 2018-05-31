@@ -55,8 +55,131 @@ compilarii tocmai-la-timp (eng. just-in-time), in care atunci cand interpretorul
 observa o secventa de cod care este interpretata repetitiv de foarte multe ori,
 va genera direct cod binary pentru aceasta.
 
+# Fisierele de clasa
+
+Fisierele de clasa Java sunt formate din 10 sectiuni[2]:
+
+1. Constanta magica.
+2. Versiunea fisierului.
+3. Constantele clasei.
+4. Permisiunile de acces.
+5. Numele clasei din fisier.
+6. Numele superclasei.
+7. Interfetele pe care clasa le implementeaza.
+8. Campurile clasei.
+9. Metodele clasei.
+10. Atribute ale clasei.
+
+In continuare voi da o scurta descriere a formatului sectiunilor.
+
+## Sectiunile fiserelor clasa
 
 
+### Magic
+
+Toate fiserele clasa trebuiesc sa inceapa cu un numar denumit constanta magica.
+Acesta este folosit pentru a identifica in mod unic ca acestea sunt intra-devar fisiere clasa.
+Numarul magic are o valoare memorabila: reprezentarea hexadecimala este `0xCAFEBABE`,
+
+### Versiunea
+
+Versiunea unui fisier clasa este data de doua valori, versiunea majora `M` si versiunea minora `m`.
+Versiunea clasei este atunci reprezentata ca `M.m`. (e.g., `45.1`).
+Aceasta este folosita pentru a mentine compatibilitatea in cazul modificarilor masinii virtuale care interpreteaza clasa sau ale compilatorului care o genereaza.
+
+### Constantele clasei
+
+Tabela de constante este locul unde sunt stocate valorile literale constante ale clasei:
+	* Numere intregi.
+	* Numere cu virgula mobula.
+	* Siruri de caractere, care pot reprezenta la randul lor:
+		* Nume de clase.
+		* Nume de metode.
+		* Tipuri ale metodelor.
+	* Informatii compuse din datele anterioare:
+		* Referinta la o metoda a unei clase.
+		* Referinta la o constanta a unei clase.
+
+Toate celelalte tipuri de date compuse, cum ar fi metodele sau campurile, vor contine indecsi in tabela de constante.
+
+### Permisiunile de acces
+
+Aceste permisiuni constau intr-o masca de bitsi, care reprezeinta operatiile permise pe aceasta clasa:
+
+	* daca clasa este publica, si poate fi accesta din afara pachetului acesteia.
+	* daca clasa este finala, si daca poate fi extinsa.
+	* daca invocarea metodelor din superclasa sa fie tratata special.
+	* daca este de fapt o interfata, si nu o clasa.
+	* daca este o clasa abstracta si nu poate fi instatiata.
+
+### Clasa curenta
+
+Reprezinta un indice in tabela de constante, unde sunt stocate informatii despre clasa curenta.
+
+### Clasa super
+
+Reprezinta un indice in tabela de consatante, cu informatii despre clasa din care a mostenit clasa curenta.
+Daca este 0, inseamna ca clasa curenta nu mosteneste nimic: singura clasa fara o superclasa este clasa `Object`.
+
+
+    u2             this_class;
+    u2             super_class;
+    u2             interfaces_count;
+    u2             interfaces[interfaces_count];
+    u2             fields_count;
+    field_info     fields[fields_count];
+    u2             methods_count;
+    method_info    methods[methods_count];
+    u2             attributes_count;
+    attribute_info attributes[attributes_count];
+
+
+Asadar, putem rezuma tipuri de date intalnite in fisierele de clasa in urmatoarele tabele:
+
+### Tipurile de baza
+
+In fisiere clasa exista trei tipuri de baza, toate bazate pe intregi.
+In caz ca un intreg are mai multi octeti, acestia au ordinea de `big-endian`: cel mai semnificativ octet va fi mereu primul in memorie.
+
+
+| Nume | Semantica                       | Echivalentul in C               |
+|:----:|:-------------------------------:|:-------------------------------:|
+| `u1` | intreg pe un octet, fara semn   | `unsigned char` sau `uint8_t`   |
+| `u2` | intreg pe doi octeti, fara semn | `unsigned short` sau `uint16_t` |
+| `u4` | intreg pe un octet, fara semn   | `unsigned int` sau `uint32_t`   |
+
+
+### Tipuri de date compuse
+
+
+#### cp\_info
+#### field\_info
+#### method\_info
+#### attribute\_info
+
+In C/C++, acesta ar arata astfel:
+```cpp
+struct ClassFile {
+    u4             magic;
+    u2             minor_version;
+    u2             major_version;
+    u2             constant_pool_count;
+    cp_info        constant_pool[constant_pool_count-1];
+    u2             access_flags;
+    u2             this_class;
+    u2             super_class;
+    u2             interfaces_count;
+    u2             interfaces[interfaces_count];
+    u2             fields_count;
+    field_info     fields[fields_count];
+    u2             methods_count;
+    method_info    methods[methods_count];
+    u2             attributes_count;
+    attribute_info attributes[attributes_count];
+}
+```
 
 
 [1] https://github.com/trizen/language-benchmarks
+
+[2] https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html
