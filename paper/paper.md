@@ -427,13 +427,97 @@ Vectorul `code` din cadrul atributului `Code` reprezinta bytecode-ul propriu-zis
 Acest vector contine instructiunile care sunt executate de catre masina
 virtuala.
 
-Deoarece JVM-ul ruleaza ca o masina cu stiva, toate instructiunile opereaza pe aceasta stiva.
-Dintre cele peste o suta de instructiuni, noi suntem preocupati doar de 5 dintre acestea, cele care au de a face cu invocarea unei metode.
+JVM-ul ruleaza ca o masina cu stiva, iar toate instructiunile opereaza pe
+aceasta stiva.
+Reultatul rularii unei instructiuni este modificarea stivei: scoaterea si
+adaugarea de elemente in varful acesteia.
+
+Instructiunile au in general formatul:
+```
+nume_instr
+operand1
+operand2
+...
+```
+cu un numar variabil de operanzi, prezenti in mod explicit in vectorul de `cod`.
+
+Fiecarui instructiuni ii corespunde un octet, denumit opcode.
+Fiecare operand este fie cunoscut la compilare, fie calculat in mod dinamic la
+rulare.
+
+Cele mai multe operatii nu au niciun operand dat in mod explicit la nivelul
+instructiunii: ele lucreaza doar cu valorile din varful stivei la momentul executarii codului.
+
+De exemplu:
+
+Instructiunea `imul` are octetul `104` sau `0x68`.
+Acestea da pop la doua valori din varful stivei: `value1` si `value2`.
+Amandoua valorile trebuie sa fie de tipul `int`.
+Rezultatul este inmultirea celor doua valori: `result = value1 * value2`,
+si este pus in varful stivei.
+
+Dintre cele peste o suta de instructiuni, noi suntem preocupati doar de 5 dintre acestea: cele care au de a face cu invocarea unei metode.
 
 ####### invokedynamic
+
+Format:
+```
+invokedynamic
+index1
+index2
+0
+0
+```
+
+Opcode-ul corespunzator acestei instructiuni este `186` sau `0xba`.
+
+Index1 si index2 sunt doi octeti sunt compusi in
+```c
+index = (index1 << 8) | index2
+```
+
+Indicele compus reprezinta o intrare in tabela de constante. La locatia respectiva trebuie sa se afle o structura de tipul `CONSTANT_MethodHandle`
+
+
 ####### invokeinterface
+
+Format:
+```
+invokeinterface
+index1
+index2
+count
+0
+```
+
+Opcode-ul corespunzator este `185` sau `0xb9`.
+`index1` si `index2` sunt folositi, in mod similar ca la `invokedynamic`, pentru a construi un
+`indice` in tabela de constante.
+
+La pozitia respectiva in tabela, trebuie sa se regaseasca o strutura de tipul `CONSTANT_Methodref`.
+
+`count` trebuie sa fie un octet fara semn diferit de 0.
+Acest operand descrie numarul argumentelor metodei, si este necesar din motive istorice: aceasta
+informatie poate fi dedusa din tipul metodei.
+
+
+TODO(ericpts): add resolution order.
+
 ####### invokespecial
+
+Format:
+```
+invokespecial
+index1
+index2
+```
+
+Opcode-u corespunzator este `183` sau `0xb7`.
+La fel ca la `invokeinterface`, este format un indice in tabela de constante, catre o structura
+`CONSTANT_Methodref`.
+
 ####### invokestatic
+
 ####### invokevirtual
 
 
