@@ -432,7 +432,7 @@ aceasta stiva.
 Reultatul rularii unei instructiuni este modificarea stivei: scoaterea si
 adaugarea de elemente in varful acesteia.
 
-Instructiunile au in general formatul:
+Instructiunile au in general formatul [3]:
 ```
 nume_instr
 operand1
@@ -516,14 +516,58 @@ Opcode-u corespunzator este `183` sau `0xb7`.
 La fel ca la `invokeinterface`, este format un indice in tabela de constante, catre o structura
 `CONSTANT_Methodref`.
 
+Aceasta instructiune este folosita pentru a invoca
+constructorii claselor.
+
 ####### invokestatic
 
+Format:
+```
+invokestatic
+index1
+index1
+```
+
+Opcode-ul corespunzator este `184` sau `0xb8`.
+Instructiunea este invocata pentru a invoke o metoda statica a unei clase.
+
+La fel ca la `invokeinterface`, este construit un indice compus, si folosit pentru a indexa tabela de constante.
+
 ####### invokevirtual
+
+Format:
+```
+invokevirtual
+index1
+index1
+```
+
+Opcode-ul corespunzator este `182` sau `0xb6`, iar interpretarea este la fel ca la `invokeinterface`.
+
+Aceasta este cea mai comuna instructiune de invocare de
+functii.
+
+Dupa ce numele si tipul metodei, cat si clasa `C` de care apartine aceasta sunt rezolvate, masina virtuala
+cauta metoda respectiva in clasa referentiata.  In caz ca o gaseste, cautarea se termina. In caz
+negativ, JVM va continua cautarea recursiv din superclasa lui `C`.
+
+
+In `C++`, am reprezentat aceste instructiuni de interes astfel:
+
+```cpp
+enum class Instr {
+    invokedynamic = 0xba,
+    invokeinterface = 0xb9,
+    invokespecial = 0xb7,
+    invokestatic = 0xb8,
+    invokevirtual = 0xb6,
+};
+```
 
 
 ### ClassFile
 
-Folosind definitile anterioare, putem descrie un fisier de clasa binar in C++:
+Folosind definitiile anterioare, putem descrie un fisier de clasa binar in C++:
 ```cpp
 struct ClassFile {
     u4 magic; // Should be 0xCAFEBABE.
@@ -553,9 +597,186 @@ struct ClassFile {
 };
 ```
 
+# Studiu de caz
+
+In continuare, voi exemplica structura unui fisier clasa cu un exemplu.
+
+Codul Java este urmatorul:
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("project1 - hello world");
+        foo();
+    }
+
+    public static void foo() {
+        System.out.println("project1 - foo()");
+    }
+}
+```
+
+Compilatorul folosit este `openjdk-11`.
+Clasa a fost utilizata folosind utilitarul `javap` [4], care este de asemenea inclus in pachetul `openjdk-11`.
+
+In primul rand, tabela de constante:
+
+```
+Constant pool:
+   #1 = Methodref          #8.#18         // java/lang/Object."<init>":()V
+   #2 = Fieldref           #19.#20        // java/lang/System.out:Ljava/io/PrintStream;
+   #3 = String             #21            // project1 - hello world
+   #4 = Methodref          #22.#23        // java/io/PrintStream.println:(Ljava/lang/String;)V
+   #5 = Methodref          #7.#24         // Main.foo:()V
+   #6 = String             #25            // project1 - foo()
+   #7 = Class              #26            // Main
+   #8 = Class              #27            // java/lang/Object
+   #9 = Utf8               <init>
+  #10 = Utf8               ()V
+  #11 = Utf8               Code
+  #12 = Utf8               LineNumberTable
+  #13 = Utf8               main
+  #14 = Utf8               ([Ljava/lang/String;)V
+  #15 = Utf8               foo
+  #16 = Utf8               SourceFile
+  #17 = Utf8               Main.java
+  #18 = NameAndType        #9:#10         // "<init>":()V
+  #19 = Class              #28            // java/lang/System
+  #20 = NameAndType        #29:#30        // out:Ljava/io/PrintStream;
+  #21 = Utf8               project1 - hello world
+  #22 = Class              #31            // java/io/PrintStream
+  #23 = NameAndType        #32:#33        // println:(Ljava/lang/String;)V
+  #24 = NameAndType        #15:#10        // foo:()V
+  #25 = Utf8               project1 - foo()
+  #26 = Utf8               Main
+  #27 = Utf8               java/lang/Object
+  #28 = Utf8               java/lang/System
+  #29 = Utf8               out
+  #30 = Utf8               Ljava/io/PrintStream;
+  #31 = Utf8               java/io/PrintStream
+  #32 = Utf8               println
+  #33 = Utf8               (Ljava/lang/String;)V
+```
+
+In acest format, namespace-urile imbricate sunt reprezentate prin `/`.
+
+
+Informatii despre clasa:
+```
+Classfile Main.class
+  Last modified May 28, 2018; size 520 bytes
+  MD5 checksum 248b729dfe4b4bc8da895944d30fdc28
+  Compiled from "Main.java"
+public class Main
+  minor version: 0
+  major version: 55
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #7                          // Main
+  super_class: #8                         // java/lang/Object
+  interfaces: 0, fields: 0, methods: 3, attributes: 1
+```
+
+Constructorul clasei:
+```
+{
+  public Main();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+         4: return
+      LineNumberTable:
+        line 1: 0
+```
+
+
+Metoda `main(String[] args)`:
+```
+public static void main(java.lang.String[]);
+descriptor: ([Ljava/lang/String;)V
+flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+Code:
+  stack=2, locals=1, args_size=1
+     0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     3: ldc           #3                  // String project1 - hello world
+     5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     8: invokestatic  #5                  // Method foo:()V
+    11: return
+  LineNumberTable:
+    line 3: 0
+    line 4: 8
+    line 5: 11
+```
+
+Metoda `foo()`:
+```
+public static void foo();
+descriptor: ()V
+flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+Code:
+  stack=2, locals=0, args_size=0
+     0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+     3: ldc           #6                  // String project1 - foo()
+     5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     8: return
+  LineNumberTable:
+    line 8: 0
+    line 9: 8
+```
+
+
+# Implementare
+
+## Deserializare
+
+Prima problema intalnita in construirea optimizatorului este serializarea si deserializarea fisierelor clasa.
+Problema aceasta a fost rezolvata folosind clasa `ClassReader`:
+
+```cpp
+/// This class handles the parsation (deserialization and serialization) of
+/// Java's .class files.
+/// Normal usage should be:
+/// 1. Reading the binary data (for example, from a file on disk)
+/// 2. Instantiating this ClassReader.
+/// 3. Parsing the actual file.
+struct ClassReader {
+  private:
+    /// The binary representation of the class being parser.
+    BytesParser m_bparser;
+
+    /// The class file that is being populated as the parsing progresses.
+    ClassFile m_cf;
+
+  public:
+    /// Initialize the reader, with the binary `data` of the class file.
+    ClassReader(std::vector<uint8_t> data);
+
+    /// Parse an entire class file.
+    /// This is the method that you most likely want to use.
+    ClassFile deserialize();
+
+  private:
+    /// Parses a constant from the data buffer, and returns the data
+    /// and how many slots it takes up in the constant table.
+    cp_info parse_cp_info();
+
+    /// Parses a field_info struct from the data buffer.
+    field_info parse_field_info();
+
+    /// Parses a method_info struct from the data buffer.
+    method_info parse_method_info();
+
+    /// Asserts that `idx` is an index into the constant pool, tagged with
+    /// `tag`.
+    void expect_cpool_entry(int idx, cp_info::Tag tag) const;
+};
+```
 
 [1] https://github.com/trizen/language-benchmarks
 
 [2] https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html
 
 [3] https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html
+
+[4] https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javap.html
