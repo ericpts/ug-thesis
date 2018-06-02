@@ -108,7 +108,8 @@ std::string Method::method_type() const
 
 std::string Method::format() const
 {
-    return this->class_file()->class_name() + "::" + this->method_name() + "()";
+    return this->class_file()->class_name()
+        + "/" + this->method_name() + " :: " + this->method_type();
 }
 
 std::vector<Method> Method::called_methods() const
@@ -160,4 +161,28 @@ std::vector<Method> Method::called_methods() const
         }
     }
     return ret;
+}
+
+ClassFile Method::with_this_method_removed() const
+{
+    auto ret = std::make_shared<ClassFileImpl>(*this->class_file());
+    ret->methods.erase(ret->methods.begin() + this->m_method_index);
+    return ret;
+}
+
+bool Method::operator== (const Method& o) const
+{
+    return this->class_file() == o.class_file() &&
+        this->m_method_index == o.m_method_index;
+
+}
+
+Method Method::refresh(const ClassFile &new_file) const
+{
+    for (Method m : Method::all_from_classfile(new_file)) {
+        if (m.format() == this->format()) {
+            return m;
+        }
+    }
+    assert (false); // This method was probably deleted, and should not be refreshed.
 }

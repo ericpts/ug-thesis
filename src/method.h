@@ -16,6 +16,12 @@ struct Method {
     Method(ClassFile file, int index);
 
   public:
+
+    // After a class file has been changed, *this* method will still reference the old one.
+    // In order to resolve this method in the new class file, it has to search for the new index
+    // and create a new struct.
+    Method refresh(const ClassFile &new_file) const;
+
     // Static constructors for a method struct.
     // They require a third redundant parameter in order to assert that they are
     // being called correctly.
@@ -62,9 +68,17 @@ struct Method {
     // Returns the type of this method.
     std::string method_type() const;
 
-    // Format this method for human view.
+    // Format this method for human view with the class name, method name and method type.
+    // This can be used for method comparison if the methods belong to updated class files,
+    // as the string is independent of the method's index.
     std::string format() const;
 
     // Returns all the methods that *this* method calls.
     std::vector<Method> called_methods() const;
+
+    ClassFile with_this_method_removed() const;
+
+    // This compares based based on class file and index, not on actual value.
+    // In other words, updating the class file will cause methods to compre unequal.
+    bool operator== (const Method& o) const;
 };

@@ -22,31 +22,7 @@ int main(int argc, char **argv)
     }
 
     set_project(std::make_unique<Project>(files));
+    project().remove_unused_methods();
 
-    std::optional<Method> maybe_main_method;
-    for (ClassFile &file : files) {
-        for (const Method &m : Method::all_from_classfile(file)) {
-            std::cerr << m.format() << ", ";
-        }
-        for (int i = 0; i < file->method_count; ++i) {
-            if (!file->cp_index_is_string(file->methods[i].name_index, "main")) {
-                std::cerr << "Skipping method " << file->class_name() << "::"
-                          << file->cp_index_as_string(file->methods[i].name_index)
-                          << "()"
-                          << " because it is not main()\n";
-                continue;
-            }
-            // There should be a single main method.
-            assert(!maybe_main_method.has_value());
-            maybe_main_method = Method::from_owner(file, i, file->methods[i]);
-        }
-    }
-    assert(maybe_main_method.has_value());
-    std::cerr << "Found the main file and method.\n";
-
-    std::vector<Method> methods = maybe_main_method.value().called_methods();
-    for (const Method &m : methods) {
-        std::cerr << "Calls: " << m.format() << "\n";
-    }
     return 0;
 }
