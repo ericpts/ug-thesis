@@ -17,7 +17,6 @@ bool ClassFile::is_method_index(int index) const
     return 0 <= index && index < this->method_count;
 }
 
-
 std::string ClassFile::cp_index_as_string(int index) const
 {
     assert(this->is_cp_index(index));

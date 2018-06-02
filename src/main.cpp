@@ -5,9 +5,9 @@
 #include "classfile.h"
 #include "classreader.h"
 #include "method.h"
+#include "project.h"
 #include "types.h"
 #include "util.h"
-#include "project.h"
 
 int main(int argc, char **argv)
 {
@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 
     std::optional<Method> maybe_main_method;
     for (ClassFile &file : files) {
-        for (const Method& m : Method::all_from_classfile(file)) {
+        for (const Method &m : Method::all_from_classfile(file)) {
             std::cerr << m.format() << ", ";
         }
         for (int i = 0; i < file.method_count; ++i) {
