@@ -23,7 +23,7 @@ struct ClassReader {
     BytesParser m_bparser;
 
     /// The class file that is being populated as the parsing progresses.
-    ClassFile m_cf;
+    ClassFileImpl m_cf;
 
   public:
     /// Initialize the reader, with the binary `data` of the class file.
@@ -31,7 +31,7 @@ struct ClassReader {
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.
-    ClassFile deserialize();
+    ClassFileImpl deserialize();
 
   private:
     /// Parses a constant from the data buffer, and returns the data

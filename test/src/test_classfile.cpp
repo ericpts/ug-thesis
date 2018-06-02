@@ -22,7 +22,7 @@ std::vector<JavaProject> fixtures()
     return {jp};
 }
 
-void expect_classfiles_equal(const ClassFile& cf1, const ClassFile& cf2)
+void expect_classfiles_equal(const ClassFileImpl& cf1, const ClassFileImpl& cf2)
 {
 #define EXPECT_FIELD_EQ(fieldname)\
     EXPECT_EQ(cf1.fieldname, cf2.fieldname);
@@ -52,10 +52,10 @@ TEST(ClassFileTest, deserialize_and_serialize_are_inverses)
     for (JavaProject& jp : fixtures()) {
         for (std::string& file : jp.class_files) {
             std::vector<u1> data = read_entire_file(file);
-            std::vector<u1> conv_data = ClassFile::deserialize(data).serialize();
+            std::vector<u1> conv_data = ClassFileImpl::deserialize(data).serialize();
 
-            expect_classfiles_equal(ClassFile::deserialize(data),
-                                    ClassFile::deserialize(conv_data));
+            expect_classfiles_equal(ClassFileImpl::deserialize(data),
+                                    ClassFileImpl::deserialize(conv_data));
 
             EXPECT_EQ(data, conv_data);
         }

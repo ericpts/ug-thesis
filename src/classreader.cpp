@@ -12,9 +12,9 @@ ClassReader::ClassReader(std::vector<uint8_t> data) : m_bparser(data)
 {
 }
 
-ClassFile ClassReader::deserialize()
+ClassFileImpl ClassReader::deserialize()
 {
-    ClassFile &cf = this->m_cf;
+    ClassFileImpl &cf = this->m_cf;
     cf.magic = m_bparser.next_u4();
     assert(cf.magic == 0xCAFEBABE);
 

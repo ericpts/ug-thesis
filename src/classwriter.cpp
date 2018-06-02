@@ -1,6 +1,6 @@
 #include "classwriter.h"
 
-ClassWriter::ClassWriter(const ClassFile &cf) : m_cf(cf), m_data()
+ClassWriter::ClassWriter(const ClassFileImpl &cf) : m_cf(cf), m_data()
 {
     // Speed up the process by preallocating a decent amount of memory.
     this->m_data.reserve(sizeof(cf));
@@ -8,7 +8,7 @@ ClassWriter::ClassWriter(const ClassFile &cf) : m_cf(cf), m_data()
 
 std::vector<uint8_t> ClassWriter::serialize()
 {
-    const ClassFile &cf = this->m_cf;
+    const ClassFileImpl &cf = this->m_cf;
     assert(cf.magic == 0xCAFEBABE);
     this->put_u4(cf.magic);
 

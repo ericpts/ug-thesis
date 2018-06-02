@@ -1,0 +1,6 @@
+
+* Store classfiles as shared_ptr, in order to facilitate sharing the
+  structure.
+
+* Do not modify the values inside the pointers; create new ones instead -
+  purely functional mode.

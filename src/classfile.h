@@ -2,8 +2,14 @@
 
 #include "types.h"
 #include <optional>
+#include <memory>
 
-struct ClassFile {
+// ClassFiles are going to be shared across methods.
+
+struct ClassFileImpl;
+using ClassFile = std::shared_ptr<const ClassFileImpl>;
+
+struct ClassFileImpl {
   public:
     // field_infos
     u4 magic; // Should be 0xCAFEBABE.
@@ -55,7 +61,7 @@ struct ClassFile {
 
   public:
     /// Deserialize the binary data into a class file.
-    static ClassFile deserialize(const std::vector<uint8_t> &data);
+    static ClassFileImpl deserialize(const std::vector<uint8_t> &data);
 
     /// Serialize the class file into binary data.
     std::vector<uint8_t> serialize() const;

@@ -1,18 +1,19 @@
 #pragma once
 
 #include "classfile.h"
+#include <memory>
 
 // This represents a view into a method reference of a class file.
 struct Method {
   private:
     // The class file where this method belongs.
-    const ClassFile *m_class_file;
+    ClassFile m_class_file;
 
     // The index of this method in the class file method table.
     int m_method_index;
 
     // Constructs the method from the ClassFile and the method index.
-    Method(const ClassFile &file, int index);
+    Method(ClassFile file, int index);
 
   public:
     // Static constructors for a method struct.

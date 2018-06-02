@@ -15,14 +15,14 @@
 struct ClassWriter {
   private:
     /// The class file that is used to generate the data.
-    const ClassFile &m_cf;
+    const ClassFileImpl &m_cf;
 
     /// The buffer that is being filled with the serialization data of `m_cf`.
     std::vector<uint8_t> m_data;
 
   public:
     /// Initialize the parser, with the binary `data` of the class file.
-    ClassWriter(const ClassFile &cf);
+    ClassWriter(const ClassFileImpl &cf);
 
     /// Parse an entire class file.
     /// This is the method that you most likely want to use.

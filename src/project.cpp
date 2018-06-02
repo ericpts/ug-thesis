@@ -1,6 +1,7 @@
 #include "project.h"
 #include <cassert>
 #include <memory>
+#include <iostream>
 
 std::unique_ptr<Project> _global_p;
 
@@ -23,7 +24,7 @@ std::optional<ClassFile>
 Project::resolve_classfile(const std::string &class_name) const
 {
     for (const ClassFile &c : this->m_files) {
-        if (c.class_name() == class_name) {
+        if (c->class_name() == class_name) {
             return c;
         }
     }
@@ -43,6 +44,7 @@ Project::resolve_symbolic_reference(const std::string &class_name,
     const ClassFile &cf = maybe_class_file.value();
     for (const Method &m : Method::all_from_classfile(cf)) {
         if (m.method_name() == method_name && m.method_type() == method_type) {
+            std::cerr << "Successfully resolved " << method_name  << " :: " << method_type << "\n";
             return m;
         }
     }

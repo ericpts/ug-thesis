@@ -14,7 +14,11 @@ int main(int argc, char **argv)
     std::vector<std::string> filenames(argv + 1, argv + argc);
     std::vector<ClassFile> files;
     for (const std::string &filename : filenames) {
-        files.push_back(ClassFile::deserialize(read_entire_file(filename)));
+        files.push_back(
+                std::make_shared<ClassFileImpl>(
+                    ClassFileImpl::deserialize(
+                        read_entire_file(filename)))
+        );
     }
 
     set_project(std::make_unique<Project>(files));
@@ -24,17 +28,17 @@ int main(int argc, char **argv)
         for (const Method &m : Method::all_from_classfile(file)) {
             std::cerr << m.format() << ", ";
         }
-        for (int i = 0; i < file.method_count; ++i) {
-            if (!file.cp_index_is_string(file.methods[i].name_index, "main")) {
-                std::cerr << "Skipping method " << file.class_name() << "::"
-                          << file.cp_index_as_string(file.methods[i].name_index)
+        for (int i = 0; i < file->method_count; ++i) {
+            if (!file->cp_index_is_string(file->methods[i].name_index, "main")) {
+                std::cerr << "Skipping method " << file->class_name() << "::"
+                          << file->cp_index_as_string(file->methods[i].name_index)
                           << "()"
                           << " because it is not main()\n";
                 continue;
             }
             // There should be a single main method.
             assert(!maybe_main_method.has_value());
-            maybe_main_method = Method::from_owner(file, i, file.methods[i]);
+            maybe_main_method = Method::from_owner(file, i, file->methods[i]);
         }
     }
     assert(maybe_main_method.has_value());

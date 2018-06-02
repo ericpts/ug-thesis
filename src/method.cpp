@@ -6,16 +6,16 @@
 
 #include <iostream>
 
-Method::Method(const ClassFile &file, int index)
-    : m_class_file(&file), m_method_index(index)
+Method::Method(ClassFile file, int index)
+    : m_class_file(file), m_method_index(index)
 {
-    assert(this->class_file().is_method_index(index));
+    assert(this->class_file()->is_method_index(index));
 }
 
 Method Method::from_owner(const ClassFile &file, int index, method_info info)
 {
-    assert(file.is_method_index(index));
-    assert(file.methods[index] == info);
+    assert(file->is_method_index(index));
+    assert(file->methods[index] == info);
     return Method(file, index);
 }
 
@@ -23,23 +23,23 @@ std::optional<Method> Method::from_symbolic_reference(const ClassFile &file,
                                                       int cp_index,
                                                       cp_info info)
 {
-    assert(file.constant_pool[cp_index] == info);
+    assert(file->constant_pool[cp_index] == info);
 
     const CONSTANT_Methodref_info mref =
-        file.constant_pool[cp_index].as<CONSTANT_Methodref_info>();
+        file->constant_pool[cp_index].as<CONSTANT_Methodref_info>();
     const CONSTANT_Class_info cinfo =
-        file.constant_pool[mref.class_index].as<CONSTANT_Class_info>();
+        file->constant_pool[mref.class_index].as<CONSTANT_Class_info>();
     const std::string class_name =
-        file.constant_pool[cinfo.name_index].as_string();
+        file->constant_pool[cinfo.name_index].as_string();
 
     const CONSTANT_NameAndType_info ntinfo =
-        file.constant_pool[mref.name_and_type_index]
+        file->constant_pool[mref.name_and_type_index]
             .as<CONSTANT_NameAndType_info>();
 
     const std::string method_name =
-        file.constant_pool[ntinfo.name_index].as_string();
+        file->constant_pool[ntinfo.name_index].as_string();
     const std::string method_type =
-        file.constant_pool[ntinfo.descriptor_index].as_string();
+        file->constant_pool[ntinfo.descriptor_index].as_string();
 
     std::cerr << "Trying to resolve method from symbolic reference: "
               << "(" << method_name << ") and type " << method_type << ""
@@ -59,7 +59,7 @@ std::optional<Method> Method::from_symbolic_reference(const ClassFile &file,
 std::vector<Method> Method::all_from_classfile(const ClassFile &file)
 {
     std::vector<Method> ret;
-    for (int i = 0; i < file.method_count; ++i) {
+    for (int i = 0; i < file->method_count; ++i) {
         ret.push_back({file, i});
     }
     return ret;
@@ -77,14 +77,14 @@ std::optional<Method> Method::main_method(const ClassFile &file)
 
 const ClassFile &Method::class_file() const
 {
-    return *(this->m_class_file);
+    return (this->m_class_file);
 }
 
 Code_attribute Method::code_attribute() const
 {
-    const method_info &m = this->class_file().methods[this->m_method_index];
+    const method_info &m = this->class_file()->methods[this->m_method_index];
     for (const attribute_info &attr : m.attributes) {
-        if (!this->class_file().cp_index_is_string(attr.attribute_name_index,
+        if (!this->class_file()->cp_index_is_string(attr.attribute_name_index,
                                                    "Code")) {
             continue;
         }
@@ -96,19 +96,19 @@ Code_attribute Method::code_attribute() const
 
 std::string Method::method_name() const
 {
-    return this->class_file().cp_index_as_string(
-        this->class_file().methods[this->m_method_index].name_index);
+    return this->class_file()->cp_index_as_string(
+        this->class_file()->methods[this->m_method_index].name_index);
 }
 
 std::string Method::method_type() const
 {
-    return this->class_file().cp_index_as_string(
-        this->class_file().methods[this->m_method_index].descriptor_index);
+    return this->class_file()->cp_index_as_string(
+        this->class_file()->methods[this->m_method_index].descriptor_index);
 }
 
 std::string Method::format() const
 {
-    return this->class_file().class_name() + "::" + this->method_name() + "()";
+    return this->class_file()->class_name() + "::" + this->method_name() + "()";
 }
 
 std::vector<Method> Method::called_methods() const
@@ -143,7 +143,7 @@ std::vector<Method> Method::called_methods() const
             const u2 index = bp.next_u2();
             add_optional(Method::from_symbolic_reference(
                 this->class_file(), index,
-                this->class_file().constant_pool[index]));
+                this->class_file()->constant_pool[index]));
             break;
         }
         case Instr::invokevirtual: {
@@ -151,7 +151,7 @@ std::vector<Method> Method::called_methods() const
             const u2 index = bp.next_u2();
             add_optional(Method::from_symbolic_reference(
                 this->class_file(), index,
-                this->class_file().constant_pool[index]));
+                this->class_file()->constant_pool[index]));
             break;
         }
         default: {
