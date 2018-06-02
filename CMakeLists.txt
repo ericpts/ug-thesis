@@ -5,7 +5,8 @@ include(ExternalProject)
 ##################################
 # Register the thesis binary.
 
-add_definitions("-std=c++17 -Wall")
+add_definitions("-std=c++17 -Wall -fsanitize=address")
+set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 add_executable(thesis
     src/main.cpp
     src/types.h

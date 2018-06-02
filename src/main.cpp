@@ -16,7 +16,8 @@ int main(int argc, char **argv)
     for (const std::string &filename : filenames) {
         files.push_back(ClassFile::deserialize(read_entire_file(filename)));
     }
-    Project project(files);
+
+    set_project(std::make_unique<Project>(files));
 
     std::optional<Method> maybe_main_method;
     for (ClassFile &file : files) {
@@ -31,13 +32,14 @@ int main(int argc, char **argv)
                           << " because it is not main()\n";
                 continue;
             }
-            std::cerr << "Found the main file and method.\n";
             // There should be a single main method.
             assert(!maybe_main_method.has_value());
             maybe_main_method = Method::from_owner(file, i, file.methods[i]);
         }
     }
     assert(maybe_main_method.has_value());
+    std::cerr << "Found the main file and method.\n";
+
     std::vector<Method> methods = maybe_main_method.value().called_methods();
     for (const Method &m : methods) {
         std::cerr << "Calls: " << m.format() << "\n";

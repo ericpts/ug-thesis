@@ -2,6 +2,7 @@
 #include "assert.h"
 #include "bytesparser.h"
 #include "code.h"
+#include "project.h"
 
 #include <iostream>
 
@@ -18,7 +19,7 @@ Method Method::from_owner(const ClassFile &file, int index, method_info info)
     return Method(file, index);
 }
 
-Method Method::from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info)
+std::optional<Method> Method::from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info)
 {
     assert (file.constant_pool[cp_index] == info);
 
@@ -32,13 +33,26 @@ Method Method::from_symbolic_reference(const ClassFile &file, int cp_index, cp_i
     const CONSTANT_NameAndType_info ntinfo =
         file.constant_pool[mref.name_and_type_index]
             .as<CONSTANT_NameAndType_info>();
+
     const std::string method_name =
         file.constant_pool[ntinfo.name_index].as_string();
+    const std::string method_type =
+        file.constant_pool[ntinfo.descriptor_index].as_string();
 
-    assert(false);
+    std::cerr << "Trying to resolve method from symbolic reference: "
+        << "(" << method_name << ") and type " << method_type << ""
+        << ".\n";
 
-    // TODO(ericpts): finish this.
-    // Given class_name and method_name, figure out the Method referenced.
+    std::optional<Method> maybe_method = project().resolve_symbolic_reference(
+            class_name,
+            method_name,
+            method_type);
+
+    if (!maybe_method.has_value()) {
+        std::cerr << "Could note resolve: " << "(" << method_name << ") and type " << method_type << "."
+            << " It is probably part of a library!\n";
+    }
+    return maybe_method;
 }
 
 std::vector<Method> Method::all_from_classfile(const ClassFile& file)
@@ -83,6 +97,11 @@ std::string Method::method_name() const
     return this->class_file().cp_index_as_string(this->class_file().methods[this->m_method_index].name_index);
 }
 
+std::string Method::method_type() const
+{
+    return this->class_file().cp_index_as_string(this->class_file().methods[this->m_method_index].descriptor_index);
+}
+
 std::string Method::format() const
 {
     return this->class_file().class_name() + "::" + this->method_name() + "()";
@@ -92,6 +111,13 @@ std::vector<Method> Method::called_methods() const
 {
     std::vector<Method> ret;
     Code_attribute attr = this->code_attribute();
+
+    auto add_optional = [&ret] (std::optional<Method> m) -> void
+    {
+        if (m.has_value()) {
+            ret.push_back(m.value());
+        }
+    };
 
     BytesParser bp{attr.code};
     while (!bp.is_end()) {
@@ -112,14 +138,14 @@ std::vector<Method> Method::called_methods() const
         case Instr::invokestatic: {
             std::cerr << "Found function call instruction invokestatic.\n";
             const u2 index = bp.next_u2();
-            ret.push_back(Method::from_symbolic_reference(
+            add_optional(Method::from_symbolic_reference(
                         this->class_file(), index, this->class_file().constant_pool[index]));
             break;
         }
         case Instr::invokevirtual: {
             std::cerr << "Found function call instruction invokevirtual.\n";
             const u2 index = bp.next_u2();
-            ret.push_back(Method::from_symbolic_reference(
+            add_optional(Method::from_symbolic_reference(
                         this->class_file(), index, this->class_file().constant_pool[index]));
             break;
         }

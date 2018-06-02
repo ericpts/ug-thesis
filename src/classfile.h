@@ -54,7 +54,6 @@ struct ClassFile {
     std::string class_name() const;
 
   public:
-    // method_infos.
 
     /// Deserialize the binary data into a class file.
     static ClassFile deserialize(const std::vector<uint8_t> &data);

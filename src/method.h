@@ -26,10 +26,15 @@ struct Method {
 
     // This method is referenced by `file` at the index `cp_index` of the constant pool.
     // We first have to resolve the reference, and then instantiate the method.
+    // This returns an optional, instead of the method itself, because the refernce may point to a
+    // library method, which we do not have access to.
     //
     // This should be called as such:
     // Method::from_symbolic_reference(file, index, file.constant_pool[index]).
-    static Method from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
+    //
+    // This method implicitly relies on the global project state, because the referenced
+    // method may not always be part of the current class.
+    static std::optional<Method> from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
 
     // Returns all the methods referenced in `file`.
     static std::vector<Method> all_from_classfile(const ClassFile& file);
@@ -45,6 +50,9 @@ struct Method {
 
     // Returns the name of this method.
     std::string method_name() const;
+
+    // Returns the type of this method.
+    std::string method_type() const;
 
     // Format this method for human view.
     std::string format() const;
