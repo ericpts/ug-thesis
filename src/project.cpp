@@ -1,5 +1,6 @@
 #include "project.h"
 #include <cassert>
+#include <fstream>
 #include <iostream>
 #include <memory>
 
@@ -80,11 +81,6 @@ Method Project::main_method() const
     return maybe_main_method.value();
 }
 
-std::vector<ClassFile> Project::files() const
-{
-    return this->m_files;
-}
-
 void Project::remove_unused_methods()
 {
     Method main_method = project().main_method();
@@ -123,5 +119,19 @@ void Project::remove_unused_methods()
             std::cerr << "Removing " << m.format() << "...\n";
             cf = m.refresh(cf).with_this_method_removed();
         }
+    }
+}
+
+namespace fs = std::experimental::filesystem;
+
+void Project::save(std::experimental::filesystem::path path) const
+{
+    for (ClassFile cf : this->m_files) {
+        const fs::path dest = path / (cf->class_name() + ".class");
+
+        std::ofstream fout(dest, std::ios::binary);
+
+        const std::vector<u1> data = cf->serialize();
+        fout.write(reinterpret_cast<const char *>(data.data()), data.size());
     }
 }

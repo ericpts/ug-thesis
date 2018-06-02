@@ -49,14 +49,14 @@ std::vector<uint8_t> ClassWriter::serialize()
     for (const method_info &m : cf.methods) {
         this->put_method_info(m);
     }
-    std::cerr << "Done parsing methods.\n";
+    std::cerr << "Done putting methods.\n";
 
     this->put_u2(cf.attribute_count);
     assert(cf.attribute_count == cf.attributes.size());
     for (const attribute_info &attr : cf.attributes) {
         this->put_attribute_info(attr);
     }
-    std::cerr << "Done parsing attributs.\n";
+    std::cerr << "Done putting attributs.\n";
 
     return this->m_data;
 }

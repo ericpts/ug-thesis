@@ -167,6 +167,7 @@ ClassFile Method::with_this_method_removed() const
 {
     auto ret = std::make_shared<ClassFileImpl>(*this->class_file());
     ret->methods.erase(ret->methods.begin() + this->m_method_index);
+    ret->method_count--;
     return ret;
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <experimental/filesystem>
 #include <memory>
 #include <optional>
 #include <vector>
@@ -39,7 +40,8 @@ struct Project {
     // ClassFile.
     void remove_unused_methods();
 
-    std::vector<ClassFile> files() const;
+    // Save all of the class files in the given location.
+    void save(std::experimental::filesystem::path path) const;
 };
 
 // For now, there is a single global project for the entire application.

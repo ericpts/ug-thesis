@@ -21,5 +21,7 @@ int main(int argc, char **argv)
     set_project(std::make_unique<Project>(files));
     project().remove_unused_methods();
 
+    project().save("out/");
+
     return 0;
 }

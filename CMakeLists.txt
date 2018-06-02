@@ -5,7 +5,7 @@ include(ExternalProject)
 ##################################
 # Register the thesis binary.
 
-add_definitions("-std=c++17 -Wall -fsanitize=address")
+add_definitions("-std=c++17 -Wall -Werror -Wextra")
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
 add_executable(thesis
     src/main.cpp
@@ -30,6 +30,11 @@ add_executable(thesis
     extern/CLI11.hpp
 )
 target_include_directories(thesis PUBLIC "extern/")
+
+target_link_libraries(thesis
+    pthread
+    stdc++fs
+)
 
 ##################################
 # Download and install GoogleTest
