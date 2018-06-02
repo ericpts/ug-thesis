@@ -85,7 +85,7 @@ Code_attribute Method::code_attribute() const
     const method_info &m = this->class_file()->methods[this->m_method_index];
     for (const attribute_info &attr : m.attributes) {
         if (!this->class_file()->cp_index_is_string(attr.attribute_name_index,
-                                                   "Code")) {
+                                                    "Code")) {
             continue;
         }
         Code_attribute code = attr.as<Code_attribute>();
@@ -108,8 +108,8 @@ std::string Method::method_type() const
 
 std::string Method::format() const
 {
-    return this->class_file()->class_name()
-        + "/" + this->method_name() + " :: " + this->method_type();
+    return this->class_file()->class_name() + "/" + this->method_name() +
+           " :: " + this->method_type();
 }
 
 std::vector<Method> Method::called_methods() const
@@ -170,11 +170,10 @@ ClassFile Method::with_this_method_removed() const
     return ret;
 }
 
-bool Method::operator== (const Method& o) const
+bool Method::operator==(const Method &o) const
 {
     return this->class_file() == o.class_file() &&
-        this->m_method_index == o.m_method_index;
-
+           this->m_method_index == o.m_method_index;
 }
 
 Method Method::refresh(const ClassFile &new_file) const
@@ -184,5 +183,6 @@ Method Method::refresh(const ClassFile &new_file) const
             return m;
         }
     }
-    assert (false); // This method was probably deleted, and should not be refreshed.
+    assert(false); // This method was probably deleted, and should not be
+                   // refreshed.
 }

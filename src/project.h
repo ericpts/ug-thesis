@@ -26,13 +26,17 @@ struct Project {
     // Find the main entry point of the entire project.
     Method main_method() const;
 
-    // This is for now not purely functional, due to the global resolution of method references
+    // This is for now not purely functional, due to the global resolution of
+    // method references
     // via the `project()` function.
     //
-    // As ClassFiles are actively modified for each removed method, all references needs need to be re-resolved
+    // As ClassFiles are actively modified for each removed method, all
+    // references needs need to be re-resolved
     // after every deletion, because they are reindexed.
-    // Due to the way external references work (class A references a method of class B), based on name and type,
-    // it is only necessary to update the methods from within the modified ClassFile.
+    // Due to the way external references work (class A references a method of
+    // class B), based on name and type,
+    // it is only necessary to update the methods from within the modified
+    // ClassFile.
     void remove_unused_methods();
 
     std::vector<ClassFile> files() const;

@@ -16,9 +16,10 @@ struct Method {
     Method(ClassFile file, int index);
 
   public:
-
-    // After a class file has been changed, *this* method will still reference the old one.
-    // In order to resolve this method in the new class file, it has to search for the new index
+    // After a class file has been changed, *this* method will still reference
+    // the old one.
+    // In order to resolve this method in the new class file, it has to search
+    // for the new index
     // and create a new struct.
     Method refresh(const ClassFile &new_file) const;
 
@@ -68,8 +69,10 @@ struct Method {
     // Returns the type of this method.
     std::string method_type() const;
 
-    // Format this method for human view with the class name, method name and method type.
-    // This can be used for method comparison if the methods belong to updated class files,
+    // Format this method for human view with the class name, method name and
+    // method type.
+    // This can be used for method comparison if the methods belong to updated
+    // class files,
     // as the string is independent of the method's index.
     std::string format() const;
 
@@ -79,6 +82,7 @@ struct Method {
     ClassFile with_this_method_removed() const;
 
     // This compares based based on class file and index, not on actual value.
-    // In other words, updating the class file will cause methods to compre unequal.
-    bool operator== (const Method& o) const;
+    // In other words, updating the class file will cause methods to compre
+    // unequal.
+    bool operator==(const Method &o) const;
 };
