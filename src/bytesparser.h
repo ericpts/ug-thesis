@@ -29,4 +29,7 @@ struct BytesParser {
 
     /// Parses an attribute_info struct from the data buffer.
     attribute_info parse_attribute_info();
+
+    // Returns how many bytes have been parsed so far.
+    int bytes_read() const;
 };

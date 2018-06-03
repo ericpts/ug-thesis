@@ -19,7 +19,8 @@ def main():
         print(colorama.Fore.GREEN + 'Running on {}'.format(f))
         print(colorama.Style.RESET_ALL)
 
-        subprocess.run(['rm', '-f', *list(map(str, Path('out/').glob('*.class')))], check=True)
+        subprocess.run(['rm', '-rf', 'out'], check=True)
+        subprocess.run(['mkdir', 'out'], check=True)
         subprocess.run([exe, *list(map(str, f.glob('*.class')))], check=True)
         subprocess.run([f / 'test.sh'], check=True)
 

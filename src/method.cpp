@@ -5,6 +5,7 @@
 #include "project.h"
 
 #include <iostream>
+#include <set>
 
 Method::Method(ClassFile file, int index)
     : m_class_file(file), m_method_index(index)
@@ -127,21 +128,27 @@ std::vector<Method> Method::called_methods() const
     while (!bp.is_end()) {
         Instr i = static_cast<Instr>(bp.next_u1());
         switch (i) {
+
+        // TODO(ericpts): also handle these method invocations.
         case Instr::invokedynamic: {
             std::cerr << "Found function call instruction invokedynamic.\n";
+            assert (false);
             break;
         }
         case Instr::invokeinterface: {
             std::cerr << "Found function call instruction invokeinterface.\n";
+            assert (false);
             break;
         }
         case Instr::invokespecial: {
             std::cerr << "Found function call instruction invokespecial.\n";
+            assert (false);
             break;
         }
         case Instr::invokestatic: {
             std::cerr << "Found function call instruction invokestatic.\n";
             const u2 index = bp.next_u2();
+            assert (this->class_file()->is_cp_index(index));
             add_optional(Method::from_symbolic_reference(
                 this->class_file(), index,
                 this->class_file()->constant_pool[index]));
@@ -150,16 +157,48 @@ std::vector<Method> Method::called_methods() const
         case Instr::invokevirtual: {
             std::cerr << "Found function call instruction invokevirtual.\n";
             const u2 index = bp.next_u2();
+            assert (this->class_file()->is_cp_index(index));
             add_optional(Method::from_symbolic_reference(
                 this->class_file(), index,
                 this->class_file()->constant_pool[index]));
             break;
         }
         default: {
+            skip_instruction(i, &bp);
             break;
         }
         }
     }
+    return ret;
+}
+
+
+std::vector<Method> Method::method_call_graph() const
+{
+    std::vector<Method> ret = {*this};
+    size_t at = 0;
+
+    auto was_visited = [&ret] (const Method& m) -> bool
+    {
+        for (const Method &o : ret) {
+            if (o == m) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    while (at < ret.size()) {
+        const Method& m = ret[at];
+        at += 1;
+
+        for (const Method& o : m.called_methods()) {
+            if (!was_visited(o)) {
+                ret.push_back(o);
+            }
+        }
+    }
+
     return ret;
 }
 

@@ -84,7 +84,7 @@ Method Project::main_method() const
 void Project::remove_unused_methods()
 {
     Method main_method = project().main_method();
-    std::vector<Method> reachable_methods = main_method.called_methods();
+    std::vector<Method> reachable_methods = main_method.method_call_graph();
 
     auto is_reachable = [&reachable_methods](const Method &m) -> bool {
         if (m.method_name() == "<init>" || m.method_name() == "main") {

@@ -76,8 +76,11 @@ struct Method {
     // as the string is independent of the method's index.
     std::string format() const;
 
-    // Returns all the methods that *this* method calls.
+    // Returns all the methods that *this* method calls directly.
     std::vector<Method> called_methods() const;
+
+    // Returns all of the methods which are reachable by a series of calls from this method.
+    std::vector<Method> method_call_graph() const;
 
     ClassFile with_this_method_removed() const;
 

@@ -51,3 +51,8 @@ attribute_info BytesParser::parse_attribute_info()
 
     return attribute_info{attribute_name_index, attribute_length, info};
 }
+
+int BytesParser::bytes_read() const
+{
+    return m_it - m_data.begin();
+}

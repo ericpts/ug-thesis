@@ -4,3 +4,6 @@
 
 * Do not modify the values inside the pointers; create new ones instead -
   purely functional mode.
+
+* Even though we do not care about all instructions, we have to treat each of them, in case they take up more than one byte:
+    * Some instructions (`lookupswitch` or `tableswitch`) have a variable length!
