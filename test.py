@@ -24,6 +24,8 @@ def main():
         subprocess.run([exe, *list(map(str, f.glob('*.class'))), '--out', 'out'], check=True)
         subprocess.run([f / 'test.sh'], check=True)
 
+        subprocess.run(['java', 'Main'], check=True, cwd='out')
+
 
 if __name__ == '__main__':
     main()
