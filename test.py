@@ -21,7 +21,7 @@ def main():
 
         subprocess.run(['rm', '-rf', 'out'], check=True)
         subprocess.run(['mkdir', 'out'], check=True)
-        subprocess.run([exe, *list(map(str, f.glob('*.class')))], check=True)
+        subprocess.run([exe, *list(map(str, f.glob('*.class'))), '--out', 'out'], check=True)
         subprocess.run([f / 'test.sh'], check=True)
 
 
