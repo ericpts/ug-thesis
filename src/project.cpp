@@ -36,6 +36,7 @@ Project::Project(std::vector<fs::path> class_files)
 std::optional<ClassFile>
 Project::resolve_classfile(const std::string &class_name) const
 {
+    std::cerr << "Trying to resolve_classfile for " << class_name << "\n";
     for (const ClassFile &c : this->m_files) {
         if (c->class_name() == class_name) {
             return c;
@@ -96,7 +97,7 @@ Method Project::main_method() const
 void Project::remove_unused_methods()
 {
     Method main_method = project().main_method();
-    std::vector<Method> reachable_methods = main_method.method_call_graph();
+    std::vector<Method> reachable_methods = this->method_call_graph(main_method);
 
     auto is_reachable = [&reachable_methods](const Method &m) -> bool {
         if (m.method_name() == "<init>" || m.method_name() == "main") {
@@ -168,4 +169,104 @@ void Project::save_in_place(std::vector<fs::path> filenames) const
 std::vector<ClassFile> Project::classfiles() const
 {
     return this->m_files;
+}
+
+std::vector<Method> Project::sibling_methods(const Method& m) const
+{
+    auto method_is_sibling = [&] (const Method& o) -> bool
+    {
+        return m.method_type() == o.method_type()
+            and m.method_name() == o.method_name()
+            and classes_are_related(o.class_file(), m.class_file());
+    };
+
+    std::vector<Method> ret;
+    for (const ClassFile& cf : this->m_files) {
+        for (const Method& o : Method::all_from_classfile(cf)) {
+            if (method_is_sibling(o)) {
+                ret.push_back(o);
+            }
+        }
+    }
+    return ret;
+}
+
+bool Project::classes_are_related(const ClassFile& one, const ClassFile& other) const
+{
+    std::vector<ClassFile> reachable = {one};
+    auto direct_links = [this] (const ClassFile& cf) -> std::vector<ClassFile>
+    {
+        std::vector<ClassFile> ret;
+
+        auto push_maybe = [&ret] (std::optional<ClassFile> maybe_cf) -> void
+        {
+            if (maybe_cf) {
+                ret.push_back(maybe_cf.value());
+            }
+        };
+
+        push_maybe(this->resolve_classfile(cf->super_class_name()));
+
+        for (const std::string& i : cf->interface_names()) {
+            push_maybe(this->resolve_classfile(i));
+        }
+
+        return ret;
+    };
+    auto is_reachable = [&reachable] (const ClassFile& cf) -> bool
+    {
+        for (const ClassFile& cf2 : reachable) {
+            if (cf == cf2) {
+                return true;
+            }
+        }
+        return false;
+    };
+    for (size_t at = 0; at < reachable.size(); at++) {
+        const ClassFile& cf = reachable[at];
+
+        for (const ClassFile& next : direct_links(cf)) {
+            if (is_reachable(next)) {
+                continue;
+            }
+            reachable.push_back(next);
+        }
+    }
+    return is_reachable(other);
+}
+
+
+std::vector<Method> Project::method_call_graph(const Method& m) const
+{
+    std::vector<Method> ret;
+    auto add_method = [&ret, this] (const Method& m) -> void
+    {
+        for (const Method &o : this->sibling_methods(m)) {
+            ret.push_back(o);
+        }
+    };
+    add_method(m);
+    size_t at = 0;
+
+    auto was_visited = [&ret] (const Method& m) -> bool
+    {
+        for (const Method &o : ret) {
+            if (o == m) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    while (at < ret.size()) {
+        const Method& m = ret[at];
+        at += 1;
+        for (const Method& o : m.called_methods()) {
+            if (!was_visited(o)) {
+                add_method(o);
+            }
+        }
+    }
+
+    return ret;
 }

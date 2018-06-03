@@ -79,9 +79,6 @@ struct Method {
     // Returns all the methods that *this* method calls directly.
     std::vector<Method> called_methods() const;
 
-    // Returns all of the methods which are reachable by a series of calls from this method.
-    std::vector<Method> method_call_graph() const;
-
     ClassFile with_this_method_removed() const;
 
     // This compares based based on class file and index, not on actual value.

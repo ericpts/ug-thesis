@@ -85,13 +85,10 @@ struct CONSTANT_NameAndType_info {
 
 // Each value in the interfaces array must be a valid index into the
 // constant_pool table.
-// The constant_pool entry at each value of interfaces[i], where 0 ≤ i <
-// interfaces_count,
-// must be tagged with cp_info::Tag::cref representing an interface that is a
-// direct
-// superinterface of this class or interface type, in the left-to-right order
-// given
-// in the source for the type.
+// The constant_pool entry at each value of interfaces[i], where 0 ≤ i < interfaces_count,
+// must be tagged with cp_info::Tag::CONSTANT_Class representing an interface that is a
+// direct superinterface of this class or
+// interface type, in the left-to-right order given in the source for the type.
 struct interface_info {
     u2 idx;
     bool operator==(const interface_info &other) const;

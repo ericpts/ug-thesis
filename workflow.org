@@ -10,5 +10,8 @@
 
 * Saving in-place or into directory.
 
+* Cannot handle dynamic method invocation.
+
+* Implement handling of interface methods.
 
 * Testing infrastructure!

@@ -63,7 +63,7 @@ def init():
 def main():
     init()
     run_fixtures()
-    run_tap()
+    # run_tap()
 
 if __name__ == '__main__':
     main()

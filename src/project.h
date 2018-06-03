@@ -25,6 +25,13 @@ struct Project {
                                const std::string &method_name,
                                const std::string &method_type) const;
 
+    // Returns all of the methods which have the same name and type as `m`,
+    // and belong to related classes.
+    //
+    // For instance, a method of a descendant in the inheritance chart, because
+    // it might be that that method is called due to polymorphism.
+    std::vector<Method> sibling_methods(const Method& m) const;
+
     // Find the main entry point of the entire project.
     Method main_method() const;
 
@@ -49,6 +56,18 @@ struct Project {
 
     // Returns all of the class files.
     std::vector<ClassFile> classfiles() const;
+
+    // Returns all of the methods which are reachable by a series of calls from the given method.
+    std::vector<Method> method_call_graph(const Method& m) const;
+
+private:
+    // Private utilities.
+
+    // Returns whether the two classes are in some way related:
+    // there is a path in the undirected inheritance graph from one to the other.
+    bool classes_are_related(
+            const ClassFile& cf1, const ClassFile& cf2) const;
+
 };
 
 // For now, there is a single global project for the entire application.

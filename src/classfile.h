@@ -59,6 +59,19 @@ struct ClassFileImpl {
     // Returns the name of the class corresponding to this classfile.
     std::string class_name() const;
 
+    // Returns the name of the super class.
+    std::string super_class_name() const;
+
+    // Returns whether this is actually an interface, and not a class.
+    bool is_interface() const;
+
+    // Returns whether this .class file represents an actual class, as opposed to an interface.
+    bool is_class() const;
+
+    // Returns a vector containing the names of all the interfaces directly implemented by *this*.
+    // Note that this does not include transitive dependencies.
+    std::vector<std::string> interface_names() const;
+
   public:
     /// Deserialize the binary data into a class file.
     static ClassFileImpl deserialize(const std::vector<uint8_t> &data);

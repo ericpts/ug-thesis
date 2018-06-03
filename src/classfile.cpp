@@ -32,6 +32,39 @@ std::string ClassFileImpl::class_name() const
     return this->cp_index_as_string(cinfo.name_index);
 }
 
+std::string ClassFileImpl::super_class_name() const
+{
+    if (this->super_class == 0) {
+        return "Object";
+    }
+    assert(this->is_cp_index(this->super_class));
+
+    const CONSTANT_Class_info cinfo =
+        this->constant_pool[this->super_class].as<CONSTANT_Class_info>();
+    return this->cp_index_as_string(cinfo.name_index);
+}
+
+bool ClassFileImpl::is_interface() const
+{
+    return this->access_flags & 0x0200;
+}
+
+bool ClassFileImpl::is_class() const
+{
+    return !this->is_interface();
+}
+
+std::vector<std::string> ClassFileImpl::interface_names() const
+{
+    std::vector<std::string> ret;
+    for (const interface_info& info : this->interfaces) {
+        const CONSTANT_Class_info cinfo =
+            this->constant_pool[info.idx].as<CONSTANT_Class_info>();
+        ret.push_back(this->cp_index_as_string(cinfo.name_index));
+    }
+    return ret;
+}
+
 ClassFileImpl ClassFileImpl::deserialize(const std::vector<uint8_t> &data)
 {
     ClassReader reader(data);

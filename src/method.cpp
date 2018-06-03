@@ -118,10 +118,19 @@ std::vector<Method> Method::called_methods() const
     std::vector<Method> ret;
     Code_attribute attr = this->code_attribute();
 
-    auto add_optional = [&ret](std::optional<Method> m) -> void {
+    auto add_optional = [&ret](std::optional<Method> m) -> void
+    {
         if (m.has_value()) {
             ret.push_back(m.value());
         }
+    };
+
+    auto add_method_from_mref_index = [this, &add_optional] (u2 index) -> void
+    {
+        assert (this->class_file()->is_cp_index(index));
+        add_optional(Method::from_symbolic_reference(
+                    this->class_file(), index,
+                    this->class_file()->constant_pool[index]));
     };
 
     BytesParser bp{attr.code};
@@ -132,35 +141,39 @@ std::vector<Method> Method::called_methods() const
         // TODO(ericpts): also handle these method invocations.
         case Instr::invokedynamic: {
             std::cerr << "Found function call instruction invokedynamic.\n";
-            assert (false);
+
+            std::cerr << "\033[1;31m";
+            std::cerr << "The optimizer cannot handle dynamic method invocation.\n";
+            std::cerr << "The correctness of the program is no longer guaranteed.\n";
+            std::cerr << "\033[0m\n";
+
+            bp.next_u2();
+            assert (bp.next_u1() == 0);
+            assert (bp.next_u1() == 0);
             break;
         }
         case Instr::invokeinterface: {
             std::cerr << "Found function call instruction invokeinterface.\n";
+
+            const u2 index = bp.next_u2();
+            bp.next_u1();
+            assert (bp.next_u1() == 0);
             assert (false);
             break;
         }
         case Instr::invokespecial: {
             std::cerr << "Found function call instruction invokespecial.\n";
-            assert (false);
+            add_method_from_mref_index(bp.next_u2());
             break;
         }
         case Instr::invokestatic: {
             std::cerr << "Found function call instruction invokestatic.\n";
-            const u2 index = bp.next_u2();
-            assert (this->class_file()->is_cp_index(index));
-            add_optional(Method::from_symbolic_reference(
-                this->class_file(), index,
-                this->class_file()->constant_pool[index]));
+            add_method_from_mref_index(bp.next_u2());
             break;
         }
         case Instr::invokevirtual: {
             std::cerr << "Found function call instruction invokevirtual.\n";
-            const u2 index = bp.next_u2();
-            assert (this->class_file()->is_cp_index(index));
-            add_optional(Method::from_symbolic_reference(
-                this->class_file(), index,
-                this->class_file()->constant_pool[index]));
+            add_method_from_mref_index(bp.next_u2());
             break;
         }
         default: {
@@ -169,36 +182,6 @@ std::vector<Method> Method::called_methods() const
         }
         }
     }
-    return ret;
-}
-
-
-std::vector<Method> Method::method_call_graph() const
-{
-    std::vector<Method> ret = {*this};
-    size_t at = 0;
-
-    auto was_visited = [&ret] (const Method& m) -> bool
-    {
-        for (const Method &o : ret) {
-            if (o == m) {
-                return true;
-            }
-        }
-        return false;
-    };
-
-    while (at < ret.size()) {
-        const Method& m = ret[at];
-        at += 1;
-
-        for (const Method& o : m.called_methods()) {
-            if (!was_visited(o)) {
-                ret.push_back(o);
-            }
-        }
-    }
-
     return ret;
 }
 
@@ -226,3 +209,4 @@ Method Method::refresh(const ClassFile &new_file) const
     assert(false); // This method was probably deleted, and should not be
                    // refreshed.
 }
+
