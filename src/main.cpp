@@ -13,31 +13,38 @@ int main(int argc, char **argv)
 {
     CLI::App app{"JVM Optimizer"};
 
-    std::vector<std::string> filenames;
+    std::vector<std::experimental::filesystem::path> filenames;
     app.add_option("classfiles,--classfiles", filenames,
             "All of the class files from the project")
         ->required()
         ->check(CLI::ExistingFile)
         ->set_type_name("[File]");
 
-    std::string out;
+    std::optional<std::string> out;
     app.add_option("--out", out, "Where to save the modified class files")
-        ->required()
         ->check(CLI::ExistingDirectory)
         ->set_type_name("Dir");
 
+    int in_place;
+    app.add_flag("--in-place", in_place, "Whether to save the class files in-place")
+        ->excludes("--out");
+
     CLI11_PARSE(app, argc, argv);
 
-    std::vector<ClassFile> files;
-    for (const std::string &filename : filenames) {
-        files.push_back(std::make_shared<ClassFileImpl>(
-            ClassFileImpl::deserialize(read_entire_file(filename))));
+    if (not in_place and not out) {
+        std::cerr << "Must specify either --in-place or --out!\n";
+        return -1;
     }
 
-    set_project(std::make_unique<Project>(files));
+    set_project(std::make_unique<Project>(filenames));
     project().remove_unused_methods();
 
-    project().save(out);
+    if (out) {
+        project().save(out.value());
+    } else {
+        assert (in_place);
+        project().save_in_place(filenames);
+    }
 
     return 0;
 }

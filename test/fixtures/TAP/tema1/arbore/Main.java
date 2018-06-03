@@ -41,7 +41,7 @@ public class Main {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        String file = args[0];
+        String file = "in";
         IntArbore(file);
 
         LinkedList<Integer> list = new LinkedList<Integer>();

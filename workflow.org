@@ -7,3 +7,8 @@
 
 * Even though we do not care about all instructions, we have to treat each of them, in case they take up more than one byte:
     * Some instructions (`lookupswitch` or `tableswitch`) have a variable length!
+
+* Saving in-place or into directory.
+
+
+* Testing infrastructure!

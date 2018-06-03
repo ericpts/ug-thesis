@@ -1,6 +1,8 @@
 #!/bin/bash
 
-output=$(javap out.Main 2>/dev/null)
+set -e
+
+output=$(javap Main 2>/dev/null)
 
 for i in $(seq 1 104); do
     if ! echo "$output" | grep "f_$i(" &>/dev/null ; then
@@ -9,4 +11,4 @@ for i in $(seq 1 104); do
     fi
 done
 
-
+java Main

@@ -2,30 +2,68 @@
 import subprocess
 import os
 import colorama
+from colorama import Fore, Style
 
 from pathlib import Path
 
-def main():
+def print_color(color, msg: str, **kwargs):
+    print(color, end='')
+    print(msg, **kwargs)
+    print(Style.RESET_ALL, end='')
+
+def run(*args, **kwargs):
+    p = subprocess.run(args, **kwargs, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    if p.returncode == 0:
+        return
+
+    print_color(Fore.RED, 'Error running command {}'.format(args))
+
+    print('Captured stdout:\n')
+    print(p.stdout.decode('utf-8'))
+
+    p.check_returncode()
+
+def run_tap():
+    exe = Path(os.getcwd()) / 'build' / 'thesis'
+    tap = Path(os.getcwd()) / 'test'/ 'fixtures' / 'TAP'
+    test_dir = Path(os.getcwd()) / 'test' / '_current'
+
+    def run_homework(hw: Path):
+        print_color(Fore.BLUE, 'Testing on {}...'.format(hw))
+        run('rm', '-rf', test_dir)
+        run('cp', '-r', hw, test_dir)
+
+        run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
+        run('java', 'Main', cwd=hw)
+
+    for f in tap.glob('*'):
+        for g in f.glob('*'):
+            run_homework(g)
+
+def run_fixtures():
+    exe = Path(os.getcwd()) / 'build' / 'thesis'
+    test_dir = Path(os.getcwd()) / 'test' / '_current'
+    for f in Path('test/fixtures').glob('project*'):
+        print_color(Fore.BLUE, 'Running on {}'.format(f))
+
+        run('rm', '-rf', test_dir)
+        run('cp', '-r', f, test_dir)
+
+        run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
+        run(test_dir / 'test.sh', cwd=test_dir)
+
+def init():
     colorama.init()
 
+    print('Building...')
+    run('bash', 'build.sh')
+    run('make', cwd='build')
+    run('python3', 'make.py', cwd='test')
 
-    subprocess.run(['bash', 'build.sh'], check=True)
-    subprocess.run(['make'], check=True, cwd='build')
-    subprocess.run(['make'], check=True, cwd='test')
-
-    exe = Path(os.getcwd()) / 'build' / 'thesis'
-
-    for f in Path('test/fixtures').glob('*'):
-        print(colorama.Fore.GREEN + 'Running on {}'.format(f))
-        print(colorama.Style.RESET_ALL)
-
-        subprocess.run(['rm', '-rf', 'out'], check=True)
-        subprocess.run(['mkdir', 'out'], check=True)
-        subprocess.run([exe, *list(map(str, f.glob('*.class'))), '--out', 'out'], check=True)
-        subprocess.run([f / 'test.sh'], check=True)
-
-        subprocess.run(['java', 'Main'], check=True, cwd='out')
-
+def main():
+    init()
+    run_fixtures()
+    run_tap()
 
 if __name__ == '__main__':
     main()

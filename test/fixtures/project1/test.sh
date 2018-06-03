@@ -1,5 +1,9 @@
 #!/bin/bash
 
-if ! javap out.Main 2>/dev/null | grep "foo(" &>/dev/null ; then
+set -e
+
+if ! javap Main 2>/dev/null | grep "foo(" &>/dev/null ; then
     exit 1
 fi
+
+java Main

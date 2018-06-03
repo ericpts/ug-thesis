@@ -13,7 +13,8 @@ struct Project {
     std::vector<ClassFile> m_files;
 
   public:
-    Project(std::vector<ClassFile> files);
+
+    Project(std::vector<std::experimental::filesystem::path> class_files);
 
     // Find the appropiate class file given the name.
     std::optional<ClassFile>
@@ -42,6 +43,12 @@ struct Project {
 
     // Save all of the class files in the given location.
     void save(std::experimental::filesystem::path path) const;
+
+    // Save all of the files in-place.
+    void save_in_place(std::vector<std::experimental::filesystem::path> filenames) const;
+
+    // Returns all of the class files.
+    std::vector<ClassFile> classfiles() const;
 };
 
 // For now, there is a single global project for the entire application.

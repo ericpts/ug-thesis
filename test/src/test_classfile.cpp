@@ -4,22 +4,38 @@
 #include "util.h"
 #include "gtest/gtest.h"
 #include "classfile.h"
+#include "project.h"
 
 namespace fs = std::experimental::filesystem;
 
-std::vector<JavaProject> fixtures()
+std::vector<Project> fixtures()
 {
     fs::path fixtures = fs::path(__FILE__).parent_path().parent_path() / "fixtures";
-    fs::path p0 = fixtures / "project0";
 
-    JavaProject jp;
-    for (auto &p : fs::directory_iterator(p0)) {
-        if (p.path().extension() != ".class") {
-            continue;
+    auto next_project = [i = 0, &fixtures] () -> std::optional<fs::path>
+    {
+            fs::path p = (fixtures / ("project" + std::to_string(i)));
+            if (fs::exists(p)) {
+                return p;
+            }
+            return {};
+    };
+
+    std::vector<Project> ret;
+
+    while (std::optional<fs::path> maybe_path = next_project()) {
+        fs::path path = maybe_path.value();
+        std::vector<fs::path> classfiles;
+        for (auto &p : fs::directory_iterator(path)) {
+            if (p.path().extension() != ".class") {
+                continue;
+            }
+            classfiles.push_back(p.path());
         }
-        jp.class_files.push_back(p.path());
+        ret.push_back(Project{classfiles});
     }
-    return {jp};
+    return ret;
+
 }
 
 void expect_classfiles_equal(const ClassFileImpl& cf1, const ClassFileImpl& cf2)
@@ -49,15 +65,14 @@ void expect_classfiles_equal(const ClassFileImpl& cf1, const ClassFileImpl& cf2)
 
 TEST(ClassFileTest, deserialize_and_serialize_are_inverses)
 {
-    for (JavaProject& jp : fixtures()) {
-        for (std::string& file : jp.class_files) {
-            std::vector<u1> data = read_entire_file(file);
+    for (Project& p : fixtures()) {
+        for (const ClassFile& cf : p.classfiles()) {
+            std::vector<u1> data = cf->serialize();
             std::vector<u1> conv_data = ClassFileImpl::deserialize(data).serialize();
-
             expect_classfiles_equal(ClassFileImpl::deserialize(data),
                                     ClassFileImpl::deserialize(conv_data));
-
             EXPECT_EQ(data, conv_data);
         }
     }
 }
+

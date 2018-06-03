@@ -71,8 +71,8 @@ public class Main {
 
     public static void main(String[] args) throws java.io.IOException{
 
-        String F1 = args[0],
-                F2 = args[1];
+        String F1 = "in1",
+                F2 = "in2";
 
         System.out.println(dcos(F1, F2));
     }

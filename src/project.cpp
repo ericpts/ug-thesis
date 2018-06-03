@@ -4,6 +4,13 @@
 #include <iostream>
 #include <memory>
 
+#include "util.h"
+
+namespace fs = std::experimental::filesystem;
+
+// Writes the binary representation of classfile into the given destination path.
+void write_classfile_to_file(const ClassFile& cf, const fs::path& dest);
+
 std::unique_ptr<Project> _global_p;
 
 Project &project()
@@ -17,8 +24,13 @@ void set_project(std::unique_ptr<Project> p)
     _global_p.swap(p);
 }
 
-Project::Project(std::vector<ClassFile> files) : m_files(files)
+Project::Project(std::vector<fs::path> class_files)
 {
+    m_files.reserve(class_files.size());
+    for (fs::path p : class_files) {
+        this->m_files.push_back(std::make_shared<ClassFileImpl>(
+            ClassFileImpl::deserialize(read_entire_file(p))));
+    }
 }
 
 std::optional<ClassFile>
@@ -122,16 +134,38 @@ void Project::remove_unused_methods()
     }
 }
 
-namespace fs = std::experimental::filesystem;
+void write_classfile_to_file(const ClassFile& cf, const fs::path& dest)
+{
+    std::ofstream fout(dest, std::ios::binary);
+    const std::vector<u1> data = cf->serialize();
+    fout.write(reinterpret_cast<const char *>(data.data()), data.size());
+}
 
 void Project::save(std::experimental::filesystem::path path) const
 {
     for (ClassFile cf : this->m_files) {
-        const fs::path dest = path / (cf->class_name() + ".class");
-
-        std::ofstream fout(dest, std::ios::binary);
-
-        const std::vector<u1> data = cf->serialize();
-        fout.write(reinterpret_cast<const char *>(data.data()), data.size());
+        write_classfile_to_file(cf, path / (cf->class_name() + ".class"));
     }
+}
+
+void Project::save_in_place(std::vector<fs::path> filenames) const
+{
+    auto path_for_classfile = [&filenames] (const ClassFile& cf) -> fs::path
+    {
+        for (fs::path p : filenames) {
+            if (cf->class_name() == p.stem()) {
+                return p;
+            }
+        }
+        assert (false);
+    };
+
+    for (ClassFile cf : this->m_files) {
+        write_classfile_to_file(cf, path_for_classfile(cf));
+    }
+}
+
+std::vector<ClassFile> Project::classfiles() const
+{
+    return this->m_files;
 }
