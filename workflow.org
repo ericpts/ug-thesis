@@ -14,4 +14,6 @@
 
 * Implement handling of interface methods.
 
+* Implement sibling methods and transitive method invocations.
+
 * Testing infrastructure!
