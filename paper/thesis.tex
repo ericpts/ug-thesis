@@ -57,6 +57,9 @@
 %% file, and consult the package docs for each.
 \input{extrapackages}
 
+%% Some extra formatting, esp. for code.
+\input{extraformat}
+
 %% Our layout configuration.  DO NOT CHANGE.
 \input{layoutsetup}
 
@@ -106,19 +109,20 @@
 
 %% Your real content!
 \input{introduction}
-\input{rules}
-\input{typography}
-\input{sections}
+%% \input{rules}
+%% \input{typography}
+%% \input{sections}
+\input{chap1}
+\input{chap2}
 
 \appendix
 
-\input{appendix}
+\input{appendix_javap}
+%% \input{appendix}
 
 \backmatter
 
 \bibliographystyle{plain}
 \bibliography{refs}
-
-\includepdf[pages={-}]{declaration-originality.pdf}
 
 \end{document}

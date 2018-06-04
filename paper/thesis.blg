@@ -3,46 +3,49 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: plain.bst
 Database file #1: refs.bib
-Warning--I didn't find a database entry for "bringhurst1996ets"
-You've used 2 entries,
+Warning--to sort, need author or key in language_benchmarks
+Warning--to sort, need author or key in classfile_sections
+Warning--to sort, need author or key in instruction_format
+Warning--to sort, need author or key in javap
+You've used 6 entries,
             2118 wiz_defined-function locations,
-            509 strings with 4400 characters,
-and the built_in function-call counts, 454 in all, are:
-= -- 44
-> -- 14
+            516 strings with 4708 characters,
+and the built_in function-call counts, 1050 in all, are:
+= -- 96
+> -- 18
 < -- 0
-+ -- 6
++ -- 10
 - -- 4
-* -- 14
-:= -- 83
-add.period$ -- 8
-call.type$ -- 2
-change.case$ -- 8
+* -- 34
+:= -- 139
+add.period$ -- 12
+call.type$ -- 6
+change.case$ -- 16
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 14
-empty$ -- 45
+cite$ -- 10
+duplicate$ -- 42
+empty$ -- 137
 format.name$ -- 4
-if$ -- 97
+if$ -- 249
 int.to.chr$ -- 0
-int.to.str$ -- 2
+int.to.str$ -- 6
 missing$ -- 0
-newline$ -- 15
+newline$ -- 27
 num.names$ -- 4
-pop$ -- 16
+pop$ -- 52
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 14
 quote$ -- 0
-skip$ -- 12
+skip$ -- 48
 stack$ -- 0
-substring$ -- 10
-swap$ -- 2
+substring$ -- 30
+swap$ -- 6
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
-warning$ -- 0
+type$ -- 24
+warning$ -- 4
 while$ -- 4
-width$ -- 3
-write$ -- 26
-(There was 1 warning)
+width$ -- 7
+write$ -- 46
+(There were 4 warnings)

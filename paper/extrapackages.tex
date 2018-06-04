@@ -54,8 +54,31 @@
 \usepackage{listings}
 \lstset{language=TeX,basicstyle={\normalfont\ttfamily}}
 
+
+%% Nice Java formatting.
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java,
+    basicstyle={\normalfont\ttfamily},
+    keywordstyle=\color{javapurple}\bfseries,
+    stringstyle=\color{javared},
+    commentstyle=\color{javagreen},
+    morecomment=[s][\color{javadocblue}]{/**}{*/},
+    numberstyle=\tiny\color{black},
+    numbersep=10pt,
+    tabsize=4,
+    showspaces=false,
+    breaklines=true,
+    showstringspaces=false}
+
+
 %% [REC] Fancy character protrusion.  Must be loaded after all fonts.
 \usepackage[activate]{pdfcprot}
 
 %% [REC] Nicer tables.  Read the excellent documentation.
 \usepackage{booktabs}
+
+\usepackage{longtable,booktabs}

@@ -1,5 +1,17 @@
 \begin{thebibliography}{1}
 
+\bibitem{language_benchmarks}
+\url{https://github.com/trizen/language-benchmarks}.
+
+\bibitem{classfile_sections}
+\url{https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html}.
+
+\bibitem{instruction_format}
+\url{https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html}.
+
+\bibitem{javap}
+\url{https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javap.html}.
+
 \bibitem{deadcodeeliminationforbeginners}
 {Rob Sayre}.
 \newblock {Dead code elimination for beginners}.
