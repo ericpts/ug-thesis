@@ -1,1 +1,10 @@
-_out/
+build/
+thesis.aux
+thesis.dvi
+thesis.idx
+thesis.ilg
+thesis.ind
+thesis.log
+thesis.out
+thesis.pdf
+thesis.toc

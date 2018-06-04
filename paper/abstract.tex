@@ -1,12 +1,18 @@
 \begin{abstract}
-  In this thesis, I designed and implemented a compiler which performs
-optimizations that reduce the number of low-level floating point operations
-necessary for a specific task; this involves the optimization of chains of
-floating point operations as well as the implementation of a ``fixed'' point
-data type that allows some floating point operations to simulated with integer
-arithmetic.  The source language of the compiler is a subset of C, and the
-destination language is assembly language for a micro-floating point CPU.  An
-instruction-level simulator of the CPU was written to allow testing of the
-code.  A series of test pieces of codes was compiled, both with and without
-optimization, to determine how effective these optimizations were.
+Sistemul de operare Android este cea mai populara platforma pentru telefoanele
+mobile, iar limbajul utilizat pentru a dezvolta aplicatii este Java.
+O reducere de doar cativa octeti a dimensiunii pachetului unei aplicatii
+populare, precum Facebook, ar duce la economisirea de cativa giga-octeti de
+trafic de internet lunar.
+
+In aceasta teza am proiectat si implementat un compilator care efectueaza
+optimizari de dimensiune a codului asupra fisierelor compilate Java.
+
+Aceste optimizari elimina functiile si metodele neutilizate dintr-un proiect
+dezvoltat in limbajul Java si se bazeaza pe analiza statica a proiectului.
+O serie de teste au fost create pentru a testa corectitudinea, cat si eficienta
+optimizarilor aplicate.
+Compilatorul lucreaza direct cu fisiere compilate, in formatul utilizat si de
+catre Android.
+
 \end{abstract}
