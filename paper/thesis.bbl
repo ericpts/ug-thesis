@@ -1,3 +1,19 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{1}
+
+\bibitem{deadcodeeliminationforbeginners}
+{Rob Sayre}.
+\newblock {Dead code elimination for beginners}.
+\newblock
+  \url{http://chris.improbable.org/2010/11/17/dead-code-elimination-for-beginners/},
+  2010.
+\newblock [Online; accessed 4-June-2018].
+
+\bibitem{wiki:deadcodeelimination}
+{Wikipedia contributors}.
+\newblock Dead code elimination --- {Wikipedia}{,} the free encyclopedia.
+\newblock
+  \url{https://en.wikipedia.org/w/index.php?title=Dead_code_elimination&oldid=841070703},
+  2018.
+\newblock [Online; accessed 4-June-2018].
 
 \end{thebibliography}

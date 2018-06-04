@@ -1,14 +1,49 @@
 % Some commands used in this file
 \newcommand{\package}{\emph}
 
-\chapter{Introduction}
+\chapter{Introducere}
 
-This is version \verb-v1.4- of the template.
+Eliminarea codului nefolosit (eng. "Dead code elimination")
+\cite{wiki:deadcodeelimination} este o optimizare clasica.
+Ea presupune eliminarea dintr-un program a codului care nu afecteaza rezultatul.
+Acest lucru poate sa fie datorat faptului ca nu exista niciun fir de
+executie care sa ajunga la instructiunile respective, sau ca acele instructiuni
+nu au efecte laterale care sa efecteze restul programului.
 
-We assume that you found this template on our institute's website, so
-we do not repeat everything stated there.  Consult the website again
-for pointers to further reading about \LaTeX{}.  This chapter only
-gives a brief overview of the files you are looking at.
+Acest tip de optimizare este implementata traditional in limbajele compilate precum C, cat si
+in cele `compilate-la-timp' (eng. `just-in-time') precum Java sau JavaScript.
+Beneficiile principale aduse sunt:
+
+\begin{enumerate}
+    \item Reducerea dimensiunii programului
+    \item Cresterea vitezei executiei
+\end{enumerate}
+
+Cu cat un limbaj este mai dinamic, si permite mai multe schimbari ale
+comportamentului uzual, cu atat eliminarea de cod nefolosit devine mai grea.
+De exemplu, echipa care dezvolta Internet Explorer a avut probleme de
+corectitudine in optimizarile realizate, datorita naturii dinamice a limbajului
+JavaScript \cite{deadcodeeliminationforbeginners}.
+
+Desi pentru un programator nu este natural sa creeze cod nefolosit, acest lucru
+nu inseamna ca principiul eliminarii acestuia este ineficient; compilatoarele in
+sine, prin natura lor de a trece de mai multe ori prin codul sursa si de a avea
+mai multe reprezentari intermediare pot genera cod nefolosit.
+
+Limbajul C, prin natura sa de a include fisiere mot-a-mot, este o exemplificare
+foarte buna pentru acest lucru: un program de cateva linii, care afiseaza
+"Hello, world!" la ecran, ajunge sa aiba, inaintea eliminarea codului mort,
+cateva mii de linii si sute de functii nefolosite. Acest lucru se datoreaza
+nevoii includerii librariei standard.
+
+Eliminarea metodelor si functiilor este un una dintre multele
+posibilitati de a scapa de cod nefolosit.
+In limbajul Java, din cauza natura acestuia care permita incarcarea si
+executarea de cod arbitrar la rulare, eliminarea functiile intr-un mod general
+corect este un procedeu imposibil - daca o functie pusa la dispozitie de o librarie
+este eliminata, nu se poate garanta ca pe viitor clasa care contine functie nu
+va fi incarcata dinamic intr-un mod neprevazut.
+
 
 \section{Features}
 \label{sec:features}

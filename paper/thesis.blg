@@ -4,45 +4,45 @@ The top-level auxiliary file: thesis.aux
 The style file: plain.bst
 Database file #1: refs.bib
 Warning--I didn't find a database entry for "bringhurst1996ets"
-You've used 0 entries,
+You've used 2 entries,
             2118 wiz_defined-function locations,
-            498 strings with 4006 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
+            509 strings with 4400 characters,
+and the built_in function-call counts, 454 in all, are:
+= -- 44
+> -- 14
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 6
+- -- 4
+* -- 14
+:= -- 83
+add.period$ -- 8
+call.type$ -- 2
+change.case$ -- 8
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 2
+duplicate$ -- 14
+empty$ -- 45
+format.name$ -- 4
+if$ -- 97
 int.to.chr$ -- 0
-int.to.str$ -- 0
+int.to.str$ -- 2
 missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+newline$ -- 15
+num.names$ -- 4
+pop$ -- 16
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 6
 quote$ -- 0
-skip$ -- 1
+skip$ -- 12
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 10
+swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 8
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
+while$ -- 4
+width$ -- 3
+write$ -- 26
 (There was 1 warning)
