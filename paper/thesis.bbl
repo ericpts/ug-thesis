@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{language_benchmarks}
 \url{https://github.com/trizen/language-benchmarks}.
@@ -9,8 +9,16 @@
 \bibitem{instruction_format}
 \url{https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-6.html}.
 
+\bibitem{java_main}
+\url{https://docs.oracle.com/javase/tutorial/getStarted/application/index.html#MAIN}.
+
 \bibitem{javap}
 \url{https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javap.html}.
+
+\bibitem{the_halting_problem}
+L~Burkholder.
+\newblock The halting problem.
+\newblock {\em SIGACT News}, 18(3):48--60, April 1987.
 
 \bibitem{cpu_and_gpu_trends}
 {Colin Gillespie}.

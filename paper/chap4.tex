@@ -1,10 +1,163 @@
-\chapter{Implementare}
+\chapter{Optimizari de dimensiune}
 
-\section{Deserializare}\label{deserializare}
+\section{Eliminarea functiilor nefolosite}
 
-Prima problema intalnita in construirea optimizatorului este
-serializarea si deserializarea fisierelor clasa. Problema aceasta
-a fost rezolvata folosind clasa \texttt{ClassReader}:
+Aceasta lucrare contine o abordare de optimizare a dimensiunii
+programelor bazata pe eliminarea functiilor nefolosite.
 
-\lstinputlisting{code/classreader.h}
+Desi metrica principala este aceea de dimensiune, reducerea
+numarului de instructiuni ale programului poate avea si beneficii
+asupra vitezei de executie, din cauza interactiunilor cu cache-ul
+calculatoarelor. Pe de alta parte, acest beneficiu este destul de
+minor, si nu preprezinta principala motivatie.
 
+In continuare, voi descrie conceptele necesare pentru a intelege
+cum putem implementa acest fel de optimizare.
+
+\section{Functie/Metoda}
+
+In domeniul limbajelor de programare, o functie \s{F} este
+formata dintr-o colectie de instructiuni tratate ca un intreg,
+impreuna cu un protocol pentru executarea acelor instructiuni.
+
+O metoda \s{M} reprezinta o functie asociata unei clase.
+
+In limbajul Java este imposibil sa avem o functie care sa nu
+apartina unei metode.
+Desi definitiile nu sunt echivalente, deoarece in Java nu exista
+functii propriu-zise, ci doar metode, termenii de functie si de metoda
+sunt considerati interschimbabili.
+
+Protocolul de executare a functiilor variaza de la limbaj la
+limbaj si nu este important pentru scopurile noastre.
+
+De exemplu, functia f
+\begin{lstlisting}[language=Python, numbers=left, firstnumber=0]
+def f(a, b, c):
+    a = a + b
+    return c
+\end{lstlisting}
+contine 2 instructiuni, corespunzatoare liniilor 1-2:
+
+$(i_1)\ a = a + b$
+
+$(i_2)\ return\ c$
+
+Desi in acest exemplu functia \s{F} incepe de pe pozitia 0,
+intr-un program format din mai multe functii locul de inceput al
+functiei variaza (indicele primei instructiuni).
+
+Vom spune ca doua instructiuni sunt egale daca se afla pe aceeasi
+linie. i.e., reprezinta aceeasi pozitie in program.
+
+Pentru programul format din
+\begin{lstlisting}[language=Python, numbers=left, firstnumber=0]
+def g(a, b, c):
+    a = a + b
+    a = a * b
+    return a
+def f(a, b, c):
+    a = a + b
+    return c
+\end{lstlisting}
+instructiunile $i_1$ si $i_5$ \textbf{nu} sunt egale.
+
+Vom spune ca o instructiune $\mathbf{i}$ apartine functiei
+\s{F} ddaca exista o linie a lui \s{F} unde putem gasi
+instructiunea respectiva.
+
+\section{Punctul de intrare principal}
+
+Fie \s{P} un program, executat in ordine secventiala.
+Punctul principal de intarare al lui \s{P} reprezinta locul de
+unde incepe executia programului -- prima instructiune executata.
+
+Acest loc va fi notat cu \texttt{main}.
+
+\section{Sirul de executie al unui program}
+
+Un sir de executie \s{S} al programului \s{P} reprezinta o inaltuire
+finita de instructiuni executate secvential, incepand cu
+\texttt{main} si terminandu-se cu ultima instructiune executata de
+catre \s{P} inainte ca programul sa se termine.
+Pentru ca un sir de executie \s{S} sa fie valid, trebuie sa
+existe un input pe care, daca rulam programul, acesta sa
+execute fix instructiunile lui \s{S}.
+
+\section{Functii nefolosite}
+
+O functie a unei clase poate fi eliminata daca nu exista niciun
+sir de executie posibil al programului care sa treaca prin acea
+functie.
+
+Vom nota cu $elim(\mathcal{F}) = 1$ daca functia \s{F} poate fi
+eliminata deoarece este nefolosita.
+
+Cu alte cuvinte, $elim(\mathcal{F}) = 1$ ddaca
+
+\[
+\text{Pentru oricare } \mathcal{S} \text{ sir de executie, nu
+exista } \mathbf{i} \text{ din } \mathcal{S} \text { care sa faca
+parte din corpul functiei } \mathcal{F}.
+\]
+
+\section{Aplicarea optimizarii in limbajul Java}
+
+\subsection{Determinarea punctului de intrare}
+
+Un proiect Java este format dintr-o multime de clasa.
+Punctul \texttt{main} al proiectului este reprezentat de functia
+denumita \texttt{main} \cite{java_main}, cu antetul
+
+\begin{lstlisting}[language=Java]
+public static void main(String [] args)
+\end{lstlisting}
+
+Intr-un proiect trebuie sa exista o singura astfel de metoda.
+In implementarea lucrarii, aceasta operatie este realizata de
+catre clasa Project:
+\begin{lstlisting}[language=C++]
+Method Project::main_method() const;
+\end{lstlisting}
+
+Pentru a gasi metoda \texttt{main}, sunt scanate toate fiserele
+clasa care fac parte din proiect, si sunt analizatele listele cu
+metode ale acestora.
+
+Acesta este pseudocodul pentru aceasta operatie:
+\begin{lstlisting}[language=Python]
+def main_method(p: Proiect):
+    ret = None
+    for classfile in p.classfiles:
+        if "main" in p.methods():
+            if ret:
+                assert Fals, "Am gasit mai multe metode main!".
+            ret = p.method_of_name("main")
+    if not ret:
+        assert Fals, "Proiectul trebuie sa aiba o metoda main!".
+    return ret
+\end{lstlisting}
+
+\subsection{Determinarea sirurilor de executie}
+
+Problema determinarii tuturor sirurilor de executie este o
+problema grea, intrucat aceasta ar implica rularea unui program
+pe fiecare input posibil.
+
+Din cauza ca unele programe pot sa fie definite doar partial
+(comportamentul lor sa fie nedefinit pe anumite clase de input),
+aceasta problema poate fi echivalenta cu Problema Opririi (eng. "The
+Halting Problem") \cite{the_halting_problem}: nu avem cum sa stim
+daca un input al programului este bun sau nu fara sa rulam
+programul, insa nu putem determina daca un program se va termina
+vreodata.
+
+Deoarece problema opririi este intractabila, determinarea tuturor
+sirurilor de executie posibile ale lui program arbitrar este de
+asemenea o problema intractabila.
+
+In schimb, aceasta lucrare va construi o aproximare:
+
+un "supersir" S, format simultan dintr-o superpozitie a tuturor
+sirurilor de executie existente, incluzandu-le si pe cele
+invalide (pentru care nu exista un input care sa le genereze).
