@@ -61,10 +61,10 @@ constante ale clasei:
             \item Tipuri ale metodelor.
         \end{itemize}
     \item Informatii compuse din datele anterioare:
-        \begin{itemize]}
+        \begin{itemize}
             \item Referinta la o metoda a unei clase.
             \item Referinta la o constanta a unei clase.
-        \end{itemize]}
+        \end{itemize}
 \end{itemize}
 
 Toate celelalte tipuri de date compuse, cum ar fi metodele sau
@@ -611,7 +611,6 @@ enum class Instr {
 Folosind definitiile anterioare, putem descrie un fisier de clasa binar
 in C++:
 
-
 \begin{lstlisting}[language=C++]
 struct ClassFile {
     u4 magic; // Should be 0xCAFEBABE.
@@ -640,7 +639,5 @@ struct ClassFile {
     std::vector<attribute_info> attributes;
 };
 \end{lstlisting}
-
-\section{Studiu de caz}
 
 Pentru a vedea un fisier clasa analizat in detaliu, uitati-va la appendix-ul studiu de caz.

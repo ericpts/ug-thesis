@@ -12,6 +12,18 @@
 \bibitem{javap}
 \url{https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javap.html}.
 
+\bibitem{cpu_and_gpu_trends}
+{Colin Gillespie}.
+\newblock {CPU and GPU trends over time}.
+\newblock
+  \url{https://csgillespie.wordpress.com/2011/01/25/cpu-and-gpu-trends-over-time/}.
+
+\bibitem{memory_trends}
+K.~Goda and M.~Kitsuregawa.
+\newblock The history of storage systems.
+\newblock {\em Proceedings of the IEEE}, 100(Special Centennial
+  Issue):1433--1440, May 2012.
+
 \bibitem{deadcodeeliminationforbeginners}
 {Rob Sayre}.
 \newblock {Dead code elimination for beginners}.
@@ -19,6 +31,11 @@
   \url{http://chris.improbable.org/2010/11/17/dead-code-elimination-for-beginners/},
   2010.
 \newblock [Online; accessed 4-June-2018].
+
+\bibitem{moores_law}
+Robert~R. Schaller.
+\newblock Moore's law: Past, present, and future.
+\newblock {\em IEEE Spectr.}, 34(6):52--59, June 1997.
 
 \bibitem{wiki:deadcodeelimination}
 {Wikipedia contributors}.
