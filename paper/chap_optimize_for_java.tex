@@ -1,4 +1,105 @@
-\chapter{Fisierele clasa}
+\chapter{Optimizarea limbajului Java}
+
+In prima parte, vom detalia limbajul Java si modul de functionare
+a acestuia.
+In a doua parte, vom descrie cum putem implementa optimizarea
+eliminarii de metode nefolosite in limbajul Java.
+
+\section{Limbajul Java}
+
+Java este un limbaj de programare orientat pe obiecte. Acesta a fost
+dezvoltat de catre Sun Microsystems ( acum Oracle), iar prima versiune a
+aparut in anul 1995.
+
+Jaza s-a bazat pe sintaxa limbajului C, si a introdus notiunea de
+``scrie o data, ruleaza peste tot'' (eng. ``write once, run
+everywhere''). Spre deosebire de C si de C++, care trebuiesc compilate
+pentru fiecare platforma tinta, Java a avut avantajul ca trebuie
+compilat o singura data, si va merge garantat pe toate platformele
+suportate de limbaj.
+
+\section{Java Bytecode}
+
+Solutia limbajului Java pentru a fi independent de platforma este de
+transforma codul intr-o reprezentare intermediara, in loc de direct in
+cod binary pentru o anumita arhitectura .
+
+Compilatorul Java (\texttt{javac}), transforma codul Java intr-un limbaj
+intermediar, numit Java Bytecode.
+
+Acest limbaj este un limbaj low-level, destinat in mod exclusiv
+procesarii de catre masini, spre deosebire de codul Java, care este
+destinat oamenilor.
+
+Dupa ce compilatorul a procesat codul Java, provenit din fisere .java in
+format text, acesta salveaza rezultatul in fisiere de tip clasa (.class)
+in format binar.
+
+\section{JVM}
+
+Odata generate fisierele binare, acestea sunt executate pe o masina
+virtuala specifica limbajului Java - numita \texttt{JVM}
+(eng. Java Virtual Machine).
+
+Aceasta masina virtuala are rolul de a citi fisierele de clasa binare si
+de a le interpreta.
+
+Masina virtuala este implementata ca o ``masina cu stiva'' (eng. stack
+machine), unde toate instructiunile limbajului bytecode interactioneaza
+cu datele de pe o stiva controlata de aplicatie.
+
+Masina virtuala insusi este implementata in C/C++, si este compilata in
+cod binar direct, dependent de arhitectura. Dezvoltatorii limbajului
+Java sunt responsabili pentru corectitudinea si siguranta masinii
+virtuale, in timp ce dezvoltatorii de aplicatii Java au garantia ca daca
+codul lor Java este corect, atunci acesta va rula la fel, deterministic,
+pe orice platforma.
+
+In acest regard, limbajul Java poate fi vazut ca un limbaj interpretat.
+Comparand cu alte limbaje populare interpretate, ca de exemplu Python,
+Ruby, sau Perl, ne-am astepta ca si Java sa fie la fel de incet ca
+acestea \cite{language_benchmarks}. Totusi, Java obtine performante mult mai bune decat
+aceastea. Acest fapt se datoreaza compilarii tocmai-la-timp (eng.
+just-in-time), in care atunci cand interpretorul observa o secventa de
+cod care este interpretata repetitiv de foarte multe ori, va genera
+direct cod binary pentru aceasta.
+
+\subsection{Determinarea punctului de intrare}
+
+Un proiect Java este format dintr-o multime de clasa.
+Punctul \texttt{main} al proiectului este reprezentat de functia
+denumita \texttt{main} \cite{java_main}, cu antetul
+
+\begin{lstlisting}[language=Java]
+public static void main(String [] args)
+\end{lstlisting}
+
+Intr-un proiect trebuie sa exista o singura astfel de metoda.
+In implementarea lucrarii, aceasta operatie este realizata de
+catre clasa Project:
+\begin{lstlisting}[language=C++]
+Method Project::main_method() const;
+\end{lstlisting}
+
+Pentru a gasi metoda \texttt{main}, sunt scanate toate fiserele
+clasa care fac parte din proiect, si sunt analizatele listele cu
+metode ale acestora.
+
+Acesta este pseudocodul pentru aceasta operatie:
+\begin{lstlisting}[language=Python]
+def main_method(p: Proiect):
+    ret = None
+    for classfile in p.classfiles:
+        if "main" in p.methods():
+            if ret:
+                assert Fals, "Am gasit mai multe metode main!".
+            ret = p.method_of_name("main")
+    if not ret:
+        assert Fals, "Proiectul trebuie sa aiba o metoda main!".
+    return ret
+\end{lstlisting}
+
+\section{Fisierele clasa}
 
 Fisierele de clasa Java sunt formate din 10
 sectiuni\cite{classfile_sections}:
