@@ -136,6 +136,11 @@ constante ale clasei:
 Toate celelalte tipuri de date compuse, cum ar fi metodele sau
 campurile, vor contine indecsi in tabela de constante.
 
+Aproape toate tipurile de constante ocupa un singur slot in tabela, insa, din
+motive istorice, unele constante ocupa doua sloturi.
+Tot din motive istorice, tabela este indexata de la 1, si nu
+de la 0, cum sunt celelalte.
+
 \subsection{Permisiunile de acces}
 
 Aceste permisiuni constau intr-o masca de bitsi, care reprezeinta
@@ -224,10 +229,13 @@ Reprezinta alte informatii despre clasa, cum ar fi:
     \item Numele fisierul sursa din care a fost compilata clasa.
 \end{itemize}
 
-In continuare, voi descrie din punct de vedere tehnic tipurile de date
-intalnite in fisierele de clasa:
 
-\subsection{Tipurile de baza}
+\section{Tipuri de date}
+
+In continuare, voi descrie din punct de vedere tehnic tipurile de date
+intalnite in fisierele de clasa.
+
+\subsection{Tipuri de baza}
 
 In formatul fisierelor clasa exista trei tipuri de baza, toate bazate pe
 intregi. In caz ca un intreg are mai multi octeti, acestia au ordinea de
@@ -256,20 +264,14 @@ using u2 = uint16_t;
 using u4 = uint32_t;
 \end{lstlisting}
 
-\subsection{Tipuri de date compuse}
+\subsection{Tipuri compuse}
+
+\subsection{Tipurile de constante}
 
 Fiecare constanta din tabela de constante incepe cu o eticheta de 1
 octet, care reprezinta datele si tipul structurii. Continutul acesteia
 variaza in functie de eticheta, insa indiferent de eticheta, continutul
 trebuie sa aiba cel putin 2 octeti.
-
-Aproape toate tipurile de constante ocupa un singur slot in tabela.
-Din motive istorice, unele constante ocupa doua sloturi.
-
-Totodata, tot din motive istorice, tabela este indexata de la 1, si nu
-de la 0, cum sunt celelalte.
-
-\subsection{Tipurile de constante}
 
 \subsubsection{CONSTANT\_Class}
 
