@@ -1,5 +1,5 @@
 \newcommand{\s}[1]{
-    \(\mathcal{#1}\)}
+	\(\mathcal{#1}\)}
 
 \chapter{Problema de optimizare}
 
@@ -85,8 +85,8 @@ rulare daca timpul de rulare mediu al lui \s{P} este mai mic
 decat timpul de rulare mediu al lui \s{Q}:
 
 \[
-    \sum_{\mathcal{I} \ input} time(\mathcal{P}, \mathcal{I}) <
-    \sum_{\mathcal{I} \ input} time(\mathcal{Q}, \mathcal{I})
+	\sum_{\mathcal{I} \ input} time(\mathcal{P}, \mathcal{I}) <
+	\sum_{\mathcal{I} \ input} time(\mathcal{Q}, \mathcal{I})
 \]
 
 Pe baza acestei comparatii, putem defini o relatie de ordine
@@ -102,8 +102,8 @@ Dandu-se un program \s{P}, sa se gaseasca \s{Q} ca cel mai rapid
 program echivalent cu \s{P}:
 
 \[
-    \operatorname*{argmin}_\mathcal{Q} \mathcal{P}
-    \text{ echivalent cu  } \mathcal{Q}
+	\operatorname*{argmin}_\mathcal{Q} \mathcal{P}
+	\text{ echivalent cu  } \mathcal{Q}
 \]
 
 \subsection{Metrica de dimensiune}
@@ -114,7 +114,7 @@ Pentru un program \s{P}, vom defini dimensiunea acestuia ca fiind
 suma dimensiunilor tuturor instructiunilor acestui program:
 
 \[
-    size(\mathcal{P}) = \sum_{i\ \in\ \mathcal{P}} instruction\_size(i)
+	size(\mathcal{P}) = \sum_{i\ \in\ \mathcal{P}} instruction\_size(i)
 \]
 
 Unde prin \( instruction\_size(i) \) intelegem numarul de octeti
@@ -133,7 +133,7 @@ Similar ca la metrica de viteza, putem defini o relatie de ordine
 pe multimea programelor.
 
 \subsubsection{Problema optimizarii pe baza metricii de
-dimensiune}
+	dimensiune}
 
 Avand definita relatia de ordine, problema optimizarii pe
 baza metricii de dimensiune este aceeasi ca la viteza:
@@ -142,8 +142,8 @@ Dandu-se un program \s{P}, sa se gaseasca \s{Q} ca cel mai mic
 program echivalent cu \s{P}:
 
 \[
-    \operatorname*{argmin}_\mathcal{Q} \mathcal{P}
-    \text{ echivalent cu  } \mathcal{Q}
+	\operatorname*{argmin}_\mathcal{Q} \mathcal{P}
+	\text{ echivalent cu  } \mathcal{Q}
 \]
 
 \section{Discutie asupra metricilor}
@@ -195,16 +195,16 @@ continuat sa creasca, asa cum se poate observa in figura
 \ref{fig:memory_trends}.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{cpu_and_gpu_trends}
-  \caption{Evolutia puterii de procesare\cite{cpu_and_gpu_trends} }
-  \label{fig:cpu_and_gpu_trends}
+	\centering
+	\includegraphics[width=0.5\textwidth]{cpu_and_gpu_trends}
+	\caption{Evolutia puterii de procesare\cite{cpu_and_gpu_trends} }
+	\label{fig:cpu_and_gpu_trends}
 \end{figure}
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{memory_trends}
-  \caption{Evolutia puterii de procesare\cite{memory_trends} }
-  \label{fig:memory_trends}
+	\centering
+	\includegraphics[width=0.5\textwidth]{memory_trends}
+	\caption{Evolutia puterii de procesare\cite{memory_trends} }
+	\label{fig:memory_trends}
 \end{figure}
 

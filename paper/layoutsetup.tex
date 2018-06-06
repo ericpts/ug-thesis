@@ -18,11 +18,11 @@
 \makeatletter
 
 \if@twoside
-  \pagestyle{Ruled}
-  \copypagestyle{chapter}{Ruled}
+	\pagestyle{Ruled}
+	\copypagestyle{chapter}{Ruled}
 \else
-  \pagestyle{ruled}
-  \copypagestyle{chapter}{ruled}
+	\pagestyle{ruled}
+	\copypagestyle{chapter}{ruled}
 \fi
 \makeoddhead{chapter}{}{}{}
 \makeevenhead{chapter}{}{}{}
@@ -30,19 +30,19 @@
 \copypagestyle{abstract}{empty}
 
 \makechapterstyle{bianchimod}{%
-  \chapterstyle{default}
-  \renewcommand*{\chapnamefont}{\normalfont\Large\sffamily}
-  \renewcommand*{\chapnumfont}{\normalfont\Large\sffamily}
-  \renewcommand*{\printchaptername}{%
-    \chapnamefont\centering\@chapapp}
-  \renewcommand*{\printchapternum}{\chapnumfont {\thechapter}}
-  \renewcommand*{\chaptitlefont}{\normalfont\huge\sffamily}
-  \renewcommand*{\printchaptertitle}[1]{%
-    \hrule\vskip\onelineskip \centering \chaptitlefont\textbf{\vphantom{gyM}##1}\par}
-  \renewcommand*{\afterchaptertitle}{\vskip\onelineskip \hrule\vskip
-    \afterchapskip}
-  \renewcommand*{\printchapternonum}{%
-    \vphantom{\chapnumfont {9}}\afterchapternum}}
+	\chapterstyle{default}
+	\renewcommand*{\chapnamefont}{\normalfont\Large\sffamily}
+	\renewcommand*{\chapnumfont}{\normalfont\Large\sffamily}
+	\renewcommand*{\printchaptername}{%
+		\chapnamefont\centering\@chapapp}
+	\renewcommand*{\printchapternum}{\chapnumfont {\thechapter}}
+	\renewcommand*{\chaptitlefont}{\normalfont\huge\sffamily}
+	\renewcommand*{\printchaptertitle}[1]{%
+		\hrule\vskip\onelineskip \centering \chaptitlefont\textbf{\vphantom{gyM}##1}\par}
+	\renewcommand*{\afterchaptertitle}{\vskip\onelineskip \hrule\vskip
+		\afterchapskip}
+	\renewcommand*{\printchapternonum}{%
+		\vphantom{\chapnumfont {9}}\afterchapternum}}
 
 % Use the newly defined style
 \chapterstyle{bianchimod}
@@ -66,11 +66,11 @@
 
 %% Titlepage adjustments
 \pretitle{\vspace{0pt plus 0.7fill}\begin{center}\HUGE\sffamily\bfseries}
-\posttitle{\end{center}\par}
+		\posttitle{\end{center}\par}
 \preauthor{\par\begin{center}\let\and\\\Large\sffamily}
-\postauthor{\end{center}}
+		\postauthor{\end{center}}
 \predate{\par\begin{center}\Large\sffamily}
-\postdate{\end{center}}
+		\postdate{\end{center}}
 
 \def\@advisors{}
 \newcommand{\advisors}[1]{\def\@advisors{#1}}
@@ -82,15 +82,15 @@
 \renewcommand{\maketitlehooka}{\noindent\ETHlogo[2in]}
 
 \renewcommand{\maketitlehookb}{\vspace{1in}%
-  \par\begin{center}\Large\sffamily\@thesistype\end{center}}
+	\par\begin{center}\Large\sffamily\@thesistype\end{center}}
 
 \renewcommand{\maketitlehookd}{%
-  \vfill\par
-  \begin{flushright}
-    \sffamily
-    \@advisors\par
-    \@department, UNIBUC
-  \end{flushright}
+	\vfill\par
+	\begin{flushright}
+		\sffamily
+		\@advisors\par
+		\@department, UNIBUC
+	\end{flushright}
 }
 
 \checkandfixthelayout

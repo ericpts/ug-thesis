@@ -1,10 +1,9 @@
 \chapter{Typography}
 
-
 \section{Punctuation}
 
 \begin{Rule}
-  Use opening (`) and closing (') quotation marks correctly.
+	Use opening (`) and closing (') quotation marks correctly.
 \end{Rule}
 
 In \LaTeX, the closing quotation mark is typed like a normal
@@ -16,17 +15,17 @@ Note that any punctuation that \emph{semantically} follows quoted
 speech goes inside the quotes in American English, but outside in
 Britain.  Also, Americans use double quotes first.  Oppose
 \begin{quote}
-  ``Using `lasers,' we punch a hole in \ldots\ the Ozone Layer,''
-  Dr.\ Evil said.
+	``Using `lasers,' we punch a hole in \ldots\ the Ozone Layer,''
+	Dr.\ Evil said.
 \end{quote}
 to
 \begin{quote}
-  `Using ``lasers'', we punch a hole in \ldots\ the Ozone Layer',
-  Dr.\ Evil said.
+	`Using ``lasers'', we punch a hole in \ldots\ the Ozone Layer',
+	Dr.\ Evil said.
 \end{quote}
 
 \begin{Rule}
-  Use hyphens (-), en-dashes (--) and em-dashes (---) correctly.
+	Use hyphens (-), en-dashes (--) and em-dashes (---) correctly.
 \end{Rule}
 
 A hyphen is only used in words like `well-known', `$3$-colorable'
@@ -45,12 +44,11 @@ authors use the even longer emdash (---) instead, which is typed as
 three subsequent hyphens in \LaTeX. This emdash is used without spaces
 around it---like so.)
 
-
 \section{Spacing}
 
 \begin{Rule}
-  \label{rule:no-manual-spacing}
-  Do not add spacing manually.
+	\label{rule:no-manual-spacing}
+	Do not add spacing manually.
 \end{Rule}
 
 You should never use the commands \lstinline-\\- (except within
@@ -62,19 +60,19 @@ manually quickly leads to inconsistent spacing, which looks terrible.
 Note that this list of commands is by no means conclusive.
 
 \begin{Rule}
-  Judiciously insert spacing in maths where it helps.
+	Judiciously insert spacing in maths where it helps.
 \end{Rule}
 
 This directly contradicts Rule~\ref{rule:no-manual-spacing}, but in
 some cases \TeX{} fails to correctly decide how much spacing is
 required.  For example, consider
 \begin{displaymath}
-  f(a,b) = f(a+b, a-b).
+	f(a,b) = f(a+b, a-b).
 \end{displaymath}
 In such cases, inserting a thin math space \lstinline-\,- greatly
 increases readability:
 \begin{displaymath}
-  f(a,b) = f(a+b,\, a-b).
+	f(a,b) = f(a+b,\, a-b).
 \end{displaymath}
 
 Along similar lines, there are variations of some symbols with
@@ -84,8 +82,8 @@ aH\to bH\).  (Note how the first colon is symmetrically spaced, but
 the second is not.)
 
 \begin{Rule}
-  Learn when to use \lstinline[showspaces=true]-\ - and
-  \lstinline-\@-.
+	Learn when to use \lstinline[showspaces=true]-\ - and
+	\lstinline-\@-.
 \end{Rule}
 
 Unless you use `french spacing', the space at the end of a sentence is
@@ -104,18 +102,18 @@ should use this template.
 \end{lstlisting}
 which turns into
 \begin{quote}
-  Prof.\ Dr.\ A. Steger is a member of CADMO\@.  If you want to write
-  a thesis with her, you should use this template.
+	Prof.\ Dr.\ A. Steger is a member of CADMO\@.  If you want to write
+	a thesis with her, you should use this template.
 \end{quote}
 The effect becomes more dramatic in lines that are stretched slightly
 during justification:
 \begin{quote}
-  \parbox{\linewidth}{\hbox to \linewidth{%
-      Prof.\ Dr.\ A. Steger is a member of CADMO\@.  If you}}
+	\parbox{\linewidth}{\hbox to \linewidth{%
+			Prof.\ Dr.\ A. Steger is a member of CADMO\@.  If you}}
 \end{quote}
 
 \begin{Rule}
-  Place a non-breaking space (\lstinline-~-) right before references.
+	Place a non-breaking space (\lstinline-~-) right before references.
 \end{Rule}
 
 This is actually a slight simplification of the real rule, which
@@ -123,7 +121,6 @@ should invoke common sense.  Place non-breaking spaces where a line
 break would look `funny' because it occurs right in the middle of a
 construction, especially between a reference type (Chapter) and its
 number.
-
 
 \section{Choice of `fonts'}
 
@@ -134,7 +131,7 @@ want to switch to something else to get the reader's attention.  The
 most important rule is very simple.
 
 \begin{Rule}
-  When emphasising a short bit of text, use \lstinline-\emph-.
+	When emphasising a short bit of text, use \lstinline-\emph-.
 \end{Rule}
 
 In particular, \emph{never} use bold text (\lstinline-\textbf-).
@@ -146,7 +143,7 @@ Occasionally you will need more notation, for example, a consistent
 typeface used to identify algorithms.
 
 \begin{Rule}
-  Vary one attribute at a time.
+	Vary one attribute at a time.
 \end{Rule}
 
 For example, for \textsc{WeirdSort} we only changed the shape to small
@@ -156,18 +153,17 @@ The same holds for mathematical notation: the reader can easily
 distinguish \(g_n\), \(G(x)\), \(\mathcal{G}\) and \(\mathsf{G}\).
 
 \begin{Rule}
-  Never underline or uppercase.
+	Never underline or uppercase.
 \end{Rule}
 
 No exceptions to this one, unless you are writing your thesis on a
 typewriter.  Manually.  Uphill both ways.  In a blizzard.
 
-
 \section{Displayed equations}
 
 \begin{Rule}
-  Insert paragraph breaks \emph{after} displays only where they
-  belong.  Never insert paragraph breaks \emph{before} displays.
+	Insert paragraph breaks \emph{after} displays only where they
+	belong.  Never insert paragraph breaks \emph{before} displays.
 \end{Rule}
 
 \LaTeX{} translates sequences of more than one linebreak (i.e., what
@@ -178,36 +174,35 @@ structure.  Adding a blank line in these places may look nice in the
 sources, but compare the resulting display
 
 \begin{displaymath}
-  a = b
+	a = b
 \end{displaymath}
 
 to the following:
 \begin{displaymath}
-  a = b
+	a = b
 \end{displaymath}
 The first display is surrounded by blank lines, but the second is not.
 It is bad style to start a paragraph with a display (you should always
 tell the reader what the display means first), so the rule follows.
 
 \begin{Rule}
-  Never use \lstinline-eqnarray-.
+	Never use \lstinline-eqnarray-.
 \end{Rule}
 
 It is at the root of most ill-spaced multiline displays.  The
 \package{amsmath} package provides better alternatives, such as the
 \lstinline-align- family
 \begin{align*}
-  f(x) &= \sin x, \\
-  g(x) &= \cos x,
+	f(x) & = \sin x, \\
+	g(x) & = \cos x,
 \end{align*}
 and \lstinline-multline- which copes with excessively long equations:
 \begin{multline*}
-  \def\P{\mathrm P}
-  \P\bigl[X_{t_0} \in (z_0, z_0+dz_0],\ldots, X_{t_n}\in(z_n,z_n+dz_n]\bigr]
-  \\= \nu(dz_0) K_{t_1}(z_0,dz_1) K_{t_2-t_1}(z_1,dz_2)\cdots
-  K_{t_n-t_{n-1}}(z_{n-1},dz_n).
+	\def\P{\mathrm P}
+	\P\bigl[X_{t_0} \in (z_0, z_0+dz_0],\ldots, X_{t_n}\in(z_n,z_n+dz_n]\bigr]
+	\\= \nu(dz_0) K_{t_1}(z_0,dz_1) K_{t_2-t_1}(z_1,dz_2)\cdots
+	K_{t_n-t_{n-1}}(z_{n-1},dz_n).
 \end{multline*}
-
 
 \section{Floats}
 
@@ -230,8 +225,8 @@ where they fit without interrupting the text body.  This is a frequent
 source of confusion and changes; please leave it as is.
 
 \begin{Rule}
-  Do not restrict float movement to only `here'
-  \textnormal{(\lstinline-h-)}.
+	Do not restrict float movement to only `here'
+	\textnormal{(\lstinline-h-)}.
 \end{Rule}
 
 If you are still tempted, you should avoid the float altogether and

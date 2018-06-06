@@ -96,9 +96,9 @@ eliminata deoarece este nefolosita.
 Cu alte cuvinte, $elim(\mathcal{F}) = 1$ ddaca
 
 \[
-\text{Pentru oricare } \mathcal{S} \text{ sir de executie, nu
-exista } \mathbf{i} \text{ din } \mathcal{S} \text { care sa faca
-parte din corpul functiei } \mathcal{F}.
+	\text{Pentru oricare } \mathcal{S} \text{ sir de executie, nu
+		exista } \mathbf{i} \text{ din } \mathcal{S} \text { care sa faca
+		parte din corpul functiei } \mathcal{F}.
 \]
 
 \subsection{Sirurile de executie - in practica}
@@ -181,17 +181,17 @@ apartin acestei multimi.
 Demonstratie ca acest procedeu este corect:
 \begin{lemma}
 
-Fie m o metoda care nu apartine lui \s{M}.
+	Fie m o metoda care nu apartine lui \s{M}.
 
-Acest fapt inseamna ca in supersirul de executie nu exista nicio
-instructiune care sa apartina lui m.
+	Acest fapt inseamna ca in supersirul de executie nu exista nicio
+	instructiune care sa apartina lui m.
 
-Cum supersirul de executie include toate sirurile de executie
-valide, inseamna ca nu exista niciun sir de executie valid care,
-la un moment dat, sa apeleze functia m.
+	Cum supersirul de executie include toate sirurile de executie
+	valide, inseamna ca nu exista niciun sir de executie valid care,
+	la un moment dat, sa apeleze functia m.
 
-Prin urmare, programul obtinut prin eliminarea functiei m va fi
-echivalent cu programul initial.
+	Prin urmare, programul obtinut prin eliminarea functiei m va fi
+	echivalent cu programul initial.
 \end{lemma}
 
 \subsection{Algoritmul pentru eliminarea functiilor}
@@ -207,7 +207,6 @@ def direct_calees(m: Method) -> [Method]
     return all methods directly called by m.
 \end{lstlisting}
 ca fiind la dispozitia noastra.
-
 
 Pentru a forma multimea metodelor accesibile din \texttt{main},
 putem utiliza o parcugere in latime a grafului.

@@ -144,7 +144,7 @@ format text, acesta salveaza rezultatul in fisiere de tip clasa (.class)
 in format binar.
 
 \subsubsection{Masina Virtuala Java
-(JVM)}\label{masina-virtuala-java-jvm}
+	(JVM)}\label{masina-virtuala-java-jvm}
 
 Odata generate fisierele binare, acestea sunt executate pe o masina
 virtuala specifica limbajului Java - numita JVM sau \texttt{The\ JVM}
@@ -178,34 +178,34 @@ direct cod binary pentru aceasta.
 Fisierele de clasa Java sunt formate din 10 sectiuni{[}2{]}:
 
 \begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Constanta magica.
-\item
-  Versiunea fisierului.
-\item
-  Constantele clasei.
-\item
-  Permisiunile de acces.
-\item
-  Numele clasei din fisier.
-\item
-  Numele superclasei.
-\item
-  Interfetele pe care clasa le implementeaza.
-\item
-  Campurile clasei.
-\item
-  Metodele clasei.
-\item
-  Atribute ale clasei.
+	\def\labelenumi{\arabic{enumi}.}
+	\tightlist
+	\item
+	      Constanta magica.
+	\item
+	      Versiunea fisierului.
+	\item
+	      Constantele clasei.
+	\item
+	      Permisiunile de acces.
+	\item
+	      Numele clasei din fisier.
+	\item
+	      Numele superclasei.
+	\item
+	      Interfetele pe care clasa le implementeaza.
+	\item
+	      Campurile clasei.
+	\item
+	      Metodele clasei.
+	\item
+	      Atribute ale clasei.
 \end{enumerate}
 
 In continuare voi da o scurta descriere a formatului sectiunilor.
 
 \subsection{Sectiunile fiserelor
-clasa}\label{sectiunile-fiserelor-clasa}
+	clasa}\label{sectiunile-fiserelor-clasa}
 
 \subsubsection{Magic}\label{magic}
 
@@ -263,11 +263,11 @@ curenta nu mosteneste nimic: singura clasa fara o superclasa este clasa
 E.g. pentru
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ MyClass }\KeywordTok{extends}\NormalTok{ SuperClass }\KeywordTok{implements}\NormalTok{ Interface1, Interface \{}
-\NormalTok{    ....}
-\NormalTok{\}}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{class}\NormalTok{ MyClass }\KeywordTok{extends}\NormalTok{ SuperClass }\KeywordTok{implements}\NormalTok{ Interface1, Interface \{}
+		\NormalTok{    ....}
+		\NormalTok{\}}
+	\end{Highlighting}
 \end{Shaded}
 
 Indicele corespunde lui \texttt{SuperClass}.
@@ -282,11 +282,11 @@ java.
 E.g. pentru
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{class}\NormalTok{ MyClass }\KeywordTok{extends}\NormalTok{ SuperClass }\KeywordTok{implements}\NormalTok{ Interface1, Interface2 \{}
-\NormalTok{    ...}
-\NormalTok{\}}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{class}\NormalTok{ MyClass }\KeywordTok{extends}\NormalTok{ SuperClass }\KeywordTok{implements}\NormalTok{ Interface1, Interface2 \{}
+		\NormalTok{    ...}
+		\NormalTok{\}}
+	\end{Highlighting}
 \end{Shaded}
 
 Primul indice ar corespunde lui \texttt{Interface}, iar al doilea lui
@@ -335,27 +335,27 @@ intregi. In caz ca un intreg are mai multi octeti, acestia au ordinea de
 memorie.
 
 \begin{longtable}[]{@{}ccc@{}}
-\toprule
-Nume & Semantica & Echivalentul in C\tabularnewline
-\midrule
-\endhead
-\texttt{u1} & intreg pe un octet, fara semn & \texttt{unsigned\ char}
-sau \texttt{uint8\_t}\tabularnewline
-\texttt{u2} & intreg pe doi octeti, fara semn & \texttt{unsigned\ short}
-sau \texttt{uint16\_t}\tabularnewline
-\texttt{u4} & intreg pe un octet, fara semn & \texttt{unsigned\ int} sau
-\texttt{uint32\_t}\tabularnewline
-\bottomrule
+	\toprule
+	Nume        & Semantica                       & Echivalentul in C\tabularnewline
+	\midrule
+	\endhead
+	\texttt{u1} & intreg pe un octet, fara semn   & \texttt{unsigned\ char}
+	sau \texttt{uint8\_t}\tabularnewline
+	\texttt{u2} & intreg pe doi octeti, fara semn & \texttt{unsigned\ short}
+	sau \texttt{uint16\_t}\tabularnewline
+	\texttt{u4} & intreg pe un octet, fara semn   & \texttt{unsigned\ int} sau
+	\texttt{uint32\_t}\tabularnewline
+	\bottomrule
 \end{longtable}
 
 In codul sursa al proiectului, acestea sunt tratate astfel:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{using}\NormalTok{ u1 = }\DataTypeTok{uint8_t}\NormalTok{;}
-\KeywordTok{using}\NormalTok{ u2 = }\DataTypeTok{uint16_t}\NormalTok{;}
-\KeywordTok{using}\NormalTok{ u4 = }\DataTypeTok{uint32_t}\NormalTok{;}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{using}\NormalTok{ u1 = }\DataTypeTok{uint8_t}\NormalTok{;}
+		\KeywordTok{using}\NormalTok{ u2 = }\DataTypeTok{uint16_t}\NormalTok{;}
+		\KeywordTok{using}\NormalTok{ u4 = }\DataTypeTok{uint32_t}\NormalTok{;}
+	\end{Highlighting}
 \end{Shaded}
 
 \subsubsection{Tipuri de date compuse}\label{tipuri-de-date-compuse}
@@ -462,51 +462,51 @@ pentru a invoka o metoda polimorfica.
 In cod \texttt{C++}, am reprezentat \texttt{cp\_info} astfel:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ cp_info \{}
-    \KeywordTok{enum} \KeywordTok{class}\NormalTok{ Tag : u1 \{}
-\NormalTok{        CONSTANT_Class = }\DecValTok{7}\NormalTok{,}
-\NormalTok{        CONSTANT_Fieldref = }\DecValTok{9}\NormalTok{,}
-\NormalTok{        CONSTANT_Methodref = }\DecValTok{10}\NormalTok{,}
-\NormalTok{        CONSTANT_InterfaceMethodref = }\DecValTok{11}\NormalTok{,}
-\NormalTok{        CONSTANT_String = }\DecValTok{8}\NormalTok{,}
-\NormalTok{        CONSTANT_Integer = }\DecValTok{3}\NormalTok{,}
-\NormalTok{        CONSTANT_Float = }\DecValTok{4}\NormalTok{,}
-\NormalTok{        CONSTANT_Long = }\DecValTok{5}\NormalTok{,}
-\NormalTok{        CONSTANT_Double = }\DecValTok{6}\NormalTok{,}
-\NormalTok{        CONSTANT_NameAndType = }\DecValTok{12}\NormalTok{,}
-\NormalTok{        CONSTANT_Utf8_info = }\DecValTok{1}\NormalTok{,}
-\NormalTok{        CONSTANT_MethodHandle = }\DecValTok{15}\NormalTok{,}
-\NormalTok{        CONSTANT_MethodType = }\DecValTok{16}\NormalTok{,}
-\NormalTok{        CONSTANT_InvokeDynamic = }\DecValTok{18}\NormalTok{,}
-\NormalTok{    \};}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ cp_info \{}
+		\KeywordTok{enum} \KeywordTok{class}\NormalTok{ Tag : u1 \{}
+		\NormalTok{        CONSTANT_Class = }\DecValTok{7}\NormalTok{,}
+		\NormalTok{        CONSTANT_Fieldref = }\DecValTok{9}\NormalTok{,}
+		\NormalTok{        CONSTANT_Methodref = }\DecValTok{10}\NormalTok{,}
+		\NormalTok{        CONSTANT_InterfaceMethodref = }\DecValTok{11}\NormalTok{,}
+		\NormalTok{        CONSTANT_String = }\DecValTok{8}\NormalTok{,}
+		\NormalTok{        CONSTANT_Integer = }\DecValTok{3}\NormalTok{,}
+		\NormalTok{        CONSTANT_Float = }\DecValTok{4}\NormalTok{,}
+		\NormalTok{        CONSTANT_Long = }\DecValTok{5}\NormalTok{,}
+		\NormalTok{        CONSTANT_Double = }\DecValTok{6}\NormalTok{,}
+		\NormalTok{        CONSTANT_NameAndType = }\DecValTok{12}\NormalTok{,}
+		\NormalTok{        CONSTANT_Utf8_info = }\DecValTok{1}\NormalTok{,}
+		\NormalTok{        CONSTANT_MethodHandle = }\DecValTok{15}\NormalTok{,}
+		\NormalTok{        CONSTANT_MethodType = }\DecValTok{16}\NormalTok{,}
+		\NormalTok{        CONSTANT_InvokeDynamic = }\DecValTok{18}\NormalTok{,}
+		\NormalTok{    \};}
 
-\NormalTok{    Tag tag;}
-    \BuiltInTok{std::}\NormalTok{vector<u1> data;}
-\NormalTok{\};}
-\end{Highlighting}
+		\NormalTok{    Tag tag;}
+		\BuiltInTok{std::}\NormalTok{vector<u1> data;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 Iar structurile folosite pentru obiectivul propus au fost reprezentate
 astfel:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ CONSTANT_Methodref_info \{}
-\NormalTok{    cp_info::Tag tag;}
-\NormalTok{    u2 class_index;}
-\NormalTok{    u2 name_and_type_index;}
-\NormalTok{\};}
-\KeywordTok{struct}\NormalTok{ CONSTANT_Class_info \{}
-\NormalTok{    cp_info::Tag tag;}
-\NormalTok{    u2 name_index;}
-\NormalTok{\};}
-\KeywordTok{struct}\NormalTok{ CONSTANT_NameAndType_info \{}
-\NormalTok{    cp_info::Tag tag;}
-\NormalTok{    u2 name_index;}
-\NormalTok{    u2 descriptor_index;}
-\NormalTok{\};}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ CONSTANT_Methodref_info \{}
+		\NormalTok{    cp_info::Tag tag;}
+		\NormalTok{    u2 class_index;}
+		\NormalTok{    u2 name_and_type_index;}
+		\NormalTok{\};}
+		\KeywordTok{struct}\NormalTok{ CONSTANT_Class_info \{}
+		\NormalTok{    cp_info::Tag tag;}
+		\NormalTok{    u2 name_index;}
+		\NormalTok{\};}
+		\KeywordTok{struct}\NormalTok{ CONSTANT_NameAndType_info \{}
+		\NormalTok{    cp_info::Tag tag;}
+		\NormalTok{    u2 name_index;}
+		\NormalTok{    u2 descriptor_index;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 \paragraph{\texorpdfstring{\texttt{field\_info}}{field\_info}}\label{field_info}
@@ -517,15 +517,15 @@ de tipul \texttt{field\_info}.
 In cod \texttt{C++}, aceasta structura a fost reprezentata astfel:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ field_info \{}
-\NormalTok{    u2 access_flags;}
-\NormalTok{    u2 name_index;}
-\NormalTok{    u2 descriptor_index;}
-\NormalTok{    u2 attributes_count;}
-    \BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes;}
-\NormalTok{\};}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ field_info \{}
+		\NormalTok{    u2 access_flags;}
+		\NormalTok{    u2 name_index;}
+		\NormalTok{    u2 descriptor_index;}
+		\NormalTok{    u2 attributes_count;}
+		\BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 Unde: * \texttt{name\_index} este o intrare in tabela de constante unde
@@ -541,15 +541,15 @@ structura.
 In cod \texttt{C++}, am implementat-o asa:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ method_info \{}
-\NormalTok{    u2 access_flags;}
-\NormalTok{    u2 name_index;}
-\NormalTok{    u2 descriptor_index;}
-\NormalTok{    u2 attributes_count;}
-    \BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes;}
-\NormalTok{\};}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ method_info \{}
+		\NormalTok{    u2 access_flags;}
+		\NormalTok{    u2 name_index;}
+		\NormalTok{    u2 descriptor_index;}
+		\NormalTok{    u2 attributes_count;}
+		\BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 Unde \texttt{name\_index} si \texttt{descriptor\_index} au aceeasi
@@ -564,13 +564,13 @@ corespunzator acestei metode.
 In \texttt{C++}, a fost implementata astfel:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ attribute_info \{}
-\NormalTok{    u2 attribute_name_index;}
-\NormalTok{    u4 attribute_length;}
-    \BuiltInTok{std::}\NormalTok{vector<u1> info;}
-\NormalTok{\};}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ attribute_info \{}
+		\NormalTok{    u2 attribute_name_index;}
+		\NormalTok{    u4 attribute_length;}
+		\BuiltInTok{std::}\NormalTok{vector<u1> info;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 Numele atributului determina modul in care octetii din vectorul
@@ -580,46 +580,46 @@ interes este cel de cod:
 \subparagraph{\texorpdfstring{\texttt{Code\_attribute}}{Code\_attribute}}\label{code_attribute}
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ Code_attribute \{}
-\NormalTok{    u2 attribute_name_index;}
-\NormalTok{    u4 attribute_length;}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ Code_attribute \{}
+		\NormalTok{    u2 attribute_name_index;}
+		\NormalTok{    u4 attribute_length;}
 
-\NormalTok{    u2 max_stack;}
-\NormalTok{    u2 max_locals;}
+		\NormalTok{    u2 max_stack;}
+		\NormalTok{    u2 max_locals;}
 
-\NormalTok{    u4 code_length;}
-    \BuiltInTok{std::}\NormalTok{vector<u1> code;}
+		\NormalTok{    u4 code_length;}
+		\BuiltInTok{std::}\NormalTok{vector<u1> code;}
 
-\NormalTok{    u2 exception_table_length;}
-    \KeywordTok{struct}\NormalTok{ exception \{}
-\NormalTok{        u2 start_pc;}
-\NormalTok{        u2 end_pc;}
-\NormalTok{        u2 handler_pc;}
-\NormalTok{        u2 }\DataTypeTok{catch_type}\NormalTok{;}
-\NormalTok{    \};}
-    \BuiltInTok{std::}\NormalTok{vector<exception> exception_table; }\CommentTok{// of length exception_table_length.}
-\NormalTok{    u2 attributes_count;}
-    \BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes; }\CommentTok{// of length attributes_count.}
-\NormalTok{\};}
-\end{Highlighting}
+		\NormalTok{    u2 exception_table_length;}
+		\KeywordTok{struct}\NormalTok{ exception \{}
+		\NormalTok{        u2 start_pc;}
+		\NormalTok{        u2 end_pc;}
+		\NormalTok{        u2 handler_pc;}
+		\NormalTok{        u2 }\DataTypeTok{catch_type}\NormalTok{;}
+		\NormalTok{    \};}
+		\BuiltInTok{std::}\NormalTok{vector<exception> exception_table; }\CommentTok{// of length exception_table_length.}
+		\NormalTok{    u2 attributes_count;}
+		\BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes; }\CommentTok{// of length attributes_count.}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 Aceasta structura este piesa centrala a lucrarii. In continuare, o voi
 descrie detaliat:
 
 \begin{itemize}
-\tightlist
-\item
-  \texttt{max\_stack}: Reprezinta adancimea maxima a stivei masinii
-  virtuale cand aceasta bucata de cod este interpretata.
-\item
-  \texttt{max\_locals}: Reprezinta numarul maxim de variabile locale
-  alocate in acelasi timp cand aceasta bucata de cod este interpretata.
-\item
-  \texttt{code}: Codul metodei.
-\item
-  \texttt{exception\_table}: Exceptiile pe care le poate arunca metoda.
+	\tightlist
+	\item
+	      \texttt{max\_stack}: Reprezinta adancimea maxima a stivei masinii
+	      virtuale cand aceasta bucata de cod este interpretata.
+	\item
+	      \texttt{max\_locals}: Reprezinta numarul maxim de variabile locale
+	      alocate in acelasi timp cand aceasta bucata de cod este interpretata.
+	\item
+	      \texttt{code}: Codul metodei.
+	\item
+	      \texttt{exception\_table}: Exceptiile pe care le poate arunca metoda.
 \end{itemize}
 
 \texttt{Code}
@@ -683,9 +683,9 @@ Opcode-ul corespunzator acestei instructiuni este \texttt{186} sau
 Index1 si index2 sunt doi octeti sunt compusi in
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{index = (index1 << }\DecValTok{8}\NormalTok{) | index2}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\NormalTok{index = (index1 << }\DecValTok{8}\NormalTok{) | index2}
+	\end{Highlighting}
 \end{Shaded}
 
 Indicele compus reprezinta o intrare in tabela de constante. La locatia
@@ -776,15 +776,15 @@ negativ, JVM va continua cautarea recursiv din superclasa lui
 In \texttt{C++}, am reprezentat aceste instructiuni de interes astfel:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{enum} \KeywordTok{class}\NormalTok{ Instr \{}
-\NormalTok{    invokedynamic = }\BaseNTok{0xba}\NormalTok{,}
-\NormalTok{    invokeinterface = }\BaseNTok{0xb9}\NormalTok{,}
-\NormalTok{    invokespecial = }\BaseNTok{0xb7}\NormalTok{,}
-\NormalTok{    invokestatic = }\BaseNTok{0xb8}\NormalTok{,}
-\NormalTok{    invokevirtual = }\BaseNTok{0xb6}\NormalTok{,}
-\NormalTok{\};}
-\end{Highlighting}
+	\begin{Highlighting}[]
+		\KeywordTok{enum} \KeywordTok{class}\NormalTok{ Instr \{}
+		\NormalTok{    invokedynamic = }\BaseNTok{0xba}\NormalTok{,}
+		\NormalTok{    invokeinterface = }\BaseNTok{0xb9}\NormalTok{,}
+		\NormalTok{    invokespecial = }\BaseNTok{0xb7}\NormalTok{,}
+		\NormalTok{    invokestatic = }\BaseNTok{0xb8}\NormalTok{,}
+		\NormalTok{    invokevirtual = }\BaseNTok{0xb6}\NormalTok{,}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 \subsubsection{ClassFile}\label{classfile}
@@ -793,34 +793,34 @@ Folosind definitiile anterioare, putem descrie un fisier de clasa binar
 in C++:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{struct}\NormalTok{ ClassFile \{}
-\NormalTok{    u4 magic; }\CommentTok{// Should be 0xCAFEBABE.}
+	\begin{Highlighting}[]
+		\KeywordTok{struct}\NormalTok{ ClassFile \{}
+		\NormalTok{    u4 magic; }\CommentTok{// Should be 0xCAFEBABE.}
 
-\NormalTok{    u2 minor_version;}
-\NormalTok{    u2 major_version;}
+		\NormalTok{    u2 minor_version;}
+		\NormalTok{    u2 major_version;}
 
-\NormalTok{    u2 constant_pool_count;}
-    \BuiltInTok{std::}\NormalTok{vector<cp_info> constant_pool;}
+		\NormalTok{    u2 constant_pool_count;}
+		\BuiltInTok{std::}\NormalTok{vector<cp_info> constant_pool;}
 
-\NormalTok{    u2 access_flags;}
+		\NormalTok{    u2 access_flags;}
 
-\NormalTok{    u2 this_class;}
-\NormalTok{    u2 super_class;}
+		\NormalTok{    u2 this_class;}
+		\NormalTok{    u2 super_class;}
 
-\NormalTok{    u2 interface_count;}
-    \BuiltInTok{std::}\NormalTok{vector<interface_info> interfaces;}
+		\NormalTok{    u2 interface_count;}
+		\BuiltInTok{std::}\NormalTok{vector<interface_info> interfaces;}
 
-\NormalTok{    u2 field_count;}
-    \BuiltInTok{std::}\NormalTok{vector<field_info> fields;}
+		\NormalTok{    u2 field_count;}
+		\BuiltInTok{std::}\NormalTok{vector<field_info> fields;}
 
-\NormalTok{    u2 method_count;}
-    \BuiltInTok{std::}\NormalTok{vector<method_info> methods;}
+		\NormalTok{    u2 method_count;}
+		\BuiltInTok{std::}\NormalTok{vector<method_info> methods;}
 
-\NormalTok{    u2 attribute_count;}
-    \BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes;}
-\NormalTok{\};}
-\end{Highlighting}
+		\NormalTok{    u2 attribute_count;}
+		\BuiltInTok{std::}\NormalTok{vector<attribute_info> attributes;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 \section{Studiu de caz}\label{studiu-de-caz}
@@ -830,18 +830,18 @@ In continuare, voi exemplica structura unui fisier clasa cu un exemplu.
 Codul Java este urmatorul:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{public} \KeywordTok{class}\NormalTok{ Main \{}
-    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\NormalTok{(}\BuiltInTok{String}\NormalTok{[] args) \{}
-        \BuiltInTok{System}\NormalTok{.}\FunctionTok{out}\NormalTok{.}\FunctionTok{println}\NormalTok{(}\StringTok{"project1 - hello world"}\NormalTok{);}
-        \FunctionTok{foo}\NormalTok{();}
-\NormalTok{    \}}
+	\begin{Highlighting}[]
+		\KeywordTok{public} \KeywordTok{class}\NormalTok{ Main \{}
+		\KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{main}\NormalTok{(}\BuiltInTok{String}\NormalTok{[] args) \{}
+		\BuiltInTok{System}\NormalTok{.}\FunctionTok{out}\NormalTok{.}\FunctionTok{println}\NormalTok{(}\StringTok{"project1 - hello world"}\NormalTok{);}
+		\FunctionTok{foo}\NormalTok{();}
+		\NormalTok{    \}}
 
-    \KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{foo}\NormalTok{() \{}
-        \BuiltInTok{System}\NormalTok{.}\FunctionTok{out}\NormalTok{.}\FunctionTok{println}\NormalTok{(}\StringTok{"project1 - foo()"}\NormalTok{);}
-\NormalTok{    \}}
-\NormalTok{\}}
-\end{Highlighting}
+		\KeywordTok{public} \DataTypeTok{static} \DataTypeTok{void} \FunctionTok{foo}\NormalTok{() \{}
+		\BuiltInTok{System}\NormalTok{.}\FunctionTok{out}\NormalTok{.}\FunctionTok{println}\NormalTok{(}\StringTok{"project1 - foo()"}\NormalTok{);}
+		\NormalTok{    \}}
+		\NormalTok{\}}
+	\end{Highlighting}
 \end{Shaded}
 
 Compilatorul folosit este \texttt{openjdk-11}. Clasa a fost utilizata
@@ -967,45 +967,45 @@ serializarea si deserializarea fisierelor clasa. Problema aceasta a fost
 rezolvata folosind clasa \texttt{ClassReader}:
 
 \begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{/// This class handles the parsation (deserialization and serialization) of}
-\CommentTok{/// Java's .class files.}
-\CommentTok{/// Normal usage should be:}
-\CommentTok{/// 1. Reading the binary data (for example, from a file on disk)}
-\CommentTok{/// 2. Instantiating this ClassReader.}
-\CommentTok{/// 3. Parsing the actual file.}
-\KeywordTok{struct}\NormalTok{ ClassReader \{}
-  \KeywordTok{private}\NormalTok{:}
-    \CommentTok{/// The binary representation of the class being parser.}
-\NormalTok{    BytesParser }\VariableTok{m_bparser}\NormalTok{;}
+	\begin{Highlighting}[]
+		\CommentTok{/// This class handles the parsation (deserialization and serialization) of}
+		\CommentTok{/// Java's .class files.}
+		\CommentTok{/// Normal usage should be:}
+		\CommentTok{/// 1. Reading the binary data (for example, from a file on disk)}
+		\CommentTok{/// 2. Instantiating this ClassReader.}
+		\CommentTok{/// 3. Parsing the actual file.}
+		\KeywordTok{struct}\NormalTok{ ClassReader \{}
+		\KeywordTok{private}\NormalTok{:}
+		\CommentTok{/// The binary representation of the class being parser.}
+		\NormalTok{    BytesParser }\VariableTok{m_bparser}\NormalTok{;}
 
-    \CommentTok{/// The class file that is being populated as the parsing progresses.}
-\NormalTok{    ClassFile }\VariableTok{m_cf}\NormalTok{;}
+		\CommentTok{/// The class file that is being populated as the parsing progresses.}
+		\NormalTok{    ClassFile }\VariableTok{m_cf}\NormalTok{;}
 
-  \KeywordTok{public}\NormalTok{:}
-    \CommentTok{/// Initialize the reader, with the binary `data` of the class file.}
-\NormalTok{    ClassReader(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint8_t}\NormalTok{> data);}
+		\KeywordTok{public}\NormalTok{:}
+		\CommentTok{/// Initialize the reader, with the binary `data` of the class file.}
+		\NormalTok{    ClassReader(}\BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{uint8_t}\NormalTok{> data);}
 
-    \CommentTok{/// Parse an entire class file.}
-    \CommentTok{/// This is the method that you most likely want to use.}
-\NormalTok{    ClassFile deserialize();}
+		\CommentTok{/// Parse an entire class file.}
+		\CommentTok{/// This is the method that you most likely want to use.}
+		\NormalTok{    ClassFile deserialize();}
 
-  \KeywordTok{private}\NormalTok{:}
-    \CommentTok{/// Parses a constant from the data buffer, and returns the data}
-    \CommentTok{/// and how many slots it takes up in the constant table.}
-\NormalTok{    cp_info parse_cp_info();}
+		\KeywordTok{private}\NormalTok{:}
+		\CommentTok{/// Parses a constant from the data buffer, and returns the data}
+		\CommentTok{/// and how many slots it takes up in the constant table.}
+		\NormalTok{    cp_info parse_cp_info();}
 
-    \CommentTok{/// Parses a field_info struct from the data buffer.}
-\NormalTok{    field_info parse_field_info();}
+		\CommentTok{/// Parses a field_info struct from the data buffer.}
+		\NormalTok{    field_info parse_field_info();}
 
-    \CommentTok{/// Parses a method_info struct from the data buffer.}
-\NormalTok{    method_info parse_method_info();}
+		\CommentTok{/// Parses a method_info struct from the data buffer.}
+		\NormalTok{    method_info parse_method_info();}
 
-    \CommentTok{/// Asserts that `idx` is an index into the constant pool, tagged with}
-    \CommentTok{/// `tag`.}
-    \DataTypeTok{void}\NormalTok{ expect_cpool_entry(}\DataTypeTok{int}\NormalTok{ idx, cp_info::Tag tag) }\AttributeTok{const}\NormalTok{;}
-\NormalTok{\};}
-\end{Highlighting}
+		\CommentTok{/// Asserts that `idx` is an index into the constant pool, tagged with}
+		\CommentTok{/// `tag`.}
+		\DataTypeTok{void}\NormalTok{ expect_cpool_entry(}\DataTypeTok{int}\NormalTok{ idx, cp_info::Tag tag) }\AttributeTok{const}\NormalTok{;}
+		\NormalTok{\};}
+	\end{Highlighting}
 \end{Shaded}
 
 {[}1{]} https://github.com/trizen/language-benchmarks

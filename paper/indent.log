@@ -1,8 +1,10 @@
 INFO: latexindent version 3.4.2, 2018-04-27, a script to indent .tex files
       latexindent lives here: /usr/share/texlive/texmf-dist/scripts/latexindent/
-      Wed Jun  6 11:08:02 2018
-      Reading input from STDIN
+      Wed Jun  6 11:09:55 2018
+      Filename: typography.tex
 INFO: Processing switches:
+      -w|--overwrite: Overwrite mode active, will make a back up of typography.tex first
+      -m|--modifylinebreaks: modify line breaks
 INFO: Directory for backup files and indent.log: .
 INFO: YAML settings read: defaultSettings.yaml
       Reading defaultSettings.yaml from /usr/share/texlive/texmf-dist/scripts/latexindent/defaultSettings.yaml
@@ -10,3 +12,17 @@ INFO: YAML settings read: indentconfig.yaml or .indentconfig.yaml
       Home directory is /home/ericpts (didn't find either indentconfig.yaml or .indentconfig.yaml)
       To specify user settings you would put indentconfig.yaml here: /home/ericpts/indentconfig.yaml
       Alternatively, you can use the hidden file .indentconfig.yaml as: /home/ericpts/.indentconfig.yaml
+INFO: Backup procedure (-w flag active):
+      ./typography.bak0 already exists, incrementing by 1... (see maxNumberOfBackUps and onlyOneBackUp)
+      copying typography.tex to ./typography.bak1
+      Backup file: ./typography.bak1
+      typography.tex will be overwritten after indentation
+INFO: Phase 1: searching for objects
+INFO: Phase 2: finding surrounding indentation
+INFO: Phase 3: indenting objects
+INFO: Phase 4: final indentation check
+INFO: Output routine:
+      Overwriting file typography.tex
+      --------------
+INFO: Please direct all communication/issues to:
+      https://github.com/cmhughes/latexindent.pl

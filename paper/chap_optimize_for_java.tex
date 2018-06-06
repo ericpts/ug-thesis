@@ -70,26 +70,26 @@ Fisierele de clasa Java sunt formate din 10
 sectiuni\cite{classfile_sections}:
 
 \begin{enumerate}
-\item
-  Constanta magica.
-\item
-  Versiunea fisierului.
-\item
-  Constantele clasei.
-\item
-  Permisiunile de acces.
-\item
-  Numele clasei din fisier.
-\item
-  Numele superclasei.
-\item
-  Interfetele pe care clasa le implementeaza.
-\item
-  Campurile clasei.
-\item
-  Metodele clasei.
-\item
-  Atribute ale clasei.
+	\item
+	      Constanta magica.
+	\item
+	      Versiunea fisierului.
+	\item
+	      Constantele clasei.
+	\item
+	      Permisiunile de acces.
+	\item
+	      Numele clasei din fisier.
+	\item
+	      Numele superclasei.
+	\item
+	      Interfetele pe care clasa le implementeaza.
+	\item
+	      Campurile clasei.
+	\item
+	      Metodele clasei.
+	\item
+	      Atribute ale clasei.
 \end{enumerate}
 
 In continuare voi da o scurta descriere a formatului sectiunilor.
@@ -118,19 +118,19 @@ Tabela de constante este locul unde sunt stocate valorile literale
 constante ale clasei:
 
 \begin{itemize}
-    \item Numere intregi.
-    \item Numere cu virgula mobula.
-    \item Siruri de caractere, care pot reprezenta la randul lor:
-        \begin{itemize}
-            \item Nume de clase.
-            \item Nume de metode.
-            \item Tipuri ale metodelor.
-        \end{itemize}
-    \item Informatii compuse din datele anterioare:
-        \begin{itemize}
-            \item Referinta la o metoda a unei clase.
-            \item Referinta la o constanta a unei clase.
-        \end{itemize}
+	\item Numere intregi.
+	\item Numere cu virgula mobula.
+	\item Siruri de caractere, care pot reprezenta la randul lor:
+	      \begin{itemize}
+		      \item Nume de clase.
+		      \item Nume de metode.
+		      \item Tipuri ale metodelor.
+	      \end{itemize}
+	\item Informatii compuse din datele anterioare:
+	      \begin{itemize}
+		      \item Referinta la o metoda a unei clase.
+		      \item Referinta la o constanta a unei clase.
+	      \end{itemize}
 \end{itemize}
 
 Toate celelalte tipuri de date compuse, cum ar fi metodele sau
@@ -147,11 +147,11 @@ Aceste permisiuni constau intr-o masca de bitsi, care reprezeinta
 operatiile permise pe aceasta clasa:
 
 \begin{itemize}
-    \item daca clasa este publica, si poate fi accesta din afara pachetului acesteia.
-    \item daca clasa este finala, si daca poate fi extinsa.
-    \item daca invocarea metodelor din superclasa sa fie tratata special.
-    \item daca este de fapt o interfata, si nu o clasa.
-    \item daca este o clasa abstracta si nu poate fi instatiata.
+	\item daca clasa este publica, si poate fi accesta din afara pachetului acesteia.
+	\item daca clasa este finala, si daca poate fi extinsa.
+	\item daca invocarea metodelor din superclasa sa fie tratata special.
+	\item daca este de fapt o interfata, si nu o clasa.
+	\item daca este o clasa abstracta si nu poate fi instatiata.
 \end{itemize}
 
 \subsection{Clasa curenta}
@@ -194,10 +194,10 @@ Primul indice ar corespunde lui \texttt{I1}, iar al doilea lui
 
 Reprezinta informatii despre campurile (eng. fields) clasei:
 \begin{itemize}
-    \item Permisiunile de acces: daca este public sau privat, etc.
-    \item Numele campului.
-    \item Tipul campului.
-    \item Alte atribute: daca este deprecat, daca are o valoare constanta, etc.
+	\item Permisiunile de acces: daca este public sau privat, etc.
+	\item Numele campului.
+	\item Tipul campului.
+	\item Alte atribute: daca este deprecat, daca are o valoare constanta, etc.
 \end{itemize}
 
 \subsection{Metodele}\label{metodele}
@@ -206,15 +206,15 @@ Reprezinta informatii despre toate metodele clasei, inclusiv
 constructorii:
 
 \begin{itemize}
-    \item Permisiuni de acces: daca este public sau privat, daca este finala, daca este abstracta.
-    \item Numele metodei.
-    \item Tipul metodei.
-    \item In caz ca nu este abstracta, byte codul metodei.
-    \item Alte atribute:
-        \begin{itemize}
-            \item Ce exceptii poate arunca.
-            \item Daca este deprecata.
-        \end{itemize}
+	\item Permisiuni de acces: daca este public sau privat, daca este finala, daca este abstracta.
+	\item Numele metodei.
+	\item Tipul metodei.
+	\item In caz ca nu este abstracta, byte codul metodei.
+	\item Alte atribute:
+	      \begin{itemize}
+		      \item Ce exceptii poate arunca.
+		      \item Daca este deprecata.
+	      \end{itemize}
 \end{itemize}
 
 Codul metodei este partea cea mai importanta, iar formatul acestuia
@@ -224,11 +224,10 @@ urmeaza sa fie detaliat ulterior.
 
 Reprezinta alte informatii despre clasa, cum ar fi:
 \begin{itemize}
-    \item Clasele definite in interiorul acesteia.
-    \item In caz ca este o clasa anonima sau definita local, metoda in care este definita.
-    \item Numele fisierul sursa din care a fost compilata clasa.
+	\item Clasele definite in interiorul acesteia.
+	\item In caz ca este o clasa anonima sau definita local, metoda in care este definita.
+	\item Numele fisierul sursa din care a fost compilata clasa.
 \end{itemize}
-
 
 \section{Tipuri de date}
 
@@ -243,17 +242,17 @@ intregi. In caz ca un intreg are mai multi octeti, acestia au ordinea de
 memorie.
 
 \begin{longtable}[]{@{}ccc@{}}
-\toprule
-Nume & Semantica & Echivalentul in C\tabularnewline
-\midrule
-\endhead
-\texttt{u1} & intreg pe un octet, fara semn & \texttt{unsigned\ char}
-sau \texttt{uint8\_t}\tabularnewline
-\texttt{u2} & intreg pe doi octeti, fara semn & \texttt{unsigned\ short}
-sau \texttt{uint16\_t}\tabularnewline
-\texttt{u4} & intreg pe un octet, fara semn & \texttt{unsigned\ int} sau
-\texttt{uint32\_t}\tabularnewline
-\bottomrule
+	\toprule
+	Nume        & Semantica                       & Echivalentul in C\tabularnewline
+	\midrule
+	\endhead
+	\texttt{u1} & intreg pe un octet, fara semn   & \texttt{unsigned\ char}
+	sau \texttt{uint8\_t}\tabularnewline
+	\texttt{u2} & intreg pe doi octeti, fara semn & \texttt{unsigned\ short}
+	sau \texttt{uint16\_t}\tabularnewline
+	\texttt{u4} & intreg pe un octet, fara semn   & \texttt{unsigned\ int} sau
+	\texttt{uint32\_t}\tabularnewline
+	\bottomrule
 \end{longtable}
 
 In codul sursa al proiectului, acestea sunt tratate astfel:
@@ -422,8 +421,8 @@ struct field_info {
 
 Unde:
 \begin{itemize}
-    \item \texttt{name\_index} este o intrare in tabela de constante unde se afla o constanta de tipul \texttt{CONSTANT\_Utf8}.
-    \item \texttt{descriptor\_index} arata spre o constanta de tipul \texttt{CONSTANT\_Utf8} si reprezinta tipul campului.
+	\item \texttt{name\_index} este o intrare in tabela de constante unde se afla o constanta de tipul \texttt{CONSTANT\_Utf8}.
+	\item \texttt{descriptor\_index} arata spre o constanta de tipul \texttt{CONSTANT\_Utf8} si reprezinta tipul campului.
 \end{itemize}
 
 \paragraph{\texorpdfstring{\texttt{method\_info}}{method\_info}}\label{method_info}
@@ -498,17 +497,17 @@ apelate din cadrul unei secvente de cod.
 In continuare, o voi descrie detaliat:
 
 \begin{itemize}
-\tightlist
-\item
-  \texttt{max\_stack}: Reprezinta adancimea maxima a stivei masinii
-  virtuale cand aceasta bucata de cod este interpretata.
-\item
-  \texttt{max\_locals}: Reprezinta numarul maxim de variabile locale
-  alocate in acelasi timp cand aceasta bucata de cod este interpretata.
-\item
-  \texttt{code}: Codul metodei.
-\item
-  \texttt{exception\_table}: Exceptiile pe care le poate arunca metoda.
+	\tightlist
+	\item
+	      \texttt{max\_stack}: Reprezinta adancimea maxima a stivei masinii
+	      virtuale cand aceasta bucata de cod este interpretata.
+	\item
+	      \texttt{max\_locals}: Reprezinta numarul maxim de variabile locale
+	      alocate in acelasi timp cand aceasta bucata de cod este interpretata.
+	\item
+	      \texttt{code}: Codul metodei.
+	\item
+	      \texttt{exception\_table}: Exceptiile pe care le poate arunca metoda.
 \end{itemize}
 
 \texttt{Code}
@@ -708,8 +707,6 @@ struct ClassFile {
 
 Pentru a vedea un fisier clasa analizat in detaliu, va puteti
 uita la appendix-ul studiu de caz.
-
-
 
 \subsection{Determinarea punctului de intrare}
 
