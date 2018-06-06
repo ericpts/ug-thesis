@@ -147,7 +147,6 @@ std::vector<Method> Method::called_methods() const
         Instr i = static_cast<Instr>(bp.next_u1());
         switch (i) {
 
-        // TODO(ericpts): also handle these method invocations.
         case Instr::invokedynamic: {
             std::cerr << "Found function call instruction invokedynamic.\n";
 
