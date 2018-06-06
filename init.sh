@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 
-function install_requisites() {
+function install_latex_prerequisites() {
+    sudo apt install xzdec texlive
+    tlmgr init-usertree
+    tlmgr install esvect
+}
+
+function install_prerequisites() {
+    install_latex_prerequisites
+
     sudo apt install\
         openjdk-11-jdk
 
@@ -8,7 +16,7 @@ function install_requisites() {
 }
 
 function main() {
-    install_requisites
+    install_prerequisites
 }
 
 main
