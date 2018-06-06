@@ -13,7 +13,6 @@ using u4 = uint32_t;
 
 // Constant pool info and its subclasses.
 struct cp_info;
-struct CONSTANT_Methodref_info;
 
 struct method_info;
 struct field_info;
@@ -66,11 +65,18 @@ struct cp_info {
     template <typename T> T as() const;
 };
 
-struct CONSTANT_Methodref_info {
+// Although Methodref and InterfaceMethodref are semantically different, they
+// have the same layout and even the same field names.
+// For the scope of this project, we can treat them as pretty much the same
+// thing.
+struct CONSTANT_GenericMethodref_info {
     cp_info::Tag tag;
     u2 class_index;
     u2 name_and_type_index;
 };
+
+using CONSTANT_Methodref_info = CONSTANT_GenericMethodref_info;
+using CONSTANT_InterfaceMethodref_info = CONSTANT_GenericMethodref_info;
 
 struct CONSTANT_Class_info {
     cp_info::Tag tag;

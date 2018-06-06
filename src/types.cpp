@@ -85,12 +85,12 @@ template <> Code_attribute attribute_info::as() const
     return t;
 }
 
-template <> CONSTANT_Methodref_info cp_info::as() const
+template <> CONSTANT_GenericMethodref_info cp_info::as() const
 {
-    assert(this->tag == cp_info::Tag::CONSTANT_Methodref);
-
+    assert(this->tag == cp_info::Tag::CONSTANT_Methodref ||
+            this->tag == cp_info::Tag::CONSTANT_InterfaceMethodref);
     BytesParser bp{this->data};
-    CONSTANT_Methodref_info ret;
+    CONSTANT_GenericMethodref_info ret;
     ret.tag = this->tag;
     ret.class_index = bp.next_u2();
     ret.name_and_type_index = bp.next_u2();

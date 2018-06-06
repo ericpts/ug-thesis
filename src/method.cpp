@@ -26,8 +26,9 @@ std::optional<Method> Method::from_symbolic_reference(const ClassFile &file,
 {
     assert(file->constant_pool[cp_index] == info);
 
-    const CONSTANT_Methodref_info mref =
-        file->constant_pool[cp_index].as<CONSTANT_Methodref_info>();
+    const CONSTANT_GenericMethodref_info mref =
+        file->constant_pool[cp_index].as<CONSTANT_GenericMethodref_info>();
+
     const CONSTANT_Class_info cinfo =
         file->constant_pool[mref.class_index].as<CONSTANT_Class_info>();
     const std::string class_name =
@@ -81,7 +82,7 @@ const ClassFile &Method::class_file() const
     return (this->m_class_file);
 }
 
-Code_attribute Method::code_attribute() const
+std::optional<Code_attribute> Method::code_attribute() const
 {
     const method_info &m = this->class_file()->methods[this->m_method_index];
     for (const attribute_info &attr : m.attributes) {
@@ -92,7 +93,9 @@ Code_attribute Method::code_attribute() const
         Code_attribute code = attr.as<Code_attribute>();
         return code;
     }
-    assert(false); // We should find the code.
+
+    assert (this->is_abstract());
+    return {};
 }
 
 std::string Method::method_name() const
@@ -116,7 +119,13 @@ std::string Method::format() const
 std::vector<Method> Method::called_methods() const
 {
     std::vector<Method> ret;
-    Code_attribute attr = this->code_attribute();
+    std::optional<Code_attribute> maybe_attr = this->code_attribute();
+
+    if (!maybe_attr.has_value()) {
+        return ret;
+    }
+
+    Code_attribute attr = maybe_attr.value();
 
     auto add_optional = [&ret](std::optional<Method> m) -> void
     {
@@ -158,7 +167,8 @@ std::vector<Method> Method::called_methods() const
             const u2 index = bp.next_u2();
             bp.next_u1();
             assert (bp.next_u1() == 0);
-            assert (false);
+
+            add_method_from_mref_index(index);
             break;
         }
         case Instr::invokespecial: {
@@ -191,6 +201,14 @@ ClassFile Method::with_this_method_removed() const
     ret->methods.erase(ret->methods.begin() + this->m_method_index);
     ret->method_count--;
     return ret;
+}
+
+bool Method::is_abstract() const
+{
+    return (
+            this->class_file()->methods[this->m_method_index].access_flags
+            & static_cast<int>(FLAGS::ACC_ABSTRACT))
+        != 0;
 }
 
 bool Method::operator==(const Method &o) const

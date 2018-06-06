@@ -5,6 +5,12 @@
 
 // This represents a view into a method reference of a class file.
 struct Method {
+public:
+    // Enum of the access flags for a given method.
+    enum class FLAGS {
+        ACC_ABSTRACT = 0x0400,
+    };
+
   private:
     // The class file where this method belongs.
     ClassFile m_class_file;
@@ -61,7 +67,8 @@ struct Method {
     const ClassFile &class_file() const;
 
     // Returns the code attribute struct corresponding to this method.
-    Code_attribute code_attribute() const;
+    // If this method is abstract, then it does not contain any code.
+    std::optional<Code_attribute> code_attribute() const;
 
     // Returns the name of this method.
     std::string method_name() const;
@@ -79,7 +86,12 @@ struct Method {
     // Returns all the methods that *this* method calls directly.
     std::vector<Method> called_methods() const;
 
+    // Removes *this* method from the original class file, returning a new one
+    // with this method removed.
     ClassFile with_this_method_removed() const;
+
+    // Returns whether this method is abstract.
+    bool is_abstract() const;
 
     // This compares based based on class file and index, not on actual value.
     // In other words, updating the class file will cause methods to compre
