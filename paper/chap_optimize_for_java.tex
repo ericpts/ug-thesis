@@ -8,7 +8,7 @@ eliminarii de metode nefolosite in limbajul Java.
 \section{Limbajul Java}
 
 Java este un limbaj de programare orientat pe obiecte. Acesta a fost
-dezvoltat de catre Sun Microsystems ( acum Oracle), iar prima versiune a
+dezvoltat de catre Sun Microsystems (acum Oracle), iar prima versiune a
 aparut in anul 1995.
 
 Jaza s-a bazat pe sintaxa limbajului C, si a introdus notiunea de
@@ -38,7 +38,7 @@ in format binar.
 \section{JVM}
 
 Odata generate fisierele binare, acestea sunt executate pe o masina
-virtuala specifica limbajului Java - numita \texttt{JVM}
+virtuala specifica limbajului Java --- numita \texttt{JVM}
 (eng. Java Virtual Machine).
 
 Aceasta masina virtuala are rolul de a citi fisierele de clasa binare si
@@ -58,8 +58,9 @@ pe orice platforma.
 In acest regard, limbajul Java poate fi vazut ca un limbaj interpretat.
 Comparand cu alte limbaje populare interpretate, ca de exemplu Python,
 Ruby, sau Perl, ne-am astepta ca si Java sa fie la fel de incet ca
-acestea \cite{language_benchmarks}. Totusi, Java obtine performante mult mai bune decat
-aceastea. Acest fapt se datoreaza compilarii tocmai-la-timp (eng.
+acestea~\cite{language_benchmarks}.
+Totusi, Java obtine performante mult mai bune decat
+aceastea. Acest fapt se datoreaza compilarii tocmai-la-timp (eng.\
 just-in-time), in care atunci cand interpretorul observa o secventa de
 cod care este interpretata repetitiv de foarte multe ori, va genera
 direct cod binary pentru aceasta.
@@ -275,7 +276,7 @@ trebuie sa aiba cel putin 2 octeti.
 \subsubsection{CONSTANT\_Class}
 
 Corespunde valorii etichetei de 7 si contine un indice spre un alt camp
-in tabela de constante, de tipul \texttt{CONSTANT\_Utf8} - un sir de
+in tabela de constante, de tipul \texttt{CONSTANT\_Utf8} --- un sir de
 caractere. Acel sir de caractere va contine numele clasei.
 
 \subsubsection{CONSTANT\_Fieldref}
@@ -524,7 +525,7 @@ JVM-ul ruleaza ca o masina cu stiva, iar toate instructiunile opereaza
 pe aceasta stiva. Reultatul rularii unei instructiuni este modificarea
 stivei: scoaterea si adaugarea de elemente in varful acesteia.
 
-Instructiunile au in general formatul \cite{instruction_format}
+Instructiunile au in general formatul~\cite{instruction_format}
 
 \begin{verbatim}
 nume_instr
@@ -541,7 +542,7 @@ operand este fie cunoscut la compilare, fie calculat in mod dinamic la
 rulare.
 
 Cele mai multe operatii nu au niciun operand dat in mod explicit la
-nivelul instructiunii - ele lucreaza doar cu valorile din varful stivei
+nivelul instructiunii --- ele lucreaza doar cu valorile din varful stivei
 la momentul executarii codului.
 
 De exemplu:
@@ -700,13 +701,13 @@ uita la appendix-ul studiu de caz.
 \section{Optimizarea limbajului Java}
 
 In aceasta parte vom urmari implementarea algoritmului descris la sfarsitul
-capitolului "Optimizari de dimensiune" \ref{capitolul_optimizari_de_dimensiune}.
+capitolului `Optimizari de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
 
 \subsection{Preliminarii}
 
 Java este un limbaj dinamic. Acest lucru inseamna posibilitatea de a modifica
 codul in timpul rularii, sau de a apela cod in mod dinamic la rulare: aceasta
-este partea de "reflectie" a limbajului Java.
+este partea de `reflectie' a limbajului Java.
 
 Utilizarea acestor caracteristici face abordarea noastra de analiza
 statica imposibila, intrucat optimizatorul ar putea elimina metode care nu sunt
@@ -809,8 +810,8 @@ metoda este definita, insa \textbf{nu} si clasa de unde este invocata.
 Aceasta este cea mai comuna operatie, si corespunde instructiunii
 \textbf{invokevirtual}.
 
-De exemplu, pentru codul
-\begin{lstlisting}[language=Java, numbers=left]
+De exemplu, pentru programul
+\begin{lstlisting}[language=Java, numbers=left, label=program_metode_virtuale]
 public class Main {
     static private class One extends Other {
         public void foo() {
@@ -834,7 +835,7 @@ public class Other {
     }
 }
 \end{lstlisting}
-,format din concatenarea fisierelor din testul \texttt{fixtures/project4},
+format din concatenarea fisierelor din testul \texttt{fixtures/project4},
 apelul de pe linia 9 catre metoda foo este un apel polimorfic.
 
 In codul de JVM, instructiunea corespunzatoare este:
@@ -843,6 +844,8 @@ In codul de JVM, instructiunea corespunzatoare este:
 
 unde slotul 2 din tabela de constante este o referinta catre o metoda cu numele
 de \texttt{foo} cu tipul \texttt{void foo()}, definita in clasa \texttt{Other}.
+
+\texttt{\#2 = Methodref          \#22.\#23        // Other.foo:()V}
 
 Desi metoda \texttt{foo} este definita initial in clasa \texttt{Other}, la
 rulare va fi apelata versiunea definita in subclasa \texttt{One}.
@@ -864,7 +867,189 @@ eroare.
 \subsection{Rezolvarea metodelor de interfata}
 
 Ultimul tip de invocare a metodelor corespunde instructiunii
-\textbf{invokeinterface}, si corespunde apelarii unei functii definite in cadrul
+\textbf{invokeinterface}, si corespunde apelarii unei functii declarate in cadrul
 unei interfete.
 
-TODO(ericpts): add project5 after it runs successfully.
+De exemplu, pentru programul
+\begin{lstlisting}[language=Java, numbers=left]
+public interface I {
+    public void foo();
+}
+public class Main {
+    static private class C implements I{
+        public void foo() {
+            System.out.println("foo() of C");
+        }
+    }
+
+    public static void bar(I i) {
+        i.foo();
+    }
+
+    public static void main(String[] args) {
+        I i = new C();
+        bar(i);
+    }
+}
+\end{lstlisting}
+format din fisierele testului \texttt{fixtures/project5},
+apelul de pe linia 11 catre metoda foo este un apel polimorfic pe interfete.
+
+In codul de JVM, instructiunea corespunzatoare este:
+
+\texttt{invokeinterface \#2,  1            // InterfaceMethod I.foo:()V}
+
+unde slotul 2 din tabela de constante este o referinta catre o metoda de
+interfata cu numele de \texttt{foo} cu tipul \texttt{void foo()}, definita in
+interfata \texttt{I}.
+\texttt{\#2 = InterfaceMethodref \#22.\#23        // I.foo:()V}
+
+Desi metoda \texttt{foo} este declarata initial in interfata \texttt{I}, la
+rulare va fi apelata versiunea definita in subclasa \texttt{C}.
+
+Pentru rezolvarea referintelor catre metode de interfete, se va aplica un algoritm similar cu
+cel de la rezolvarea referintelor de metode virtuale: cautare recursiva in
+lantul de mosteniri al clasei asupra caruia se executa metoda.
+
+\subsection{Algoritmul de rezolvare al referintelor metodelor}
+
+Putem defini in pseudocod algoritmul de rezolvare al referintelor catre metode
+virtuale si catre metode de interfata astfel:
+
+\begin{lstlisting}[language=Python]
+def resolve_reference(
+    class, method_name, method_type):
+    if class is Object:
+        return None
+    for m in class.methods():
+        if m.name == method_name and m.type == method_type:
+            return m
+# Nu am putut sa rezolvam referinta in clasa curenta,
+# incercam in super.
+    return resolve_reference(
+        class.super_class, method_name, method_type)
+\end{lstlisting}
+
+Acest algoritm este declarat in implementarea in C++ sub forma de
+
+\begin{lstlisting}[language=C++]
+static std::optional<Method>
+from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
+\end{lstlisting}
+
+Motivul pentru care aceasta functie intoarce un \texttt{optional}, in loc de
+direct o metoda, este pentru ca pot exista referinte catre functii terte, de
+obicei definite in librarii.
+De exemplu, functia \texttt{println(String s)}, definita in libraria standard
+\texttt{java.io}.
+
+Metoda exacta care este executata de o astfel de instructiune nu poate fi stiuta
+decat abia la runtime (e.g., pentru programul~\ref{program_metode_virtuale}
+nu putem stii in timpul analizei statice daca va fi apelata metoda
+\texttt{Other::foo()} sau metoda \texttt{One::foo()}).
+
+\subsection{Supersirul de executie si polimorfismul de executie}
+
+Vom reconsidera supersirul de executie definit la \ref{supersirul_de_executie}
+si graful apelurilor, definit la \ref{graful_apelurilor}.
+
+La momentul analizei statice nu stim tipul exact al unei referinte.
+O referinta catre o interfata poate sa contina orice obiect care implementeaza
+acea interfata, sau o referinta catre o clasa \s{C} poate contine fix clasa
+\s{C}, sau orice clasa care o are pe \s{C} ca stramos.
+
+Prin urmare, vom extinde supersirul de executie ca sa reflecte aceste
+posibilitati.
+Mai precis, pentru fiecare apel de functii polimorfice (virtuale prin
+\textbf{invokevirtual} sau de interfata prin \textbf{invokeinterface}), vom
+considera toate metodele posibile care pot referentiate.
+
+De exemplu, pentru programul~\ref{program_metode_virtuale}, vom considera toate
+posibilitatile de rezolare ale apelului catre foo(), atat \texttt{Other::foo()},
+cat si \texttt{One::foo()}.
+
+\subsection{Graful de apeluri si polimorfismul de executie}
+
+Acum ca am adaptat supersirul de executie pentru polimorfismul de executie, este
+nevoie sa extindem si graful de apeluri.
+
+Pentru acest lucru, in cadrul unei rezolutii vom considera nu numai metoda
+direct referentiata, ci toate metodele pe care supersirul de executie le-ar
+putea rezolva ca posibili candidati.
+
+Vom spune ca metoda m este un candidat pentru rezolutia metodei q daca in
+rezolvarea unei referinte catre q, supersirul de executie va considera si metoda
+m.
+
+Proprietatea de a fi candidat este o relatie reflexiva si tranzitiva, insa nu si
+simetrica.
+
+Aceasta relatie este echivalenta cu: metoda m este un candidat pentru rezolutia
+metodei q daca:
+\begin{enumerate}
+    \item q este o metoda a unei interfete, iar m implementeaza direct sau
+        tranzitiv interfata respectiva.
+    \item q este o metoda a unei clase, iar m mosteneste direct sau tranzitiv
+        clasa respectiva.
+\end{enumerate}
+
+In continuare, vom nota cu $cand(m)$ toti candidatii lui m. Din faptul ca este o
+relatie reflexiva, m apartine mutlimii $cand(m)$.
+
+Graful de apeluri trebuie schimbat astfel incat sa includa si candidatii unei
+metode: in loc sa tragem o singura muchie de la metoda p care face invocarea, la
+metoda m care este invocata, vom trage mai multe muchii: de la p la toate
+metodele candidate pentru m --- $cand(m)$.
+
+\subsection{Noul algoritm pentru eliminarea functiilor}
+
+In aceasta parte, vom adapta algoritmul de eliminare a functiilor, definit
+anterior la \ref{algoritm_naiv_pentru_eliminare}.
+In particular, vom actualiza modul de calculare al functiilor accesibile:
+
+\begin{lstlisting}[language=Python]
+def reachable_methods_in_java(main: Method) -> [Method]:
+    coada = [main]
+    at = 0
+    while at < size(coada):
+        m = coada[at]
+        at = at + 1
+        for next in direct_calees(m):
+            for c in cand(next):
+                if c not in coada:
+                    coada.push(c)
+    return coada
+\end{lstlisting}
+
+
+Iar procedura de optimizare va ramane identica:
+
+\begin{lstlisting}[language=Python]
+def optimize_for_size_in_java(p: Program) -> Program:
+    main = p.main_method()
+    used_methods = reachable_methods(main)
+    for m in p.all_methods():
+        if m not in used_methods:
+            p.remove_method(m)
+    return p
+\end{lstlisting}
+
+
+In implementarea in \texttt{C++}, aceste au urmatorii corespondenti:
+
+functia $cand(m)$ este reprezentata de
+\begin{lstlisting}[language=C++]
+std::vector<Method> Project::sibling_methods(const Method& m) const;
+\end{lstlisting}
+
+procedura $reachable\_methods\_in\_java$ pentru determinarea functiilor
+accesibile este reprezentata de:
+
+\begin{lstlisting}[language=C++]
+std::vector<Method> Project::method_call_graph(const Method& m) const;
+\end{lstlisting}
+
+iar procedura de optimizare $optimize\_for\_size\_in\_java$ este reprezentata de:
+\begin{lstlisting}[language=C++]
+void Project::remove_unused_methods();
+\end{lstlisting}

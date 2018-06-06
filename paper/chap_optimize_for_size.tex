@@ -119,9 +119,10 @@ Deoarece problema opririi este intractabila, determinarea tuturor
 sirurilor de executie posibile ale lui program arbitrar este de
 asemenea o problema intractabila.
 
-In schimb, aceasta lucrare va construi o aproximare -- un "supersir"
-de executie format dintr-o superpozitie a tuturor
-sirurilor de executie existente, inclusiv pe cele
+\subsection{Supersirul de executie}\label{supersirul_de_executie}
+
+Aceasta lucrare va construi o aproximare -- un "supersir" de executie format
+dintr-o superpozitie a tuturor sirurilor de executie existente, inclusiv pe cele
 invalide (pentru care nu exista un input care sa le genereze).
 
 De exemplu, pentru programul
@@ -154,7 +155,7 @@ pe h, din cauza ca aceste secvente nu sunt siruri de executie
 care sa porneasca din functia \texttt{main} si sa ajunga in
 functia h).
 
-\subsection{Graful apelurilor de functii}
+\subsection{Graful apelurilor de functii}\label{graful_apelurilor}
 
 Vom construi un graf \s{G} al metodelor: fiecarui nod ii va
 corespunde o metoda prezenta in program, iar fiecare metoda va
@@ -194,7 +195,8 @@ Demonstratie ca acest procedeu este corect:
 	echivalent cu programul initial.
 \end{lemma}
 
-\subsection{Algoritmul pentru eliminarea functiilor}
+\subsection{Algoritmul pentru eliminarea
+functiilor}\label{algoritm_naiv_pentru_eliminare}
 
 Pentru a construi graful, trebuie sa putem deduce pentru fiecare
 metoda care sunt metodele pe care aceasta le apeleaza.
