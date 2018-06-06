@@ -194,3 +194,46 @@ Prin urmare, programul obtinut prin eliminarea functiei m va fi
 echivalent cu programul initial.
 \end{lemma}
 
+\subsection{Algoritmul pentru eliminarea functiilor}
+
+Pentru a construi graful, trebuie sa putem deduce pentru fiecare
+metoda care sunt metodele pe care aceasta le apeleaza.
+Acest lucru este dependent de limbajul asupra caruia se aplica
+optimizarea, asadar il vom considera deja implementat.
+
+Putem considera astfel functia
+\begin{lstlisting}[language=Python]
+def direct_calees(m: Method) -> [Method]
+    return all methods directly called by m.
+\end{lstlisting}
+ca fiind la dispozitia noastra.
+
+
+Pentru a forma multimea metodelor accesibile din \texttt{main},
+putem utiliza o parcugere in latime a grafului.
+
+\begin{lstlisting}[language=Python]
+def reachable_methods(main: Method) -> [Method]:
+    coada = [main]
+    at = 0
+    while at < size(coada):
+        m = coada[at]
+        at = at + 1
+        for next in direct_calees(m):
+            if next not in coada:
+                coada.push(next)
+    return coada
+\end{lstlisting}
+
+Avand multimea generata, ramane doar sa eliminam functiile
+care nu fac partea din ea:
+
+\begin{lstlisting}[language=Python]
+def optimize_for_size(p: Program) -> Program:
+    main = p.main_method()
+    used_methods = reachable_methods(main)
+    for m in p.all_methods():
+        if m not in used_methods:
+            p.remove_method(m)
+    return p
+\end{lstlisting}

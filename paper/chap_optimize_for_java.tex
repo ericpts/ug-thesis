@@ -64,41 +64,6 @@ just-in-time), in care atunci cand interpretorul observa o secventa de
 cod care este interpretata repetitiv de foarte multe ori, va genera
 direct cod binary pentru aceasta.
 
-\subsection{Determinarea punctului de intrare}
-
-Un proiect Java este format dintr-o multime de clasa.
-Punctul \texttt{main} al proiectului este reprezentat de functia
-denumita \texttt{main} \cite{java_main}, cu antetul
-
-\begin{lstlisting}[language=Java]
-public static void main(String [] args)
-\end{lstlisting}
-
-Intr-un proiect trebuie sa exista o singura astfel de metoda.
-In implementarea lucrarii, aceasta operatie este realizata de
-catre clasa Project:
-\begin{lstlisting}[language=C++]
-Method Project::main_method() const;
-\end{lstlisting}
-
-Pentru a gasi metoda \texttt{main}, sunt scanate toate fiserele
-clasa care fac parte din proiect, si sunt analizatele listele cu
-metode ale acestora.
-
-Acesta este pseudocodul pentru aceasta operatie:
-\begin{lstlisting}[language=Python]
-def main_method(p: Proiect):
-    ret = None
-    for classfile in p.classfiles:
-        if "main" in p.methods():
-            if ret:
-                assert Fals, "Am gasit mai multe metode main!".
-            ret = p.method_of_name("main")
-    if not ret:
-        assert Fals, "Proiectul trebuie sa aiba o metoda main!".
-    return ret
-\end{lstlisting}
-
 \section{Fisierele clasa}
 
 Fisierele de clasa Java sunt formate din 10
@@ -232,7 +197,7 @@ Reprezinta informatii despre campurile (eng. fields) clasei:
 
 \subsection{Metodele}\label{metodele}
 
-Reprezinta informtii despre toate metodele clasei, si include si
+Reprezinta informatii despre toate metodele clasei, inclusiv
 constructorii:
 
 \begin{itemize}
@@ -293,8 +258,6 @@ using u4 = uint32_t;
 
 \subsection{Tipuri de date compuse}
 
-\subsubsection{cp\_info}
-
 Fiecare constanta din tabela de constante incepe cu o eticheta de 1
 octet, care reprezinta datele si tipul structurii. Continutul acesteia
 variaza in functie de eticheta, insa indiferent de eticheta, continutul
@@ -306,15 +269,15 @@ Din motive istorice, unele constante ocupa doua sloturi.
 Totodata, tot din motive istorice, tabela este indexata de la 1, si nu
 de la 0, cum sunt celelalte.
 
-\subparagraph{Tipurile de constante}\label{tipurile-de-constante}
+\subsection{Tipurile de constante}
 
-\texttt{CONSTANT\_Class}
+\subsubsection{CONSTANT\_Class}
 
 Corespunde valorii etichetei de 7 si contine un indice spre un alt camp
 in tabela de constante, de tipul \texttt{CONSTANT\_Utf8} - un sir de
 caractere. Acel sir de caractere va contine numele clasei.
 
-\texttt{CONSTANT\_Fieldref}
+\subsubsection{CONSTANT\_Fieldref}
 
 Corespunde valorii etichetei de 9 si contine o referinta spre campul
 unei clase. Referinta conta in doi indici, amandoi care arata spre
@@ -324,52 +287,52 @@ apartine metoda. Al doilea indice arata spre o constanta
 \texttt{CONSTANT\_NameAndType}, care contine informatii despre numele si
 tipul campului.
 
-\texttt{CONSTANT\_Methodref}
+\subsubsection{CONSTANT\_Methodref}
 
 Corespunde valorii etichetei de 10 si contine o referinta spre metoda
 unei clase. Are o structura identica cu \texttt{CONSTANT\_Fieldref},
 doar ca primul indice arata neaparat spre o clasa, in timp ce al doilea
 indice arata spre numele si tipul metodei.
 
-\texttt{CONSTANT\_InterfaceMethodref}
+\subsubsection{CONSTANT\_InterfaceMethodref}
 
 Corespunde valorii etichetei de 11 si contine o refereinta spre metoda
 unei interfete. Are o structura identica cu
 \texttt{CONSTANT\_Methodref}, doar ca primul indice arata spre o
 interfata.
 
-\texttt{CONSTANT\_String}
+\subsubsection{CONSTANT\_String}
 
 Corespunde valorii etichetei de 8 si reprezinta un sir de caractere.
 Contine un indice, catre o structura de tipul \texttt{CONSTANT\_Utf8}.
 
-\texttt{CONSTANT\_Integer}
+\subsubsection{CONSTANT\_Integer}
 
 Corespunde valorii etichetei de 3 si contine un intreg pe 4 octeti.
 
-\texttt{CONSTANT\_Float}
+\subsubsection{CONSTANT\_Float}
 
 Corespunde valorii etichetei de 4 si contine un numar cu virgula mobila
 pe 4 octeti.
 
-\texttt{CONSTANT\_Long}
+\subsubsection{CONSTANT\_Long}
 
 Corespunde valorii etichetei de 5 si contine un intreg pe 8 octeti. Din
 motive istorice, ocupa 2 spatii in tabela de constante.
 
-\texttt{CONSTANT\_Double}
+\subsubsection{CONSTANT\_Double}
 
 Corespunde valorii etichetei de 6 si contine un numar cu virgula mobila
 pe 8 octeti. Din motive istorice, ocupa 2 spatii in tabela de constante.
 
-\texttt{CONSTANT\_NameAndType}
+\subsubsection{CONSTANT\_NameAndType}
 
 Corespunde valorii etichetei de 12. Descrie numele si tipul unui camp
 sau al unei metode, fara informatii despre clasa. Contine doi indici,
 amandoi catre structuri de tipul \texttt{CONSTANT\_Utf8}. Primul
 reprezinta numele, iar al doilea tipul.
 
-\texttt{CONSTANT\_Utf8}
+\subsubsection{CONSTANT\_Utf8}
 
 Corespunde valorii etichetei de 1. Reprezinta un sir de caractere
 encodat in formatul UTF-8. Contine un intreg \texttt{length}, de tipul
@@ -377,17 +340,17 @@ encodat in formatul UTF-8. Contine un intreg \texttt{length}, de tipul
 Din cauza ca este encodat ca UTF-8, un singur caracter poate fi format
 din mai multi octeti.
 
-\texttt{CONSTANT\_MethodHandle}
+\subsubsection{CONSTANT\_MethodHandle}
 
 Corespunde valorii etichetei de 15 si contine o referinte catre un camp,
 o metoda de clasa, sau o metoda de interfata.
 
-\texttt{CONSTANT\_MethodType}
+\subsubsection{CONSTANT\_MethodType}
 
 Corespunde valorii etichetei de 16 si contine un indice catre o
 constanta \texttt{CONSTANT\_UTf8}, ce reprezinta tipul unei metode.
 
-\texttt{CONSTANT\_InvokeDynamic}
+\subsubsection{CONSTANT\_InvokeDynamic}
 
 Corespunde valorii etichetei de 18 si este folosit de catre \texttt{JVM}
 pentru a invoka o metoda polimorfica.
@@ -527,8 +490,10 @@ struct Code_attribute {
 };
 \end{lstlisting}
 
-Aceasta structura este piesa centrala a lucrarii. In continuare, o voi
-descrie detaliat:
+Aceasta structura este esentiala pentru implementarea
+optimizarii, intrucat ea ne permita sa determinam metodele
+apelate din cadrul unei secvente de cod.
+In continuare, o voi descrie detaliat:
 
 \begin{itemize}
 \tightlist
@@ -587,7 +552,7 @@ Rezultatul este inmultirea celor doua valori:
 Dintre cele peste o suta de instructiuni, noi suntem preocupati doar de
 5 dintre acestea: cele care au de a face cu invocarea unei metode.
 
-invokedynamic
+\textbf{invokedynamic}
 
 Format:
 
@@ -599,22 +564,20 @@ index2
 0
 \end{verbatim}
 
-Opcode-ul corespunzator acestei instructiuni este \texttt{186} sau
-\texttt{0xba}.
+Opcode-ul corespunzator acestei instructiuni este 186 sau
+0xba.
 
 Index1 si index2 sunt doi octeti sunt compusi in
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{index = (index1 << }\DecValTok{8}\NormalTok{) | index2}
-\end{Highlighting}
-\end{Shaded}
+\begin{lstlisting}
+index = (index1 << 8) | index2
+\end{lstlisting}
+Unde \texttt{<<} reprezinta shiftare pe bitsi, iar \texttt{|} reprezinta operatia de sau pe bitsi.
 
 Indicele compus reprezinta o intrare in tabela de constante. La locatia
 respectiva trebuie sa se afle o structura de tipul
 \texttt{CONSTANT\_MethodHandle}
 
-invokeinterface
+\textbf{invokeinterface}
 
 Format:
 
@@ -626,9 +589,9 @@ count
 0
 \end{verbatim}
 
-Opcode-ul corespunzator este \texttt{185} sau \texttt{0xb9}.
+Opcode-ul corespunzator este 185 sau 0xb9.
 \texttt{index1} si \texttt{index2} sunt folositi, in mod similar ca la
-\texttt{invokedynamic}, pentru a construi un \texttt{indice} in tabela
+\texttt{invokedynamic}, pentru a construi un indice in tabela
 de constante.
 
 La pozitia respectiva in tabela, trebuie sa se regaseasca o strutura de
@@ -640,7 +603,7 @@ istorice: aceasta informatie poate fi dedusa din tipul metodei.
 
 TODO(ericpts): add resolution order.
 
-invokespecial
+\textbf{invokespecial}
 
 Format:
 
@@ -650,14 +613,14 @@ index1
 index2
 \end{verbatim}
 
-Opcode-u corespunzator este \texttt{183} sau \texttt{0xb7}. La fel ca la
+Opcode-u corespunzator este 183 sau 0xb7. La fel ca la
 \texttt{invokeinterface}, este format un indice in tabela de constante,
 catre o structura \texttt{CONSTANT\_Methodref}.
 
 Aceasta instructiune este folosita pentru a invoca constructorii
 claselor.
 
-invokestatic
+\textbf{invokestatic}
 
 Format:
 
@@ -667,14 +630,14 @@ index1
 index1
 \end{verbatim}
 
-Opcode-ul corespunzator este \texttt{184} sau \texttt{0xb8}.
+Opcode-ul corespunzator este 184 sau 0xb8.
 Instructiunea este invocata pentru a invoke o metoda statica a unei
 clase.
 
 La fel ca la \texttt{invokeinterface}, este construit un indice compus,
 si folosit pentru a indexa tabela de constante.
 
-invokevirtual
+\textbf{invokevirtual}
 
 Format:
 
@@ -741,4 +704,43 @@ struct ClassFile {
 };
 \end{lstlisting}
 
-Pentru a vedea un fisier clasa analizat in detaliu, uitati-va la appendix-ul studiu de caz.
+Pentru a vedea un fisier clasa analizat in detaliu, va puteti
+uita la appendix-ul studiu de caz.
+
+
+
+\subsection{Determinarea punctului de intrare}
+
+Un proiect Java este format dintr-o multime de clasa.
+Punctul \texttt{main} al proiectului este reprezentat de functia
+denumita \texttt{main} \cite{java_main}, cu antetul
+
+\begin{lstlisting}[language=Java]
+public static void main(String [] args)
+\end{lstlisting}
+
+Intr-un proiect trebuie sa exista o singura astfel de metoda.
+In implementarea lucrarii, aceasta operatie este realizata de
+catre clasa Project:
+\begin{lstlisting}[language=C++]
+Method Project::main_method() const;
+\end{lstlisting}
+
+Pentru a gasi metoda \texttt{main}, sunt scanate toate fiserele
+clasa care fac parte din proiect, si sunt analizatele listele cu
+metode ale acestora.
+
+Acesta este pseudocodul pentru aceasta operatie:
+\begin{lstlisting}[language=Python]
+def main_method(p: Proiect):
+    ret = None
+    for classfile in p.classfiles:
+        if "main" in p.methods():
+            if ret:
+                assert Fals, "Am gasit mai multe metode main!".
+            ret = p.method_of_name("main")
+    if not ret:
+        assert Fals, "Proiectul trebuie sa aiba o metoda main!".
+    return ret
+\end{lstlisting}
+
