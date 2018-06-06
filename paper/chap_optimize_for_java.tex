@@ -1,4 +1,4 @@
-\chapter{Optimizarea limbajului Java}
+\chapter{Limbajul Java si optimizarea acestuia}
 
 In prima parte, vom detalia limbajul Java si modul de functionare
 a acestuia.
@@ -462,8 +462,11 @@ struct attribute_info {
 \end{lstlisting}
 
 Numele atributului determina modul in care octetii din vectorul
-\texttt{info} sunt interpretati. Pentru intentiile noastre, atributul de
-interes este cel de cod:
+\texttt{info} sunt interpretati.
+
+\subsubsection{Atributul de cod}
+
+Pentru intentiile noastre, atributul de interes este cel de cod:
 
 \subparagraph{\texorpdfstring{\texttt{Code\_attribute}}{Code\_attribute}}\label{code_attribute}
 
@@ -491,9 +494,8 @@ struct Code_attribute {
 };
 \end{lstlisting}
 
-Aceasta structura este esentiala pentru implementarea
-optimizarii, intrucat ea ne permita sa determinam metodele
-apelate din cadrul unei secvente de cod.
+Aceasta structura este esentiala pentru implementarea optimizarii,
+intrucat ea ne permita sa determinam metodele apelate din cadrul unei secvente de cod.
 In continuare, o voi descrie detaliat:
 
 \begin{itemize}
@@ -510,7 +512,7 @@ In continuare, o voi descrie detaliat:
 	      \texttt{exception\_table}: Exceptiile pe care le poate arunca metoda.
 \end{itemize}
 
-\texttt{Code}
+\subsubsection{Code}
 
 Vectorul \texttt{code} din cadrul atributului \texttt{Code} reprezinta
 bytecode-ul propriu-zis al metodei.
@@ -522,7 +524,7 @@ JVM-ul ruleaza ca o masina cu stiva, iar toate instructiunile opereaza
 pe aceasta stiva. Reultatul rularii unei instructiuni este modificarea
 stivei: scoaterea si adaugarea de elemente in varful acesteia.
 
-Instructiunile au in general formatul \cite{instruction_format}:
+Instructiunile au in general formatul \cite{instruction_format}
 
 \begin{verbatim}
 nume_instr
@@ -534,17 +536,17 @@ operand2
 cu un numar variabil de operanzi, prezenti in mod explicit in vectorul
 de \texttt{cod}.
 
-Fiecarui instructiuni ii corespunde un octet, denumit opcode. Fiecare
+Fiecarei instructiuni ii corespunde un octet, denumit opcode. Fiecare
 operand este fie cunoscut la compilare, fie calculat in mod dinamic la
 rulare.
 
 Cele mai multe operatii nu au niciun operand dat in mod explicit la
-nivelul instructiunii: ele lucreaza doar cu valorile din varful stivei
+nivelul instructiunii - ele lucreaza doar cu valorile din varful stivei
 la momentul executarii codului.
 
 De exemplu:
 
-Instructiunea \texttt{imul} are octetul \texttt{104} sau \texttt{0x68}.
+Instructiunea \texttt{imul} are octetul 104 sau 0x68.
 Acestea da pop la doua valori din varful stivei: \texttt{value1} si
 \texttt{value2}. Amandoua valorile trebuie sa fie de tipul \texttt{int}.
 Rezultatul este inmultirea celor doua valori:
@@ -556,7 +558,6 @@ Dintre cele peste o suta de instructiuni, noi suntem preocupati doar de
 \textbf{invokedynamic}
 
 Format:
-
 \begin{verbatim}
 invokedynamic
 index1
@@ -581,7 +582,6 @@ respectiva trebuie sa se afle o structura de tipul
 \textbf{invokeinterface}
 
 Format:
-
 \begin{verbatim}
 invokeinterface
 index1
@@ -602,12 +602,9 @@ tipul \texttt{CONSTANT\_Methodref}.
 operand descrie numarul argumentelor metodei, si este necesar din motive
 istorice: aceasta informatie poate fi dedusa din tipul metodei.
 
-TODO(ericpts): add resolution order.
-
 \textbf{invokespecial}
 
 Format:
-
 \begin{verbatim}
 invokespecial
 index1
@@ -624,7 +621,6 @@ claselor.
 \textbf{invokestatic}
 
 Format:
-
 \begin{verbatim}
 invokestatic
 index1
@@ -641,23 +637,15 @@ si folosit pentru a indexa tabela de constante.
 \textbf{invokevirtual}
 
 Format:
-
 \begin{verbatim}
 invokevirtual
 index1
 index1
 \end{verbatim}
 
-Opcode-ul corespunzator este \texttt{182} sau \texttt{0xb6}, iar
+Opcode-ul corespunzator este 182 sau 0xb6, iar
 interpretarea este la fel ca la \texttt{invokeinterface}.
-
 Aceasta este cea mai comuna instructiune de invocare de functii.
-
-Dupa ce numele si tipul metodei, cat si clasa \texttt{C} de care
-apartine aceasta sunt rezolvate, masina virtuala cauta metoda respectiva
-in clasa referentiata. In caz ca o gaseste, cautarea se termina. In caz
-negativ, JVM va continua cautarea recursiv din superclasa lui
-\texttt{C}.
 
 In \texttt{C++}, am reprezentat aceste instructiuni de interes astfel:
 
@@ -708,9 +696,33 @@ struct ClassFile {
 Pentru a vedea un fisier clasa analizat in detaliu, va puteti
 uita la appendix-ul studiu de caz.
 
+
+\section{Optimizarea limbajului Java}
+
+In aceasta parte vom urmari implementarea algoritmului descris la sfarsitul
+capitolului "Optimizari de dimensiune" \ref{capitolul_optimizari_de_dimensiune}.
+
+\subsection{Preliminarii}
+
+Java este un limbaj dinamic. Acest lucru inseamna posibilitatea de a modifica
+codul in timpul rularii, sau de a apela cod in mod dinamic la rulare: aceasta
+este partea de "reflectie" a limbajului Java.
+
+Utilizarea acestor caracteristici face abordarea noastra de analiza
+statica imposibila, intrucat optimizatorul ar putea elimina metode care nu sunt
+apelate in mod explicit in cod, insa care ajung sa fie referentiate in mod
+dinamic la rulare.
+
+Prin urmare, in continuarea lucrarii vom presupune ca toate proiectele Java cu
+care lucram nu se folosesc de niciun mod de a schimba structura codului in
+timpul rularii. In caz contrar, optimizatorul nu mai ofera nicio garantie asupra
+corectitudinii optimizarilor realizate.
+
+Restul lucrarii va presupune ca aceasta conditie este respectata.
+
 \subsection{Determinarea punctului de intrare}
 
-Un proiect Java este format dintr-o multime de clasa.
+Un proiect Java este format dintr-o multime de clase.
 Punctul \texttt{main} al proiectului este reprezentat de functia
 denumita \texttt{main} \cite{java_main}, cu antetul
 
@@ -718,7 +730,8 @@ denumita \texttt{main} \cite{java_main}, cu antetul
 public static void main(String [] args)
 \end{lstlisting}
 
-Intr-un proiect trebuie sa exista o singura astfel de metoda.
+Intr-un proiect trebuie sa exista o singura astfel de metoda, care sa apartina
+unei clase a proiectului.
 In implementarea lucrarii, aceasta operatie este realizata de
 catre clasa Project:
 \begin{lstlisting}[language=C++]
@@ -726,7 +739,7 @@ Method Project::main_method() const;
 \end{lstlisting}
 
 Pentru a gasi metoda \texttt{main}, sunt scanate toate fiserele
-clasa care fac parte din proiect, si sunt analizatele listele cu
+clasa care fac parte din proiect, si sunt analizatele listele de
 metode ale acestora.
 
 Acesta este pseudocodul pentru aceasta operatie:
@@ -743,3 +756,115 @@ def main_method(p: Proiect):
     return ret
 \end{lstlisting}
 
+\subsection{Gasirea apelurilor de functii}
+
+Pentru a determina ce functii sunt apelate din cadrul unei metode \texttt{m},
+vom inspecta atributul de cod al lui \texttt{m}.
+Dintre instructiunile continute vom fi interesati doar de cele ce implica
+apeluri de functii - familia invoke*.
+
+Odata gasite instructiunile de invocare de functii, este necesar sa rezolvam
+referintele continute de acestea, intrucat in reprezentarea interna a JVM-ului,
+o metoda este referentiata pur simbolic, prin siruri de caractere.
+
+\subsection{Rezolvarea metodelor speciale}
+
+Acest tip de rezolvare a metodelor este necesar atunci cand intampinam
+instructiunea \textbf{invokespecial}.
+
+Prin metode speciale intelegem functii precum constructorul unei clase sau
+functii private.
+
+Pentru scopul acestei lucrari, nu vom elimina constructorii, intrucat asta ar
+inseamna eliminarea unei clase cu totul (i.e., singurul caz in care putem
+elimina constructorul unei clase este cand clasa nu este instantiata niciodata).
+
+Metodele private, in schimb, vor fi tratate ca niste functii normale.
+
+\subsection{Rezolvarea metodelor dinamice}
+
+Din versiunea 7 a limbajului Java a fost introdusa instructiunea
+\textbf{invokedynamic}.
+Aceasta instructiune este folosita in rezolvarea referintelor de metode la
+rulare - similar cu conceptul de "duck typing" din limbajele dinamice.
+Deoarece am facut presupunerea ca proiectele cu care lucram nu vor utiliza
+reflectia sau invocarea intalnita dinamica a codului, aceasta instructiune nu va
+fi intalnita.
+
+\subsection{Rezolvarea metodelor statice}
+
+Metodele statice sunt cele mai simple de rezolvat: referinta catre o astfel de
+metoda indica numele metodei, tipul metodei, cat si clasa din care face parte si
+de unde este invocata.
+Aceste metode sunt rezvolta direct la compilare, deci tuplul (nume, tip, clasa)
+identifica in mod unic o metoda statica.
+
+\subsection{Rezolvarea metodelor virtuale}
+
+In Java, toate metodele de instanta (non-statice) sunt polimorfice la rulare
+(eng. runtime polymorphism).
+Cu alte cuvinte, la compilare se stiu numele si tipul metodei si clasa unde
+metoda este definita, insa \textbf{nu} si clasa de unde este invocata.
+
+Aceasta este cea mai comuna operatie, si corespunde instructiunii
+\textbf{invokevirtual}.
+
+De exemplu, pentru codul
+\begin{lstlisting}[language=Java, numbers=left]
+public class Main {
+    static private class One extends Other {
+        public void foo() {
+            System.out.println("foo() of One");
+        }
+    }
+
+    public static void bar(Other o) {
+        o.foo();
+    }
+
+    public static void main(String[] args) {
+        Other o = new One();
+        bar(o);
+    }
+}
+
+public class Other {
+    public void foo() {
+        System.out.println("foo() of Other");
+    }
+}
+\end{lstlisting}
+,format din concatenarea fisierelor din testul \texttt{fixtures/project4},
+apelul de pe linia 9 catre metoda foo este un apel polimorfic.
+
+In codul de JVM, instructiunea corespunzatoare este:
+
+\texttt{invokevirtual \#2                  // Method Other.foo:()V}
+
+unde slotul 2 din tabela de constante este o referinta catre o metoda cu numele
+de \texttt{foo} cu tipul \texttt{void foo()}, definita in clasa \texttt{Other}.
+
+Desi metoda \texttt{foo} este definita initial in clasa \texttt{Other}, la
+rulare va fi apelata versiunea definita in subclasa \texttt{One}.
+
+In implementarea JVM-ului, pe stiva masinii se va afla o instanta a obiectului
+a carei metoda este apelata. In cazul programului nostru, pe stiva se va afla o
+referinta catre variabila \texttt{o}, de tipul \texttt{Other}, definita pe linia
+13 a prorgamului.
+
+Pentru rezolvarea metodei virtuale, JVM-ul se asigura ca tipul lui \texttt{o},
+adica \texttt{Other}, este un mostenitor al clasei de care apartine metoda
+\texttt{One}. In clasa ca tipul \texttt{Other} defineste chiar el metoda
+cautata, masina va folosi definitia respectiva.
+In caz contrar, masina virtuala va cauta recursiv metoda in superclasa lui
+\texttt{Other}. In cazul in care cautarea recursiva a ajuns pana la o clasa fara
+super (singura astfel de clasa este \texttt{Object}), masina virtuala va emite o
+eroare.
+
+\subsection{Rezolvarea metodelor de interfata}
+
+Ultimul tip de invocare a metodelor corespunde instructiunii
+\textbf{invokeinterface}, si corespunde apelarii unei functii definite in cadrul
+unei interfete.
+
+TODO(ericpts): add project5 after it runs successfully.
