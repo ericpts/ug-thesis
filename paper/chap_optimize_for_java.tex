@@ -1,749 +1,54 @@
-\chapter{Limbajul Java si optimizarea acestuia}
+\chapter{Limbajul Java și optimizarea acestuia}
 
-In prima parte, vom detalia limbajul Java si modul de functionare
-a acestuia.
-In a doua parte, vom descrie cum putem implementa optimizarea
-eliminarii de metode nefolosite in limbajul Java.
-
-\section{Limbajul Java}
-
-Java este un limbaj de programare orientat pe obiecte. Acesta a fost
-dezvoltat de catre Sun Microsystems (acum Oracle), iar prima versiune a
-aparut in anul 1995.
-
-Jaza s-a bazat pe sintaxa limbajului C, si a introdus notiunea de
-``scrie o data, ruleaza peste tot'' (eng. ``write once, run
-everywhere''). Spre deosebire de C si de C++, care trebuiesc compilate
-pentru fiecare platforma tinta, Java a avut avantajul ca trebuie
-compilat o singura data, si va merge garantat pe toate platformele
-suportate de limbaj.
-
-\section{Java Bytecode}
-
-Solutia limbajului Java pentru a fi independent de platforma este de
-transforma codul intr-o reprezentare intermediara, in loc de direct in
-cod binary pentru o anumita arhitectura .
-
-Compilatorul Java (\texttt{javac}), transforma codul Java intr-un limbaj
-intermediar, numit Java Bytecode.
-
-Acest limbaj este un limbaj low-level, destinat in mod exclusiv
-procesarii de catre masini, spre deosebire de codul Java, care este
-destinat oamenilor.
-
-Dupa ce compilatorul a procesat codul Java, provenit din fisere .java in
-format text, acesta salveaza rezultatul in fisiere de tip clasa (.class)
-in format binar.
-
-\section{JVM}
-
-Odata generate fisierele binare, acestea sunt executate pe o masina
-virtuala specifica limbajului Java --- numita \texttt{JVM}
-(eng. Java Virtual Machine).
-
-Aceasta masina virtuala are rolul de a citi fisierele de clasa binare si
-de a le interpreta.
-
-Masina virtuala este implementata ca o ``masina cu stiva'' (eng. stack
-machine), unde toate instructiunile limbajului bytecode interactioneaza
-cu datele de pe o stiva controlata de aplicatie.
-
-Masina virtuala insusi este implementata in C/C++, si este compilata in
-cod binar direct, dependent de arhitectura. Dezvoltatorii limbajului
-Java sunt responsabili pentru corectitudinea si siguranta masinii
-virtuale, in timp ce dezvoltatorii de aplicatii Java au garantia ca daca
-codul lor Java este corect, atunci acesta va rula la fel, deterministic,
-pe orice platforma.
-
-In acest regard, limbajul Java poate fi vazut ca un limbaj interpretat.
-Comparand cu alte limbaje populare interpretate, ca de exemplu Python,
-Ruby, sau Perl, ne-am astepta ca si Java sa fie la fel de incet ca
-acestea~\cite{language_benchmarks}.
-Totusi, Java obtine performante mult mai bune decat
-aceastea. Acest fapt se datoreaza compilarii tocmai-la-timp (eng.\
-just-in-time), in care atunci cand interpretorul observa o secventa de
-cod care este interpretata repetitiv de foarte multe ori, va genera
-direct cod binary pentru aceasta.
-
-\section{Fisierele clasa}
-
-Fisierele de clasa Java sunt formate din 10
-sectiuni\cite{classfile_sections}:
-
-\begin{enumerate}
-	\item
-	      Constanta magica.
-	\item
-	      Versiunea fisierului.
-	\item
-	      Constantele clasei.
-	\item
-	      Permisiunile de acces.
-	\item
-	      Numele clasei din fisier.
-	\item
-	      Numele superclasei.
-	\item
-	      Interfetele pe care clasa le implementeaza.
-	\item
-	      Campurile clasei.
-	\item
-	      Metodele clasei.
-	\item
-	      Atribute ale clasei.
-\end{enumerate}
-
-In continuare voi da o scurta descriere a formatului sectiunilor.
-
-\section{Sectiunile fiserelor clasa}
-
-\subsection{Magic}
-
-Toate fiserele clasa trebuiesc sa inceapa cu un numar denumit constanta
-magica. Acesta este folosit pentru a identifica in mod unic ca acestea
-sunt intra-devar fisiere clasa. Numarul magic are o valoare memorabila:
-reprezentarea hexadecimala este \texttt{0xCAFEBABE},
-
-\subsection{Versiunea}
-
-Versiunea unui fisier clasa este data de doua valori, versiunea majora
-\texttt{M} si versiunea minora \texttt{m}. Versiunea clasei este atunci
-reprezentata ca \texttt{M.m}. (e.g., \texttt{45.1}). Aceasta este
-folosita pentru a mentine compatibilitatea in cazul modificarilor
-masinii virtuale care interpreteaza clasa sau ale compilatorului care o
-genereaza.
-
-\subsection{Constantele clasei}
-
-Tabela de constante este locul unde sunt stocate valorile literale
-constante ale clasei:
-
-\begin{itemize}
-	\item Numere intregi.
-	\item Numere cu virgula mobula.
-	\item Siruri de caractere, care pot reprezenta la randul lor:
-	      \begin{itemize}
-		      \item Nume de clase.
-		      \item Nume de metode.
-		      \item Tipuri ale metodelor.
-	      \end{itemize}
-	\item Informatii compuse din datele anterioare:
-	      \begin{itemize}
-		      \item Referinta la o metoda a unei clase.
-		      \item Referinta la o constanta a unei clase.
-	      \end{itemize}
-\end{itemize}
-
-Toate celelalte tipuri de date compuse, cum ar fi metodele sau
-campurile, vor contine indecsi in tabela de constante.
-
-Aproape toate tipurile de constante ocupa un singur slot in tabela, insa, din
-motive istorice, unele constante ocupa doua sloturi.
-Tot din motive istorice, tabela este indexata de la 1, si nu
-de la 0, cum sunt celelalte.
-
-\subsection{Permisiunile de acces}
-
-Aceste permisiuni constau intr-o masca de bitsi, care reprezeinta
-operatiile permise pe aceasta clasa:
-
-\begin{itemize}
-	\item daca clasa este publica, si poate fi accesta din afara pachetului acesteia.
-	\item daca clasa este finala, si daca poate fi extinsa.
-	\item daca invocarea metodelor din superclasa sa fie tratata special.
-	\item daca este de fapt o interfata, si nu o clasa.
-	\item daca este o clasa abstracta si nu poate fi instatiata.
-\end{itemize}
-
-\subsection{Clasa curenta}
-
-Reprezinta un indice in tabela de constante, unde sunt stocate
-informatii despre clasa curenta.
-
-\subsection{Clasa super}
-
-Reprezinta un indice in tabela de consatante, cu informatii despre clasa
-din care a mostenit clasa curenta. Daca este 0, inseamna ca clasa
-curenta nu mosteneste nimic: singura clasa fara o superclasa este clasa
-Object.
-
-E.g. pentru
-
-\begin{lstlisting}[language=Java]
-public class MyClass extends S implements I
-\end{lstlisting}
-
-Indicele corespunde lui \texttt{S}.
-
-\subsection{Interfetele}
-
-Reprezinta o colectie de indici in tabela de constante. Fiecare valoare
-de la acei indici reprezinta o interfata implementata in mod direct de
-catre clasa curenta. Interfetele apar in ordinea declarata in fisierele
-java.
-
-E.g. pentru
-
-\begin{lstlisting}[language=Java]
-class MyClass extends S implements I1, I2
-\end{lstlisting}
-
-Primul indice ar corespunde lui \texttt{I1}, iar al doilea lui
-\texttt{I2}.
-
-\subsection{Campurile}\label{campurile}
-
-Reprezinta informatii despre campurile (eng. fields) clasei:
-\begin{itemize}
-	\item Permisiunile de acces: daca este public sau privat, etc.
-	\item Numele campului.
-	\item Tipul campului.
-	\item Alte atribute: daca este deprecat, daca are o valoare constanta, etc.
-\end{itemize}
-
-\subsection{Metodele}\label{metodele}
-
-Reprezinta informatii despre toate metodele clasei, inclusiv
-constructorii:
-
-\begin{itemize}
-	\item Permisiuni de acces: daca este public sau privat, daca este finala, daca este abstracta.
-	\item Numele metodei.
-	\item Tipul metodei.
-	\item In caz ca nu este abstracta, byte codul metodei.
-	\item Alte atribute:
-	      \begin{itemize}
-		      \item Ce exceptii poate arunca.
-		      \item Daca este deprecata.
-	      \end{itemize}
-\end{itemize}
-
-Codul metodei este partea cea mai importanta, iar formatul acestuia
-urmeaza sa fie detaliat ulterior.
-
-\subsection{Atributele}
-
-Reprezinta alte informatii despre clasa, cum ar fi:
-\begin{itemize}
-	\item Clasele definite in interiorul acesteia.
-	\item In caz ca este o clasa anonima sau definita local, metoda in care este definita.
-	\item Numele fisierul sursa din care a fost compilata clasa.
-\end{itemize}
-
-\section{Tipuri de date}
-
-In continuare, voi descrie din punct de vedere tehnic tipurile de date
-intalnite in fisierele de clasa.
-
-\subsection{Tipuri de baza}
-
-In formatul fisierelor clasa exista trei tipuri de baza, toate bazate pe
-intregi. In caz ca un intreg are mai multi octeti, acestia au ordinea de
-\texttt{big-endian}: cel mai semnificativ octet va fi mereu primul in
-memorie.
-
-\begin{longtable}[]{@{}ccc@{}}
-	\toprule
-	Nume        & Semantica                       & Echivalentul in C\tabularnewline
-	\midrule
-	\endhead
-	\texttt{u1} & intreg pe un octet, fara semn   & \texttt{unsigned\ char}
-	sau \texttt{uint8\_t}\tabularnewline
-	\texttt{u2} & intreg pe doi octeti, fara semn & \texttt{unsigned\ short}
-	sau \texttt{uint16\_t}\tabularnewline
-	\texttt{u4} & intreg pe un octet, fara semn   & \texttt{unsigned\ int} sau
-	\texttt{uint32\_t}\tabularnewline
-	\bottomrule
-\end{longtable}
-
-In codul sursa al proiectului, acestea sunt tratate astfel:
-
-\begin{lstlisting}[language=C++]
-using u1 = uint8_t;
-using u2 = uint16_t;
-using u4 = uint32_t;
-\end{lstlisting}
-
-\subsection{Tipuri compuse}
-
-\subsection{Tipurile de constante}
-
-Fiecare constanta din tabela de constante incepe cu o eticheta de 1
-octet, care reprezinta datele si tipul structurii. Continutul acesteia
-variaza in functie de eticheta, insa indiferent de eticheta, continutul
-trebuie sa aiba cel putin 2 octeti.
-
-\subsubsection{CONSTANT\_Class}
-
-Corespunde valorii etichetei de 7 si contine un indice spre un alt camp
-in tabela de constante, de tipul \texttt{CONSTANT\_Utf8} --- un sir de
-caractere. Acel sir de caractere va contine numele clasei.
-
-\subsubsection{CONSTANT\_Fieldref}
-
-Corespunde valorii etichetei de 9 si contine o referinta spre campul
-unei clase. Referinta conta in doi indici, amandoi care arata spre
-tabela de contante. Primul indice arata spre o constanta
-\texttt{CONSTANT\_Class}, care reprezinta clasa sau interfata careia
-apartine metoda. Al doilea indice arata spre o constanta
-\texttt{CONSTANT\_NameAndType}, care contine informatii despre numele si
-tipul campului.
-
-\subsubsection{CONSTANT\_Methodref}
-
-Corespunde valorii etichetei de 10 si contine o referinta spre metoda
-unei clase. Are o structura identica cu \texttt{CONSTANT\_Fieldref},
-doar ca primul indice arata neaparat spre o clasa, in timp ce al doilea
-indice arata spre numele si tipul metodei.
-
-\subsubsection{CONSTANT\_InterfaceMethodref}
-
-Corespunde valorii etichetei de 11 si contine o refereinta spre metoda
-unei interfete. Are o structura identica cu
-\texttt{CONSTANT\_Methodref}, doar ca primul indice arata spre o
-interfata.
-
-\subsubsection{CONSTANT\_String}
-
-Corespunde valorii etichetei de 8 si reprezinta un sir de caractere.
-Contine un indice, catre o structura de tipul \texttt{CONSTANT\_Utf8}.
-
-\subsubsection{CONSTANT\_Integer}
-
-Corespunde valorii etichetei de 3 si contine un intreg pe 4 octeti.
-
-\subsubsection{CONSTANT\_Float}
-
-Corespunde valorii etichetei de 4 si contine un numar cu virgula mobila
-pe 4 octeti.
-
-\subsubsection{CONSTANT\_Long}
-
-Corespunde valorii etichetei de 5 si contine un intreg pe 8 octeti. Din
-motive istorice, ocupa 2 spatii in tabela de constante.
-
-\subsubsection{CONSTANT\_Double}
-
-Corespunde valorii etichetei de 6 si contine un numar cu virgula mobila
-pe 8 octeti. Din motive istorice, ocupa 2 spatii in tabela de constante.
-
-\subsubsection{CONSTANT\_NameAndType}
-
-Corespunde valorii etichetei de 12. Descrie numele si tipul unui camp
-sau al unei metode, fara informatii despre clasa. Contine doi indici,
-amandoi catre structuri de tipul \texttt{CONSTANT\_Utf8}. Primul
-reprezinta numele, iar al doilea tipul.
-
-\subsubsection{CONSTANT\_Utf8}
-
-Corespunde valorii etichetei de 1. Reprezinta un sir de caractere
-encodat in formatul UTF-8. Contine un intreg \texttt{length}, de tipul
-\texttt{u2}, si apoi \texttt{length} octeti care descriu sirul in sine.
-Din cauza ca este encodat ca UTF-8, un singur caracter poate fi format
-din mai multi octeti.
-
-\subsubsection{CONSTANT\_MethodHandle}
-
-Corespunde valorii etichetei de 15 si contine o referinte catre un camp,
-o metoda de clasa, sau o metoda de interfata.
-
-\subsubsection{CONSTANT\_MethodType}
-
-Corespunde valorii etichetei de 16 si contine un indice catre o
-constanta \texttt{CONSTANT\_UTf8}, ce reprezinta tipul unei metode.
-
-\subsubsection{CONSTANT\_InvokeDynamic}
-
-Corespunde valorii etichetei de 18 si este folosit de catre \texttt{JVM}
-pentru a invoka o metoda polimorfica.
-
-In cod \texttt{C++}, am reprezentat \texttt{cp\_info} astfel:
-
-\begin{lstlisting}[language=C++]
-struct cp_info {
-    enum class Tag : u1 {
-        CONSTANT_Class = 7,
-        CONSTANT_Fieldref = 9,
-        CONSTANT_Methodref = 10,
-        CONSTANT_InterfaceMethodref = 11,
-        CONSTANT_String = 8,
-        CONSTANT_Integer = 3,
-        CONSTANT_Float = 4,
-        CONSTANT_Long = 5,
-        CONSTANT_Double = 6,
-        CONSTANT_NameAndType = 12,
-        CONSTANT_Utf8_info = 1,
-        CONSTANT_MethodHandle = 15,
-        CONSTANT_MethodType = 16,
-        CONSTANT_InvokeDynamic = 18,
-    };
-
-    Tag tag;
-    std::vector<u1> data;
-};
-\end{lstlisting}
-
-Iar structurile folosite pentru obiectivul propus au fost reprezentate
-astfel:
-
-\begin{lstlisting}[language=C++]
-struct CONSTANT_Methodref_info {
-    cp_info::Tag tag;
-    u2 class_index;
-    u2 name_and_type_index;
-};
-struct CONSTANT_Class_info {
-    cp_info::Tag tag;
-    u2 name_index;
-};
-struct CONSTANT_NameAndType_info {
-    cp_info::Tag tag;
-    u2 name_index;
-    u2 descriptor_index;
-};
-\end{lstlisting}
-
-\paragraph{\texorpdfstring{\texttt{field\_info}}{field\_info}}\label{field_info}
-
-Fiecare camp din cadrul unei clase este reprezentat printr-o structura
-de tipul \texttt{field\_info}.
-
-In cod \texttt{C++}, aceasta structura a fost reprezentata astfel:
-
-\begin{lstlisting}[language=C++]
-struct field_info {
-    u2 access_flags;
-    u2 name_index;
-    u2 descriptor_index;
-    u2 attributes_count;
-    std::vector<attribute_info> attributes;
-};
-\end{lstlisting}
-
-Unde:
-\begin{itemize}
-	\item \texttt{name\_index} este o intrare in tabela de constante unde se afla o constanta de tipul \texttt{CONSTANT\_Utf8}.
-	\item \texttt{descriptor\_index} arata spre o constanta de tipul \texttt{CONSTANT\_Utf8} si reprezinta tipul campului.
-\end{itemize}
-
-\paragraph{\texorpdfstring{\texttt{method\_info}}{method\_info}}\label{method_info}
-
-Fiecare metoda a unei clase/interfete este descrisa prin aceasta
-structura.
-
-In cod \texttt{C++}, am implementat-o asa:
-
-\begin{lstlisting}[language=C++]
-struct method_info {
-    u2 access_flags;
-    u2 name_index;
-    u2 descriptor_index;
-    u2 attributes_count;
-    std::vector<attribute_info> attributes;
-};
-\end{lstlisting}
-
-Unde \texttt{name\_index} si \texttt{descriptor\_index} au aceeasi
-interpretare ca si la \texttt{field\_info}.
-
-Daca metoda nu este abstracta, atunci in vectorul \texttt{attributes} se
-va gasi un attribut de tipul \texttt{Code}, care contine bytecode-ul
-corespunzator acestei metode.
-
-\paragraph{\texorpdfstring{\texttt{attribute\_info}}{attribute\_info}}\label{attribute_info}
-
-In \texttt{C++}, a fost implementata astfel:
-
-\begin{lstlisting}[language=C++]
-struct attribute_info {
-    u2 attribute_name_index;
-    u4 attribute_length;
-    std::vector<u1> info;
-};
-\end{lstlisting}
-
-Numele atributului determina modul in care octetii din vectorul
-\texttt{info} sunt interpretati.
-
-\subsubsection{Atributul de cod}
-
-Pentru intentiile noastre, atributul de interes este cel de cod:
-
-\subparagraph{\texorpdfstring{\texttt{Code\_attribute}}{Code\_attribute}}\label{code_attribute}
-
-\begin{lstlisting}[language=C++]
-struct Code_attribute {
-    u2 attribute_name_index;
-    u4 attribute_length;
-
-    u2 max_stack;
-    u2 max_locals;
-
-    u4 code_length;
-    std::vector<u1> code;
-
-    u2 exception_table_length;
-    struct exception {
-        u2 start_pc;
-        u2 end_pc;
-        u2 handler_pc;
-        u2 catch_type;
-    };
-    std::vector<exception> exception_table; // of length exception_table_length.
-    u2 attributes_count;
-    std::vector<attribute_info> attributes; // of length attributes_count.
-};
-\end{lstlisting}
-
-Aceasta structura este esentiala pentru implementarea optimizarii,
-intrucat ea ne permita sa determinam metodele apelate din cadrul unei secvente de cod.
-In continuare, o voi descrie detaliat:
-
-\begin{itemize}
-	\tightlist
-	\item
-	      \texttt{max\_stack}: Reprezinta adancimea maxima a stivei masinii
-	      virtuale cand aceasta bucata de cod este interpretata.
-	\item
-	      \texttt{max\_locals}: Reprezinta numarul maxim de variabile locale
-	      alocate in acelasi timp cand aceasta bucata de cod este interpretata.
-	\item
-	      \texttt{code}: Codul metodei.
-	\item
-	      \texttt{exception\_table}: Exceptiile pe care le poate arunca metoda.
-\end{itemize}
-
-\subsubsection{Code}
-
-Vectorul \texttt{code} din cadrul atributului \texttt{Code} reprezinta
-bytecode-ul propriu-zis al metodei.
-
-Acest vector contine instructiunile care sunt executate de catre masina
-virtuala.
-
-JVM-ul ruleaza ca o masina cu stiva, iar toate instructiunile opereaza
-pe aceasta stiva. Reultatul rularii unei instructiuni este modificarea
-stivei: scoaterea si adaugarea de elemente in varful acesteia.
-
-Instructiunile au in general formatul~\cite{instruction_format}
-
-\begin{verbatim}
-nume_instr
-operand1
-operand2
-...
-\end{verbatim}
-
-cu un numar variabil de operanzi, prezenti in mod explicit in vectorul
-de \texttt{cod}.
-
-Fiecarei instructiuni ii corespunde un octet, denumit opcode. Fiecare
-operand este fie cunoscut la compilare, fie calculat in mod dinamic la
-rulare.
-
-Cele mai multe operatii nu au niciun operand dat in mod explicit la
-nivelul instructiunii --- ele lucreaza doar cu valorile din varful stivei
-la momentul executarii codului.
-
-De exemplu:
-
-Instructiunea \texttt{imul} are octetul 104 sau 0x68.
-Acestea da pop la doua valori din varful stivei: \texttt{value1} si
-\texttt{value2}. Amandoua valorile trebuie sa fie de tipul \texttt{int}.
-Rezultatul este inmultirea celor doua valori:
-\texttt{result\ =\ value1\ *\ value2}, si este pus in varful stivei.
-
-Dintre cele peste o suta de instructiuni, noi suntem preocupati doar de
-5 dintre acestea: cele care au de a face cu invocarea unei metode.
-
-\textbf{invokedynamic}
-
-Format:
-\begin{verbatim}
-invokedynamic
-index1
-index2
-0
-0
-\end{verbatim}
-
-Opcode-ul corespunzator acestei instructiuni este 186 sau
-0xba.
-
-Index1 si index2 sunt doi octeti sunt compusi in
-\begin{lstlisting}
-index = (index1 << 8) | index2
-\end{lstlisting}
-Unde \texttt{<<} reprezinta shiftare pe bitsi, iar \texttt{|} reprezinta operatia de sau pe bitsi.
-
-Indicele compus reprezinta o intrare in tabela de constante. La locatia
-respectiva trebuie sa se afle o structura de tipul
-\texttt{CONSTANT\_MethodHandle}
-
-\textbf{invokeinterface}
-
-Format:
-\begin{verbatim}
-invokeinterface
-index1
-index2
-count
-0
-\end{verbatim}
-
-Opcode-ul corespunzator este 185 sau 0xb9.
-\texttt{index1} si \texttt{index2} sunt folositi, in mod similar ca la
-\texttt{invokedynamic}, pentru a construi un indice in tabela
-de constante.
-
-La pozitia respectiva in tabela, trebuie sa se regaseasca o strutura de
-tipul \texttt{CONSTANT\_Methodref}.
-
-\texttt{count} trebuie sa fie un octet fara semn diferit de 0. Acest
-operand descrie numarul argumentelor metodei, si este necesar din motive
-istorice: aceasta informatie poate fi dedusa din tipul metodei.
-
-\textbf{invokespecial}
-
-Format:
-\begin{verbatim}
-invokespecial
-index1
-index2
-\end{verbatim}
-
-Opcode-u corespunzator este 183 sau 0xb7. La fel ca la
-\texttt{invokeinterface}, este format un indice in tabela de constante,
-catre o structura \texttt{CONSTANT\_Methodref}.
-
-Aceasta instructiune este folosita pentru a invoca constructorii
-claselor.
-
-\textbf{invokestatic}
-
-Format:
-\begin{verbatim}
-invokestatic
-index1
-index1
-\end{verbatim}
-
-Opcode-ul corespunzator este 184 sau 0xb8.
-Instructiunea este invocata pentru a invoke o metoda statica a unei
-clase.
-
-La fel ca la \texttt{invokeinterface}, este construit un indice compus,
-si folosit pentru a indexa tabela de constante.
-
-\textbf{invokevirtual}
-
-Format:
-\begin{verbatim}
-invokevirtual
-index1
-index1
-\end{verbatim}
-
-Opcode-ul corespunzator este 182 sau 0xb6, iar
-interpretarea este la fel ca la \texttt{invokeinterface}.
-Aceasta este cea mai comuna instructiune de invocare de functii.
-
-In \texttt{C++}, am reprezentat aceste instructiuni de interes astfel:
-
-\begin{lstlisting}[language=C++]
-enum class Instr {
-    invokedynamic = 0xba,
-    invokeinterface = 0xb9,
-    invokespecial = 0xb7,
-    invokestatic = 0xb8,
-    invokevirtual = 0xb6,
-};
-\end{lstlisting}
-
-\subsection{ClassFile}\label{classfile}
-
-Folosind definitiile anterioare, putem descrie un fisier de clasa binar
-in C++:
-
-\begin{lstlisting}[language=C++]
-struct ClassFile {
-    u4 magic; // Should be 0xCAFEBABE.
-
-    u2 minor_version;
-    u2 major_version;
-
-    u2 constant_pool_count;
-    std::vector<cp_info> constant_pool;
-
-    u2 access_flags;
-
-    u2 this_class;
-    u2 super_class;
-
-    u2 interface_count;
-    std::vector<interface_info> interfaces;
-
-    u2 field_count;
-    std::vector<field_info> fields;
-
-    u2 method_count;
-    std::vector<method_info> methods;
-
-    u2 attribute_count;
-    std::vector<attribute_info> attributes;
-};
-\end{lstlisting}
-
-Pentru a vedea un fisier clasa analizat in detaliu, va puteti
-uita la appendix-ul studiu de caz.
-
+În acest capitol vom descrie cum putem implementa optimizarea
+eliminării de metode nefolosite în limbajul Java.
 
 \section{Optimizarea limbajului Java}
 
-In aceasta parte vom urmari implementarea algoritmului descris la sfarsitul
-capitolului `Optimizari de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
+În aceasta parte vom urmări implementarea algoritmului descris la sfârșitul
+capitolului `Optimizări de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
 
 \subsection{Preliminarii}
 
-Java este un limbaj dinamic. Acest lucru inseamna posibilitatea de a modifica
-codul in timpul rularii, sau de a apela cod in mod dinamic la rulare: aceasta
-este partea de `reflectie' a limbajului Java.
+Java este un limbaj dinamic. Acest lucru înseamnă posibilitatea de a modifica
+codul în timpul rulării, sau de a apela cod în mod dinamic la rulare: aceasta
+este partea de `reflecție' a limbajului Java.
 
-Utilizarea acestor caracteristici face abordarea noastra de analiza
-statica imposibila, intrucat optimizatorul ar putea elimina metode care nu sunt
-apelate in mod explicit in cod, insa care ajung sa fie referentiate in mod
+Utilizarea acestor caracteristici face abordarea noastră de analiza
+statica imposibila, intricat optimiza torul ar putea elimina metode care nu sunt
+apelate în mod explicit în cod, însa care ajung să fie referențiale în mod
 dinamic la rulare.
 
-Prin urmare, in continuarea lucrarii vom presupune ca toate proiectele Java cu
-care lucram nu se folosesc de niciun mod de a schimba structura codului in
-timpul rularii. In caz contrar, optimizatorul nu mai ofera nicio garantie asupra
-corectitudinii optimizarilor realizate.
+Prin urmare, în continuarea lucrării vom presupune ca toate proiectele Java cu
+care lucram nu se folosesc de niciun mod de a schimba structura codului în
+timpul rulării. În caz contrar, optimizatorul nu mai oferă nicio garanție asupra
+corectitudinii optimizărilor realizate.
 
-Restul lucrarii va presupune ca aceasta conditie este respectata.
+Restul lucrării va presupune ca aceasta condiție este respectata.
 
 \subsection{Determinarea punctului de intrare}
 
-Un proiect Java este format dintr-o multime de clase.
-Punctul \texttt{main} al proiectului este reprezentat de functia
+Un proiect Java este format dintr-o mulțime de clase.
+Punctul \texttt{main} al proiectului este reprezentat de funcția
 denumita \texttt{main} \cite{java_main}, cu antetul
 
 \begin{lstlisting}[language=Java]
 public static void main(String [] args)
 \end{lstlisting}
 
-Intr-un proiect trebuie sa exista o singura astfel de metoda, care sa apartina
+Într-un proiect trebuie să existe o singură astfel de metodă, care să aparțină
 unei clase a proiectului.
-In implementarea lucrarii, aceasta operatie este realizata de
-catre clasa Project:
+În implementarea lucrării, aceasta operație este realizata de
+către clasa Project:
 \begin{lstlisting}[language=C++]
 Method Project::main_method() const;
 \end{lstlisting}
 
-Pentru a gasi metoda \texttt{main}, sunt scanate toate fiserele
-clasa care fac parte din proiect, si sunt analizatele listele de
+Pentru a găsi metoda \texttt{main}, sunt scanate toate fișierele
+clasa care fac parte din proiect, și sunt analizatele listele de
 metode ale acestora.
 
-Acesta este pseudocodul pentru aceasta operatie:
+Acesta este pseudocodul pentru această operație:
 \begin{lstlisting}[language=Python]
 def main_method(p: Proiect):
     ret = None
@@ -757,57 +62,58 @@ def main_method(p: Proiect):
     return ret
 \end{lstlisting}
 
-\subsection{Gasirea apelurilor de functii}
+\subsection{Găsirea apelurilor de funcții}
 
-Pentru a determina ce functii sunt apelate din cadrul unei metode \texttt{m},
+Pentru a determina ce funcții sunt apelate din cadrul unei metode \texttt{m},
 vom inspecta atributul de cod al lui \texttt{m}.
-Dintre instructiunile continute vom fi interesati doar de cele ce implica
-apeluri de functii - familia invoke*.
+Dintre instrucțiunile conținute vom fi interesați doar de cele ce implica
+apeluri de funcții - familia invoke*.
 
-Odata gasite instructiunile de invocare de functii, este necesar sa rezolvam
-referintele continute de acestea, intrucat in reprezentarea interna a JVM-ului,
-o metoda este referentiata pur simbolic, prin siruri de caractere.
+Odată găsite instrucțiunile de invocare de funcții, este necesar să rezolvam
+referințele conținute de acestea, intricat în reprezentarea interna a JVM-ului,
+o metoda este referențiala pur simbolic, prin șiruri de caractere.
 
 \subsection{Rezolvarea metodelor speciale}
 
-Acest tip de rezolvare a metodelor este necesar atunci cand intampinam
-instructiunea \textbf{invokespecial}.
+Acest tip de rezolvare a metodelor este necesar atunci când întâmpinam
+instrucțiunea \textbf{invokespecial}.
 
-Prin metode speciale intelegem functii precum constructorul unei clase sau
-functii private.
+Prin metode speciale înțelegem funcții precum constructorul unei clase sau
+funcții private.
 
-Pentru scopul acestei lucrari, nu vom elimina constructorii, intrucat asta ar
-inseamna eliminarea unei clase cu totul (i.e., singurul caz in care putem
-elimina constructorul unei clase este cand clasa nu este instantiata niciodata).
+Pentru scopul acestei lucrări, nu vom elimina constructorii,
+întrucât asta ar înseamna eliminarea unei clase cu totul (i.e.,
+singurul caz în care putem elimina constructorul unei clase este
+când clasa nu este instantiate niciodată).
 
-Metodele private, in schimb, vor fi tratate ca niste functii normale.
+Metodele private, în schimb, vor fi tratate ca niște funcții normale.
 
 \subsection{Rezolvarea metodelor dinamice}
 
-Din versiunea 7 a limbajului Java a fost introdusa instructiunea
+Din versiunea 7 a limbajului Java a fost introdusa instrucțiunea
 \textbf{invokedynamic}.
-Aceasta instructiune este folosita in rezolvarea referintelor de metode la
+Aceasta instrucțiune este folosită în rezolvarea referințelor de metode la
 rulare - similar cu conceptul de "duck typing" din limbajele dinamice.
-Deoarece am facut presupunerea ca proiectele cu care lucram nu vor utiliza
-reflectia sau invocarea intalnita dinamica a codului, aceasta instructiune nu va
-fi intalnita.
+Deoarece am făcut presupunerea ca proiectele cu care lucram nu vor utiliza
+reflecția sau invocarea întâlnita dinamica a codului, aceasta instrucțiune nu va
+fi întâlnita.
 
 \subsection{Rezolvarea metodelor statice}
 
-Metodele statice sunt cele mai simple de rezolvat: referinta catre o astfel de
-metoda indica numele metodei, tipul metodei, cat si clasa din care face parte si
+Metodele statice sunt cele mai simple de rezolvat: referința către o astfel de
+metoda indica numele metodei, tipul metodei, cat și clasa din care face parte și
 de unde este invocata.
-Aceste metode sunt rezvolta direct la compilare, deci tuplul (nume, tip, clasa)
-identifica in mod unic o metoda statica.
+Aceste metode sunt dezvolta direct la compilare, deci cuplul (nume, tip, clasa)
+identifica în mod unic o metoda statica.
 
 \subsection{Rezolvarea metodelor virtuale}
 
-In Java, toate metodele de instanta (non-statice) sunt polimorfice la rulare
-(eng. runtime polymorphism).
-Cu alte cuvinte, la compilare se stiu numele si tipul metodei si clasa unde
-metoda este definita, insa \textbf{nu} si clasa de unde este invocata.
+În Java, toate metodele de instanta (non-statice) sunt polimorfice la rulare
+(Eng. Run time polymorphism).
+Cu alte cuvinte, la compilare se știu numele și tipul metodei și clasa unde
+metoda este definita, însa \textbf{nu} și clasa de unde este invocata.
 
-Aceasta este cea mai comuna operatie, si corespunde instructiunii
+Aceasta este cea mai comuna operație, și corespunde instrucțiunii
 \textbf{invokevirtual}.
 
 De exemplu, pentru programul
@@ -835,40 +141,40 @@ public class Other {
     }
 }
 \end{lstlisting}
-format din concatenarea fisierelor din testul \texttt{fixtures/project4},
-apelul de pe linia 9 catre metoda foo este un apel polimorfic.
+format din concatenarea fișierelor din testul \texttt{fixtures/project4},
+apelul de pe linia 9 către metoda foo este un apel polimorfic.
 
-In codul de JVM, instructiunea corespunzatoare este:
+În codul de JVM, instrucțiunea corespunzătoare este:
 
 \texttt{invokevirtual \#2                  // Method Other.foo:()V}
 
-unde slotul 2 din tabela de constante este o referinta catre o metoda cu numele
-de \texttt{foo} cu tipul \texttt{void foo()}, definita in clasa \texttt{Other}.
+Unde slotul 2 din tabela de constante este o referința către o metoda cu numele
+de \texttt{foo} cu tipul \texttt{void foo()}, definita în clasa \texttt{Other}.
 
 \texttt{\#2 = Methodref          \#22.\#23        // Other.foo:()V}
 
-Desi metoda \texttt{foo} este definita initial in clasa \texttt{Other}, la
-rulare va fi apelata versiunea definita in subclasa \texttt{One}.
+Deși metoda \texttt{foo} este definita initial în clasa \texttt{Other}, la
+rulare va fi apelata versiunea definita în subclasa \texttt{One}.
 
-In implementarea JVM-ului, pe stiva masinii se va afla o instanta a obiectului
-a carei metoda este apelata. In cazul programului nostru, pe stiva se va afla o
-referinta catre variabila \texttt{o}, de tipul \texttt{Other}, definita pe linia
-13 a prorgamului.
+În implementarea JVM-ului, pe stiva mașinii se va afla o instanta a obiectului
+a care metoda este apelata. În cazul programului nostru, pe stiva se va afla o
+referința către variabila \texttt{o}, de tipul \texttt{Other}, definita pe linia
+13 a programului.
 
 Pentru rezolvarea metodei virtuale, JVM-ul se asigura ca tipul lui \texttt{o},
-adica \texttt{Other}, este un mostenitor al clasei de care apartine metoda
-\texttt{One}. In clasa ca tipul \texttt{Other} defineste chiar el metoda
-cautata, masina va folosi definitia respectiva.
-In caz contrar, masina virtuala va cauta recursiv metoda in superclasa lui
-\texttt{Other}. In cazul in care cautarea recursiva a ajuns pana la o clasa fara
-super (singura astfel de clasa este \texttt{Object}), masina virtuala va emite o
+adică \texttt{Other}, este un moștenitor al clasei de care aparține metoda
+\texttt{One}. În clasa ca tipul \texttt{Other} definește chiar el metoda
+căutata, mașina va folosi definiția respectiva.
+În caz contrar, mașina virtuală va cauta recursiv metoda în super clasa lui
+\texttt{Other}. În cazul în care căutarea recursiva a ajuns pana la o clasa fără
+super (singura astfel de clasa este \texttt{Object}), mașina virtuală va emite o
 eroare.
 
-\subsection{Rezolvarea metodelor de interfata}
+\subsection{Rezolvarea metodelor de interfața}
 
-Ultimul tip de invocare a metodelor corespunde instructiunii
-\textbf{invokeinterface}, si corespunde apelarii unei functii declarate in cadrul
-unei interfete.
+Ultimul tip de invocare a metodelor corespunde instrucțiunii
+\textbf{invokeinterface}, și corespunde apelării unei funcții declarate în cadrul
+unei interfețe.
 
 De exemplu, pentru programul
 \begin{lstlisting}[language=Java, numbers=left]
@@ -892,29 +198,29 @@ public class Main {
     }
 }
 \end{lstlisting}
-format din fisierele testului \texttt{fixtures/project5},
-apelul de pe linia 11 catre metoda foo este un apel polimorfic pe interfete.
+format din fișierele testului \texttt{fixtures/project5},
+apelul de pe linia 11 către metoda foo este un apel polimorfic pe interfețe.
 
-In codul de JVM, instructiunea corespunzatoare este:
+În codul de JVM, instrucțiunea corespunzătoare este:
 
 \texttt{invokeinterface \#2,  1            // InterfaceMethod I.foo:()V}
 
-unde slotul 2 din tabela de constante este o referinta catre o metoda de
-interfata cu numele de \texttt{foo} cu tipul \texttt{void foo()}, definita in
-interfata \texttt{I}.
+Unde slotul 2 din tabela de constante este o referința către o metoda de
+interfața cu numele de \texttt{foo} cu tipul \texttt{void foo()}, definita în
+interfața \texttt{I}.
 \texttt{\#2 = InterfaceMethodref \#22.\#23        // I.foo:()V}
 
-Desi metoda \texttt{foo} este declarata initial in interfata \texttt{I}, la
-rulare va fi apelata versiunea definita in subclasa \texttt{C}.
+Deși metoda \texttt{foo} este declarata initial în interfața \texttt{I}, la
+rulare va fi apelata versiunea definita în subclasa \texttt{C}.
 
-Pentru rezolvarea referintelor catre metode de interfete, se va aplica un algoritm similar cu
-cel de la rezolvarea referintelor de metode virtuale: cautare recursiva in
-lantul de mosteniri al clasei asupra caruia se executa metoda.
+Pentru rezolvarea referințelor către metode de interfețe, se va aplica un algoritm similar cu
+cel de la rezolvarea referințelor de metode virtuale: căutare recursiva în
+lanțul de moșteniri al clasei asupra căruia se executa metoda.
 
-\subsection{Algoritmul de rezolvare al referintelor metodelor}
+\subsection{Algoritmul de rezolvare al referințelor metodelor}
 
-Putem defini in pseudocod algoritmul de rezolvare al referintelor catre metode
-virtuale si catre metode de interfata astfel:
+Putem defini în pseudo cod algoritmul de rezolvare al referințelor către metode
+virtuale și către metode de interfața astfel:
 
 \begin{lstlisting}[language=Python]
 def resolve_reference(
@@ -930,82 +236,82 @@ def resolve_reference(
         class.super_class, method_name, method_type)
 \end{lstlisting}
 
-Acest algoritm este declarat in implementarea in C++ sub forma de
+Acest algoritm este declarat în implementarea în C++ sub forma de
 
 \begin{lstlisting}[language=C++]
 static std::optional<Method>
 from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
 \end{lstlisting}
 
-Motivul pentru care aceasta functie intoarce un \texttt{optional}, in loc de
-direct o metoda, este pentru ca pot exista referinte catre functii terte, de
-obicei definite in librarii.
-De exemplu, functia \texttt{println(String s)}, definita in libraria standard
+Motivul pentru care aceasta funcție întoarce un \texttt{optional}, în loc de
+direct o metoda, este pentru ca pot exista referințe către funcții terțe, de
+obicei definite în librarii.
+De exemplu, funcția \texttt{println(String s)}, definita în librăria standard
 \texttt{java.io}.
 
-Metoda exacta care este executata de o astfel de instructiune nu poate fi stiuta
-decat abia la runtime (e.g., pentru programul~\ref{program_metode_virtuale}
-nu putem stii in timpul analizei statice daca va fi apelata metoda
+Metoda exacta care este executata de o astfel de instrucțiune nu poate fi știuta
+decât abia la run time (e.g., pentru programul~\ref{program_metode_virtuale}
+nu putem știi în timpul analizei statice dacă va fi apelata metoda
 \texttt{Other::foo()} sau metoda \texttt{One::foo()}).
 
-\subsection{Supersirul de executie si polimorfismul de executie}
+\subsection{Superșirul de execuție și polimorfismul de execuție}
 
-Vom reconsidera supersirul de executie definit la \ref{supersirul_de_executie}
-si graful apelurilor, definit la \ref{graful_apelurilor}.
+Vom reconsidera superșirul de execuție definit la \ref{supersirul_de_executie}
+și graful apelurilor, definit la \ref{graful_apelurilor}.
 
-La momentul analizei statice nu stim tipul exact al unei referinte.
-O referinta catre o interfata poate sa contina orice obiect care implementeaza
-acea interfata, sau o referinta catre o clasa \s{C} poate contine fix clasa
-\s{C}, sau orice clasa care o are pe \s{C} ca stramos.
+La momentul analizei statice nu știm tipul exact al unei referințe.
+O referința către o interfața poate să conțină orice obiect care implementează
+acea interfața, sau o referința către o clasa \s{C} poate conține fix clasa
+\s{C}, sau orice clasa care o are pe \s{C} ca strămoș.
 
-Prin urmare, vom extinde supersirul de executie ca sa reflecte aceste
-posibilitati.
-Mai precis, pentru fiecare apel de functii polimorfice (virtuale prin
-\textbf{invokevirtual} sau de interfata prin \textbf{invokeinterface}), vom
-considera toate metodele posibile care pot referentiate.
+Prin urmare, vom extinde superșirul de execuție ca să reflecte aceste
+posibilități.
+Mai precis, pentru fiecare apel de funcții polimorfice (virtuale prin
+\textbf{invokevirtual} sau de interfața prin \textbf{invokeinterface}), vom
+considera toate metodele posibile care pot referențiale.
 
 De exemplu, pentru programul~\ref{program_metode_virtuale}, vom considera toate
-posibilitatile de rezolare ale apelului catre foo(), atat \texttt{Other::foo()},
-cat si \texttt{One::foo()}.
+posibilitățile de rezolvare ale apelului către foo(), atât \texttt{Other::foo()},
+cat și \texttt{One::foo()}.
 
-\subsection{Graful de apeluri si polimorfismul de executie}
+\subsection{Graful de apeluri și polimorfismul de execuție}
 
-Acum ca am adaptat supersirul de executie pentru polimorfismul de executie, este
-nevoie sa extindem si graful de apeluri.
+Acum ca am adaptat superșirul de execuție pentru polimorfismul de execuție, este
+nevoie să extindem și graful de apeluri.
 
-Pentru acest lucru, in cadrul unei rezolutii vom considera nu numai metoda
-direct referentiata, ci toate metodele pe care supersirul de executie le-ar
-putea rezolva ca posibili candidati.
+Pentru acest lucru, în cadrul unei rezoluții vom considera nu numai metoda
+direct referențiala, ci toate metodele pe care superșirul de execuție le-ar
+putea rezolva ca posibili candidați.
 
-Vom spune ca metoda m este un candidat pentru rezolutia metodei q daca in
-rezolvarea unei referinte catre q, supersirul de executie va considera si metoda
+Vom spune ca metoda m este un candidat pentru rezoluția metodei q dacă în
+rezolvarea unei referințe către q, superșirul de execuție va considera și metoda
 m.
 
-Proprietatea de a fi candidat este o relatie reflexiva si tranzitiva, insa nu si
+Proprietatea de a fi candidat este o relație reflexiva și tranzitiva, însa nu și
 simetrica.
 
-Aceasta relatie este echivalenta cu: metoda m este un candidat pentru rezolutia
-metodei q daca:
+Aceasta relație este echivalenta cu: metoda m este un candidat pentru rezoluția
+metodei q dacă:
 \begin{enumerate}
-    \item q este o metoda a unei interfete, iar m implementeaza direct sau
-        tranzitiv interfata respectiva.
-    \item q este o metoda a unei clase, iar m mosteneste direct sau tranzitiv
+    \item q este o metoda a unei interfețe, iar m implementează direct sau
+        tranzitiv interfața respectiva.
+    \item q este o metoda a unei clase, iar m moștenește direct sau tranzitiv
         clasa respectiva.
 \end{enumerate}
 
-In continuare, vom nota cu $cand(m)$ toti candidatii lui m. Din faptul ca este o
-relatie reflexiva, m apartine mutlimii $cand(m)$.
+În continuare, vom nota cu $cand(m)$ tot candidații lui m. Din faptul ca este o
+relație reflexiva, m aparține muslimii $cand(m)$.
 
-Graful de apeluri trebuie schimbat astfel incat sa includa si candidatii unei
-metode: in loc sa tragem o singura muchie de la metoda p care face invocarea, la
+Graful de apeluri trebuie schimbat astfel încet să includă și candidații unei
+metode: în loc să tragem o singura muchie de la metoda p care face invocarea, la
 metoda m care este invocata, vom trage mai multe muchii: de la p la toate
 metodele candidate pentru m --- $cand(m)$.
 
-\subsection{Noul algoritm pentru eliminarea functiilor}
+\subsection{Noul algoritm pentru eliminarea funcțiilor}
 
-In aceasta parte, vom adapta algoritmul de eliminare a functiilor, definit
+În aceasta parte, vom adapta algoritmul de eliminare a funcțiilor, definit
 anterior la \ref{algoritm_naiv_pentru_eliminare}.
-In particular, vom actualiza modul de calculare al functiilor accesibile:
+În particular, vom actualiza modul de calculare al funcțiilor accesibile:
 
 \begin{lstlisting}[language=Python]
 def reachable_methods_in_java(main: Method) -> [Method]:
@@ -1022,7 +328,7 @@ def reachable_methods_in_java(main: Method) -> [Method]:
 \end{lstlisting}
 
 
-Iar procedura de optimizare va ramane identica:
+Iar procedura de optimizare va rămâne identica:
 
 \begin{lstlisting}[language=Python]
 def optimize_for_size_in_java(p: Program) -> Program:
@@ -1035,21 +341,21 @@ def optimize_for_size_in_java(p: Program) -> Program:
 \end{lstlisting}
 
 
-In implementarea in \texttt{C++}, aceste au urmatorii corespondenti:
+În implementarea în \texttt{C++}, aceste au următorii corespondenți:
 
-functia $cand(m)$ este reprezentata de
+Funcția $cand(m)$ este reprezentata de
 \begin{lstlisting}[language=C++]
 std::vector<Method> Project::sibling_methods(const Method& m) const;
 \end{lstlisting}
 
-procedura $reachable\_methods\_in\_java$ pentru determinarea functiilor
+Procedura $reachable\_methods\_in\_java$ pentru determinarea funcțiilor
 accesibile este reprezentata de:
 
 \begin{lstlisting}[language=C++]
 std::vector<Method> Project::method_call_graph(const Method& m) const;
 \end{lstlisting}
 
-iar procedura de optimizare $optimize\_for\_size\_in\_java$ este reprezentata de:
+Iar procedura de optimizare $optimize\_for\_size\_in\_java$ este reprezentata de:
 \begin{lstlisting}[language=C++]
 void Project::remove_unused_methods();
 \end{lstlisting}

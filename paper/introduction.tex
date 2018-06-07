@@ -1,149 +1,63 @@
-% Some commands used in this file
-\newcommand{\package}{\emph}
-
 \chapter{Introducere}
 
-Eliminarea codului nefolosit (eng. "Dead code elimination")
-\cite{wiki:deadcodeelimination} este o optimizare clasica.
-Ea presupune eliminarea dintr-un program a codului care nu afecteaza rezultatul.
-Acest lucru poate sa fie datorat faptului ca nu exista niciun fir de
-executie care sa ajunga la instructiunile respective, sau ca acele instructiuni
-nu au efecte laterale care sa efecteze restul programului.
+Eliminarea codului inutil (eng. "Dead code elimination")
+\cite{wiki:deadcodeelimination} este o optimizare clasică.  Ea
+presupune eliminarea dintr-un program a codului care nu afectează
+rezultatul computației.
 
-Acest tip de optimizare este implementata traditional in limbajele compilate precum C, cat si
-in cele `compilate-la-timp' (eng. `just-in-time') precum Java sau JavaScript.
-Beneficiile principale aduse sunt:
+Codul poate să fie eliminat dacă, de exemplu, nu există niciun fir
+de execuție care să conțină instrucțiunile respective, sau dacă
+acel cod nu are efecte laterale.
+
+Acest tip de optimizare este implementată tradițional în
+limbajele compilate, precum C, cât și în cele `compilate-la-timp'
+(eng. `just-in-time') precum Java sau JavaScript.  Beneficiile
+principale aduse de către optimizare sunt:
 
 \begin{enumerate}
 	\item Reducerea dimensiunii programului
-	\item Cresterea vitezei executiei
+	\item Creșterea vitezei de execuție
 \end{enumerate}
 
-Cu cat un limbaj este mai dinamic, si permite mai multe schimbari ale
-comportamentului uzual, cu atat eliminarea de cod nefolosit devine mai grea.
-De exemplu, echipa care dezvolta Internet Explorer a avut probleme de
-corectitudine in optimizarile realizate, datorita naturii dinamice a limbajului
+Cu cât un limbaj este mai dinamic, și permite mai multe schimbări ale
+comportamentului la rulare, cu atât eliminarea de cod nefolosit
+devine o sarcină mai grea.
+
+De exemplu, echipa care dezvoltă motorul de JavaScript pentru
+browser-ul Internet Explorer a avut probleme de corectitudine în
+optimizările realizate, datorită naturii dinamice a limbajului
 JavaScript \cite{deadcodeeliminationforbeginners}.
 
-Desi pentru un programator nu este natural sa creeze cod nefolosit, acest lucru
-nu inseamna ca principiul eliminarii acestuia este ineficient; compilatoarele in
-sine, prin natura lor de a trece de mai multe ori prin codul sursa si de a avea
-mai multe reprezentari intermediare pot genera cod nefolosit.
+Deși pentru un programator nu este natural să creeze cod
+nefolosit, acest lucru nu înseamnă ca principiul eliminării
+acestuia nu poate fi aplicat; compilatoarele în sine, prin modul
+lor de a trece de mai multe ori prin codul sursa și de a avea mai
+multe reprezentări intermediare, pot genera cod nefolosit.
 
-Limbajul C, prin natura sa de a include fisiere mot-a-mot, este o exemplificare
-foarte buna pentru acest lucru: un program de cateva linii, care afiseaza
-"Hello, world!" la ecran, ajunge sa aiba, inaintea eliminarea codului mort,
-cateva mii de linii si sute de functii nefolosite. Acest lucru se datoreaza
-nevoii includerii librariei standard.
+Limbajul C, prin includerea de fișiere mot-a-mot, este un exemplu
+bun pentru acest lucru: un program de câteva linii, care afișează
+"Hello, world!", ajunge sa aibă, înaintea eliminării codului mort,
+câteva mii de linii și sute de funcții nefolosite. Acest lucru se datorează
+nevoii includerii librăriei standard.
 
-Eliminarea metodelor si functiilor este un una dintre multele
-posibilitati de a scapa de cod nefolosit.
-In limbajul Java, din cauza natura acestuia care permita incarcarea si
-executarea de cod arbitrar la rulare, eliminarea functiile intr-un mod general
-corect este un procedeu imposibil - daca o functie pusa la dispozitie de o librarie
-este eliminata, nu se poate garanta ca pe viitor clasa care contine functie nu
-va fi incarcata dinamic intr-un mod neprevazut.
+\section{Eliminarea metodelor}
 
-%% \section{Features}
-%% \label{sec:features}
-%%
-%% The rest of this document shows off a few features of the template
-%% files.  Look at the source code to see which macros we used!
-%%
-%% The template is divided into \TeX{} files as follows:
-%% \begin{enumerate}
-%% \item \texttt{thesis.tex} is the main file.
-%% \item \texttt{extrapackages.tex} holds extra package includes.
-%% \item \texttt{layoutsetup.tex} defines the style used in this document.
-%% \item \texttt{theoremsetup.tex} declares the theorem-like environments.
-%% \item \texttt{macrosetup.tex} defines extra macros that you may find
-%%   useful.
-%% \item \texttt{introduction.tex} contains this text.
-%% \item \texttt{sections.tex} is a quick demo of each sectioning level
-%%   available.
-%% \item \texttt{refs.bib} is an example bibliography file.  You can use
-%%   Bib\TeX{} to quote references.  For example, read
-%%   \cite{bringhurst1996ets} if you can get a hold of it.
-%% \end{enumerate}
-%%
-%%
-%% \subsection{Extra package includes}
-%%
-%% The file \texttt{extrapackages.tex} lists some packages that usually
-%% come in handy.  Simply have a look at the source code.  We have
-%% added the following comments based on our experiences:
-%% \begin{description}
-%% \item[REC] This package is recommended.
-%% \item[OPT] This package is optional.  It usually solves a specific
-%%   problem in a clever way.
-%% \item[ADV] This package is for the advanced user, but solves a problem
-%%   frequent enough that we mention it. Consult the package's
-%%   documentation.
-%% \end{description}
-%%
-%% As a small example, here is a reference to the Section \emph{Features}
-%% typeset with the recommended \package{varioref} package:
-%% \begin{quote}
-%%   See Section~\vref{sec:features}.
-%% \end{quote}
-%%
-%%
-%% \subsection{Layout setup}
-%%
-%% This defines the overall look of the document -- for example, it
-%% changes the chapter and section heading appearance.  We consider this
-%% a `do not touch' area.  Take a look at the excellent \emph{Memoir}
-%% documentation before changing it.
-%%
-%% In fact, take a look at the excellent \emph{Memoir} documentation,
-%% full stop.
-%%
-%%
-%% \subsection{Theorem setup}
-%%
-%% This file defines a bunch of theorem-like environments.
-%%
-%% \begin{theorem}
-%%   An example theorem.
-%% \end{theorem}
-%%
-%% \begin{proof}
-%%   Proof text goes here.
-%% \end{proof}
-%%
-%% Note that the q.e.d.\ symbol moves to the correct place automatically
-%% if you end the proof with an \texttt{enumerate} or
-%% \texttt{displaymath}.  You do not need to use \verb-\qedhere- as with
-%% \package{amsthm}.
-%%
-%% \begin{theorem}[Some Famous Guy]
-%%   Another example theorem.
-%% \end{theorem}
-%%
-%% \begin{proof}
-%%   This proof
-%%   \begin{enumerate}
-%%   \item ends in an enumerate.
-%%   \end{enumerate}
-%% \end{proof}
-%%
-%% \begin{proposition}
-%%   Note that all theorem-like environments are by default numbered on
-%%   the same counter.
-%% \end{proposition}
-%%
-%% \begin{proof}
-%%   This proof ends in a display like so:
-%%   \begin{displaymath}
-%%     f(x) = x^2.
-%%   \end{displaymath}
-%% \end{proof}
-%%
-%%
-%% \subsection{Macro setup}
-%%
-%% For now the macro setup only shows how to define some basic macros,
-%% and how to use a neat feature of the \package{mathtools} package:
-%% \begin{displaymath}
-%%   \abs{a}, \quad \abs*{\frac{a}{b}}, \quad \abs[\big]{\frac{a}{b}}.
-%% \end{displaymath}
+Eliminarea metodelor și funcțiilor este un una dintre multele
+posibilități de a scapă de cod nefolosit.
+
+Predeul constă în îndepărtarea dintr-un program a funcțiilor și a
+metodelor care nu sunt niciodată apelate.
+
+Această lucrare va explora aceasta optimizare particulară, atât
+teoretic, cât și implementat in limbajul Java.
+
+\section{Structura lucrării}
+
+În prima parte a acestei lucrări voi formaliza în mod teoretic
+problema de a optimiza un program.
+În a doua parte voi descrie limbajul Java, și modul de
+funcționare a acestuia.
+În a treia parte voi detalia cum putem adapta teoria de
+optimizare pentru programe dezvoltate în limbajul Java.
+În ultima parte voi prezenta detaliile de implementare ale
+optimizatorului de Java.

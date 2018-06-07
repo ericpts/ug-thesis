@@ -1,0 +1,699 @@
+\chapter{Detaliile tehnice ale limbajului Java}
+
+În acest capitol vom detalia limbajul Java și modul de
+funcționare a acestuia.
+
+\section{Limbajul Java}
+
+Java este un limbaj de programare orientat pe obiecte. Acesta a fost
+dezvoltat de către Sun Microsystems (acum Oracle), iar prima versiune a
+apărut în anul 1995.
+
+Java s-a bazat pe sintaxa limbajului C, și a introdus noțiunea de
+``scrie o data, rulează peste tot'' (Eng. ``write once, run
+everywhere''). Spre deosebire de C și de C++, care trebuiesc compilate
+pentru fiecare platforma țintă, Java a avut avantajul ca trebuie
+compilat o singura data, și va merge garantat pe toate platformele
+suportate de limbaj.
+
+\section{Java Bytecode}
+
+Soluția limbajului Java pentru a fi independent de platforma este de
+transforma codul într-o reprezentare intermediara, în loc de direct în
+cod binary pentru o anumita arhitectura .
+
+Compilatorul Java (\texttt{javac}), transforma codul Java într-un limbaj
+intermediar, numit Java Bytecode.
+
+Acest limbaj este un limbaj low-level, destinat în mod exclusiv
+procesării de către mașini, spre deosebire de codul Java, care este
+destinat oamenilor.
+
+După ce compilatorul a procesat codul Java, provenit din fișiere .java în
+format text, acesta salvează rezultatul în fișiere de tip clasă (.class)
+în format binar.
+
+\section{JVM}
+
+Odată generate fișierele binare, acestea sunt executate pe o mașina
+virtuală specifica limbajului Java --- numită \texttt{JVM}
+(Eng. Java Virtual Machine).
+
+Această mașina virtuală are rolul de a citi fișierele de clasă binare și
+de a le interpreta.
+
+Mașina virtuală este implementata ca o ``mașină cu stiva'' (Eng. Stack
+machine), unde toate instrucțiunile limbajului bytecode interacționează
+cu datele de pe o stivă controlată de aplicație.
+
+Mașina virtuală însuși este implementata în C/C++, și este compilata în
+cod binar direct, dependent de arhitectura. Dezvoltatorii limbajului
+Java sunt responsabili pentru corectitudinea și siguranța mașinii
+virtuale, în timp ce dezvoltatorii de aplicații Java au garanția ca dacă
+codul lor Java este corect, atunci acesta va rula la fel, deterministic,
+pe orice platforma.
+
+În acestă privință, limbajul Java poate fi văzut ca un limbaj interpretat.
+Comparând cu alte limbaje populare interpretate, ca de exemplu Python,
+Ruby, sau Perl, ne-am aștepta ca și Java să fie la fel de încet ca
+acestea~\cite{language_benchmarks}.
+Totuși, Java obține performante mult mai bune decât
+acestea. Acest fapt se datorează compilării tocmai-la-timp (Eng.\
+just-in-time), în care atunci când interpretorul observa o secventa de
+cod care este interpretata repetitiv de foarte multe ori, va genera
+direct cod binary pentru aceasta.
+
+
+\section{Fișierele clasa}
+
+Fișierele de clasa Java sunt formate din 10
+secțiuni\cite{classfile_sections}:
+
+\begin{enumerate}
+	\item
+	      Constanta magică.
+	\item
+	      Versiunea fișierului.
+	\item
+	      Constantele clasei.
+	\item
+	      Permisiunile de acces.
+	\item
+	      Numele clasei din fișier.
+	\item
+	      Numele super clasei.
+	\item
+	      Interfețele pe care clasa le implementează.
+	\item
+	      Campările clasei.
+	\item
+	      Metodele clasei.
+	\item
+	      Atribute ale clasei.
+\end{enumerate}
+
+În continuare voi da o scurta descriere a formatului secțiunilor.
+
+\section{Secțiunile fișierelor clasa}
+
+\subsection{Magic}
+
+Toate fișierele clasa trebuiesc să înceapă cu un număr denumit constanta
+magică. Acesta este folosit pentru a identifica în mod unic ca acestea
+sunt într-adevăr fișiere clasa. Numărul magic are o valoare memorabila:
+reprezentarea hexadecimală este \texttt{0xCAFEBABE},
+
+\subsection{Versiunea}
+
+Versiunea unui fișier clasa este data de doua valori, versiunea majora
+\texttt{M} și versiunea minora \texttt{m}. Versiunea clasei este atunci
+reprezentata ca \texttt{M.m}. (e.g., \texttt{45.1}). Aceasta este
+folosită pentru a menține compatibilitatea în cazul modificărilor
+mașinii virtuale care interpretează clasa sau ale compilatorului care o
+generează.
+
+\subsection{Constantele clasei}
+
+Tabela de constante este locul unde sunt stocate valorile literale
+constante ale clasei:
+
+\begin{itemize}
+	\item Numere întregi.
+	\item Numere cu virgula mobilă.
+	\item Șiruri de caractere, care pot reprezenta la rândul lor:
+	      \begin{itemize}
+		      \item Nume de clase.
+		      \item Nume de metode.
+		      \item Tipuri ale metodelor.
+	      \end{itemize}
+	\item Informații compuse din datele anterioare:
+	      \begin{itemize}
+		      \item Referința către o metoda a unei clase.
+		      \item Referința către o constanta a unei clase.
+	      \end{itemize}
+\end{itemize}
+
+Toate celelalte tipuri de date compuse, cum ar fi metodele sau
+câmpurile, vor conține indecși în tabela de constante.
+
+Aproape toate tipurile de constante ocupă o singură poziție în tabela, însa, din
+motive istorice, unele constante ocupă două poziții.
+Tot din motive istorice, tabela este indexată de la 1, și nu
+de la 0, cum sunt celelalte.
+
+\subsection{Permisiunile de acces}
+
+Aceste permisiuni constau într-o masca de biți, care reprezintă
+operațiile permise pe această clasa:
+
+\begin{itemize}
+	\item dacă clasa este publica, și poate fi accesată din afara pachetului acesteia.
+	\item dacă clasa este finala, și dacă poate fi extinsă.
+	\item dacă invocarea metodelor din super clasă să fie tratata special.
+	\item dacă este de fapt o interfață, și nu o clasă.
+	\item dacă este o clasă abstractă și nu poate fi instanțiată.
+\end{itemize}
+
+\subsection{Clasa curentă}
+
+Reprezintă un indice în tabela de constante, unde sunt stocate
+informații despre clasa curentă.
+
+\subsection{Clasa super}
+
+Reprezintă un indice în tabela de constante, cu informații despre clasa
+din care a moștenit clasa curentă. Dacă este 0, înseamna că clasa
+curentă nu moștenește nimic: singura clasa fără o super clasa este
+Object.
+
+E.g. Pentru
+
+\begin{lstlisting}[language=Java]
+public class MyClass extends S implements I
+\end{lstlisting}
+
+Indicele corespunde lui \texttt{S}.
+
+\subsection{Interfețele}
+
+Reprezintă o colecție de indici în tabela de constante. Fiecare valoare
+de la acei indici constituie o interfața implementată în mod direct de
+către clasa curentă. Interfețele apar în ordinea declarată în fișierele
+Java.
+
+E.g. Pentru
+
+\begin{lstlisting}[language=Java]
+class MyClass extends S implements I1, I2
+\end{lstlisting}
+
+Primul indice ar corespunde lui \texttt{I1}, iar al doilea lui
+\texttt{I2}.
+
+\subsection{Câmpurile}\label{campurile}
+
+Reprezintă informații despre câmpurile (Eng. Fields) clasei:
+\begin{itemize}
+	\item Permisiunile de acces: dacă este public sau privat, etc.
+	\item Numele câmpului.
+	\item Tipul câmpului.
+	\item Alte atribute: dacă este depreciat, dacă are o valoare constantă, etc.
+\end{itemize}
+
+\subsection{Metodele}\label{metodele}
+
+Reprezintă informații despre toate metodele clasei, inclusiv
+constructorii:
+
+\begin{itemize}
+	\item Permisiuni de acces: dacă este publică sau privată,
+        dacă este finală , dacă este abstractă.
+	\item Numele metodei.
+	\item Tipul metodei.
+	\item În caz că nu este abstracta, codul metodei.
+	\item Alte atribute:
+	      \begin{itemize}
+		      \item Ce excepții poate arunca.
+		      \item Dacă este depreciată.
+	      \end{itemize}
+\end{itemize}
+
+Codul metodei este partea cea mai importantă, iar formatul acestuia
+urmează să fie detaliat ulterior.
+
+\subsection{Atributele}
+
+Reprezintă alte informații despre clasa, cum ar fi:
+\begin{itemize}
+	\item Clasele definite în interiorul acesteia.
+	\item În caz că este o clasă anonimă sau definită local, metoda în care este definită.
+	\item Numele fișierul sursă din care a fost compilată clasa.
+\end{itemize}
+
+\section{Tipuri de date}
+
+În continuare, voi descrie din punct de vedere tehnic tipurile de date
+întâlnite în fișierele de clasă.
+
+\subsection{Tipuri de baza}
+
+În formatul fișierelor clasa există trei tipuri elementare, toate bazate pe
+întregi. În caz că un întreg are mai mulți octeți, aceștia au ordinea de
+\texttt{big-endian}: cel mai semnificativ octet va fi mereu primul în
+memorie.
+
+\begin{longtable}[]{@{}ccc@{}}
+	\toprule
+	Nume        & Semantica                       & Echivalentul în C\tabularnewline
+	\midrule
+	\endhead
+	\texttt{u1} & întreg pe un octet, fără semn   & \texttt{unsigned\ char}
+	sau \texttt{uint8\_t}\tabularnewline
+	\texttt{u2} & întreg pe doi octeți, fără semn & \texttt{unsigned\ short}
+	sau \texttt{uint16\_t}\tabularnewline
+	\texttt{u4} & întreg pe un octet, fără semn   & \texttt{unsigned\ int} sau
+	\texttt{uint32\_t}\tabularnewline
+	\bottomrule
+\end{longtable}
+
+În codul sursă al proiectului, acestea sunt tratate astfel:
+
+\begin{lstlisting}[language=C++]
+using u1 = uint8_t;
+using u2 = uint16_t;
+using u4 = uint32_t;
+\end{lstlisting}
+
+\subsection{Tipuri compuse}
+
+\subsection{Constantele}
+
+Fiecare constantă din tabela de constante începe cu o etichetă de 1
+octet, care reprezintă datele și tipul structurii. Conținutul acesteia
+variază în funcție de etichetă, însa indiferent de etichetă, conținutul
+trebuie să aibă cel puțin 2 octeți.
+
+\subsubsection{CONSTANT\_Class}
+
+Corespunde valorii etichetei de 7 și conține un indice spre un alt camp
+în tabela de constante, de tipul \texttt{CONSTANT\_Utf8} --- un sir de
+caractere. Acel șir de caractere va conține numele clasei.
+
+\subsubsection{CONSTANT\_Fieldref}
+
+Corespunde valorii etichetei de 9 și conține o referință spre câmpul
+unei clase. Referința constă în doi indici, amândoi care arată spre
+tabela de contante. Primul indice arată spre o constantă
+\texttt{CONSTANT\_Class}, care reprezintă clasa sau interfața căreia
+aparține metoda. Al doilea indice arată spre o constantă
+\texttt{CONSTANT\_NameAndType}, care conține informații despre numele și
+tipul câmpului.
+
+\subsubsection{CONSTANT\_Methodref}
+
+Corespunde valorii etichetei de 10 și conține o referința spre metoda
+unei clase. Are o structura identica cu \texttt{CONSTANT\_Fieldref},
+doar ca primul indice arata neapărat spre o clasa, în timp ce al doilea
+indice arata spre numele și tipul metodei.
+
+\subsubsection{CONSTANT\_InterfaceMethodref}
+
+Corespunde valorii etichetei de 11 și conține o referința spre metoda
+unei interfețe. Are o structura identică cu
+\texttt{CONSTANT\_Methodref}, doar ca primul indice arata spre o
+interfața.
+
+\subsubsection{CONSTANT\_String}
+
+Corespunde valorii etichetei de 8 și reprezintă un sir de caractere.
+Conține un indice către o structura de tipul \texttt{CONSTANT\_Utf8}.
+
+\subsubsection{CONSTANT\_Integer}
+
+Corespunde valorii etichetei de 3 și conține un întreg pe 4 octeți.
+
+\subsubsection{CONSTANT\_Float}
+
+Corespunde valorii etichetei de 4 și conține un număr cu virgula mobilă
+pe 4 octeți.
+
+\subsubsection{CONSTANT\_Long}
+
+Corespunde valorii etichetei de 5 și conține un întreg pe 8 octeți. Din
+motive istorice, ocupă 2 spatii în tabela de constante.
+
+\subsubsection{CONSTANT\_Double}
+
+Corespunde valorii etichetei de 6 și conține un număr cu virgula mobilă
+pe 8 octeți. Din motive istorice, ocupă 2 spatii în tabela de constante.
+
+\subsubsection{CONSTANT\_NameAndType}
+
+Corespunde valorii etichetei de 12. Descrie numele și tipul unui camp
+sau al unei metode, fără informații despre clasa. Conține doi indici,
+amândoi către structuri de tipul \texttt{CONSTANT\_Utf8}. Primul
+reprezinta numele, iar al doilea tipul.
+
+\subsubsection{CONSTANT\_Utf8}
+
+Corespunde valorii etichetei de 1. Reprezintă un sir de caractere
+encodat în formatul UTF-8. Conține un întreg \texttt{length}, de tipul
+\texttt{u2}, și apoi \texttt{length} octeți care descriu șirul în sine.
+Din cauza ca este encodat ca UTF-8, un singur caracter poate fi format
+din mai multi octeți.
+
+\subsubsection{CONSTANT\_MethodHandle}
+
+Corespunde valorii etichetei de 15 și conține o referințe către un camp,
+o metoda de clasa, sau o metoda de interfața.
+
+\subsubsection{CONSTANT\_MethodType}
+
+Corespunde valorii etichetei de 16 și conține un indice către o
+constanta \texttt{CONSTANT\_Utf8}, ce reprezinta tipul unei metode.
+
+\subsubsection{CONSTANT\_InvokeDynamic}
+
+Corespunde valorii etichetei de 18 și este folosit de către \texttt{JVM}
+pentru a invoca o metodă polimorfică.
+
+În cod \texttt{C++}, am reprezentat \texttt{cp\_info} astfel:
+
+\begin{lstlisting}[language=C++]
+struct cp_info {
+    enum class Tag : u1 {
+        CONSTANT_Class = 7,
+        CONSTANT_Fieldref = 9,
+        CONSTANT_Methodref = 10,
+        CONSTANT_InterfaceMethodref = 11,
+        CONSTANT_String = 8,
+        CONSTANT_Integer = 3,
+        CONSTANT_Float = 4,
+        CONSTANT_Long = 5,
+        CONSTANT_Double = 6,
+        CONSTANT_NameAndType = 12,
+        CONSTANT_Utf8_info = 1,
+        CONSTANT_MethodHandle = 15,
+        CONSTANT_MethodType = 16,
+        CONSTANT_InvokeDynamic = 18,
+    };
+
+    Tag tag;
+    std::vector<u1> data;
+};
+\end{lstlisting}
+
+Iar structurile folosite pentru obiectivul propus au fost reprezentate
+astfel:
+
+\begin{lstlisting}[language=C++]
+struct CONSTANT_Methodref_info {
+    cp_info::Tag tag;
+    u2 class_index;
+    u2 name_and_type_index;
+};
+struct CONSTANT_Class_info {
+    cp_info::Tag tag;
+    u2 name_index;
+};
+struct CONSTANT_NameAndType_info {
+    cp_info::Tag tag;
+    u2 name_index;
+    u2 descriptor_index;
+};
+\end{lstlisting}
+
+\paragraph{\texorpdfstring{\texttt{field\_info}}{field\_info}}\label{field_info}
+
+Fiecare câmp din cadrul unei clase este reprezentat printr-o structura
+de tipul \texttt{field\_info}.
+
+În cod \texttt{C++}, aceasta structura a fost reprezentata astfel:
+
+\begin{lstlisting}[language=C++]
+struct field_info {
+    u2 access_flags;
+    u2 name_index;
+    u2 descriptor_index;
+    u2 attributes_count;
+    std::vector<attribute_info> attributes;
+};
+\end{lstlisting}
+
+Unde:
+\begin{itemize}
+	\item \texttt{name\_index} este o intrare în tabela de constante unde se afla o constanta de tipul \texttt{CONSTANT\_Utf8}.
+	\item \texttt{descriptor\_index} arata spre o constanta de tipul \texttt{CONSTANT\_Utf8} și reprezinta tipul câmpului.
+\end{itemize}
+
+\paragraph{\texorpdfstring{\texttt{method\_info}}{method\_info}}\label{method_info}
+
+Fiecare metoda a unei clase/interfețe este descrisa prin aceasta
+structura.
+
+În cod \texttt{C++}, am implementat-o asa:
+
+\begin{lstlisting}[language=C++]
+struct method_info {
+    u2 access_flags;
+    u2 name_index;
+    u2 descriptor_index;
+    u2 attributes_count;
+    std::vector<attribute_info> attributes;
+};
+\end{lstlisting}
+
+Unde \texttt{name\_index} și \texttt{descriptor\_index} au aceeași
+interpretare ca și la \texttt{field\_info}.
+
+Dacă metoda nu este abstracta, atunci în vectorul \texttt{attributes} se
+va găsi un atribut de tipul \texttt{Code}, care conține bytecode-ul
+corespunzător acestei metode.
+
+\paragraph{\texorpdfstring{\texttt{attribute\_info}}{attribute\_info}}\label{attribute_info}
+
+În \texttt{C++}, a fost implementata astfel:
+
+\begin{lstlisting}[language=C++]
+struct attribute_info {
+    u2 attribute_name_index;
+    u4 attribute_length;
+    std::vector<u1> info;
+};
+\end{lstlisting}
+
+Numele atributului determina modul în care octeții din vectorul
+\texttt{info} sunt interpretați.
+
+\subsubsection{Atributul de cod}
+
+Pentru intențiile noastre, atributul de interes este cel de cod:
+
+\subparagraph{\texorpdfstring{\texttt{Code\_attribute}}{Code\_attribute}}\label{code_attribute}
+
+\begin{lstlisting}[language=C++]
+struct Code_attribute {
+    u2 attribute_name_index;
+    u4 attribute_length;
+
+    u2 max_stack;
+    u2 max_locals;
+
+    u4 code_length;
+    std::vector<u1> code;
+
+    u2 exception_table_length;
+    struct exception {
+        u2 start_pc;
+        u2 end_pc;
+        u2 handler_pc;
+        u2 catch_type;
+    };
+    std::vector<exception> exception_table; // of length exception_table_length.
+    u2 attributes_count;
+    std::vector<attribute_info> attributes; // of length attributes_count.
+};
+\end{lstlisting}
+
+Aceasta structura este esențiala pentru implementarea optimizării,
+intricat ea ne permită să determinam metodele apelate din cadrul unei secvente de cod.
+În continuare, o voi descrie detaliat:
+
+\begin{itemize}
+	\tightlist
+	\item
+	      \texttt{max\_stack}: Reprezintă adâncimea maximă a stivei mașinii
+	      virtuale când această bucată de cod este interpretată.
+	\item
+	      \texttt{max\_locals}: Reprezintă numărul maxim de variabile locale
+	      alocate în același timp când aceasta bucata de cod este interpretata.
+	\item
+	      \texttt{code}: Codul metodei.
+	\item
+	      \texttt{exception\_table}: Excepțiile pe care le poate arunca metoda.
+\end{itemize}
+
+\subsubsection{Code}
+
+Vectorul \texttt{code} din cadrul atributului \texttt{Code} reprezinta
+bytecode-ul propriu-zis al metodei.
+
+Acest vector conține instrucțiunile care sunt executate de către mașina
+virtuală.
+
+JVM-ul rulează ca o mașina cu stiva, iar toate instrucțiunile operează
+pe aceasta stiva. Reuitatul rulării unei instrucțiuni este modificarea
+stivei: scoaterea și adăugarea de elemente în vraful acesteia.
+
+Instrucțiunile au în general formatul~\cite{instruction_format}
+
+\begin{verbatim}
+nume_instr
+operand1
+operand2
+...
+\end{verbatim}
+
+Cu un număr variabil de operanzi, prezenți în mod explicit în vectorul
+de \texttt{cod}.
+
+Fiecărei instrucțiuni ii corespunde un octet, denumit opcode. Fiecare
+operand este fie cunoscut la compilare, fie calculat în mod dinamic la
+rulare.
+
+Cele mai multe operații nu au niciun operand dat în mod explicit la
+nivelul instrucțiunii --- ele lucrează doar cu valorile din vârful stivei
+la momentul execuției codului.
+
+De exemplu:
+
+Instrucțiunea \texttt{imul} are octetul 104 sau 0x68.
+Acestea da pop la doua valori din vârful stivei: \texttt{value1} și
+\texttt{value2}. Ambele valori trebuie să fie de tipul \texttt{int}.
+Rezultatul este înmulțirea celor doua valori:
+\texttt{result\ =\ value1\ *\ value2}, și este pus în vârful stivei.
+
+Dintre cele peste o suta de instrucțiuni, noi suntem preocupați doar de
+5 dintre acestea: cele care au de a face cu invocarea unei metode.
+
+\textbf{invokedynamic}
+
+Format:
+\begin{verbatim}
+invokedynamic
+index1
+index2
+0
+0
+\end{verbatim}
+
+Opcode-ul corespunzător acestei instrucțiuni este 186 sau
+0xba.
+
+Index1 și index2 sunt doi octeți. Aceștia sunt compuși în
+\begin{lstlisting}
+index = (index1 << 8) | index2
+\end{lstlisting}
+Unde \texttt{<<} reprezinta shiftare pe biți, iar \texttt{|}
+reprezinta operația de sau pe biți.
+
+Indicele compus reprezinta o intrare în tabela de constante. La locația
+respectiva trebuie să se afle o structura de tipul
+\texttt{CONSTANT\_MethodHandle}
+
+\textbf{invokeinterface}
+
+Format:
+\begin{verbatim}
+invokeinterface
+index1
+index2
+count
+0
+\end{verbatim}
+
+Opcode-ul corespunzător este 185 sau 0xb9.
+\texttt{index1} și \texttt{index2} sunt folosiți, în mod similar ca la
+\texttt{invokedynamic}, pentru a construi un indice în tabela
+de constante.
+
+La poziția respectivă în tabela, trebuie să se găsească o structura de
+tipul \texttt{CONSTANT\_Methodref}.
+
+\texttt{count} trebuie să fie un octet fără semn diferit de 0. Acest
+operand descrie numărul argumentelor metodei, și este necesar din motive
+istorice (aceasta informație poate fi dedusa din tipul metodei).
+
+\textbf{invokespecial}
+
+Format:
+\begin{verbatim}
+invokespecial
+index1
+index2
+\end{verbatim}
+
+Opcode-u corespunzător este 183 sau 0xb7. La fel ca la
+\texttt{invokeinterface}, este format un indice în tabela de constante,
+către o structura \texttt{CONSTANT\_Methodref}.
+
+Aceasta instrucțiune este folosită pentru a invoca constructorii
+claselor.
+
+\textbf{invokestatic}
+
+Format:
+\begin{verbatim}
+invokestatic
+index1
+index1
+\end{verbatim}
+
+Opcode-ul corespunzător este 184 sau 0xb8.
+Instrucțiunea este invocată pentru a invoke o metoda statica a unei
+clase.
+
+La fel ca la \texttt{invokeinterface}, este construit un indice compus,
+și folosit pentru a indexa tabela de constante.
+
+\textbf{invokevirtual}
+
+Format:
+\begin{verbatim}
+invokevirtual
+index1
+index1
+\end{verbatim}
+
+Opcode-ul corespunzător este 182 sau 0xb6, iar
+interpretarea este la fel ca la \texttt{invokeinterface}.
+Aceasta este cea mai comuna instrucțiune de invocare de funcții.
+
+În \texttt{C++}, am reprezentat aceste instrucțiuni de interes astfel:
+
+\begin{lstlisting}[language=C++]
+enum class Instr {
+    invokedynamic = 0xba,
+    invokeinterface = 0xb9,
+    invokespecial = 0xb7,
+    invokestatic = 0xb8,
+    invokevirtual = 0xb6,
+};
+\end{lstlisting}
+
+\subsection{ClassFile}\label{classfile}
+
+Folosind definițiile anterioare, putem descrie un fișier de clasă binar
+în C++:
+
+\begin{lstlisting}[language=C++]
+struct ClassFile {
+    u4 magic; // Should be 0xCAFEBABE.
+
+    u2 minor_version;
+    u2 major_version;
+
+    u2 constant_pool_count;
+    std::vector<cp_info> constant_pool;
+
+    u2 access_flags;
+
+    u2 this_class;
+    u2 super_class;
+
+    u2 interface_count;
+    std::vector<interface_info> interfaces;
+
+    u2 field_count;
+    std::vector<field_info> fields;
+
+    u2 method_count;
+    std::vector<method_info> methods;
+
+    u2 attribute_count;
+    std::vector<attribute_info> attributes;
+};
+\end{lstlisting}
+
+Pentru a vedea un fișier clasa analizat în detaliu, va puteți
+uita la appendix-ul studiu de caz.

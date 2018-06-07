@@ -5,25 +5,25 @@
 
 \section{Formalizarea problemei}
 
-Fie programul \s{P} un proiect Java, format dintr-o multime de fisere
+Fie programul \s{P} un proiect Java, format dintr-o mulțime de fișiere
 clasa.  Scopul optimizatorului este sa creeze un program \s{P'}, care
-sa se comporte identic cu \s{P}, si sa fie mai bun decat
+sa se comporte identic cu \s{P}, și sa fie mai bun decât
 \s{P} pentru o anumita metrica \s{M}.
 
-\section{Diferentierea programelor}
+\section{Diferențierea programelor}
 
-Doua programe \s{P} si \s{Q} pot fi diferentiate daca
+Doua programe \s{P} și \s{Q} pot fi diferențiate dacă
 exista un input \s{I} pentru care \s{P} rulat pe \s{I}
-si \s{Q} rulat pe \s{I} dau rezultate diferite.
+și \s{Q} rulat pe \s{I} dau rezultate diferite.
 
 \(\exists \mathcal{I}\) pentru care \(\mathcal{P}(\mathcal{I}) \ne
 \mathcal{Q}(\mathcal{I}) \)
 
-Unde prin rezultat intelegem atat output-ul programului, in
-sensul pur matematic, cat si efectele laterale generate, care au
-efect asupra mediului unde ruleaza programul.
+Unde prin rezultat înțelegem atât output-ul programului, in
+sensul pur matematic, cat și efectele laterale generate, care au
+efect asupra mediului unde rulează programul.
 
-Daca doua programe nu pot fi diferentiate (i.e., pentru toate
+Dacă doua programe nu pot fi diferențiate (i.e., pentru toate
 input-urile \s{I}, cele doua programe se comporta la fel), vom
 spune despre ele ca sunt echivalente.
 
@@ -36,33 +36,33 @@ def P(a: int, b: int) -> int:
     return a
 \end{lstlisting}
 
-si fie \s{Q}
+Și fie \s{Q}
 
 \begin{lstlisting}[language=Python,label={programul_q}]
 def Q(a: int, b: int) -> int:
     return a + b
 \end{lstlisting}
 
-atunci pentru orice a si b din $\N$, \s{P}(a, b) va fi egal cu
+Atunci pentru orice a și b din $\N$, \s{P}(a, b) va fi egal cu
 \s{Q}(a, b).
 
 \section{Metrici de optimizare}
 
-In contextul optimizarii de programe este nevoie sa definim ce
-inseamn ca dintre doua programe echivalente \s{P} si \s{Q}, \s{P}
-sa fie mai performant decat \s{Q}.
+In contextul optimizării de programe este nevoie sa definim ce
+înseamnă ca dintre doua programe echivalente \s{P} și \s{Q}, \s{P}
+sa fie mai performant decât \s{Q}.
 Cele mai folosite doua metrici sunt metrica de viteza de
-executie a unui program, si metrica de dimensiune a programului.
+execuție a unui program, și metrica de dimensiune a programului.
 
 \subsection{Metrica de viteza}
 
 \subsubsection{Timpul de rulare}
 
 Vom defini timpul de rulare al unui program \s{P} pe un input
-\s{I} ca fiind diferenta de timp dintre cand programul isi incepe
-executia, pana cand acesta isi termina executia.
+\s{I} ca fiind diferența de timp dintre când programul își începe
+execuția, pana când acesta își termina execuția.
 
-Pe sistemele *nix, un mod usor a masura timpul de rulare este
+Pe sistemele *nix, un mod ușor a măsura timpul de rulare este
 folosind comanda $time$:
 
 \begin{lstlisting}[language=Bash]
@@ -78,27 +78,27 @@ timpul de rulare al programului \s{P} input-ul \s{I}.
 
 \subsubsection{Comparare bazata pe timpul de rulare}
 
-Fie doua programe echivalente \s{P} si \s{Q}.
+Fie doua programe echivalente \s{P} și \s{Q}.
 
-Vom spune ca \s{P} este mai rapid decat \s{Q} pe baza timpului de
-rulare daca timpul de rulare mediu al lui \s{P} este mai mic
-decat timpul de rulare mediu al lui \s{Q}:
+Vom spune ca \s{P} este mai rapid decât \s{Q} pe baza timpului de
+rulare dacă timpul de rulare mediu al lui \s{P} este mai mic
+decât timpul de rulare mediu al lui \s{Q}:
 
 \[
 	\sum_{\mathcal{I} \ input} time(\mathcal{P}, \mathcal{I}) <
 	\sum_{\mathcal{I} \ input} time(\mathcal{Q}, \mathcal{I})
 \]
 
-Pe baza acestei comparatii, putem defini o relatie de ordine
-asupra multimii programelor: \s{P} $\textless$ \s{Q} ddaca \s{P}
-este mai rapid decat \s{Q}.
+Pe baza acestei comparații, putem defini o relație de ordine
+asupra mulțimii programelor: \s{P} $\textless$ \s{Q} dacă \s{P}
+este mai rapid decât \s{Q}.
 
-\subsubsection{Problema optimizarii pe baza metricii de viteza}
+\subsubsection{Problema optimizării pe baza metricii de viteza}
 
-Avand definita relatia de ordine, problema optimizarii pe
+Având definita relația de ordine, problema optimizării pe
 baza metricii de viteza este:
 
-Dandu-se un program \s{P}, sa se gaseasca \s{Q} ca cel mai rapid
+Dându-se un program \s{P}, sa se găsească \s{Q} ca cel mai rapid
 program echivalent cu \s{P}:
 
 \[
@@ -111,34 +111,34 @@ program echivalent cu \s{P}:
 \subsubsection{Dimensiunea unui program}
 
 Pentru un program \s{P}, vom defini dimensiunea acestuia ca fiind
-suma dimensiunilor tuturor instructiunilor acestui program:
+suma dimensiunilor tuturor instrucțiunilor acestui program:
 
 \[
 	size(\mathcal{P}) = \sum_{i\ \in\ \mathcal{P}} instruction\_size(i)
 \]
 
-Unde prin \( instruction\_size(i) \) intelegem numarul de octeti
-ocupati de instructiunea $i$.
+Unde prin \( instruction\_size(i) \) înțelegem numărul de octeți
+ocupați de instrucțiunea $i$.
 
-De exemplu, pentru limbajul Java, instructiunea $invokedynamic$
-ocupa 5 octeti, in timp ce instructiunea $dmul$ ocupa un singur
+De exemplu, pentru limbajul Java, instrucțiunea $invokedynamic$
+ocupa 5 octeți, in timp ce instrucțiunea $dmul$ ocupa un singur
 octet.
 
 \subsubsection{Comparare bazata pe dimensiunea programelor}
 
-Pentru doua programe \s{P} si \s{Q}, vom spune ca \s{P} este mai
-mic decat \s{Q} ddaca \(size(\mathcal{P}) < size(\mathcal{Q})\).
+Pentru doua programe \s{P} și \s{Q}, vom spune ca \s{P} este mai
+mic decât \s{Q} dacă \(size(\mathcal{P}) < size(\mathcal{Q})\).
 
-Similar ca la metrica de viteza, putem defini o relatie de ordine
-pe multimea programelor.
+Similar ca la metrica de viteza, putem defini o relație de ordine
+pe mulțimea programelor.
 
-\subsubsection{Problema optimizarii pe baza metricii de
+\subsubsection{Problema optimizării pe baza metricii de
 	dimensiune}
 
-Avand definita relatia de ordine, problema optimizarii pe
-baza metricii de dimensiune este aceeasi ca la viteza:
+Având definită relația de ordine, problema optimizării pe
+baza metricii de dimensiune este aceeași ca la viteza:
 
-Dandu-se un program \s{P}, sa se gaseasca \s{Q} ca cel mai mic
+Dându-se un program \s{P}, sa se găsească \s{Q} ca cel mai mic
 program echivalent cu \s{P}:
 
 \[
@@ -146,17 +146,17 @@ program echivalent cu \s{P}:
 	\text{ echivalent cu  } \mathcal{Q}
 \]
 
-\section{Discutie asupra metricilor}
+\section{Discuție asupra metricilor}
 
 Pentru cele mai multe cazuri, cele doua metrici sunt corelate --
-o reducere a timpului de rulare aduce cu ea si o reducere a
+o reducere a timpului de rulare aduce cu ea și o reducere a
 dimensiunii programului.
 
-Totodata, exista cazuri cand cele doua metrici sunt contrare.
-Un exemplu clasic este tehnica de "derularea buclelor" (eng. loop
+Totodată, exista cazuri când cele doua metrici sunt contrare.
+Un exemplu clasic este tehnica de "derularea buclelor" (Eng. Loop
 unrolling).
-Aceasta consta in explicitarea unei bucle cu un numar cunoscut
-de iteratii:
+Aceasta consta in explicitarea unei bucle cu un număr cunoscut
+de iterații:
 
 Programul
 \begin{lstlisting}[language=Python]
@@ -165,7 +165,7 @@ for i = 1:10:
     s = inc(s)
 \end{lstlisting}
 
-va fi optimizat pentru viteza in
+Va fi optimizat pentru viteza in
 \begin{lstlisting}[language=Python]
 s = 0
 s = inc(s))
@@ -173,38 +173,38 @@ s = inc(s))
 s = inc(s))
 \end{lstlisting}
 
-in timp ce aceasta optimizare va creste numarul de instructiuni
-al programului, deci si dimensiunea acestuia.
+În timp ce aceasta optimizare va creste numărul de instrucțiuni
+al programului, deci și dimensiunea acestuia.
 
-Deoarece cele mai multe programe utilizate nu ruleaza pe medii
-constranse de memorie, tipul de optimizare folosit aproape
-intotdeauna este cel de viteza: este mult mai util daca un
-program ruleaza de 2 ori mai repede, decat daca acesta ocupa de
-2 ori mai putin.
+Deoarece cele mai multe programe utilizate nu rulează pe medii
+constrânse de memorie, tipul de optimizare folosit aproape
+întotdeauna este cel de viteza: este mult mai util dacă un
+program rulează de 2 ori mai repede, decât dacă acesta ocupa de
+2 ori mai puțin.
 
-Acest lucru se datoreaza faptului ca performanta memoriei (pretul
-per unitate de memorie) a continuat sa scada in ultimul deceniu,
-in timp ce performanta procesoarelor (numarul de instructiuni
+Acest lucru se datorează faptului ca performanta memoriei (prețul
+per unitate de memorie) a continuat sa scadă in ultimul deceniu,
+in timp ce performanta procesoarelor (numărul de instrucțiuni
 executate per secunda) a stagnat.
 
 Asa cum se poate observa in figura \ref{fig:cpu_and_gpu_trends},
-trendul care urma legea lui Moore \cite{moores_law} a inceput sa
-se opreasca. Pe de alta parte, eficienta memoriei calculatoarelor
-si-a continuat trendul de crestere, asa cum se poate observa in
-continuat sa creasca, asa cum se poate observa in figura
+trendul care urma legea lui Moore \cite{moores_law} a început sa
+se oprească. Pe de alta parte, eficienta memoriei calculatoarelor
+și-a continuat trendul de creștere, asa cum se poate observa in
+continuat sa crească, asa cum se poate observa in figura
 \ref{fig:memory_trends}.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{cpu_and_gpu_trends}
-	\caption{Evolutia puterii de procesare\cite{cpu_and_gpu_trends} }
+	\caption{Evoluția puterii de procesare\cite{cpu_and_gpu_trends} }
 	\label{fig:cpu_and_gpu_trends}
 \end{figure}
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{memory_trends}
-	\caption{Evolutia puterii de procesare\cite{memory_trends} }
+	\caption{Evoluția puterii de procesare\cite{memory_trends} }
 	\label{fig:memory_trends}
 \end{figure}
 
