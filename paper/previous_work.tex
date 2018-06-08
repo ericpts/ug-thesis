@@ -1,0 +1,128 @@
+\section{Muncă anterioară}
+
+\subsection{C si C++}
+
+Compilatorul gcc este capabil să elimine funcțiile nefolosite,
+însă acest comportament nu este default.
+
+Pentru exemplificare, vom considera programul
+\begin{lstlisting}[language=C, title=main.c,
+label=c:program]
+#include <stdio.h>
+
+void foo()
+{
+    puts("in foo!");
+}
+
+void bar()
+{
+    puts("in bar!");
+}
+
+int main()
+{
+    foo();
+    return 0;
+}
+\end{lstlisting}
+
+Dacă îl compilăm cu \textbf{gcc} folosind opțiunea \texttt{-Os}
+(permite optimizările pentru dimensiune), atunci binarul generat
+va conține atât funcția \texttt{foo}, care este apelată din
+\texttt{main}, cât și funcția \texttt{bar}, care nu este
+niciodată folosită.
+
+\begin{lstlisting}[language=Bash]
+$ gcc main.c -Os
+$ nm a.out | grep "foo"
+000000000000064a T foo
+$ nm a.out | grep "bar"
+0000000000000656 T bar
+$
+\end{lstlisting}
+
+Acest lucru se datorează faptului că optimizatorul pentru C
+lucrează cu simboluri, nu direct cu funcții.  Diferența este că
+un simbol poate reprezenta atât o funcție, cât și o variabilă.
+Așadar, când optimizatorul decidă dacă să elimine un simbol,
+acesta nu consideră dacă acel simbol este o funcție sau un obiect
+(o variabilă se mai numește și obiect).
+
+În limbajul C, un obiect global trebuie să fie inițializat cu o
+valoare constantă (i.e., poate fi evaluată la compilare), ceea ce
+înseamnă că inițializările nu pot avea efecte laterale
+\cite{c_static_init}.
+
+Pe de altă parte, în limbajul C++, inițializările pot conține
+expresii arbitrare, care necesită evaluarea acestora la timpul
+rulării \cite{cpp_static_init} și care pot avea efecte laterale.
+
+Optimizarea de a elimina funcțiile nefolosite nu este activată în
+mod implicit deoarece optimizatorul folosit în gcc lucrează și
+pentru C, dar și pentru C++.
+
+Această optimizare ar altera comportamentul unui program C++ care
+folosește efecte laterale la inițializare, întrucât dacă
+optimizatorul elimină din program un simbol care corespunde unei
+variabile, acea variabilă nu mai este inițializată, la rularea
+programului, iar efectul lateral corespunzător inițializării ei
+nu se mai realizează.
+
+\subsubsection{Opțiuni speciale date compilatorului}
+
+Optimizarea de a elimina simboluri nefolosite nu este aplicabilă
+oricărui program. Totodată, dacă programatorul îi garantează
+compilatorului că programul nu folosește inițializări cu efecte
+laterale, compilatorul gcc este capabil de a elimina funcții
+nefolosite.
+
+Vom folosi în continuare programul definit la \ref{c:program}.
+Conform \cite{c_enable_optimization}, este necesar să pasăm
+opțiuni suplimentare compilatorului, iar acesta va elimina
+funcția nefolosită:
+
+\begin{lstlisting}[language=Bash]
+$ gcc main.c -Wl,-static -Wl,--gc-sections -fdata-sections -ffunction-sections -Os
+$ nm a.out | grep "foo"
+0000000000400acd T foo
+$ nm a.out | grep "bar"
+$
+\end{lstlisting}
+
+În concluzie, pentru limbajele C și C++, este nevoie ca
+programatorul să garanteze că aplicarea optimizării păstrează
+corectitudinea programului.
+
+\subsection{Java}
+
+Compilatorul standard de Java, \texttt{javac}, este incapabil să
+efectueaze optimizarea de a elimina metode nefolosite.
+
+În limbajul C, compilatorul gcc știe că programul își începe
+execuția din funcția \texttt{main}, și că acesta este singurul
+mod în care programul poate fi folosit.
+
+În limbajul Java, compilatorul \texttt{javac}, lucrează cu câte
+un fișier o data: acesta nu are conceptul de proiect sau
+executabil, ci doar de fișiere clasă.
+Compilatorul nu cunoaște ce funcții pot fi apelate, sau
+din ce locuri, deci nu poate efectua nicio optimizare.
+
+\subsubsection{Android}
+
+Deși codul Java arbitrar este imposibil de optimizat, structuri
+particulare de proiecte permit eliminarea de cod nefolosit.
+
+Acest lucru este folosit pentru aplicațiile dezvoltate pentru
+sistemul de operare Android \cite{android_proguard}.
+Programul ales pentru a realiza sarcina de optimizare este
+\texttt{Proguard} \cite{proguard}.
+
+Soluția acestui program pentru a rezolva problema pe care o
+întămpină \texttt{javac} este să îi ceară programatorului să
+specifice în mod explicit modurile în care programul este rulat
+(e.g., de unde poate începe execuția).
+
+Având această informație, \texttt{proguard} poate analiza static
+proiectul pentru a deduce care metode pot fi eliminate.
