@@ -64,9 +64,9 @@ private:
     // Private utilities.
 
     // Returns whether the two classes are in some way related:
-    // there is a path in the undirected inheritance graph from one to the other.
-    bool classes_are_related(
-            const ClassFile& cf1, const ClassFile& cf2) const;
+    // there is a path in the directed inheritance graph from down to up.
+    bool class_is_descendant(
+            const ClassFile& down, const ClassFile& up) const;
 
 };
 

@@ -1,0 +1,34 @@
+\chapter {Aplicație și concluzii}
+
+În acest capitol voi prezenta aplicația și concluziile lucrării.
+
+\section {Aplicația}
+
+Programul implementat în C++ funcționează în mod corect: formează graful de
+apelări ale metodelor și elimină metodele nefolosite.
+
+\subsection {Rulare}
+
+\begin{lstlisting}[language=Bash]
+
+Programul vine cu opțiunea --help, care specifică modul de utilizare.
+
+$ ./build/thesis --help
+JVM Optimizer
+Usage: ./build/thesis [OPTIONS] classfiles...
+
+Positionals:
+  classfiles [File] ... (REQUIRED)
+                              All of the class files from the project
+
+Options:
+  -h,--help                   Print this help message and exit
+  --classfiles [File] ... (REQUIRED)
+                              All of the class files from the project
+  --out Dir Excludes: --in-place
+                              Where to save the modified class files
+  --in-place Excludes: --out  Whether to save the class files in-place
+
+\end{lstlisting}
+
+

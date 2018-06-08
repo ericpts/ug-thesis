@@ -70,9 +70,6 @@ Method Project::main_method() const
 {
     std::optional<Method> maybe_main_method;
     for (const ClassFile &file : this->m_files) {
-        for (const Method &m : Method::all_from_classfile(file)) {
-            std::cerr << m.format() << ", ";
-        }
         for (int i = 0; i < file->method_count; ++i) {
             if (!file->cp_index_is_string(file->methods[i].name_index,
                                           "main")) {
@@ -177,7 +174,7 @@ std::vector<Method> Project::sibling_methods(const Method& m) const
     {
         return m.method_type() == o.method_type()
             and m.method_name() == o.method_name()
-            and classes_are_related(o.class_file(), m.class_file());
+            and class_is_descendant(o.class_file(), m.class_file());
     };
 
     std::vector<Method> ret;
@@ -185,15 +182,26 @@ std::vector<Method> Project::sibling_methods(const Method& m) const
         for (const Method& o : Method::all_from_classfile(cf)) {
             if (method_is_sibling(o)) {
                 ret.push_back(o);
+            } else {
+                std::cerr << m.format() << " and " << o.format() << " are not sibling methods\n";
             }
         }
     }
+    std::cerr << "Found the following sibling methods for " << m.format() << ": ";
+    for (const Method& m : ret) {
+        std::cerr << m.format() << "; ";
+    }
+    std::cerr << "\n";
     return ret;
 }
 
-bool Project::classes_are_related(const ClassFile& one, const ClassFile& other) const
+bool Project::class_is_descendant(const ClassFile& down, const ClassFile& up) const
 {
-    std::vector<ClassFile> reachable = {one};
+    if (down == up) {
+        return true;
+    }
+
+    std::vector<ClassFile> reachable = {down};
     auto direct_links = [this] (const ClassFile& cf) -> std::vector<ClassFile>
     {
         std::vector<ClassFile> ret;
@@ -232,7 +240,13 @@ bool Project::classes_are_related(const ClassFile& one, const ClassFile& other) 
             reachable.push_back(next);
         }
     }
-    return is_reachable(other);
+    if (is_reachable(up)) {
+        std::cerr << down->class_name() << " is a descendant of " << up->class_name() << "\n";
+        return true;
+    } else {
+        std::cerr << down->class_name() << " is NOT a descendant of " << up->class_name() << "\n";
+        return false;
+    }
 }
 
 
@@ -242,7 +256,9 @@ std::vector<Method> Project::method_call_graph(const Method& m) const
     auto add_method = [&ret, this] (const Method& m) -> void
     {
         for (const Method &o : this->sibling_methods(m)) {
-            ret.push_back(o);
+            if (o.method_name() != "<init>") {
+                ret.push_back(o);
+            }
         }
     };
     add_method(m);
