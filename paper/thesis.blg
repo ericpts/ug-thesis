@@ -3,50 +3,52 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 The style file: plain.bst
 Database file #1: refs.bib
+Warning--to sort, need author or key in c_static_init
+Warning--to sort, need author or key in cpp_static_init
 Warning--to sort, need author or key in language_benchmarks
 Warning--to sort, need author or key in classfile_sections
 Warning--to sort, need author or key in instruction_format
 Warning--to sort, need author or key in java_main
 Warning--to sort, need author or key in javap
-You've used 11 entries,
+You've used 16 entries,
             2118 wiz_defined-function locations,
-            549 strings with 5293 characters,
-and the built_in function-call counts, 2314 in all, are:
-= -- 222
-> -- 53
+            566 strings with 5773 characters,
+and the built_in function-call counts, 3246 in all, are:
+= -- 310
+> -- 76
 < -- 0
-+ -- 27
-- -- 14
-* -- 117
-:= -- 339
-add.period$ -- 25
-call.type$ -- 11
-change.case$ -- 35
++ -- 38
+- -- 20
+* -- 143
+:= -- 474
+add.period$ -- 38
+call.type$ -- 16
+change.case$ -- 51
 chr.to.int$ -- 0
-cite$ -- 16
-duplicate$ -- 89
-empty$ -- 261
-format.name$ -- 14
-if$ -- 518
+cite$ -- 23
+duplicate$ -- 124
+empty$ -- 373
+format.name$ -- 20
+if$ -- 734
 int.to.chr$ -- 0
-int.to.str$ -- 11
+int.to.str$ -- 16
 missing$ -- 3
-newline$ -- 50
-num.names$ -- 12
-pop$ -- 76
+newline$ -- 73
+num.names$ -- 18
+pop$ -- 120
 preamble$ -- 1
-purify$ -- 29
+purify$ -- 42
 quote$ -- 0
-skip$ -- 86
+skip$ -- 123
 stack$ -- 0
-substring$ -- 122
-swap$ -- 11
+substring$ -- 147
+swap$ -- 16
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 44
-warning$ -- 5
-while$ -- 17
-width$ -- 13
-write$ -- 93
-(There were 5 warnings)
+type$ -- 64
+warning$ -- 7
+while$ -- 23
+width$ -- 18
+write$ -- 135
+(There were 7 warnings)

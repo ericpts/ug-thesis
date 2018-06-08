@@ -6,8 +6,7 @@ Compilatorul gcc este capabil să elimine funcțiile nefolosite,
 însă acest comportament nu este default.
 
 Pentru exemplificare, vom considera programul
-\begin{lstlisting}[language=C, title=main.c,
-label=c:program]
+\begin{lstlisting}[language=C, title=main.c, label=c_program]
 #include <stdio.h>
 
 void foo()
@@ -77,7 +76,7 @@ compilatorului că programul nu folosește inițializări cu efecte
 laterale, compilatorul gcc este capabil de a elimina funcții
 nefolosite.
 
-Vom folosi în continuare programul definit la \ref{c:program}.
+Vom folosi în continuare programul definit la \ref{c_program}.
 Conform \cite{c_enable_optimization}, este necesar să pasăm
 opțiuni suplimentare compilatorului, iar acesta va elimina
 funcția nefolosită:
@@ -115,7 +114,7 @@ Deși codul Java arbitrar este imposibil de optimizat, structuri
 particulare de proiecte permit eliminarea de cod nefolosit.
 
 Acest lucru este folosit pentru aplicațiile dezvoltate pentru
-sistemul de operare Android \cite{android_proguard}.
+sistemul de operare Android \cite{proguard_google}.
 Programul ales pentru a realiza sarcina de optimizare este
 \texttt{Proguard} \cite{proguard}.
 
