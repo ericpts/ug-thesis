@@ -1,21 +1,21 @@
-\chapter {Aplicație și concluzii}
+\chapter{Aplicație și concluzii}
 
 În acest capitol voi prezenta aplicația și concluziile lucrării.
 
-\section {Aplicația}
+\section{Aplicația}
 
-Programul implementat în C++ funcționează în mod corect: formează graful de
+Programul este implementat în limbajul C++.
+Acesta funcționează în mod corect: formează graful de
 apelări ale metodelor și elimină metodele nefolosite.
 
-\subsection {Rulare}
-
-\begin{lstlisting}[language=Bash]
+\subsection{Rulare}
 
 Programul vine cu opțiunea --help, care specifică modul de utilizare.
+\begin{lstlisting}[language=Bash]
 
-$ ./build/thesis --help
+$ thesis --help
 JVM Optimizer
-Usage: ./build/thesis [OPTIONS] classfiles...
+Usage: thesis [OPTIONS] classfiles...
 
 Positionals:
   classfiles [File] ... (REQUIRED)
@@ -31,4 +31,85 @@ Options:
 
 \end{lstlisting}
 
+Utilizarea normală ar arăta așa:
 
+\begin{lstlisting}[language=Bash]
+$ thesis *.class --in-place
+Done parsing constants.
+...
+Found the main file and method.
+...
+Trying to resolve method from symbolic reference: (bar) and type (LMain$One;)V.
+Trying to resolve_classfile for Main
+Successfully resolved bar :: (LMain$One;)V
+...
+Main/bar :: (LMain$One;)V and Other/foo :: ()V are not sibling methods
+Found the following sibling methods for Main/bar :: (LMain$One;)V: Main/bar :: (LMain$One;)V;
+...
+Successfully resolved foo :: ()V
+...
+Found 1 method(s) to remove from class Other
+Removing Other/foo :: ()V...
+Done putting constants.
+...
+Done putting attributs.
+\end{lstlisting}
+
+\section{Testare}
+
+Testarea aplicației este realizată automat, cu teste scrise de mână.
+Aceste teste simulează atât cazuri particulare, cât și funcționarea uzuală a
+programului.
+
+Teste pot fi rulate prin programul \texttt{test.py}, din rădăcina proiectului:
+
+\begin{lstlisting}[language=Bash]
+$ ./test.py
+Building...
+Running on test/fixtures/project2
+...
+Running on test/fixtures/project3
+Testing on /home/ericpts/work/ug-thesis/test/fixtures/TAP/tema4/var33...
+...
+Testing on /home/ericpts/work/ug-thesis/test/fixtures/TAP/tema3/Var3Munte...
+\end{lstlisting}
+
+\section{Concluzii}
+
+Scopul lucrării a fost de a prezenta o optimizare pentru dimensiunea
+programelor - eliminarea funcțiilor nefolosite.
+Prima aprte a ei a implicat formalizarea problemei, definirea unui algoritm
+generic pentru optimizări de dimensiune și demonstrația
+corectitudinii acestuia.
+
+în a doua parte, am prezentat cum algortimul poate fi implementat în limbajul
+Java, și am analizat condițiile necesare pentru a putea afirma faptul că
+algoritmul poate fi aplicat în mod corect.
+
+În concluzie, implementarea acestui fel de optimizări este un procedeu complex,
+cu multe greutăți de implementare.
+De asemenea, optimizările prezintă și o sporită dificultate teoretică, în a
+identifica asumpțiile făcute de către optimizator, a demonstra suficiența
+acestora, și a le prezenta utilizatorilor programului într-un mod ușor de
+înțeles.
+
+\section{Îmbunătățiri propuse}
+
+\subsection{Testarea}
+Testarea programului ar putea fi îmbunătățită extinzând suita de teste, cu mai
+multe cazuri și situații.
+
+De asemenea, programul ar putea fi pus să optimizeze proiecte mai complexe,
+pentru verificarea corectitudinii.
+
+\subsection{Optimizarea implementării}
+Programul a fost implementat pe principiul de a fi funcțional: (aproape) toate
+funcțiile și metodele întorc obiecte noi, în loc să le modifice pe cele
+existente.
+
+Acest lucru face implementarea mai clară și mai ușor de urmărit, însă aduce
+penalizări destul de mare la timpul de rulare, întrucât limbajul C++ nu este
+gândit pentru a fi utilizat într-un mod funcțional.
+De asemenea, mulți algoritmi implementați în program au complexitatea $O$
+suboptimă, deoarece au fost implementați în cel mai simplu mod, nu neapărat cel
+mai rapid.
