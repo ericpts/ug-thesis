@@ -12,17 +12,17 @@ apărut în anul 1995.
 Java s-a bazat pe sintaxa limbajului C, și a introdus noțiunea de
 ``scrie o data, rulează peste tot'' (Eng. ``write once, run
 everywhere''). Spre deosebire de C și de C++, care trebuiesc compilate
-pentru fiecare platforma țintă, Java a avut avantajul ca trebuie
+pentru fiecare platformă țintă, Java a avut avantajul că trebuie
 compilat o singura data, și va merge garantat pe toate platformele
 suportate de limbaj.
 
 \section{Java Bytecode}
 
-Soluția limbajului Java pentru a fi independent de platforma este de
+Soluția limbajului Java pentru a fi independent de platformă este de a
 transforma codul într-o reprezentare intermediara, în loc de direct în
-cod binary pentru o anumita arhitectura .
+cod binary pentru o anumită arhitectură .
 
-Compilatorul Java (\texttt{javac}), transforma codul Java într-un limbaj
+Compilatorul Java (\texttt{javac}), transformă codul Java într-un limbaj
 intermediar, numit Java Bytecode.
 
 Acest limbaj este un limbaj low-level, destinat în mod exclusiv
@@ -42,14 +42,14 @@ virtuală specifica limbajului Java --- numită \texttt{JVM}
 Această mașina virtuală are rolul de a citi fișierele de clasă binare și
 de a le interpreta.
 
-Mașina virtuală este implementata ca o ``mașină cu stiva'' (Eng. Stack
+Mașina virtuală este implementată ca o ``mașină cu stivă'' (Eng. Stack
 machine), unde toate instrucțiunile limbajului bytecode interacționează
 cu datele de pe o stivă controlată de aplicație.
 
-Mașina virtuală însuși este implementata în C/C++, și este compilata în
-cod binar direct, dependent de arhitectura. Dezvoltatorii limbajului
+Mașina virtuală însuși este implementată în C/C++, și este compilată în
+cod binar direct, dependent de arhitectura calculatorului. Dezvoltatorii limbajului
 Java sunt responsabili pentru corectitudinea și siguranța mașinii
-virtuale, în timp ce dezvoltatorii de aplicații Java au garanția ca dacă
+virtuale, în timp ce dezvoltatorii de aplicații Java au garanția că dacă
 codul lor Java este corect, atunci acesta va rula la fel, deterministic,
 pe orice platforma.
 
@@ -57,10 +57,10 @@ pe orice platforma.
 Comparând cu alte limbaje populare interpretate, ca de exemplu Python,
 Ruby, sau Perl, ne-am aștepta ca și Java să fie la fel de încet ca
 acestea~\cite{language_benchmarks}.
-Totuși, Java obține performante mult mai bune decât
+Totuși, Java obține performanțe mult mai bune decât
 acestea. Acest fapt se datorează compilării tocmai-la-timp (Eng.\
-just-in-time), în care atunci când interpretorul observa o secventa de
-cod care este interpretata repetitiv de foarte multe ori, va genera
+just-in-time), în care atunci când interpretorul observă o secventa de
+cod care este interpretată repetitiv de foarte multe ori, va genera
 direct cod binary pentru aceasta.
 
 
@@ -85,7 +85,7 @@ secțiuni\cite{classfile_sections}:
 	\item
 	      Interfețele pe care clasa le implementează.
 	\item
-	      Campările clasei.
+	      Câmpurile clasei.
 	\item
 	      Metodele clasei.
 	\item
@@ -98,15 +98,15 @@ secțiuni\cite{classfile_sections}:
 
 \subsection{Magic}
 
-Toate fișierele clasa trebuiesc să înceapă cu un număr denumit constanta
-magică. Acesta este folosit pentru a identifica în mod unic ca acestea
-sunt într-adevăr fișiere clasa. Numărul magic are o valoare memorabila:
+Toate fișierele clasă trebuiesc să înceapă cu un număr denumit constanta
+magică. Acesta este folosit pentru a identifica în mod unic că acestea
+sunt într-adevăr fișiere clasă. Numărul magic are o valoare memorabilă:
 reprezentarea hexadecimală este \texttt{0xCAFEBABE},
 
 \subsection{Versiunea}
 
-Versiunea unui fișier clasa este data de doua valori, versiunea majora
-\texttt{M} și versiunea minora \texttt{m}. Versiunea clasei este atunci
+Versiunea unui fișier clasă este dată de doua valori, versiunea majoră
+\texttt{M} și versiunea minoră \texttt{m}. Versiunea clasei este atunci
 reprezentata ca \texttt{M.m}. (e.g., \texttt{45.1}). Aceasta este
 folosită pentru a menține compatibilitatea în cazul modificărilor
 mașinii virtuale care interpretează clasa sau ale compilatorului care o
@@ -128,26 +128,26 @@ constante ale clasei:
 	      \end{itemize}
 	\item Informații compuse din datele anterioare:
 	      \begin{itemize}
-		      \item Referința către o metoda a unei clase.
-		      \item Referința către o constanta a unei clase.
+		      \item Referința către o metodă a unei clase.
+		      \item Referința către o constantă a unei clase.
 	      \end{itemize}
 \end{itemize}
 
 Toate celelalte tipuri de date compuse, cum ar fi metodele sau
 câmpurile, vor conține indecși în tabela de constante.
 
-Aproape toate tipurile de constante ocupă o singură poziție în tabela, însa, din
+Aproape toate tipurile de constante ocupă o singură poziție în tabelă, însă, din
 motive istorice, unele constante ocupă două poziții.
 Tot din motive istorice, tabela este indexată de la 1, și nu
 de la 0, cum sunt celelalte.
 
 \subsection{Permisiunile de acces}
 
-Aceste permisiuni constau într-o masca de biți, care reprezintă
-operațiile permise pe această clasa:
+Aceste permisiuni constau într-o mască de biți, care reprezintă
+operațiile permise pe această clasă:
 
 \begin{itemize}
-	\item dacă clasa este publica, și poate fi accesată din afara pachetului acesteia.
+	\item dacă clasa este publică, și poate fi accesată din afara pachetului acesteia.
 	\item dacă clasa este finala, și dacă poate fi extinsă.
 	\item dacă invocarea metodelor din super clasă să fie tratata special.
 	\item dacă este de fapt o interfață, și nu o clasă.
@@ -162,8 +162,8 @@ informații despre clasa curentă.
 \subsection{Clasa super}
 
 Reprezintă un indice în tabela de constante, cu informații despre clasa
-din care a moștenit clasa curentă. Dacă este 0, înseamna că clasa
-curentă nu moștenește nimic: singura clasa fără o super clasa este
+din care a moștenit clasa curentă. Dacă este 0, clasa
+curentă nu moștenește nimic: singura clasă fără o super clasă este
 Object.
 
 E.g. Pentru
@@ -177,7 +177,7 @@ Indicele corespunde lui \texttt{S}.
 \subsection{Interfețele}
 
 Reprezintă o colecție de indici în tabela de constante. Fiecare valoare
-de la acei indici constituie o interfața implementată în mod direct de
+de la acei indici constituie o interfață implementată în mod direct de
 către clasa curentă. Interfețele apar în ordinea declarată în fișierele
 Java.
 
@@ -210,7 +210,7 @@ constructorii:
         dacă este finală , dacă este abstractă.
 	\item Numele metodei.
 	\item Tipul metodei.
-	\item În caz că nu este abstracta, codul metodei.
+	\item În caz că nu este abstractă, codul metodei.
 	\item Alte atribute:
 	      \begin{itemize}
 		      \item Ce excepții poate arunca.
@@ -223,7 +223,7 @@ urmează să fie detaliat ulterior.
 
 \subsection{Atributele}
 
-Reprezintă alte informații despre clasa, cum ar fi:
+Reprezintă alte informații despre clasă, cum ar fi:
 \begin{itemize}
 	\item Clasele definite în interiorul acesteia.
 	\item În caz că este o clasă anonimă sau definită local, metoda în care este definită.
@@ -275,15 +275,15 @@ trebuie să aibă cel puțin 2 octeți.
 
 \subsubsection{CONSTANT\_Class}
 
-Corespunde valorii etichetei de 7 și conține un indice spre un alt camp
-în tabela de constante, de tipul \texttt{CONSTANT\_Utf8} --- un sir de
+Corespunde valorii etichetei de 7 și conține un indice spre un alt cămp
+în tabela de constante, de tipul \texttt{CONSTANT\_Utf8} --- un șir de
 caractere. Acel șir de caractere va conține numele clasei.
 
 \subsubsection{CONSTANT\_Fieldref}
 
 Corespunde valorii etichetei de 9 și conține o referință spre câmpul
 unei clase. Referința constă în doi indici, amândoi care arată spre
-tabela de contante. Primul indice arată spre o constantă
+tabela de constante. Primul indice arată spre o constantă
 \texttt{CONSTANT\_Class}, care reprezintă clasa sau interfața căreia
 aparține metoda. Al doilea indice arată spre o constantă
 \texttt{CONSTANT\_NameAndType}, care conține informații despre numele și
@@ -292,21 +292,21 @@ tipul câmpului.
 \subsubsection{CONSTANT\_Methodref}
 
 Corespunde valorii etichetei de 10 și conține o referința spre metoda
-unei clase. Are o structura identica cu \texttt{CONSTANT\_Fieldref},
-doar ca primul indice arata neapărat spre o clasa, în timp ce al doilea
-indice arata spre numele și tipul metodei.
+unei clase. Are o structură identică cu \texttt{CONSTANT\_Fieldref},
+doar că primul indice arată neapărat spre o clasă, în timp ce al doilea
+indice arată spre numele și tipul metodei.
 
 \subsubsection{CONSTANT\_InterfaceMethodref}
 
-Corespunde valorii etichetei de 11 și conține o referința spre metoda
+Corespunde valorii etichetei de 11 și conține o referință spre metoda
 unei interfețe. Are o structura identică cu
-\texttt{CONSTANT\_Methodref}, doar ca primul indice arata spre o
-interfața.
+\texttt{CONSTANT\_Methodref}, doar că primul indice arată spre o
+interfață.
 
 \subsubsection{CONSTANT\_String}
 
-Corespunde valorii etichetei de 8 și reprezintă un sir de caractere.
-Conține un indice către o structura de tipul \texttt{CONSTANT\_Utf8}.
+Corespunde valorii etichetei de 8 și reprezintă un șir de caractere.
+Conține un indice către o structură de tipul \texttt{CONSTANT\_Utf8}.
 
 \subsubsection{CONSTANT\_Integer}
 
@@ -314,7 +314,7 @@ Corespunde valorii etichetei de 3 și conține un întreg pe 4 octeți.
 
 \subsubsection{CONSTANT\_Float}
 
-Corespunde valorii etichetei de 4 și conține un număr cu virgula mobilă
+Corespunde valorii etichetei de 4 și conține un număr cu virgulă mobilă
 pe 4 octeți.
 
 \subsubsection{CONSTANT\_Long}
@@ -324,33 +324,33 @@ motive istorice, ocupă 2 spatii în tabela de constante.
 
 \subsubsection{CONSTANT\_Double}
 
-Corespunde valorii etichetei de 6 și conține un număr cu virgula mobilă
+Corespunde valorii etichetei de 6 și conține un număr cu virgulă mobilă
 pe 8 octeți. Din motive istorice, ocupă 2 spatii în tabela de constante.
 
 \subsubsection{CONSTANT\_NameAndType}
 
-Corespunde valorii etichetei de 12. Descrie numele și tipul unui camp
-sau al unei metode, fără informații despre clasa. Conține doi indici,
+Corespunde valorii etichetei de 12. Descrie numele și tipul unui câmp
+sau al unei metode, fără informații despre clasă. Conține doi indici,
 amândoi către structuri de tipul \texttt{CONSTANT\_Utf8}. Primul
-reprezinta numele, iar al doilea tipul.
+reprezintă numele, iar al doilea tipul.
 
 \subsubsection{CONSTANT\_Utf8}
 
-Corespunde valorii etichetei de 1. Reprezintă un sir de caractere
+Corespunde valorii etichetei de 1. Reprezintă un șir de caractere
 encodat în formatul UTF-8. Conține un întreg \texttt{length}, de tipul
 \texttt{u2}, și apoi \texttt{length} octeți care descriu șirul în sine.
-Din cauza ca este encodat ca UTF-8, un singur caracter poate fi format
+Din cauza că este encodat ca UTF-8, un singur caracter poate fi format
 din mai multi octeți.
 
 \subsubsection{CONSTANT\_MethodHandle}
 
-Corespunde valorii etichetei de 15 și conține o referințe către un camp,
-o metoda de clasa, sau o metoda de interfața.
+Corespunde valorii etichetei de 15 și conține o referințe către un câmp,
+o metodă de clasă, sau o metodă de interfață.
 
 \subsubsection{CONSTANT\_MethodType}
 
 Corespunde valorii etichetei de 16 și conține un indice către o
-constanta \texttt{CONSTANT\_Utf8}, ce reprezinta tipul unei metode.
+constantă \texttt{CONSTANT\_Utf8}, ce reprezintă tipul unei metode.
 
 \subsubsection{CONSTANT\_InvokeDynamic}
 
@@ -405,10 +405,10 @@ struct CONSTANT_NameAndType_info {
 
 \paragraph{\texorpdfstring{\texttt{field\_info}}{field\_info}}\label{field_info}
 
-Fiecare câmp din cadrul unei clase este reprezentat printr-o structura
+Fiecare câmp din cadrul unei clase este reprezentat printr-o structură
 de tipul \texttt{field\_info}.
 
-În cod \texttt{C++}, aceasta structura a fost reprezentata astfel:
+În cod \texttt{C++}, această structură a fost reprezentată astfel:
 
 \begin{lstlisting}[language=C++]
 struct field_info {
@@ -422,16 +422,16 @@ struct field_info {
 
 Unde:
 \begin{itemize}
-	\item \texttt{name\_index} este o intrare în tabela de constante unde se afla o constanta de tipul \texttt{CONSTANT\_Utf8}.
-	\item \texttt{descriptor\_index} arata spre o constanta de tipul \texttt{CONSTANT\_Utf8} și reprezinta tipul câmpului.
+	\item \texttt{name\_index} este o intrare în tabela de constante unde se afla o constantă de tipul \texttt{CONSTANT\_Utf8}.
+	\item \texttt{descriptor\_index} arată spre o constantă de tipul \texttt{CONSTANT\_Utf8} și reprezintă tipul câmpului.
 \end{itemize}
 
 \paragraph{\texorpdfstring{\texttt{method\_info}}{method\_info}}\label{method_info}
 
-Fiecare metoda a unei clase/interfețe este descrisa prin aceasta
-structura.
+Fiecare metodă a unei clase/interfețe este descrisă prin această
+structură.
 
-În cod \texttt{C++}, am implementat-o asa:
+În cod \texttt{C++}, am implementat-o astfel:
 
 \begin{lstlisting}[language=C++]
 struct method_info {
@@ -446,13 +446,13 @@ struct method_info {
 Unde \texttt{name\_index} și \texttt{descriptor\_index} au aceeași
 interpretare ca și la \texttt{field\_info}.
 
-Dacă metoda nu este abstracta, atunci în vectorul \texttt{attributes} se
+Dacă metoda nu este abstractă, atunci în vectorul \texttt{attributes} se
 va găsi un atribut de tipul \texttt{Code}, care conține bytecode-ul
 corespunzător acestei metode.
 
 \paragraph{\texorpdfstring{\texttt{attribute\_info}}{attribute\_info}}\label{attribute_info}
 
-În \texttt{C++}, a fost implementata astfel:
+În \texttt{C++}, a fost implementată astfel:
 
 \begin{lstlisting}[language=C++]
 struct attribute_info {
@@ -462,7 +462,7 @@ struct attribute_info {
 };
 \end{lstlisting}
 
-Numele atributului determina modul în care octeții din vectorul
+Numele atributului determină modul în care octeții din vectorul
 \texttt{info} sunt interpretați.
 
 \subsubsection{Atributul de cod}
@@ -495,8 +495,8 @@ struct Code_attribute {
 };
 \end{lstlisting}
 
-Aceasta structura este esențiala pentru implementarea optimizării,
-intricat ea ne permită să determinam metodele apelate din cadrul unei secvente de cod.
+Această structură este esențială pentru implementarea optimizării,
+intrucât ea ne permite să determinăm metodele apelate din cadrul unei secvente de cod.
 În continuare, o voi descrie detaliat:
 
 \begin{itemize}
@@ -506,7 +506,7 @@ intricat ea ne permită să determinam metodele apelate din cadrul unei secvente
 	      virtuale când această bucată de cod este interpretată.
 	\item
 	      \texttt{max\_locals}: Reprezintă numărul maxim de variabile locale
-	      alocate în același timp când aceasta bucata de cod este interpretata.
+	      alocate în același timp când această bucată de cod este interpretată.
 	\item
 	      \texttt{code}: Codul metodei.
 	\item
@@ -515,14 +515,14 @@ intricat ea ne permită să determinam metodele apelate din cadrul unei secvente
 
 \subsubsection{Code}
 
-Vectorul \texttt{code} din cadrul atributului \texttt{Code} reprezinta
+Vectorul \texttt{code} din cadrul atributului \texttt{Code} reprezintă
 bytecode-ul propriu-zis al metodei.
 
 Acest vector conține instrucțiunile care sunt executate de către mașina
 virtuală.
 
-JVM-ul rulează ca o mașina cu stiva, iar toate instrucțiunile operează
-pe aceasta stiva. Reuitatul rulării unei instrucțiuni este modificarea
+JVM-ul rulează ca o mașina cu stivă, iar toate instrucțiunile operează
+pe această stivă. Rezultatul rulării unei instrucțiuni este modificarea
 stivei: scoaterea și adăugarea de elemente în vraful acesteia.
 
 Instrucțiunile au în general formatul~\cite{instruction_format}
@@ -537,7 +537,7 @@ operand2
 Cu un număr variabil de operanzi, prezenți în mod explicit în vectorul
 de \texttt{cod}.
 
-Fiecărei instrucțiuni ii corespunde un octet, denumit opcode. Fiecare
+Fiecărei instrucțiuni îi corespunde un octet, denumit opcode. Fiecare
 operand este fie cunoscut la compilare, fie calculat în mod dinamic la
 rulare.
 
@@ -548,12 +548,12 @@ la momentul execuției codului.
 De exemplu:
 
 Instrucțiunea \texttt{imul} are octetul 104 sau 0x68.
-Acestea da pop la doua valori din vârful stivei: \texttt{value1} și
+Aceasta extrage două valori din vârful stivei: \texttt{value1} și
 \texttt{value2}. Ambele valori trebuie să fie de tipul \texttt{int}.
-Rezultatul este înmulțirea celor doua valori:
+Rezultatul este înmulțirea celor două valori:
 \texttt{result\ =\ value1\ *\ value2}, și este pus în vârful stivei.
 
-Dintre cele peste o suta de instrucțiuni, noi suntem preocupați doar de
+Dintre cele peste o sută de instrucțiuni, noi suntem preocupați doar de
 5 dintre acestea: cele care au de a face cu invocarea unei metode.
 
 \textbf{invokedynamic}
@@ -574,11 +574,11 @@ Index1 și index2 sunt doi octeți. Aceștia sunt compuși în
 \begin{lstlisting}
 index = (index1 << 8) | index2
 \end{lstlisting}
-Unde \texttt{<<} reprezinta shiftare pe biți, iar \texttt{|}
-reprezinta operația de sau pe biți.
+Unde \texttt{<<} reprezintă shiftare pe biți, iar \texttt{|}
+reprezintă operația de sau pe biți.
 
-Indicele compus reprezinta o intrare în tabela de constante. La locația
-respectiva trebuie să se afle o structura de tipul
+Indicele compus reprezintă o intrare în tabela de constante. La locația
+respectivă trebuie să se afle o structură de tipul
 \texttt{CONSTANT\_MethodHandle}
 
 \textbf{invokeinterface}
@@ -597,7 +597,7 @@ Opcode-ul corespunzător este 185 sau 0xb9.
 \texttt{invokedynamic}, pentru a construi un indice în tabela
 de constante.
 
-La poziția respectivă în tabela, trebuie să se găsească o structura de
+La poziția respectivă în tabelă, trebuie să se găsească o structură de
 tipul \texttt{CONSTANT\_Methodref}.
 
 \texttt{count} trebuie să fie un octet fără semn diferit de 0. Acest
@@ -614,10 +614,10 @@ index2
 \end{verbatim}
 
 Opcode-u corespunzător este 183 sau 0xb7. La fel ca la
-\texttt{invokeinterface}, este format un indice în tabela de constante,
-către o structura \texttt{CONSTANT\_Methodref}.
+\texttt{invokeinterface}, instrucțiunea conține un indice în tabela de constante
+către o structură \texttt{CONSTANT\_Methodref}.
 
-Aceasta instrucțiune este folosită pentru a invoca constructorii
+Această instrucțiune este folosită pentru a invoca constructorii
 claselor.
 
 \textbf{invokestatic}
@@ -630,8 +630,7 @@ index1
 \end{verbatim}
 
 Opcode-ul corespunzător este 184 sau 0xb8.
-Instrucțiunea este invocată pentru a invoke o metoda statica a unei
-clase.
+Instrucțiunea invocă o metodă statică a unei clase.
 
 La fel ca la \texttt{invokeinterface}, este construit un indice compus,
 și folosit pentru a indexa tabela de constante.
@@ -647,7 +646,8 @@ index1
 
 Opcode-ul corespunzător este 182 sau 0xb6, iar
 interpretarea este la fel ca la \texttt{invokeinterface}.
-Aceasta este cea mai comuna instrucțiune de invocare de funcții.
+Aceasta este cea mai comună
+instrucțiune de invocare de funcții.
 
 În \texttt{C++}, am reprezentat aceste instrucțiuni de interes astfel:
 
@@ -696,4 +696,4 @@ struct ClassFile {
 \end{lstlisting}
 
 Pentru a vedea un fișier clasa analizat în detaliu, va puteți
-uita la appendix-ul studiu de caz.
+uita la appendix-ul Studiu de Caz \ref{appendix:studiu_de_caz}.

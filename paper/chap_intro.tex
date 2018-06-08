@@ -6,9 +6,9 @@
 \section{Formalizarea problemei}
 
 Fie programul \s{P} un proiect Java, format dintr-o mulțime de fișiere
-clasa.  Scopul optimizatorului este sa creeze un program \s{P'}, care
-sa se comporte identic cu \s{P}, și sa fie mai bun decât
-\s{P} pentru o anumita metrica \s{M}.
+clasă.  Scopul optimizatorului este să creeze un program \s{P'}, care
+să se comporte identic cu \s{P}, și să fie mai bun decât
+\s{P} pentru o anumită metrica \s{M}.
 
 \section{Diferențierea programelor}
 
@@ -19,8 +19,8 @@ exista un input \s{I} pentru care \s{P} rulat pe \s{I}
 \(\exists \mathcal{I}\) pentru care \(\mathcal{P}(\mathcal{I}) \ne
 \mathcal{Q}(\mathcal{I}) \)
 
-Unde prin rezultat înțelegem atât output-ul programului, in
-sensul pur matematic, cat și efectele laterale generate, care au
+Unde prin rezultat înțelegem atât output-ul programului, în
+sensul pur matematic, cât și efectele laterale generate, care au
 efect asupra mediului unde rulează programul.
 
 Dacă doua programe nu pot fi diferențiate (i.e., pentru toate
@@ -48,10 +48,10 @@ Atunci pentru orice a și b din $\N$, \s{P}(a, b) va fi egal cu
 
 \section{Metrici de optimizare}
 
-In contextul optimizării de programe este nevoie sa definim ce
+In contextul optimizării de programe este nevoie să definim ce
 înseamnă ca dintre doua programe echivalente \s{P} și \s{Q}, \s{P}
 sa fie mai performant decât \s{Q}.
-Cele mai folosite doua metrici sunt metrica de viteza de
+Cele mai folosite doua metrici sunt metrica de viteză de
 execuție a unui program, și metrica de dimensiune a programului.
 
 \subsection{Metrica de viteza}
@@ -60,7 +60,7 @@ execuție a unui program, și metrica de dimensiune a programului.
 
 Vom defini timpul de rulare al unui program \s{P} pe un input
 \s{I} ca fiind diferența de timp dintre când programul își începe
-execuția, pana când acesta își termina execuția.
+execuția, până când acesta își termină execuția.
 
 Pe sistemele *nix, un mod ușor a măsura timpul de rulare este
 folosind comanda $time$:
@@ -80,7 +80,7 @@ timpul de rulare al programului \s{P} input-ul \s{I}.
 
 Fie doua programe echivalente \s{P} și \s{Q}.
 
-Vom spune ca \s{P} este mai rapid decât \s{Q} pe baza timpului de
+Vom spune că \s{P} este mai rapid decât \s{Q} pe baza timpului de
 rulare dacă timpul de rulare mediu al lui \s{P} este mai mic
 decât timpul de rulare mediu al lui \s{Q}:
 
@@ -95,10 +95,10 @@ este mai rapid decât \s{Q}.
 
 \subsubsection{Problema optimizării pe baza metricii de viteza}
 
-Având definita relația de ordine, problema optimizării pe
+Având definită relația de ordine, problema optimizării pe
 baza metricii de viteza este:
 
-Dându-se un program \s{P}, sa se găsească \s{Q} ca cel mai rapid
+Dându-se un program \s{P}, să se găsească \s{Q} ca cel mai rapid
 program echivalent cu \s{P}:
 
 \[
@@ -124,7 +124,7 @@ De exemplu, pentru limbajul Java, instrucțiunea $invokedynamic$
 ocupa 5 octeți, in timp ce instrucțiunea $dmul$ ocupa un singur
 octet.
 
-\subsubsection{Comparare bazata pe dimensiunea programelor}
+\subsubsection{Comparare bazată pe dimensiunea programelor}
 
 Pentru doua programe \s{P} și \s{Q}, vom spune ca \s{P} este mai
 mic decât \s{Q} dacă \(size(\mathcal{P}) < size(\mathcal{Q})\).
@@ -136,9 +136,9 @@ pe mulțimea programelor.
 	dimensiune}
 
 Având definită relația de ordine, problema optimizării pe
-baza metricii de dimensiune este aceeași ca la viteza:
+baza metricii de dimensiune este aceeași ca la metrica de viteză:
 
-Dându-se un program \s{P}, sa se găsească \s{Q} ca cel mai mic
+Dându-se un program \s{P}, să se găsească \s{Q} cel mai mic
 program echivalent cu \s{P}:
 
 \[
@@ -149,13 +149,12 @@ program echivalent cu \s{P}:
 \section{Discuție asupra metricilor}
 
 Pentru cele mai multe cazuri, cele doua metrici sunt corelate --
-o reducere a timpului de rulare aduce cu ea și o reducere a
-dimensiunii programului.
+o reducere a dimensiunii programului aduce cu ea și o reducere a timpului de rulare.
 
 Totodată, exista cazuri când cele doua metrici sunt contrare.
 Un exemplu clasic este tehnica de "derularea buclelor" (Eng. Loop
 unrolling).
-Aceasta consta in explicitarea unei bucle cu un număr cunoscut
+Aceasta constă în explicitarea unei bucle cu un număr cunoscut
 de iterații:
 
 Programul
@@ -165,7 +164,7 @@ for i = 1:10:
     s = inc(s)
 \end{lstlisting}
 
-Va fi optimizat pentru viteza in
+Va fi optimizat pentru viteză în
 \begin{lstlisting}[language=Python]
 s = 0
 s = inc(s))
@@ -173,25 +172,24 @@ s = inc(s))
 s = inc(s))
 \end{lstlisting}
 
-În timp ce aceasta optimizare va creste numărul de instrucțiuni
+În timp ce această optimizare va crește numărul de instrucțiuni
 al programului, deci și dimensiunea acestuia.
 
 Deoarece cele mai multe programe utilizate nu rulează pe medii
 constrânse de memorie, tipul de optimizare folosit aproape
 întotdeauna este cel de viteza: este mult mai util dacă un
-program rulează de 2 ori mai repede, decât dacă acesta ocupa de
-2 ori mai puțin.
+program rulează de 2 ori mai repede, decât dacă acesta ocupă de
+2 ori mai puțin spațiu.
 
-Acest lucru se datorează faptului ca performanta memoriei (prețul
-per unitate de memorie) a continuat sa scadă in ultimul deceniu,
-in timp ce performanta procesoarelor (numărul de instrucțiuni
-executate per secunda) a stagnat.
+Acest lucru se datorează faptului că performanța memoriei (prețul
+per unitate de memorie) a continuat să scadă în ultimul deceniu,
+în timp ce performanța procesoarelor (numărul de instrucțiuni
+executate per secundă) a stagnat.
 
 Asa cum se poate observa in figura \ref{fig:cpu_and_gpu_trends},
-trendul care urma legea lui Moore \cite{moores_law} a început sa
-se oprească. Pe de alta parte, eficienta memoriei calculatoarelor
-și-a continuat trendul de creștere, asa cum se poate observa in
-continuat sa crească, asa cum se poate observa in figura
+trendul care urma legea lui Moore \cite{moores_law} a început să
+se oprească. Pe de altă parte, eficiența memoriei calculatoarelor
+și-a continuat trendul de creștere, așa cum se poate observa în figura
 \ref{fig:memory_trends}.
 
 \begin{figure}
@@ -207,4 +205,3 @@ continuat sa crească, asa cum se poate observa in figura
 	\caption{Evoluția puterii de procesare\cite{memory_trends} }
 	\label{fig:memory_trends}
 \end{figure}
-

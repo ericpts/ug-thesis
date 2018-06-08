@@ -1,12 +1,12 @@
 \chapter{Limbajul Java și optimizarea acestuia}
 
-În acest capitol vom descrie cum putem implementa optimizarea
-eliminării de metode nefolosite în limbajul Java.
+În acest capitol vom descrie cum putem adapta optimizareaeliminării de metode pentru limbajul Java.
+Scopul final este să implementăm algoritmul descris la sfârșitulcapitolului `Optimizări de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
 
 \section{Optimizarea limbajului Java}
 
-În aceasta parte vom urmări implementarea algoritmului descris la sfârșitul
-capitolului `Optimizări de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
+% În aceasta parte vom urmări implementarea algoritmului descris la sfârșitul
+% capitolului `Optimizări de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
 
 \subsection{Preliminarii}
 
@@ -14,23 +14,23 @@ Java este un limbaj dinamic. Acest lucru înseamnă posibilitatea de a modifica
 codul în timpul rulării, sau de a apela cod în mod dinamic la rulare: aceasta
 este partea de `reflecție' a limbajului Java.
 
-Utilizarea acestor caracteristici face abordarea noastră de analiza
-statica imposibila, intricat optimiza torul ar putea elimina metode care nu sunt
-apelate în mod explicit în cod, însa care ajung să fie referențiale în mod
+Utilizarea acestor caracteristici face abordarea noastră de analiză
+statică imposibilă, întrucât optimizatorul ar putea elimina metode care nu sunt
+apelate în mod explicit în cod, însă care ajung să fie referențiale în mod
 dinamic la rulare.
 
-Prin urmare, în continuarea lucrării vom presupune ca toate proiectele Java cu
-care lucram nu se folosesc de niciun mod de a schimba structura codului în
+Prin urmare, în continuarea lucrării vom presupune că toate proiectele Java cu
+care lucrăm nu se folosesc de niciun mod de a schimba structura codului în
 timpul rulării. În caz contrar, optimizatorul nu mai oferă nicio garanție asupra
 corectitudinii optimizărilor realizate.
 
-Restul lucrării va presupune ca aceasta condiție este respectata.
+Restul lucrării va presupune că această condiție este respectată.
 
 \subsection{Determinarea punctului de intrare}
 
 Un proiect Java este format dintr-o mulțime de clase.
 Punctul \texttt{main} al proiectului este reprezentat de funcția
-denumita \texttt{main} \cite{java_main}, cu antetul
+denumită \texttt{main} \cite{java_main}, cu antetul
 
 \begin{lstlisting}[language=Java]
 public static void main(String [] args)
@@ -38,14 +38,14 @@ public static void main(String [] args)
 
 Într-un proiect trebuie să existe o singură astfel de metodă, care să aparțină
 unei clase a proiectului.
-În implementarea lucrării, aceasta operație este realizata de
+În implementarea lucrării, această operație este realizată de
 către clasa Project:
 \begin{lstlisting}[language=C++]
 Method Project::main_method() const;
 \end{lstlisting}
 
 Pentru a găsi metoda \texttt{main}, sunt scanate toate fișierele
-clasa care fac parte din proiect, și sunt analizatele listele de
+clasa care fac parte din proiect, și sunt analizate listele de
 metode ale acestora.
 
 Acesta este pseudocodul pentru această operație:
@@ -66,12 +66,12 @@ def main_method(p: Proiect):
 
 Pentru a determina ce funcții sunt apelate din cadrul unei metode \texttt{m},
 vom inspecta atributul de cod al lui \texttt{m}.
-Dintre instrucțiunile conținute vom fi interesați doar de cele ce implica
+Dintre instrucțiunile conținute vom fi interesați doar de cele ce implică
 apeluri de funcții - familia invoke*.
 
-Odată găsite instrucțiunile de invocare de funcții, este necesar să rezolvam
-referințele conținute de acestea, intricat în reprezentarea interna a JVM-ului,
-o metoda este referențiala pur simbolic, prin șiruri de caractere.
+Odată găsite instrucțiunile de invocare de funcții, este necesar să rezolvăm
+referințele conținute de acestea, întrucât în reprezentarea interna a JVM-ului,
+o metodă este referențială pur simbolic, prin șiruri de caractere.
 
 \subsection{Rezolvarea metodelor speciale}
 
@@ -84,36 +84,36 @@ funcții private.
 Pentru scopul acestei lucrări, nu vom elimina constructorii,
 întrucât asta ar înseamna eliminarea unei clase cu totul (i.e.,
 singurul caz în care putem elimina constructorul unei clase este
-când clasa nu este instantiate niciodată).
+când clasa nu este instanțiată niciodată).
 
 Metodele private, în schimb, vor fi tratate ca niște funcții normale.
 
 \subsection{Rezolvarea metodelor dinamice}
 
-Din versiunea 7 a limbajului Java a fost introdusa instrucțiunea
+Din versiunea 7 a limbajului Java a fost introdusă instrucțiunea
 \textbf{invokedynamic}.
 Aceasta instrucțiune este folosită în rezolvarea referințelor de metode la
 rulare - similar cu conceptul de "duck typing" din limbajele dinamice.
-Deoarece am făcut presupunerea ca proiectele cu care lucram nu vor utiliza
-reflecția sau invocarea întâlnita dinamica a codului, aceasta instrucțiune nu va
-fi întâlnita.
+Deoarece am făcut presupunerea că proiectele cu care lucrăm nu vor utiliza
+reflecția sau invocarea dinamică a codului, această instrucțiune nu va
+fi întâlnită.
 
 \subsection{Rezolvarea metodelor statice}
 
 Metodele statice sunt cele mai simple de rezolvat: referința către o astfel de
-metoda indica numele metodei, tipul metodei, cat și clasa din care face parte și
-de unde este invocata.
-Aceste metode sunt dezvolta direct la compilare, deci cuplul (nume, tip, clasa)
-identifica în mod unic o metoda statica.
+metodă indică numele metodei, tipul metodei, cât și clasa din care face parte și
+de unde este invocată.
+Aceste metode sunt rezolvate direct la compilare, deci tuplul (nume, tip, clasă)
+identifică în mod unic o metodă statică.
 
 \subsection{Rezolvarea metodelor virtuale}
 
-În Java, toate metodele de instanta (non-statice) sunt polimorfice la rulare
+În Java, toate metodele de instanță (non-statice) sunt polimorfice la rulare
 (Eng. Run time polymorphism).
-Cu alte cuvinte, la compilare se știu numele și tipul metodei și clasa unde
-metoda este definita, însa \textbf{nu} și clasa de unde este invocata.
+Cu alte cuvinte, la compilare se știu numele, tipul metodei și clasa unde
+metoda este definită, însă \textbf{nu} și clasa de unde este invocată.
 
-Aceasta este cea mai comuna operație, și corespunde instrucțiunii
+Aceasta este cea mai comună operație, și corespunde instrucțiunii
 \textbf{invokevirtual}.
 
 De exemplu, pentru programul
@@ -148,25 +148,25 @@ apelul de pe linia 9 către metoda foo este un apel polimorfic.
 
 \texttt{invokevirtual \#2                  // Method Other.foo:()V}
 
-Unde slotul 2 din tabela de constante este o referința către o metoda cu numele
-de \texttt{foo} cu tipul \texttt{void foo()}, definita în clasa \texttt{Other}.
+Unde poziția 2 din tabela de constante este o referință către o metodă cu numele
+de \texttt{foo} cu tipul \texttt{void foo()}, definită în clasa \texttt{Other}.
 
 \texttt{\#2 = Methodref          \#22.\#23        // Other.foo:()V}
 
-Deși metoda \texttt{foo} este definita initial în clasa \texttt{Other}, la
-rulare va fi apelata versiunea definita în subclasa \texttt{One}.
+Deși metoda \texttt{foo} este definită inițial în clasa \texttt{Other}, la
+rulare va fi apelată versiunea definită în subclasa \texttt{One}.
 
-În implementarea JVM-ului, pe stiva mașinii se va afla o instanta a obiectului
-a care metoda este apelata. În cazul programului nostru, pe stiva se va afla o
-referința către variabila \texttt{o}, de tipul \texttt{Other}, definita pe linia
+În implementarea JVM-ului, în vârful stivei mașinii se va afla o referință către instanța obiectului
+a cărui metodă este apelată. În cazul programului nostru, pe stivă se va afla o
+referință către variabila \texttt{o}, de tipul \texttt{Other}, definită pe linia
 13 a programului.
 
-Pentru rezolvarea metodei virtuale, JVM-ul se asigura ca tipul lui \texttt{o},
+Pentru rezolvarea metodei virtuale, JVM-ul se asigură că tipul lui \texttt{o},
 adică \texttt{Other}, este un moștenitor al clasei de care aparține metoda
-\texttt{One}. În clasa ca tipul \texttt{Other} definește chiar el metoda
-căutata, mașina va folosi definiția respectiva.
+\texttt{One}. În caz că tipul \texttt{Other} definește chiar el metoda
+căutată, mașina va folosi definiția respectivă.
 În caz contrar, mașina virtuală va cauta recursiv metoda în super clasa lui
-\texttt{Other}. În cazul în care căutarea recursiva a ajuns pana la o clasa fără
+\texttt{Other}. În cazul în care căutarea recursivă a ajuns până la o clasa fără
 super (singura astfel de clasa este \texttt{Object}), mașina virtuală va emite o
 eroare.
 
@@ -206,16 +206,16 @@ apelul de pe linia 11 către metoda foo este un apel polimorfic pe interfețe.
 \texttt{invokeinterface \#2,  1            // InterfaceMethod I.foo:()V}
 
 Unde slotul 2 din tabela de constante este o referința către o metoda de
-interfața cu numele de \texttt{foo} cu tipul \texttt{void foo()}, definita în
+interfața cu numele de \texttt{foo} cu tipul \texttt{void foo()}, definită în
 interfața \texttt{I}.
 \texttt{\#2 = InterfaceMethodref \#22.\#23        // I.foo:()V}
 
-Deși metoda \texttt{foo} este declarata initial în interfața \texttt{I}, la
-rulare va fi apelata versiunea definita în subclasa \texttt{C}.
+Deși metoda \texttt{foo} este declarată inițial în interfața \texttt{I}, la
+rulare va fi apelată versiunea definită în subclasa \texttt{C}.
 
-Pentru rezolvarea referințelor către metode de interfețe, se va aplica un algoritm similar cu
-cel de la rezolvarea referințelor de metode virtuale: căutare recursiva în
-lanțul de moșteniri al clasei asupra căruia se executa metoda.
+Pentru rezolvarea referințelor către metode de interfață, se va aplica un algoritm similar cu
+cel de la rezolvarea referințelor de metode virtuale: căutare recursivă în
+lanțul de moșteniri al clasei asupra căruia se execută metoda.
 
 \subsection{Algoritmul de rezolvare al referințelor metodelor}
 
@@ -243,15 +243,15 @@ static std::optional<Method>
 from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
 \end{lstlisting}
 
-Motivul pentru care aceasta funcție întoarce un \texttt{optional}, în loc de
-direct o metoda, este pentru ca pot exista referințe către funcții terțe, de
-obicei definite în librarii.
-De exemplu, funcția \texttt{println(String s)}, definita în librăria standard
+Motivul pentru care această funcție întoarce un \texttt{optional}, în loc de
+direct metoda, este că există referințe către funcții terțe, de
+obicei definite în librării, care nu pot fi rezolvate în clasele proiectului nostru.
+De exemplu, funcția \texttt{println(String s)}, definită în librăria standard
 \texttt{java.io}.
 
-Metoda exacta care este executata de o astfel de instrucțiune nu poate fi știuta
+Metoda exactă care este executată de o astfel de instrucțiune nu poate fi știută
 decât abia la run time (e.g., pentru programul~\ref{program_metode_virtuale}
-nu putem știi în timpul analizei statice dacă va fi apelata metoda
+nu putem știi în timpul analizei statice dacă va fi apelată metoda
 \texttt{Other::foo()} sau metoda \texttt{One::foo()}).
 
 \subsection{Superșirul de execuție și polimorfismul de execuție}
@@ -260,15 +260,15 @@ Vom reconsidera superșirul de execuție definit la \ref{supersirul_de_executie}
 și graful apelurilor, definit la \ref{graful_apelurilor}.
 
 La momentul analizei statice nu știm tipul exact al unei referințe.
-O referința către o interfața poate să conțină orice obiect care implementează
-acea interfața, sau o referința către o clasa \s{C} poate conține fix clasa
-\s{C}, sau orice clasa care o are pe \s{C} ca strămoș.
+O referință către o interfață poate să conțină orice obiect care implementează
+acea interfață, sau o referință către o clasă \s{C} poate conține fix clasa
+\s{C}, sau orice clasă care o are pe \s{C} ca strămoș.
 
 Prin urmare, vom extinde superșirul de execuție ca să reflecte aceste
 posibilități.
 Mai precis, pentru fiecare apel de funcții polimorfice (virtuale prin
-\textbf{invokevirtual} sau de interfața prin \textbf{invokeinterface}), vom
-considera toate metodele posibile care pot referențiale.
+\textbf{invokevirtual} sau de interfață prin \textbf{invokeinterface}), vom
+considera toate metodele posibile care pot fi referențiate.
 
 De exemplu, pentru programul~\ref{program_metode_virtuale}, vom considera toate
 posibilitățile de rezolvare ale apelului către foo(), atât \texttt{Other::foo()},
@@ -276,40 +276,40 @@ cat și \texttt{One::foo()}.
 
 \subsection{Graful de apeluri și polimorfismul de execuție}
 
-Acum ca am adaptat superșirul de execuție pentru polimorfismul de execuție, este
+Acum că am adaptat superșirul de execuție pentru polimorfismul de execuție, este
 nevoie să extindem și graful de apeluri.
 
 Pentru acest lucru, în cadrul unei rezoluții vom considera nu numai metoda
-direct referențiala, ci toate metodele pe care superșirul de execuție le-ar
+direct referențială, ci toate metodele pe care superșirul de execuție le-ar
 putea rezolva ca posibili candidați.
 
 Vom spune ca metoda m este un candidat pentru rezoluția metodei q dacă în
 rezolvarea unei referințe către q, superșirul de execuție va considera și metoda
 m.
 
-Proprietatea de a fi candidat este o relație reflexiva și tranzitiva, însa nu și
-simetrica.
+Proprietatea de a fi candidat este o relație reflexivă și tranzitivă, însa nu și
+simetrică.
 
-Aceasta relație este echivalenta cu: metoda m este un candidat pentru rezoluția
+Această relație este echivalentă cu: metoda m este un candidat pentru rezoluția
 metodei q dacă:
 \begin{enumerate}
-    \item q este o metoda a unei interfețe, iar m implementează direct sau
-        tranzitiv interfața respectiva.
-    \item q este o metoda a unei clase, iar m moștenește direct sau tranzitiv
-        clasa respectiva.
+    \item q este o metodă a unei interfețe, iar m implementează direct sau
+        tranzitiv interfața respectivă.
+    \item q este o metodă a unei clase, iar m moștenește direct sau tranzitiv
+        clasa respectivă.
 \end{enumerate}
 
 În continuare, vom nota cu $cand(m)$ tot candidații lui m. Din faptul ca este o
-relație reflexiva, m aparține muslimii $cand(m)$.
+relație reflexiva, m aparține mulțimii $cand(m)$.
 
-Graful de apeluri trebuie schimbat astfel încet să includă și candidații unei
-metode: în loc să tragem o singura muchie de la metoda p care face invocarea, la
-metoda m care este invocata, vom trage mai multe muchii: de la p la toate
+Graful de apeluri trebuie schimbat astfel încât să includă și candidații unei
+metode: în loc să tragem o singură muchie de la metoda p care face invocarea, la
+metoda m care este invocată, vom trage mai multe muchii: de la p la toate
 metodele candidate pentru m --- $cand(m)$.
 
 \subsection{Noul algoritm pentru eliminarea funcțiilor}
 
-În aceasta parte, vom adapta algoritmul de eliminare a funcțiilor, definit
+În această parte, vom adapta algoritmul de eliminare a funcțiilor, definit
 anterior la \ref{algoritm_naiv_pentru_eliminare}.
 În particular, vom actualiza modul de calculare al funcțiilor accesibile:
 
@@ -328,7 +328,7 @@ def reachable_methods_in_java(main: Method) -> [Method]:
 \end{lstlisting}
 
 
-Iar procedura de optimizare va rămâne identica:
+Iar procedura de optimizare va rămâne identică:
 
 \begin{lstlisting}[language=Python]
 def optimize_for_size_in_java(p: Program) -> Program:
@@ -343,19 +343,19 @@ def optimize_for_size_in_java(p: Program) -> Program:
 
 În implementarea în \texttt{C++}, aceste au următorii corespondenți:
 
-Funcția $cand(m)$ este reprezentata de
+Funcția $cand(m)$ este reprezentată de
 \begin{lstlisting}[language=C++]
 std::vector<Method> Project::sibling_methods(const Method& m) const;
 \end{lstlisting}
 
 Procedura $reachable\_methods\_in\_java$ pentru determinarea funcțiilor
-accesibile este reprezentata de:
+accesibile este reprezentată de:
 
 \begin{lstlisting}[language=C++]
 std::vector<Method> Project::method_call_graph(const Method& m) const;
 \end{lstlisting}
 
-Iar procedura de optimizare $optimize\_for\_size\_in\_java$ este reprezentata de:
+Iar procedura de optimizare $optimize\_for\_size\_in\_java$ este reprezentată de:
 \begin{lstlisting}[language=C++]
 void Project::remove_unused_methods();
 \end{lstlisting}
