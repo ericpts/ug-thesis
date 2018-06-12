@@ -20,12 +20,12 @@ suportate de limbaj.
 
 Soluția limbajului Java pentru a fi independent de platformă este de a
 transforma codul într-o reprezentare intermediara, în loc de direct în
-cod binary pentru o anumită arhitectură .
+cod binar pentru o anumită arhitectură .
 
 Compilatorul Java (\texttt{javac}), transformă codul Java într-un limbaj
 intermediar, numit Java Bytecode.
 
-Acest limbaj este un limbaj low-level, destinat în mod exclusiv
+Acest limbaj este un limbaj de nivel scăzut (Eng. "low-level"), destinat în mod exclusiv
 procesării de către mașini, spre deosebire de codul Java, care este
 destinat oamenilor.
 
@@ -61,7 +61,7 @@ Totuși, Java obține performanțe mult mai bune decât
 acestea. Acest fapt se datorează compilării tocmai-la-timp (Eng.\
 just-in-time), în care atunci când interpretorul observă o secventa de
 cod care este interpretată repetitiv de foarte multe ori, va genera
-direct cod binary pentru aceasta.
+direct cod binari pentru aceasta.
 
 
 \section{Fișierele clasa}
@@ -275,7 +275,7 @@ trebuie să aibă cel puțin 2 octeți.
 
 \subsubsection{CONSTANT\_Class}
 
-Corespunde valorii etichetei de 7 și conține un indice spre un alt cămp
+Corespunde valorii etichetei de 7 și conține un indice spre un alt câmp
 în tabela de constante, de tipul \texttt{CONSTANT\_Utf8} --- un șir de
 caractere. Acel șir de caractere va conține numele clasei.
 
@@ -496,7 +496,7 @@ struct Code_attribute {
 \end{lstlisting}
 
 Această structură este esențială pentru implementarea optimizării,
-intrucât ea ne permite să determinăm metodele apelate din cadrul unei secvente de cod.
+întrucât ea ne permite să determinăm metodele apelate din cadrul unei secvente de cod.
 În continuare, o voi descrie detaliat:
 
 \begin{itemize}
@@ -613,7 +613,7 @@ index1
 index2
 \end{verbatim}
 
-Opcode-u corespunzător este 183 sau 0xb7. La fel ca la
+Opcode-ul corespunzător este 183 sau 0xb7. La fel ca la
 \texttt{invokeinterface}, instrucțiunea conține un indice în tabela de constante
 către o structură \texttt{CONSTANT\_Methodref}.
 

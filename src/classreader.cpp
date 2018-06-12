@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "classreader.h"
+#include "util.h"
 
 ClassReader::ClassReader(std::vector<uint8_t> data) : m_bparser(data)
 {
@@ -29,7 +30,7 @@ ClassFileImpl ClassReader::deserialize()
         *it = parse_cp_info();
         it += it->slots();
     }
-    std::cerr << "Done parsing constants.\n";
+    debug << "Done parsing constants.\n";
 
     cf.access_flags = m_bparser.next_u2();
     cf.this_class = m_bparser.next_u2();
@@ -41,28 +42,28 @@ ClassFileImpl ClassReader::deserialize()
         i.idx = m_bparser.next_u2();
         expect_cpool_entry(i.idx, cp_info::Tag::CONSTANT_Class);
     }
-    std::cerr << "Done parsing interfaces.\n";
+    debug << "Done parsing interfaces.\n";
 
     cf.field_count = m_bparser.next_u2();
     cf.fields.resize(cf.field_count);
     for (field_info &f : cf.fields) {
         f = this->parse_field_info();
     }
-    std::cerr << "Done parsing fields.\n";
+    debug << "Done parsing fields.\n";
 
     cf.method_count = m_bparser.next_u2();
     cf.methods.resize(cf.method_count);
     for (method_info &m : cf.methods) {
         m = this->parse_method_info();
     }
-    std::cerr << "Done parsing methods.\n";
+    debug << "Done parsing methods.\n";
 
     cf.attribute_count = m_bparser.next_u2();
     cf.attributes.resize(cf.attribute_count);
     for (attribute_info &attr : cf.attributes) {
         attr = m_bparser.parse_attribute_info();
     }
-    std::cerr << "Done parsing attributs.\n";
+    debug << "Done parsing attributs.\n";
 
     assert(m_bparser.is_end()); // We should have no data left.
     return cf;

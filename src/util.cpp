@@ -11,3 +11,5 @@ std::vector<u1> read_entire_file(const std::string &filename)
                          std::istreambuf_iterator<char>());
     return data;
 }
+
+DebugOstream debug;

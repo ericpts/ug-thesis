@@ -3,6 +3,9 @@
 
 \chapter{Problema de optimizare}
 
+Toate programele date ca exemplu sunt scrise într-un pseudo cod inspirat
+din limbajul Python.
+
 \section{Formalizarea problemei}
 
 Fie programul \s{P} un proiect Java, format dintr-o mulțime de fișiere
@@ -48,9 +51,9 @@ Atunci pentru orice a și b din $\N$, \s{P}(a, b) va fi egal cu
 
 \section{Metrici de optimizare}
 
-In contextul optimizării de programe este nevoie să definim ce
+În contextul optimizării de programe este nevoie să definim ce
 înseamnă ca dintre doua programe echivalente \s{P} și \s{Q}, \s{P}
-sa fie mai performant decât \s{Q}.
+să fie mai performant decât \s{Q}.
 Cele mai folosite doua metrici sunt metrica de viteză de
 execuție a unui program, și metrica de dimensiune a programului.
 
@@ -70,11 +73,11 @@ $ time ./build.sh
 ./build.sh  0.47s user 0.20s system 100% cpu 0.664 total
 \end{lstlisting}
 
-In acest context, vom spune ca programul $build.sh$ a rulat
+În acest context, vom spune ca programul $build.sh$ a rulat
 pentru un timp de 0.664 secunde.
 
 Vom defini astfel \[time(\mathcal{P}, \mathcal{I})\] ca fiind
-timpul de rulare al programului \s{P} input-ul \s{I}.
+timpul de rulare al programului \s{P} pe input-ul \s{I}.
 
 \subsubsection{Comparare bazata pe timpul de rulare}
 
@@ -99,12 +102,7 @@ Având definită relația de ordine, problema optimizării pe
 baza metricii de viteza este:
 
 Dându-se un program \s{P}, să se găsească \s{Q} ca cel mai rapid
-program echivalent cu \s{P}:
-
-\[
-	\operatorname*{argmin}_\mathcal{Q} \mathcal{P}
-	\text{ echivalent cu  } \mathcal{Q}
-\]
+program echivalent cu \s{P}.
 
 \subsection{Metrica de dimensiune}
 
@@ -121,7 +119,7 @@ Unde prin \( instruction\_size(i) \) înțelegem numărul de octeți
 ocupați de instrucțiunea $i$.
 
 De exemplu, pentru limbajul Java, instrucțiunea $invokedynamic$
-ocupa 5 octeți, in timp ce instrucțiunea $dmul$ ocupa un singur
+ocupă 5 octeți, în timp ce instrucțiunea $dmul$ ocupă un singur
 octet.
 
 \subsubsection{Comparare bazată pe dimensiunea programelor}
@@ -152,8 +150,8 @@ Pentru cele mai multe cazuri, cele doua metrici sunt corelate --
 o reducere a dimensiunii programului aduce cu ea și o reducere a timpului de rulare.
 
 Totodată, exista cazuri când cele doua metrici sunt contrare.
-Un exemplu clasic este tehnica de "derularea buclelor" (Eng. Loop
-unrolling).
+Un exemplu clasic este tehnica de "derularea buclelor" (Eng. "Loop
+unrolling").
 Aceasta constă în explicitarea unei bucle cu un număr cunoscut
 de iterații:
 
@@ -186,7 +184,7 @@ per unitate de memorie) a continuat să scadă în ultimul deceniu,
 în timp ce performanța procesoarelor (numărul de instrucțiuni
 executate per secundă) a stagnat.
 
-Asa cum se poate observa in figura \ref{fig:cpu_and_gpu_trends},
+Asa cum se poate observa în figura \ref{fig:cpu_and_gpu_trends},
 trendul care urma legea lui Moore \cite{moores_law} a început să
 se oprească. Pe de altă parte, eficiența memoriei calculatoarelor
 și-a continuat trendul de creștere, așa cum se poate observa în figura

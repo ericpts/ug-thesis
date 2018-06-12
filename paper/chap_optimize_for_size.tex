@@ -1,28 +1,28 @@
-\chapter{Optimizari de dimensiune}\label{capitolul_optimizari_de_dimensiune}
+\chapter{Optimizări de dimensiune}\label{capitolul_optimizari_de_dimensiune}
 
-\section{Eliminarea functiilor nefolosite}
+\section{Eliminarea funcțiilor nefolosite}
 
 Această lucrare conține o abordare de optimizare a dimensiunii
 programelor bazată pe eliminarea funcțiilor nefolosite.
 
 Deși metrica principală este aceea de dimensiune, reducerea
-numarului de instrucțiuni ale programului poate avea și beneficii
-asupra vitezei de executie, din cauza interactiunilor cu cache-ul
+numărului de instrucțiuni ale programului poate avea și beneficii
+asupra vitezei de execuție, din cauza interacțiunilor cu cache-ul
 calculatoarelor. Pe de altă parte, acest beneficiu este destul de
-minor, și nu preprezintă principala motivatie.
+minor, și nu reprezintă principala motivație.
 
-In continuare, voi descrie conceptele necesare pentru a intelege
+În continuare, voi descrie conceptele necesare pentru a înțelege
 cum putem implementa acest fel de optimizare.
 
-\section{Functie/Metoda}
+\section{Funcție/Metoda}
 
-In domeniul limbajelor de programare, o functie \s{F} este
+În domeniul limbajelor de programare, o funcție \s{F} este
 formată dintr-o colecție de instrucțiuni tratate ca un întreg,
-împreună cu un protocol pentru executarea acelor instructiuni.
+împreună cu un protocol pentru executarea acelor instrucțiuni.
 
 O metoda \s{M} reprezintă o funcție asociată unei clase.
 
-In limbajul Java este imposibil să avem o funcție care să nu
+În limbajul Java este imposibil să avem o funcție care să nu
 aparțină unei metode.
 Deși definițiile nu sunt echivalente, deoarece în Java nu există
 funcții propriu-zise, ci doar metode, termenii de funcție și de metodă
@@ -31,21 +31,21 @@ sunt considerați interschimbabili.
 Protocolul de executare a funcțiilor variază de la limbaj la
 limbaj și nu este important pentru scopurile noastre.
 
-De exemplu, functia f
+De exemplu, funcția f
 \begin{lstlisting}[language=Python, numbers=left, firstnumber=0]
 def f(a, b, c):
     a = a + b
     return c
 \end{lstlisting}
-conține 2 instructiuni, corespunzatoare liniilor 1-2:
+conține 2 instrucțiuni, corespunzătoare liniilor 1-2:
 
 $(i_1)\ a = a + b$
 
 $(i_2)\ return\ c$
 
-Deși în acest exemplu funcția \s{F} incepe de pe pozitia 0,
-într-un program format din mai multe funcții locul de inceput al
-funcției variază (indicele primei instructiuni).
+Deși în acest exemplu funcția \s{F} începe de pe poziția 0,
+într-un program format din mai multe funcții locul de început al
+funcției variază (indicele primei instrucțiuni).
 
 Vom spune că două instrucțiuni sunt egale dacă se află pe aceeași
 linie. i.e., reprezintă aceeași poziție în program.
@@ -60,25 +60,25 @@ def f(a, b, c):
     a = a + b
     return c
 \end{lstlisting}
-instructiunile $i_1$ și $i_5$ \textbf{nu} sunt egale.
+instrucțiunile $i_1$ și $i_5$ \textbf{nu} sunt egale.
 
 Vom spune ca o instrucțiune $\mathbf{i}$ aparține funcției
-\s{F} dacă există o linie a lui \s{F} unde putem gasi
-instructiunea respectivă.
+\s{F} dacă există o linie a lui \s{F} unde putem găsi
+instrucțiunea respectivă.
 
 \section{Punctul de intrare principal}
 
 Fie \s{P} un program, executat în ordine secvențială.
 Punctul principal de intrare al lui \s{P} reprezintă locul de
-unde incepe execuția programului -- prima instrucțiune executată.
+unde începe execuția programului -- prima instrucțiune executată.
 
 Acest loc va fi notat cu \texttt{main}.
 
-\section{Sirul de executie al unui program}
+\section{Șirul de execuție al unui program}
 
 Un șir de execuție \s{S} al programului \s{P} reprezintă o înlănțuire
-finită de instrucțiuni executate secvențial, incepând cu
-\texttt{main} si terminându-se cu ultima instrucțiune executată de
+finită de instrucțiuni executate secvențial, începând cu
+\texttt{main} și terminându-se cu ultima instrucțiune executată de
 către \s{P} înainte ca programul să se termine.
 Pentru ca un șir de execuție \s{S} să fie valid, trebuie să
 existe un input pe care, dacă rulam programul, acesta să
@@ -103,25 +103,25 @@ Cu alte cuvinte, $elim(\mathcal{F}) = 1$ dacă
 
 \subsection{Sirurile de execuție - în practică}
 
-Problema determinarii tuturor șirurilor de execuție ale unui
-program este o problema grea, intrucât aceasta ar implica rularea
+Problema determinării tuturor șirurilor de execuție ale unui
+program este o problema grea, întrucât aceasta ar implica rularea
 programului pe fiecare input posibil.
 
 Din cauza că unele programe pot să fie definite doar parțial
-(comportamentul lor sa fie nedefinit pe anumite clase de input),
-această problemă poate fi echivalentă cu Problema Opririi (eng. "The
+(comportamentul lor să fie nedefinit pe anumite clase de input),
+această problemă poate fi echivalentă cu Problema Opririi (Eng. "The
 Halting Problem") \cite{the_halting_problem}: nu avem cum să știm
-dacă un input al programului este bun sau nu fară să rulam
+dacă un input al programului este bun sau nu fără să rulam
 programul pe acel input. Totodată, nu putem determina dacă un program se va termina
 vreodată.
 
-Deoarece problema opririi este intractabilă, determinarea tuturor
+Deoarece problema opririi este nedecidabilă, determinarea tuturor
 șirurilor de execuție posibile ale lui program arbitrar este de
-asemenea o problema intractabilă.
+asemenea o problema nedecidabilă.
 
 \subsection{Superșirul de execuție}\label{supersirul_de_executie}
 
-Aceasăa lucrare va construi o aproximare -- un "superșir" de execuție format
+Această lucrare va construi o aproximare -- un "superșir" de execuție format
 dintr-o superpoziție a tuturor șirurilor de execuție existente, inclusiv pe cele
 invalide (pentru care nu există un input care să le genereze).
 
@@ -143,23 +143,23 @@ def h():
     pass
 \end{lstlisting}
 
-șirul de execuție folosit în problema noastră va conține și
+Șirul de execuție folosit în problema noastră va conține și
 secvența corespunzătoare lanțului de apeluri \(main() -> f()\),
 cât și lanțului \(main() -> f() -> g()\),
 chiar dacă acestea sunt invalide.
 
-Totodata, șirul de execuție generat \textbf{nu} va conține
+Totodată, șirul de execuție generat \textbf{nu} va conține
 secvența \(main() -> h()\), sau orice secvență care să îl conțină
 pe h, din cauză că aceste secvențe nu sunt șiruri de execuție
 (nu există nicio secvență de instrucțiuni secvențiale
 care să pornească din funcția \texttt{main} și să ajungă în
-functia h).
+funcția h).
 
 \subsection{Graful apelurilor de funcții}\label{graful_apelurilor}
 
 Vom construi un graf \s{G} al metodelor: fiecărui nod îi va
 corespunde o metodă prezentă în program, iar fiecare metodă va
-avea un singur nod corespunzator.
+avea un singur nod corespunzător.
 
 Superșirul de execuție consideră toate secvențele de instrucțiuni
 dintr-o metodă, chiar dacă acestea sunt invalide.
@@ -168,11 +168,11 @@ Așadar, superșirul va considera toate  posibilele căi de apel către alte fun
 Așadar, putem reduce problema construcției superșirului la
 problema construirii grafului \s{G}.
 
-In acest graf, există o muchie de la metoda F la metoda
+În acest graf, există o muchie de la metoda F la metoda
 G dacă în secvența de instrucțiuni a lui F (corpul funcției)
 există un apel către funcția G.
 
-Având acest graf generat, putem computa mulțimea \s{M} a metodelor
+Având acest graf generat, putem calcula mulțimea \s{M} a metodelor
 care sunt accesibile pornind din nodul funcției care
 conține punctul principal de intrare.
 Pentru a optimiza programul, vom elimina toate metodele care nu
@@ -183,34 +183,34 @@ Demonstrație că acest procedeu este corect:
 
 	Fie m o metodă care nu aparține lui \s{M}.
 
-	Acest fapt inseamnă că în superșirul de execuție nu există nicio
+	Acest fapt înseamnă că în superșirul de execuție nu există nicio
 	instrucțiune care să aparțină lui m.
 
 	Cum superșirul de execuție include toate șirurile de execuție
-	valide, inseamnă că nu există niciun șir de execuție valid care,
-	la un moment dat, sa apeleze functia m.
+	valide, înseamnă că nu există niciun șir de execuție valid care,
+	la un moment dat, să apeleze funcția m.
 
 	Prin urmare, programul obținut prin eliminarea funcției m va fi
-	echivalent cu programul initial.
+	echivalent cu programul inițial.
 \end{lemma}
 
 \subsection{Algoritmul pentru eliminarea
-functiilor}\label{algoritm_naiv_pentru_eliminare}
+funcțiilor}\label{algoritm_naiv_pentru_eliminare}
 
 Pentru a construi graful, trebuie să putem deduce pentru fiecare
 metodă care sunt metodele pe care aceasta le apelează.
-Acest lucru este dependent de limbajul asupra caruia se aplică
+Acest lucru este dependent de limbajul asupra căruia se aplică
 optimizarea, așadar îl vom considera deja implementat.
 
-Putem considera astfel functia
+Putem considera astfel funcția
 \begin{lstlisting}[language=Python]
 def direct_calees(m: Method) -> [Method]
     return all methods directly called by m.
 \end{lstlisting}
-ca fiind la dispozitia noastră.
+ca fiind la dispoziția noastră.
 
 Pentru a forma mulțimea metodelor accesibile din \texttt{main},
-putem utiliza o parcugere în lățime a grafului.
+putem utiliza o parcurgere în lățime a grafului.
 
 \begin{lstlisting}[language=Python]
 def reachable_methods(main: Method) -> [Method]:
@@ -225,7 +225,7 @@ def reachable_methods(main: Method) -> [Method]:
     return coada
 \end{lstlisting}
 
-Având mulțimea generată, ramâne doar să eliminăm funcțiile
+Având mulțimea generată, rămâne doar să eliminăm funcțiile
 care nu fac partea din ea:
 
 \begin{lstlisting}[language=Python]

@@ -6,6 +6,9 @@
 \bibitem{cpp_static_init}
 \url{https://en.cppreference.com/w/cpp/language/initialization}.
 
+\bibitem{java_android_optimizers}
+
+
 \bibitem{language_benchmarks}
 \url{https://github.com/trizen/language-benchmarks}.
 
@@ -20,6 +23,11 @@
 
 \bibitem{javap}
 \url{https://docs.oracle.com/javase/7/docs/technotes/tools/windows/javap.html}.
+
+\bibitem{arnold2006dynamic}
+Matthew Arnold, Stephen Fink, David Grove, and Michael Hind.
+\newblock Dynamic compilation and adaptive optimization in virtual machines.
+\newblock 2006.
 
 \bibitem{the_halting_problem}
 L~Burkholder.
@@ -55,6 +63,9 @@ K.~Goda and M.~Kitsuregawa.
 Eljay Love-Jensen.
 \newblock Removing unused functions/dead code.
 \newblock \url{https://gcc.gnu.org/ml/gcc-help/2003-08/msg00128.html}.
+
+\bibitem{java_invokedynamic}
+Oracle.
 
 \bibitem{deadcodeeliminationforbeginners}
 {Rob Sayre}.

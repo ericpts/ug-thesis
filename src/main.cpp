@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     CLI11_PARSE(app, argc, argv);
 
     if (not in_place and not out) {
-        std::cerr << "Must specify either --in-place or --out!\n";
+        std::cout << "Must specify either --in-place or --out!\n";
         return -1;
     }
 

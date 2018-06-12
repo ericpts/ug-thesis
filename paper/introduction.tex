@@ -1,6 +1,6 @@
 \chapter{Introducere}
 
-Eliminarea codului inutil (eng. "Dead code elimination")
+Eliminarea codului inutil (Eng. "Dead code elimination")
 \cite{wiki:deadcodeelimination} este o optimizare clasică.  Ea
 presupune eliminarea dintr-un program a codului care nu afectează
 rezultatul computației.
@@ -11,7 +11,7 @@ acel cod nu are efecte laterale.
 
 Acest tip de optimizare este implementată tradițional în
 limbajele compilate, precum C, cât și în cele `compilate-la-timp'
-(eng. `just-in-time') precum Java sau JavaScript.  Beneficiile
+(Eng. `just-in-time') precum Java sau JavaScript.  Beneficiile
 principale aduse de către optimizare sunt:
 
 \begin{enumerate}
@@ -36,22 +36,100 @@ multe reprezentări intermediare, pot genera cod nefolosit.
 
 Limbajul C, prin includerea de fișiere mot-a-mot, este un exemplu
 bun pentru acest lucru: un program de câteva linii, care afișează
-"Hello, world!", ajunge sa aibă, înaintea eliminării codului mort,
+"Hello, world!", ajunge să aibă, înaintea eliminării codului mort,
 câteva mii de linii și sute de funcții nefolosite. Acest lucru se datorează
-nevoii includerii librăriei standard.
+nevoii includerii bibliotecii standard.
 
 \section{Eliminarea metodelor}
 
 Eliminarea metodelor și funcțiilor este un una dintre multele
-posibilități de a scapa de cod nefolosit.
+posibilități de a scăpa de cod nefolosit.
 
-Predeul constă în îndepărtarea dintr-un program a funcțiilor și a
+Procedeul constă în îndepărtarea dintr-un program a funcțiilor și a
 metodelor care nu sunt niciodată apelate.
 
 Această lucrare va explora această optimizare particulară, atât
 teoretic, cât și implementat în limbajul Java.
 
 \input{previous_work}
+
+\section{Asumpții}
+
+Înainte de a începe descrierea problemei, voi expune asumpțiile pe care le-am
+făcut în implementarea aplicației pentru Java.
+Deși aceste asumpții par destul de restrictive, cele mai multe proiecte normale,
+atât de Android, cât și normale, le vor satisface.
+
+Programul dezvoltat în această lucrare optimizează programele Java la compilare.
+În urmare, acesta nu poate să trateze invocarea de metode la rulare.
+
+Programul va emite un mesaj de eroare în caz că detectează că asumpția este
+încălcată,
+
+\subsection{Reflecția}
+
+Reflecția constă în introspecția programului la rulare -- spre exemplu,
+identificarea câmpurilor sau metodelor unei clase.
+
+Deși reflecția nu este de obicei folosită în acest scop (decât în circumstanțe
+specifice, de exemplu implementarea altor limbaje), aceasta permite programului
+să apeleze metode care nu sunt cunoscute decât la timpul rulării.
+
+De exemplu, programul \ref{java_reflection}
+\begin{lstlisting}[language=Java]
+public class Main {
+  public int add(int a, int b)
+  {
+     return a + b;
+  }
+
+  public static void main(String args[])
+  {
+     try {
+       Class cls = Class.forName("Main");
+       Class partypes[] = new Class[2];
+        partypes[0] = Integer.TYPE;
+        partypes[1] = Integer.TYPE;
+        Method meth = cls.getMethod(
+          "add", partypes);
+        Main methobj = new Main();
+        Object arglist[] = new Object[2];
+        arglist[0] = new Integer(37);
+        arglist[1] = new Integer(47);
+        Object retobj
+          = meth.invoke(methobj, arglist);
+        Integer retval = (Integer)retobj;
+        System.out.println(retval.intValue());
+     }
+     catch (Throwable e) {
+        System.err.println(e);
+     }
+  }
+}
+\end{lstlisting}
+apelează metoda add în mod dinamic.
+
+Pentru a putea implementa aplicația, am presupus că în programele pe care le
+optimizăm reflecția nu este utilizată pentru a apela metode dinamic.
+
+\subsection{Invocarea dinamică de metode}
+
+În Java 7, a fost introdusă o noua instrucțiune de cod mașină menită să
+faciliteze implementarea de limbaje dinamice în Java \cite{java_invokedynamic}.
+Aceasta este o alternativă mai rapidă la reflecție pentru apelarea de metode
+care nu sunt cunoscute decât la rulare.
+
+Din aceleași motive ca la reflecție, voi presupune că programele nu vor conține
+această instrucțiune.
+
+\subsubsection{Funcții lambda}
+
+Funcțiile lambda (sau funcțiile anonime) sunt o adiție recentă în limbajul Java.
+Implementarea folosește invocarea dinamică atunci când o astfel de funcție
+este instanțiată.
+Așadar, dacă un program folosește funcții anonime, acesta va încălca
+presupunerile făcute și nu va putea fi optimizat corect.
+
 
 \section{Structura lucrării}
 

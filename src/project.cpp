@@ -36,7 +36,7 @@ Project::Project(std::vector<fs::path> class_files)
 std::optional<ClassFile>
 Project::resolve_classfile(const std::string &class_name) const
 {
-    std::cerr << "Trying to resolve_classfile for " << class_name << "\n";
+    debug << "Trying to resolve_classfile for " << class_name << "\n";
     for (const ClassFile &c : this->m_files) {
         if (c->class_name() == class_name) {
             return c;
@@ -58,7 +58,7 @@ Project::resolve_symbolic_reference(const std::string &class_name,
     const ClassFile &cf = maybe_class_file.value();
     for (const Method &m : Method::all_from_classfile(cf)) {
         if (m.method_name() == method_name && m.method_type() == method_type) {
-            std::cerr << "Successfully resolved " << method_name
+            debug << "Successfully resolved " << method_name
                       << " :: " << method_type << "\n";
             return m;
         }
@@ -73,7 +73,7 @@ Method Project::main_method() const
         for (int i = 0; i < file->method_count; ++i) {
             if (!file->cp_index_is_string(file->methods[i].name_index,
                                           "main")) {
-                std::cerr << "Skipping method " << file->class_name() << "::"
+                debug << "Skipping method " << file->class_name() << "::"
                           << file->cp_index_as_string(
                                  file->methods[i].name_index)
                           << "()"
@@ -86,7 +86,7 @@ Method Project::main_method() const
         }
     }
     assert(maybe_main_method.has_value());
-    std::cerr << "Found the main file and method.\n";
+    debug << "Found the main file and method.\n";
 
     return maybe_main_method.value();
 }
@@ -122,11 +122,11 @@ void Project::remove_unused_methods()
             continue;
         }
 
-        std::cerr << "Found " << to_remove.size()
+        debug << "Found " << to_remove.size()
                   << " method(s) to remove from class " << cf->class_name()
                   << "\n";
         for (Method m : to_remove) {
-            std::cerr << "Removing " << m.format() << "...\n";
+            debug << "Removing " << m.format() << "...\n";
             cf = m.refresh(cf).with_this_method_removed();
         }
     }
@@ -183,15 +183,15 @@ std::vector<Method> Project::sibling_methods(const Method& m) const
             if (method_is_sibling(o)) {
                 ret.push_back(o);
             } else {
-                std::cerr << m.format() << " and " << o.format() << " are not sibling methods\n";
+                debug << m.format() << " and " << o.format() << " are not sibling methods\n";
             }
         }
     }
-    std::cerr << "Found the following sibling methods for " << m.format() << ": ";
+    debug << "Found the following sibling methods for " << m.format() << ": ";
     for (const Method& m : ret) {
-        std::cerr << m.format() << "; ";
+        debug << m.format() << "; ";
     }
-    std::cerr << "\n";
+    debug << "\n";
     return ret;
 }
 
@@ -241,10 +241,10 @@ bool Project::class_is_descendant(const ClassFile& down, const ClassFile& up) co
         }
     }
     if (is_reachable(up)) {
-        std::cerr << down->class_name() << " is a descendant of " << up->class_name() << "\n";
+        debug << down->class_name() << " is a descendant of " << up->class_name() << "\n";
         return true;
     } else {
-        std::cerr << down->class_name() << " is NOT a descendant of " << up->class_name() << "\n";
+        debug << down->class_name() << " is NOT a descendant of " << up->class_name() << "\n";
         return false;
     }
 }

@@ -3,6 +3,7 @@
 #include "bytesparser.h"
 #include "code.h"
 #include "project.h"
+#include "util.h"
 
 #include <iostream>
 #include <set>
@@ -43,7 +44,14 @@ std::optional<Method> Method::from_symbolic_reference(const ClassFile &file,
     const std::string method_type =
         file->constant_pool[ntinfo.descriptor_index].as_string();
 
-    std::cerr << "Trying to resolve method from symbolic reference: "
+    if (method_name == "invoke" && class_name == "java/lang/reflect/Method") {
+        std::cout << "\033[1;31m";
+        std::cout << "ERROR: The optimizer cannot handle dynamic method invocation via reflection.\n";
+        std::cout << "The correctness of the program is no longer guaranteed.\n";
+        std::cout << "\033[0m\n";
+    }
+
+    debug << "Trying to resolve method from symbolic reference: "
               << "(" << method_name << ") and type " << method_type << ""
               << ".\n";
 
@@ -51,7 +59,7 @@ std::optional<Method> Method::from_symbolic_reference(const ClassFile &file,
         class_name, method_name, method_type);
 
     if (!maybe_method.has_value()) {
-        std::cerr << "Could note resolve: "
+        debug << "Could note resolve: "
                   << "(" << method_name << ") and type " << method_type << "."
                   << " It is probably part of a library!\n";
     }
@@ -148,12 +156,12 @@ std::vector<Method> Method::called_methods() const
         switch (i) {
 
         case Instr::invokedynamic: {
-            std::cerr << "Found function call instruction invokedynamic.\n";
+            debug << "Found function call instruction invokedynamic.\n";
 
-            std::cerr << "\033[1;31m";
-            std::cerr << "The optimizer cannot handle dynamic method invocation.\n";
-            std::cerr << "The correctness of the program is no longer guaranteed.\n";
-            std::cerr << "\033[0m\n";
+            std::cout << "\033[1;31m";
+            std::cout << "ERROR: The optimizer cannot handle dynamic method invocation.\n";
+            std::cout << "The correctness of the program is no longer guaranteed.\n";
+            std::cout << "\033[0m\n";
 
             bp.next_u2();
             assert (bp.next_u1() == 0);
@@ -161,7 +169,7 @@ std::vector<Method> Method::called_methods() const
             break;
         }
         case Instr::invokeinterface: {
-            std::cerr << "Found function call instruction invokeinterface.\n";
+            debug << "Found function call instruction invokeinterface.\n";
 
             const u2 index = bp.next_u2();
             bp.next_u1();
@@ -171,17 +179,17 @@ std::vector<Method> Method::called_methods() const
             break;
         }
         case Instr::invokespecial: {
-            std::cerr << "Found function call instruction invokespecial.\n";
+            debug << "Found function call instruction invokespecial.\n";
             add_method_from_mref_index(bp.next_u2());
             break;
         }
         case Instr::invokestatic: {
-            std::cerr << "Found function call instruction invokestatic.\n";
+            debug << "Found function call instruction invokestatic.\n";
             add_method_from_mref_index(bp.next_u2());
             break;
         }
         case Instr::invokevirtual: {
-            std::cerr << "Found function call instruction invokevirtual.\n";
+            debug << "Found function call instruction invokevirtual.\n";
             add_method_from_mref_index(bp.next_u2());
             break;
         }

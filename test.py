@@ -11,10 +11,10 @@ def print_color(color, msg: str, **kwargs):
     print(msg, **kwargs)
     print(Style.RESET_ALL, end='')
 
-def run(*args, **kwargs):
+def run(*args, **kwargs) -> str:
     p = subprocess.run(args, **kwargs, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     if p.returncode == 0:
-        return
+        return p.stdout.decode('utf-8')
 
     print_color(Fore.RED, 'Error running command {}'.format(args))
 
@@ -23,18 +23,32 @@ def run(*args, **kwargs):
 
     p.check_returncode()
 
-def run_tap():
+def run_android():
     exe = Path(os.getcwd()) / 'build' / 'thesis'
-    tap = Path(os.getcwd()) / 'test'/ 'fixtures' / 'TAP'
+    android = Path(os.getcwd()) / 'test'/ 'fixtures' / 'android'
     test_dir = Path(os.getcwd()) / 'test' / '_current'
 
-    def run_homework(hw: Path):
-        print_color(Fore.BLUE, 'Testing on {}...'.format(hw))
+    print_color(Fore.BLUE, 'testing on android...')
+    run('rm', '-rf', test_dir)
+    run('cp', '-r', android, test_dir)
+
+    thesis_output = run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
+    (test_dir / 'thesis.log').write_text(thesis_output)
+
+def run_tap():
+    exe = Path(os.getcwd()) / 'build' / 'thesis'
+    tap = Path(os.getcwd()) / 'test'/ 'fixtures' / 'tap'
+    test_dir = Path(os.getcwd()) / 'test' / '_current'
+
+    def run_homework(hw: path):
+        print_color(Fore.BLUE, 'testing on {}...'.format(hw))
         run('rm', '-rf', test_dir)
         run('cp', '-r', hw, test_dir)
 
-        run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
-        run('java', 'Main', cwd=hw)
+        thesis_output = run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
+        (test_dir / 'thesis.log').write_text(thesis_output)
+
+        run('java', 'main', cwd=hw)
 
     for f in tap.glob('*'):
         for g in f.glob('*'):
@@ -49,21 +63,24 @@ def run_fixtures():
         run('rm', '-rf', test_dir)
         run('cp', '-r', f, test_dir)
 
-        run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
+        thesis_output = run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
+        (test_dir / 'thesis.log').write_text(thesis_output)
+
         run(test_dir / 'test.sh', cwd=test_dir)
 
 def init():
     colorama.init()
 
     print('Building...')
-    run('bash', 'build.sh')
+    run('bash', 'make.sh')
     run('make', cwd='build')
     run('python3', 'make.py', cwd='test')
 
 def main():
     init()
-    run_fixtures()
-    run_tap()
+    # run_fixtures()
+    # run_tap()
+    run_android()
 
 if __name__ == '__main__':
     main()

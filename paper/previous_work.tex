@@ -3,7 +3,7 @@
 \subsection{C si C++}
 
 Compilatorul gcc este capabil să elimine funcțiile nefolosite,
-însă acest comportament nu este default.
+însă acest comportament nu este implicit.
 
 Pentru exemplificare, vom considera programul
 \begin{lstlisting}[language=C, title=main.c, label=c_program]
@@ -44,7 +44,7 @@ $
 Acest lucru se datorează faptului că optimizatorul pentru C
 lucrează cu simboluri, nu direct cu funcții.  Diferența este că
 un simbol poate reprezenta atât o funcție, cât și o variabilă.
-Așadar, când optimizatorul decidă dacă să elimine un simbol,
+Așadar, când optimizatorul decide dacă să elimine un simbol,
 acesta nu consideră dacă acel simbol este o funcție sau un obiect
 (o variabilă se mai numește și obiect).
 
@@ -95,31 +95,48 @@ corectitudinea programului.
 
 \subsection{Java}
 
-Compilatorul standard de Java, \texttt{javac}, este incapabil să
-efectueaze optimizarea de a elimina metode nefolosite.
+\subsubsection{La compilare}
 
-În limbajul C, compilatorul gcc știe că programul își începe
-execuția din funcția \texttt{main}, și că acesta este singurul
-mod în care programul poate fi folosit.
+Compilatorul standard de Java, \texttt{javac}, nu este un compilator
+optimizator: acesta doar transformă codul Java în bytecode, fără a aplica
+transformări de optimizre pe acesta.
 
-În limbajul Java, compilatorul \texttt{javac}, lucrează cu câte
-un fișier o data: acesta nu are conceptul de proiect sau
-executabil, ci doar de fișiere clasă.
-Compilatorul nu cunoaște ce funcții pot fi apelate, sau
-din ce locuri, deci nu poate efectua nicio optimizare.
+În limbajul Java compilatorul lucrează cu câte un fișier o data: acesta nu are
+conceptul de proiect sau executabil, ci doar de fișiere clasă.  Compilatorul nu
+cunoaște ce funcții pot fi apelate, sau din ce locuri, deci nu poate efectua
+nicio optimizare.
+
+\subsubsection{La Rulare}
+
+Optimizarea Java se produce la timpul de rulare.  Mașina virtuală Java
+interpretează codul binar, iar secțiunile care sunt executate foarte des (de
+exemplu, corpul unei bucle, sau o metodă care este apelată la intervale
+regulate) sunt optimizate direct la rulare.
+
+Fiecare implementare a mașinii virtuale are propriile moduri de a optimiza
+codul, însă cele mai moderne se bazează pe profilarea acestuia și detectarea
+posibililor candidați pentru optimizare \cite{arnold2006dynamic}.
 
 \subsubsection{Android}
 
 Deși codul Java arbitrar este imposibil de optimizat, structuri
-particulare de proiecte permit eliminarea de cod nefolosit.
+particulare de proiecte permit eliminarea de cod nefolosit. De-a lungul
+timpului, au fost create mai multe optimizatoare pentru scopuri specifice, însă
+majoritatea nu mai sunt întreținute în mod activ \cite{java_android_optimizers}.
+Această lipsă de interes probabil se datorează faptului că cei mai mulți oameni
+sunt deserviți foarte bine de optimizarea oferită de mașinile virtuale la timpul
+de rulare.
 
-Acest lucru este folosit pentru aplicațiile dezvoltate pentru
-sistemul de operare Android \cite{proguard_google}.
-Programul ales pentru a realiza sarcina de optimizare este
-\texttt{Proguard} \cite{proguard}.
+În zilele noastre, cel mai întâlnit loc unde este JVM-ul nu este satisfăcător
+este optimizarea de aplicații pentru sistemul de operare Android
+\cite{proguard_google}.
+Programul recomandat de Google este \texttt{Proguard} \cite{proguard}.
+Deși Proguard este el capabil de optimizări de dimensiune, principalul
+său scop este obfuscarea codului, pentru a nu putea fi descifrat (Eng. "reverse
+engineered")
 
 Soluția acestui program pentru a rezolva problema pe care o
-întămpină \texttt{javac} este să îi ceară programatorului să
+întâmpină \texttt{javac} este să îi ceară programatorului să
 specifice în mod explicit modurile în care programul este rulat
 (e.g., de unde poate începe execuția).
 

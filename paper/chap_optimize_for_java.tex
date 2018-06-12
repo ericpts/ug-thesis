@@ -1,7 +1,7 @@
 \chapter{Limbajul Java și optimizarea acestuia}
 
-În acest capitol vom descrie cum putem adapta optimizareaeliminării de metode pentru limbajul Java.
-Scopul final este să implementăm algoritmul descris la sfârșitulcapitolului `Optimizări de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
+În acest capitol vom descrie cum putem adapta optimizarea eliminării de metode pentru limbajul Java.
+Scopul final este să implementăm algoritmul descris la sfârșitul capitolului `Optimizări de dimensiune'~\ref{capitolul_optimizari_de_dimensiune}.
 
 \section{Optimizarea limbajului Java}
 
@@ -55,10 +55,10 @@ def main_method(p: Proiect):
     for classfile in p.classfiles:
         if "main" in p.methods():
             if ret:
-                assert Fals, "Am gasit mai multe metode main!".
+                assert False, "Am gasit mai multe metode main!".
             ret = p.method_of_name("main")
     if not ret:
-        assert Fals, "Proiectul trebuie sa aiba o metoda main!".
+        assert False, "Proiectul trebuie sa aiba o metoda main!".
     return ret
 \end{lstlisting}
 
@@ -250,7 +250,7 @@ De exemplu, funcția \texttt{println(String s)}, definită în librăria standar
 \texttt{java.io}.
 
 Metoda exactă care este executată de o astfel de instrucțiune nu poate fi știută
-decât abia la run time (e.g., pentru programul~\ref{program_metode_virtuale}
+decât abia la timpul rulării (e.g., pentru programul~\ref{program_metode_virtuale}
 nu putem știi în timpul analizei statice dacă va fi apelată metoda
 \texttt{Other::foo()} sau metoda \texttt{One::foo()}).
 

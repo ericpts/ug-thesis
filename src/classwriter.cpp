@@ -1,4 +1,5 @@
 #include "classwriter.h"
+#include "util.h"
 
 ClassWriter::ClassWriter(const ClassFileImpl &cf) : m_cf(cf), m_data()
 {
@@ -22,7 +23,7 @@ std::vector<uint8_t> ClassWriter::serialize()
          it += it->slots()) {
         this->put_cp_info(*it);
     }
-    std::cerr << "Done putting constants.\n";
+    debug << "Done putting constants.\n";
 
     this->put_u2(cf.access_flags);
     this->put_u2(cf.this_class);
@@ -35,28 +36,28 @@ std::vector<uint8_t> ClassWriter::serialize()
         expect_cpool_entry(i.idx, cp_info::Tag::CONSTANT_Class);
         this->put_u2(i.idx);
     }
-    std::cerr << "Done putting interfaces.\n";
+    debug << "Done putting interfaces.\n";
 
     this->put_u2(cf.field_count);
     assert(cf.field_count == cf.fields.size());
     for (const field_info &f : cf.fields) {
         this->put_field_info(f);
     }
-    std::cerr << "Done putting fields.\n";
+    debug << "Done putting fields.\n";
 
     this->put_u2(cf.method_count);
     assert(cf.method_count == cf.methods.size());
     for (const method_info &m : cf.methods) {
         this->put_method_info(m);
     }
-    std::cerr << "Done putting methods.\n";
+    debug << "Done putting methods.\n";
 
     this->put_u2(cf.attribute_count);
     assert(cf.attribute_count == cf.attributes.size());
     for (const attribute_info &attr : cf.attributes) {
         this->put_attribute_info(attr);
     }
-    std::cerr << "Done putting attributs.\n";
+    debug << "Done putting attributs.\n";
 
     return this->m_data;
 }

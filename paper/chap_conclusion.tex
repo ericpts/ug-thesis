@@ -78,11 +78,11 @@ Testing on /home/ericpts/work/ug-thesis/test/fixtures/TAP/tema3/Var3Munte...
 
 Scopul lucrării a fost de a prezenta o optimizare pentru dimensiunea
 programelor - eliminarea funcțiilor nefolosite.
-Prima aprte a ei a implicat formalizarea problemei, definirea unui algoritm
+Prima parte a ei a implicat formalizarea problemei, definirea unui algoritm
 generic pentru optimizări de dimensiune și demonstrația
 corectitudinii acestuia.
 
-în a doua parte, am prezentat cum algortimul poate fi implementat în limbajul
+În a doua parte, am prezentat cum algoritmul poate fi implementat în limbajul
 Java, și am analizat condițiile necesare pentru a putea afirma faptul că
 algoritmul poate fi aplicat în mod corect.
 
@@ -99,8 +99,14 @@ acestora, și a le prezenta utilizatorilor programului într-un mod ușor de
 Testarea programului ar putea fi îmbunătățită extinzând suita de teste, cu mai
 multe cazuri și situații.
 
+Deși motivația inițială a constat în proiectele de Android, acestea au o
+structură complexă și nu au putut fi testate (întrucât efortul necesar
+pentru a le parsa programatic este ridicat). O adiție bună ar fi adaptarea
+proiectului pentru a trata și proiectele Android.
+
 De asemenea, programul ar putea fi pus să optimizeze proiecte mai complexe,
 pentru verificarea corectitudinii.
+
 
 \subsection{Optimizarea implementării}
 Programul a fost implementat pe principiul de a fi funcțional: (aproape) toate
@@ -111,5 +117,5 @@ Acest lucru face implementarea mai clară și mai ușor de urmărit, însă aduc
 penalizări destul de mare la timpul de rulare, întrucât limbajul C++ nu este
 gândit pentru a fi utilizat într-un mod funcțional.
 De asemenea, mulți algoritmi implementați în program au complexitatea $O$
-suboptimă, deoarece au fost implementați în cel mai simplu mod, nu neapărat cel
+sub optimă, deoarece au fost implementați în cel mai simplu mod, nu neapărat cel
 mai rapid.
