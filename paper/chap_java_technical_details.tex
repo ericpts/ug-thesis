@@ -67,7 +67,7 @@ direct cod binari pentru aceasta.
 \section{Fișierele clasa}
 
 Fișierele de clasa Java sunt formate din 10
-secțiuni\cite{classfile_sections}:
+secțiuni~\cite{classfile_sections}:
 
 \begin{enumerate}
 	\item
@@ -384,7 +384,7 @@ struct cp_info {
 \end{lstlisting}
 
 Iar structurile folosite pentru obiectivul propus au fost reprezentate
-astfel:
+astfel~\cite{classfile_sections}:
 
 \begin{lstlisting}[language=C++]
 struct CONSTANT_Methodref_info {
@@ -408,7 +408,7 @@ struct CONSTANT_NameAndType_info {
 Fiecare câmp din cadrul unei clase este reprezentat printr-o structură
 de tipul \texttt{field\_info}.
 
-În cod \texttt{C++}, această structură a fost reprezentată astfel:
+În cod \texttt{C++}, această structură a fost reprezentată astfel~\cite{classfile_sections}:
 
 \begin{lstlisting}[language=C++]
 struct field_info {
@@ -431,7 +431,7 @@ Unde:
 Fiecare metodă a unei clase/interfețe este descrisă prin această
 structură.
 
-În cod \texttt{C++}, am implementat-o astfel:
+În cod \texttt{C++}, am implementat-o astfel~\cite{classfile_sections}:
 
 \begin{lstlisting}[language=C++]
 struct method_info {
@@ -452,7 +452,7 @@ corespunzător acestei metode.
 
 \paragraph{\texorpdfstring{\texttt{attribute\_info}}{attribute\_info}}\label{attribute_info}
 
-În \texttt{C++}, a fost implementată astfel:
+În \texttt{C++}, a fost implementată astfel~\cite{classfile_sections}:
 
 \begin{lstlisting}[language=C++]
 struct attribute_info {
@@ -467,7 +467,7 @@ Numele atributului determină modul în care octeții din vectorul
 
 \subsubsection{Atributul de cod}
 
-Pentru intențiile noastre, atributul de interes este cel de cod:
+Pentru intențiile noastre, atributul de interes este cel de cod~\cite{classfile_sections}:
 
 \subparagraph{\texorpdfstring{\texttt{Code\_attribute}}{Code\_attribute}}\label{code_attribute}
 
@@ -568,7 +568,7 @@ index2
 \end{verbatim}
 
 Opcode-ul corespunzător acestei instrucțiuni este 186 sau
-0xba.
+0xba~\cite{instruction_format}.
 
 Index1 și index2 sunt doi octeți. Aceștia sunt compuși în
 \begin{lstlisting}
@@ -592,7 +592,7 @@ count
 0
 \end{verbatim}
 
-Opcode-ul corespunzător este 185 sau 0xb9.
+Opcode-ul corespunzător este 185 sau 0xb9~\cite{instruction_format}.
 \texttt{index1} și \texttt{index2} sunt folosiți, în mod similar ca la
 \texttt{invokedynamic}, pentru a construi un indice în tabela
 de constante.
@@ -613,7 +613,7 @@ index1
 index2
 \end{verbatim}
 
-Opcode-ul corespunzător este 183 sau 0xb7. La fel ca la
+Opcode-ul corespunzător este 183 sau 0xb7~\cite{instruction_format}. La fel ca la
 \texttt{invokeinterface}, instrucțiunea conține un indice în tabela de constante
 către o structură \texttt{CONSTANT\_Methodref}.
 
@@ -629,7 +629,7 @@ index1
 index1
 \end{verbatim}
 
-Opcode-ul corespunzător este 184 sau 0xb8.
+Opcode-ul corespunzător este 184 sau 0xb8~\cite{instruction_format}.
 Instrucțiunea invocă o metodă statică a unei clase.
 
 La fel ca la \texttt{invokeinterface}, este construit un indice compus,
@@ -644,7 +644,7 @@ index1
 index1
 \end{verbatim}
 
-Opcode-ul corespunzător este 182 sau 0xb6, iar
+Opcode-ul corespunzător este 182 sau 0xb6~\cite{instruction_format}, iar
 interpretarea este la fel ca la \texttt{invokeinterface}.
 Aceasta este cea mai comună
 instrucțiune de invocare de funcții.
