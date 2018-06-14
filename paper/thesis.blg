@@ -6,51 +6,52 @@ Database file #1: refs.bib
 Warning--to sort, need author or key in c_static_init
 Warning--to sort, need author or key in cpp_static_init
 Warning--to sort, need author or key in java_android_optimizers
+Warning--to sort, need author or key in java_reflection
 Warning--to sort, need author or key in language_benchmarks
 Warning--to sort, need author or key in classfile_sections
 Warning--to sort, need author or key in instruction_format
 Warning--to sort, need author or key in java_main
 Warning--to sort, need author or key in javap
 Warning--empty journal in arnold2006dynamic
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            573 strings with 5974 characters,
-and the built_in function-call counts, 3865 in all, are:
-= -- 357
-> -- 107
+            577 strings with 6315 characters,
+and the built_in function-call counts, 4039 in all, are:
+= -- 379
+> -- 108
 < -- 0
-+ -- 51
++ -- 52
 - -- 30
-* -- 174
-:= -- 569
-add.period$ -- 43
-call.type$ -- 19
-change.case$ -- 63
+* -- 179
+:= -- 590
+add.period$ -- 45
+call.type$ -- 20
+change.case$ -- 65
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 148
-empty$ -- 435
+cite$ -- 30
+duplicate$ -- 155
+empty$ -- 458
 format.name$ -- 30
-if$ -- 863
+if$ -- 910
 int.to.chr$ -- 0
-int.to.str$ -- 19
+int.to.str$ -- 20
 missing$ -- 4
-newline$ -- 84
+newline$ -- 88
 num.names$ -- 22
-pop$ -- 145
+pop$ -- 156
 preamble$ -- 1
-purify$ -- 53
+purify$ -- 55
 quote$ -- 0
-skip$ -- 154
+skip$ -- 156
 stack$ -- 0
-substring$ -- 162
-swap$ -- 18
+substring$ -- 167
+swap$ -- 19
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 76
-warning$ -- 9
+type$ -- 80
+warning$ -- 10
 while$ -- 27
-width$ -- 21
-write$ -- 153
-(There were 9 warnings)
+width$ -- 22
+write$ -- 161
+(There were 10 warnings)

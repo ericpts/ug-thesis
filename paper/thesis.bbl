@@ -7,7 +7,10 @@
 \url{https://en.cppreference.com/w/cpp/language/initialization}.
 
 \bibitem{java_android_optimizers}
+\url{http://www.comscigate.com/tutorial/ajay/Part\%202/Development\%20for\%20Mobile\%20Devices/Software/proguard2.1/proguard2.1/docs/alternatives.html}.
 
+\bibitem{java_reflection}
+\url{http://www.oracle.com/technetwork/articles/java/javareflection-1536171.html}.
 
 \bibitem{language_benchmarks}
 \url{https://github.com/trizen/language-benchmarks}.
@@ -66,6 +69,8 @@ Eljay Love-Jensen.
 
 \bibitem{java_invokedynamic}
 Oracle.
+\newblock
+  \url{https://docs.oracle.com/javase/8/docs/technotes/guides/vm/multiple-language-support.html}.
 
 \bibitem{deadcodeeliminationforbeginners}
 {Rob Sayre}.
