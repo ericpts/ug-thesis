@@ -57,7 +57,7 @@ bool ClassFileImpl::is_class() const
 std::vector<std::string> ClassFileImpl::interface_names() const
 {
     std::vector<std::string> ret;
-    for (const interface_info& info : this->interfaces) {
+    for (const interface_info &info : this->interfaces) {
         const CONSTANT_Class_info cinfo =
             this->constant_pool[info.idx].as<CONSTANT_Class_info>();
         ret.push_back(this->cp_index_as_string(cinfo.name_index));

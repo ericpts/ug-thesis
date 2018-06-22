@@ -46,22 +46,24 @@ std::optional<Method> Method::from_symbolic_reference(const ClassFile &file,
 
     if (method_name == "invoke" && class_name == "java/lang/reflect/Method") {
         std::cout << "\033[1;31m";
-        std::cout << "ERROR: The optimizer cannot handle dynamic method invocation via reflection.\n";
-        std::cout << "The correctness of the program is no longer guaranteed.\n";
+        std::cout << "ERROR: The optimizer cannot handle dynamic method "
+                     "invocation via reflection.\n";
+        std::cout
+            << "The correctness of the program is no longer guaranteed.\n";
         std::cout << "\033[0m\n";
     }
 
     debug << "Trying to resolve method from symbolic reference: "
-              << "(" << method_name << ") and type " << method_type << ""
-              << ".\n";
+          << "(" << method_name << ") and type " << method_type << ""
+          << ".\n";
 
     std::optional<Method> maybe_method = project().resolve_symbolic_reference(
         class_name, method_name, method_type);
 
     if (!maybe_method.has_value()) {
         debug << "Could note resolve: "
-                  << "(" << method_name << ") and type " << method_type << "."
-                  << " It is probably part of a library!\n";
+              << "(" << method_name << ") and type " << method_type << "."
+              << " It is probably part of a library!\n";
     }
     return maybe_method;
 }
@@ -102,7 +104,7 @@ std::optional<Code_attribute> Method::code_attribute() const
         return code;
     }
 
-    assert (this->is_abstract());
+    assert(this->is_abstract());
     return {};
 }
 
@@ -135,19 +137,17 @@ std::vector<Method> Method::called_methods() const
 
     Code_attribute attr = maybe_attr.value();
 
-    auto add_optional = [&ret](std::optional<Method> m) -> void
-    {
+    auto add_optional = [&ret](std::optional<Method> m) -> void {
         if (m.has_value()) {
             ret.push_back(m.value());
         }
     };
 
-    auto add_method_from_mref_index = [this, &add_optional] (u2 index) -> void
-    {
-        assert (this->class_file()->is_cp_index(index));
+    auto add_method_from_mref_index = [this, &add_optional](u2 index) -> void {
+        assert(this->class_file()->is_cp_index(index));
         add_optional(Method::from_symbolic_reference(
-                    this->class_file(), index,
-                    this->class_file()->constant_pool[index]));
+            this->class_file(), index,
+            this->class_file()->constant_pool[index]));
     };
 
     BytesParser bp{attr.code};
@@ -159,13 +159,15 @@ std::vector<Method> Method::called_methods() const
             debug << "Found function call instruction invokedynamic.\n";
 
             std::cout << "\033[1;31m";
-            std::cout << "ERROR: The optimizer cannot handle dynamic method invocation.\n";
-            std::cout << "The correctness of the program is no longer guaranteed.\n";
+            std::cout << "ERROR: The optimizer cannot handle dynamic method "
+                         "invocation.\n";
+            std::cout
+                << "The correctness of the program is no longer guaranteed.\n";
             std::cout << "\033[0m\n";
 
             bp.next_u2();
-            assert (bp.next_u1() == 0);
-            assert (bp.next_u1() == 0);
+            assert(bp.next_u1() == 0);
+            assert(bp.next_u1() == 0);
             break;
         }
         case Instr::invokeinterface: {
@@ -173,7 +175,7 @@ std::vector<Method> Method::called_methods() const
 
             const u2 index = bp.next_u2();
             bp.next_u1();
-            assert (bp.next_u1() == 0);
+            assert(bp.next_u1() == 0);
 
             add_method_from_mref_index(index);
             break;
@@ -212,10 +214,8 @@ ClassFile Method::with_this_method_removed() const
 
 bool Method::is_abstract() const
 {
-    return (
-            this->class_file()->methods[this->m_method_index].access_flags
-            & static_cast<int>(FLAGS::ACC_ABSTRACT))
-        != 0;
+    return (this->class_file()->methods[this->m_method_index].access_flags &
+            static_cast<int>(FLAGS::ACC_ABSTRACT)) != 0;
 }
 
 bool Method::operator==(const Method &o) const
@@ -234,4 +234,3 @@ Method Method::refresh(const ClassFile &new_file) const
     assert(false); // This method was probably deleted, and should not be
                    // refreshed.
 }
-

@@ -3,8 +3,9 @@
 
 #include <vector>
 
-// This struct handles the byte-by-byte parsing of a byte array.
-struct BytesParser {
+/// This struct handles the byte-by-byte parsing of a byte array.
+class BytesParser
+{
   private:
     std::vector<u1> m_data;
     std::vector<u1>::iterator m_it;
@@ -30,6 +31,6 @@ struct BytesParser {
     /// Parses an attribute_info struct from the data buffer.
     attribute_info parse_attribute_info();
 
-    // Returns how many bytes have been parsed so far.
+    /// Returns how many bytes have been parsed so far.
     int bytes_read() const;
 };

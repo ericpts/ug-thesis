@@ -1,0 +1,19 @@
+[ ] Capitolul 5 - Add UML diagrams.
+Descrierea tehnica a capitolului 5 in care e descrisa implementarea autorului
+pare putin ‘grabita’. Mi-ar fi placut sa vad cateva diagrame UML care sa lege
+lucrurile mai clar, pentru cateva dintre ele a trebui sa fac conexiuni
+imaginare.
+
+[ ] Capitolul 5 -
+Mi-ar fi placut insa sa vad ca autorul implementeaza solutii si pentru
+functiile create dinamic (e.g.  lambda functions).
+
+De asemenea, lucrarea nu abordeaza decat eliminarea functiilor. Ar fi fost
+destul de direct sa implementeze si eliminarea claselor nefolosite.
+
+[ ] Capitolul 6 - Talk about testing, unit and integration.
+
+Lipseste partea de evaluare - Sunt doar cateva proiecte foarte mici ca test
+(debugging probabil). Mi-ar fi placut ca sursele sa fie puse online pe Git cu
+tot cu documentatie si suport unit test pentru a putea fi continuata pe
+viitor.

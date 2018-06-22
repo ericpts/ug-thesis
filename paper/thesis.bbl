@@ -85,6 +85,10 @@ Robert~R. Schaller.
 \newblock Moore's law: Past, present, and future.
 \newblock {\em IEEE Spectr.}, 34(6):52--59, June 1997.
 
+\bibitem{project_sourcecode}
+Eric Stavarache.
+\newblock \url{http://github.com/ericpts/ug-thesis/}.
+
 \bibitem{wiki:deadcodeelimination}
 {Wikipedia contributors}.
 \newblock Dead code elimination --- {Wikipedia}{,} the free encyclopedia.

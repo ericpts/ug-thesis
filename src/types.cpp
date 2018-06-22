@@ -88,7 +88,7 @@ template <> Code_attribute attribute_info::as() const
 template <> CONSTANT_GenericMethodref_info cp_info::as() const
 {
     assert(this->tag == cp_info::Tag::CONSTANT_Methodref ||
-            this->tag == cp_info::Tag::CONSTANT_InterfaceMethodref);
+           this->tag == cp_info::Tag::CONSTANT_InterfaceMethodref);
     BytesParser bp{this->data};
     CONSTANT_GenericMethodref_info ret;
     ret.tag = this->tag;

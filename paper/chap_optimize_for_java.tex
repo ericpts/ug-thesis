@@ -26,6 +26,7 @@ corectitudinii optimizărilor realizate.
 
 Restul lucrării va presupune că această condiție este respectată.
 
+
 \subsection{Determinarea punctului de intrare}
 
 Un proiect Java este format dintr-o mulțime de clase.
@@ -38,18 +39,13 @@ public static void main(String [] args)
 
 Într-un proiect trebuie să existe o singură astfel de metodă, care să aparțină
 unei clase a proiectului.
-În implementarea lucrării, această operație este realizată de
-către clasa Project:
-\begin{lstlisting}[language=C++]
-Method Project::main_method() const;
-\end{lstlisting}
 
 Pentru a găsi metoda \texttt{main}, sunt scanate toate fișierele
 clasa care fac parte din proiect, și sunt analizate listele de
 metode ale acestora.
 
 Acesta este pseudocodul pentru această operație:
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, label=main_method]
 def main_method(p: Proiect):
     ret = None
     for classfile in p.classfiles:
@@ -222,9 +218,9 @@ lanțul de moșteniri al clasei asupra căruia se execută metoda.
 Putem defini în pseudo cod algoritmul de rezolvare al referințelor către metode
 virtuale și către metode de interfața astfel:
 
-\begin{lstlisting}[language=Python]
-def resolve_reference(
-    class, method_name, method_type):
+\begin{lstlisting}[language=Python, label=from_symbolic_reference]
+def from_symbolic_reference(
+    class, method_name, method_type) -> Method:
     if class is Object:
         return None
     for m in class.methods():
@@ -235,19 +231,6 @@ def resolve_reference(
     return resolve_reference(
         class.super_class, method_name, method_type)
 \end{lstlisting}
-
-Acest algoritm este declarat în implementarea în C++ sub forma de
-
-\begin{lstlisting}[language=C++]
-static std::optional<Method>
-from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
-\end{lstlisting}
-
-Motivul pentru care această funcție întoarce un \texttt{optional}, în loc de
-direct metoda, este că există referințe către funcții terțe, de
-obicei definite în librării, care nu pot fi rezolvate în clasele proiectului nostru.
-De exemplu, funcția \texttt{println(String s)}, definită în librăria standard
-\texttt{java.io}.
 
 Metoda exactă care este executată de o astfel de instrucțiune nu poate fi știută
 decât abia la timpul rulării (e.g., pentru programul~\ref{program_metode_virtuale}
@@ -263,7 +246,7 @@ La momentul analizei statice nu știm tipul exact al unei referințe.
 O referință către o interfață poate să conțină orice obiect care implementează
 acea interfață, sau o referință către o clasă \s{C} poate conține fix clasa
 \s{C}, sau orice clasă care o are pe \s{C} ca strămoș.
-
+, care determină ce funcții
 Prin urmare, vom extinde superșirul de execuție ca să reflecte aceste
 posibilități.
 Mai precis, pentru fiecare apel de funcții polimorfice (virtuale prin
@@ -299,7 +282,7 @@ metodei q dacă:
         clasa respectivă.
 \end{enumerate}
 
-În continuare, vom nota cu $cand(m)$ tot candidații lui m. Din faptul ca este o
+În continuare, vom nota cu $cand(m)$ \label{cand} tot candidații lui m. Din faptul ca este o
 relație reflexiva, m aparține mulțimii $cand(m)$.
 
 Graful de apeluri trebuie schimbat astfel încât să includă și candidații unei
@@ -313,7 +296,7 @@ metodele candidate pentru m --- $cand(m)$.
 anterior la \ref{algoritm_naiv_pentru_eliminare}.
 În particular, vom actualiza modul de calculare al funcțiilor accesibile:
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, label=reachable_methods_in_java]
 def reachable_methods_in_java(main: Method) -> [Method]:
     coada = [main]
     at = 0
@@ -330,7 +313,7 @@ def reachable_methods_in_java(main: Method) -> [Method]:
 
 Iar procedura de optimizare va rămâne identică:
 
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, label=optimize_for_size_in_java]
 def optimize_for_size_in_java(p: Program) -> Program:
     main = p.main_method()
     used_methods = reachable_methods(main)
@@ -340,22 +323,82 @@ def optimize_for_size_in_java(p: Program) -> Program:
     return p
 \end{lstlisting}
 
+\section{Implementarea în C++}
 
-În implementarea în \texttt{C++}, aceste au următorii corespondenți:
+În această secțiune, voi face legătura între algoritmii în pseudocod descriși
+anterior și implementarea în C++.
+Codul sursă este disponibil pe GitHub~\cite{project_sourcecode} este documentat,
+cu comentarii, iar programul Doxygen poate fi folosit pentru a genera
+documentație pentru proiect.
+În continuare, voi descrie legătura dintre implementarea în C++, și
+algoritmii în pseudocod descriși anterior.
 
-Funcția $cand(m)$ este reprezentată de
+Partea relevantă a proiectului pentru problema optimizării este conținută în
+două clase: Method și Project.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{classMethod__coll__graph}
+	\caption{Clasa Method}
+    \label{fig:classmethod}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{classProject__coll__graph}
+	\caption{Clasa Project}
+    \label{fig:classproject}
+\end{figure}
+
+
+Clasa Project se ocupă de operațiile la nivelul întregului proiect - rezolvarea
+metodelor simbolice și optimizarea de dimensiune.
+
+Clasa Method corespunde unei singure metode dintr-o clasă.
+
+Metodele care nu sunt descrise în această parte nu au fost considerate suficient
+de relevante pentru a fi incluse în teză, iar documentația pentru ele se poate
+găsi inline în codul sursă, cât și în documentația generată de Doxygen.
+
+Funcția main\_method~\ref{main_method}, care determină metoda
+principală (main entry-point) al proiectului, are antetul
+\begin{lstlisting}[language=C++]
+Method Project::main_method() const;
+\end{lstlisting}
+
+Funcția cand~\ref{cand}, care determină ce funcțiile candidat, este reprezentată de funcția
 \begin{lstlisting}[language=C++]
 std::vector<Method> Project::sibling_methods(const Method& m) const;
 \end{lstlisting}
+denumită astfel deoarece am considerat că o metodele
+candidat sunt înrudite între ele.
 
-Procedura $reachable\_methods\_in\_java$ pentru determinarea funcțiilor
-accesibile este reprezentată de:
-
+Procedura reachable\_methods\_in\_java~\ref{reachable_methods_in_java} pentru
+determinarea funcțiilor accesibile este reprezentată de
 \begin{lstlisting}[language=C++]
 std::vector<Method> Project::method_call_graph(const Method& m) const;
 \end{lstlisting}
+denumită astfel pentru a evidenția faptul că mulțimea returnată sunt nodurile
+unui graf.
 
-Iar procedura de optimizare $optimize\_for\_size\_in\_java$ este reprezentată de:
+Iar procedura principală
+optimize\_for\_size\_in\_java~\ref{optimizeoptimize_for_size_in_java} este
+reprezentată de:
 \begin{lstlisting}[language=C++]
 void Project::remove_unused_methods();
 \end{lstlisting}
+
+Procedura from\_symbolic\_reference~\ref{from_symbolic_reference}, folosită
+pentru a rezolva referințele simbolice către metode, este reprezentată de
+\begin{lstlisting}[language=C++]
+static std::optional<Method>
+from_symbolic_reference(const ClassFile &file, int cp_index, cp_info info);
+\end{lstlisting}
+
+Motivul pentru care această funcție întoarce un \texttt{optional}, în loc de
+direct metoda, este că există referințe către funcții terțe, de
+obicei definite în librării, care nu pot fi rezolvate în clasele proiectului nostru.
+De exemplu, funcția \texttt{println(String s)}, definită în librăria standard
+\texttt{java.io}.
+
+

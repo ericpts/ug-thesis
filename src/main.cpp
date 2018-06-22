@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 
     std::vector<std::experimental::filesystem::path> filenames;
     app.add_option("classfiles,--classfiles", filenames,
-            "All of the class files from the project")
+                   "All of the class files from the project")
         ->required()
         ->check(CLI::ExistingFile)
         ->set_type_name("[File]");
@@ -26,7 +26,8 @@ int main(int argc, char **argv)
         ->set_type_name("Dir");
 
     int in_place;
-    app.add_flag("--in-place", in_place, "Whether to save the class files in-place")
+    app.add_flag("--in-place", in_place,
+                 "Whether to save the class files in-place")
         ->excludes("--out");
 
     CLI11_PARSE(app, argc, argv);
@@ -42,7 +43,7 @@ int main(int argc, char **argv)
     if (out) {
         project().save(out.value());
     } else {
-        assert (in_place);
+        assert(in_place);
         project().save_in_place(filenames);
     }
 

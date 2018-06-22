@@ -12,7 +12,8 @@
 
 /// This class handles the serialization of Java's .class files.
 /// Normal usage should be:
-struct ClassWriter {
+class ClassWriter
+{
   private:
     /// The class file that is used to generate the data.
     const ClassFileImpl &m_cf;

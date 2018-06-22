@@ -11,25 +11,25 @@ using u1 = uint8_t;
 using u2 = uint16_t;
 using u4 = uint32_t;
 
-// Constant pool info and its subclasses.
+/// Constant pool info and its subclasses.
 struct cp_info;
 
 struct method_info;
 struct field_info;
 struct interface_info;
 
-// Attribute informations, and all of its subclasses.
+/// Attribute informations, and all of its subclasses.
 struct attribute_info;
 struct Code_attribute;
 
-// Each item in the constant_pool table must begin with a 1-byte tag indicating
-// the kind of cp_info entry.
-// The contents of the info array vary with the value of tag.
-// The valid tags and their values are included in the tag enum.
-// Each tag byte must be followed by two or more bytes giving information about
-// the specific constant.
-// The format of the additional information varies with the tag value.
-//
+/// Each item in the constant_pool table must begin with a 1-byte tag indicating
+/// the kind of cp_info entry.
+/// The contents of the info array vary with the value of tag.
+/// The valid tags and their values are included in the tag enum.
+/// Each tag byte must be followed by two or more bytes giving information about
+/// the specific constant.
+/// The format of the additional information varies with the tag value.
+///
 struct cp_info {
     enum class Tag : u1 {
         CONSTANT_Class = 7,
@@ -53,22 +53,22 @@ struct cp_info {
 
     bool operator==(const cp_info &other) const;
 
-    /// Returns the number of constant pool slots this constant takes up.
-    /// By default, most types of constants only take up 1 slot, but some of
-    /// them have 2.
+    //// Returns the number of constant pool slots this constant takes up.
+    //// By default, most types of constants only take up 1 slot, but some of
+    //// them have 2.
     int slots() const;
 
-    // Returns *this* as string.
+    /// Returns *this* as string.
     std::string as_string() const;
 
-    // This template will be explicitly specialized for the possible types.
+    /// This template will be explicitly specialized for the possible types.
     template <typename T> T as() const;
 };
 
-// Although Methodref and InterfaceMethodref are semantically different, they
-// have the same layout and even the same field names.
-// For the scope of this project, we can treat them as pretty much the same
-// thing.
+/// Although Methodref and InterfaceMethodref are semantically different, they
+/// have the same layout and even the same field names.
+/// For the scope of this project, we can treat them as pretty much the same
+/// thing.
 struct CONSTANT_GenericMethodref_info {
     cp_info::Tag tag;
     u2 class_index;
@@ -89,12 +89,14 @@ struct CONSTANT_NameAndType_info {
     u2 descriptor_index;
 };
 
-// Each value in the interfaces array must be a valid index into the
-// constant_pool table.
-// The constant_pool entry at each value of interfaces[i], where 0 ≤ i < interfaces_count,
-// must be tagged with cp_info::Tag::CONSTANT_Class representing an interface that is a
-// direct superinterface of this class or
-// interface type, in the left-to-right order given in the source for the type.
+/// Each value in the interfaces array must be a valid index into the
+/// constant_pool table.
+/// The constant_pool entry at each value of interfaces[i], where 0 <= i <
+/// interfaces_count,
+/// must be tagged with cp_info::Tag::CONSTANT_Class representing an interface
+/// that is a
+/// direct superinterface of this class or
+/// interface type, in the left-to-right order given in the source for the type.
 struct interface_info {
     u2 idx;
     bool operator==(const interface_info &other) const;
@@ -120,9 +122,9 @@ struct method_info {
     bool operator==(const method_info &other) const;
 };
 
-/// Attributes are used in the ClassFile, field_info, method_info, and
-/// Code_attribute structures of the class file format.
-/// All attributes have the following general format:
+//// Attributes are used in the ClassFile, field_info, method_info, and
+//// Code_attribute structures of the class file format.
+//// All attributes have the following general format:
 struct attribute_info {
     u2 attribute_name_index;
     u4 attribute_length;
@@ -130,7 +132,7 @@ struct attribute_info {
 
     bool operator==(const attribute_info &other) const;
 
-    // This template will be explicitly specialized for the possible types.
+    /// This template will be explicitly specialized for the possible types.
     template <typename T> T as() const;
 };
 

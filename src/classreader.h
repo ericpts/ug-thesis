@@ -17,7 +17,8 @@
 /// 1. Reading the binary data (for example, from a file on disk)
 /// 2. Instantiating this ClassReader.
 /// 3. Parsing the actual file.
-struct ClassReader {
+class ClassReader
+{
   private:
     /// The binary representation of the class being parser.
     BytesParser m_bparser;

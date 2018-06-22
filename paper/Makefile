@@ -23,11 +23,12 @@ MPOST = mpost
 all:  thesis
 
 texfiles = $(wildcard *.tex)
+diags = classMethod__coll__graph.pdf classProject__coll__graph.pdf
 
 .PHONY: thesis
 thesis: thesis.pdf thesis.ps
 
-thesis.pdf: $(texfiles) thesis.bbl
+thesis.pdf: $(texfiles) thesis.bbl $(diags)
 	$(Q) rm -rf build/pdf/; mkdir -p build/pdf/
 	$(Q) cd build/pdf/ && TEXINPUTS="../../:$$TEXINPUTS" $(Q_LATEX) $(PDFLATEX) -interaction=nonstopmode -file-line-error ../../thesis.tex
 	$(Q) cd build/pdf/ && TEXINPUTS="../../:$$TEXINPUTS" $(Q_LATEX) $(PDFLATEX) -interaction=nonstopmode -file-line-error ../../thesis.tex
