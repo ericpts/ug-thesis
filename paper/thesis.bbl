@@ -62,6 +62,10 @@ K.~Goda and M.~Kitsuregawa.
 \newblock \url{https://www.guardsquare.com/en/proguard}, 2016.
 \newblock [Online; accessed 4-June-2018].
 
+\bibitem{google_test}
+Google LLC.
+\newblock \url{https://github.com/google/googletest}.
+
 \bibitem{c_enable_optimization}
 Eljay Love-Jensen.
 \newblock Removing unused functions/dead code.
@@ -88,6 +92,10 @@ Robert~R. Schaller.
 \bibitem{project_sourcecode}
 Eric Stavarache.
 \newblock \url{http://github.com/ericpts/ug-thesis/}.
+
+\bibitem{project_doxygen}
+Eric Stavarache.
+\newblock \url{https://ericpts.github.io/ug-thesis/}.
 
 \bibitem{wiki:deadcodeelimination}
 {Wikipedia contributors}.

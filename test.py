@@ -72,7 +72,7 @@ def init():
     colorama.init()
 
     print('Building...')
-    run('bash', 'make.sh')
+    run('bash', 'build.sh')
     run('make', cwd='build')
     run('python3', 'make.py', cwd='test')
 

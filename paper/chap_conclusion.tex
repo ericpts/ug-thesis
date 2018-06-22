@@ -4,7 +4,8 @@
 
 \section{Aplicația}
 
-Programul este implementat în limbajul C++.
+Programul este implementat în limbajul C++ și disponibilă pe
+GitHub~\cite{project_sourcecode}.
 Acesta funcționează în mod corect: formează graful de
 apelări ale metodelor și elimină metodele nefolosite.
 
@@ -61,6 +62,13 @@ Testarea aplicației este realizată automat, cu teste scrise de mână.
 Aceste teste simulează atât cazuri particulare, cât și funcționarea uzuală a
 programului.
 
+\subsection{Teste de integrare}
+
+Cele mai multe teste sunt de integrare, ele verifică programului ca un întreg.
+Acestea rulează optimizatorul pe anumite fișiere și verifică dacă optimizările
+aplicate sunt corecte și dacă programul Java optimizat se comportă la fel ca cel
+neoptimizat.
+
 Teste pot fi rulate prin programul \texttt{test.py}, din rădăcina proiectului:
 
 \begin{lstlisting}[language=Bash]
@@ -73,6 +81,20 @@ Testing on /home/ericpts/work/ug-thesis/test/fixtures/TAP/tema4/var33...
 ...
 Testing on /home/ericpts/work/ug-thesis/test/fixtures/TAP/tema3/Var3Munte...
 \end{lstlisting}
+
+\subsection{Teste unitare}
+
+Lucrarea include de asemenea și teste unitare, dezvoltate cu ajutorul framework-ului Google
+Test~\cite{google_test}.
+Acestea testează metode individuale ale claselor, pe un stil funcțional: pentru
+fiecare metodă poate fi construit un set de date de intrare, iar pentru fiecare
+dată de intrare să fie cunoscut un răspuns corect. Dacă programul este corect,
+atunci răspunsurile generate de acesta vor coincide cu cele corecte.
+
+Deși aceste teste nu pot garanta că programul funcționează per total,
+corectitudinea metodelor individuale aduce o încredere sporită în corectitudinea
+întregului program. De asemenea, testele unitare sunt mai ușor de creat decât
+cele de integrare.
 
 \section{Concluzii}
 
