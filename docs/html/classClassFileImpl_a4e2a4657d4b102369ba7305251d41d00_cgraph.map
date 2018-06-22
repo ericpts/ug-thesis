@@ -1,0 +1,12 @@
+<map id="ClassFileImpl::serialize" name="ClassFileImpl::serialize">
+<area shape="rect" id="node2" href="$classClassWriter.html#a7be4d13b5665b1e85a8a350ec181951c" title="ClassWriter::serialize" alt="" coords="212,169,359,195"/>
+<area shape="rect" id="node3" href="$classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce" title="Puts an unsigned int into the data buffer, in network order. " alt="" coords="910,118,1049,145"/>
+<area shape="rect" id="node4" href="$classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="1111,118,1249,145"/>
+<area shape="rect" id="node6" href="$classClassWriter.html#a47741e12ae2af256ce3a58a41b2d04d6" title="ClassWriter::put_cp_info" alt="" coords="896,17,1063,43"/>
+<area shape="rect" id="node8" href="$classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67" title="ClassWriter::expect\l_cpool_entry" alt="" coords="679,303,818,344"/>
+<area shape="rect" id="node9" href="$classClassWriter.html#adfc5adcd821436ff9e399efac367c071" title="Puts a field_info struct into the data buffer. " alt="" coords="416,270,592,297"/>
+<area shape="rect" id="node10" href="$classClassWriter.html#aeb256dbd55728dcc9081560691da779b" title="Puts an attribute_info struct into the data buffer. " alt="" coords="649,179,848,206"/>
+<area shape="rect" id="node11" href="$classClassWriter.html#a3221090999bef5f0e05993de89600670" title="Puts a method_info struct into the data buffer. " alt="" coords="407,219,601,246"/>
+<area shape="rect" id="node5" href="$classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="1297,67,1436,94"/>
+<area shape="rect" id="node7" href="$classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="1115,67,1245,94"/>
+</map>

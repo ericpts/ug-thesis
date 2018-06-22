@@ -6,21 +6,39 @@
 
 
 
-Collaboration diagram for Class\+Reader\+:\nopagebreak
+Collaboration diagram for Class\+Reader\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=169pt]{classClassReader__coll__graph}
+\includegraphics[height=550pt]{classClassReader__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classClassReader_a3470778a3f6fe462416950a69c305ff0}\label{classClassReader_a3470778a3f6fe462416950a69c305ff0}} 
 \hyperlink{classClassReader_a3470778a3f6fe462416950a69c305ff0}{Class\+Reader} (std\+::vector$<$ uint8\+\_\+t $>$ data)
 \begin{DoxyCompactList}\small\item\em Initialize the reader, with the binary {\ttfamily data} of the class file. \end{DoxyCompactList}\item 
 \hyperlink{classClassFileImpl}{Class\+File\+Impl} \hyperlink{classClassReader_a001cc48324c31430559b43976d731e8a}{deserialize} ()
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structcp__info}{cp\+\_\+info} \hyperlink{classClassReader_ac4c0b613d45cf507b2e85c61c28541cb}{parse\+\_\+cp\+\_\+info} ()
+\item 
+\hyperlink{structfield__info}{field\+\_\+info} \hyperlink{classClassReader_a434b73f04e1502c936593ab63094d838}{parse\+\_\+field\+\_\+info} ()
+\begin{DoxyCompactList}\small\item\em Parses a \hyperlink{structfield__info}{field\+\_\+info} struct from the data buffer. \end{DoxyCompactList}\item 
+\hyperlink{structmethod__info}{method\+\_\+info} \hyperlink{classClassReader_a0eb68204b1979e2a2758c05f200a7be3}{parse\+\_\+method\+\_\+info} ()
+\begin{DoxyCompactList}\small\item\em Parses a \hyperlink{structmethod__info}{method\+\_\+info} struct from the data buffer. \end{DoxyCompactList}\item 
+void \hyperlink{classClassReader_a7f8a951758bdb961ebf36088301ac1b4}{expect\+\_\+cpool\+\_\+entry} (int idx, \hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{cp\+\_\+info\+::\+Tag} tag) const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBytesParser}{Bytes\+Parser} \hyperlink{classClassReader_a11f0ce7b430b8abd5cb74b4273ddaab0}{m\+\_\+bparser}
+\begin{DoxyCompactList}\small\item\em The binary representation of the class being parser. \end{DoxyCompactList}\item 
+\hyperlink{classClassFileImpl}{Class\+File\+Impl} \hyperlink{classClassReader_ad27b767f0ccf0826b0364977291894bc}{m\+\_\+cf}
+\begin{DoxyCompactList}\small\item\em The class file that is being populated as the parsing progresses. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -31,6 +49,19 @@ This class handles the parsation (deserialization and serialization) of Java\tex
 \item Parsing the actual file. 
 \end{DoxyEnumerate}
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classClassReader_a3470778a3f6fe462416950a69c305ff0}\label{classClassReader_a3470778a3f6fe462416950a69c305ff0}} 
+\index{Class\+Reader@{Class\+Reader}!Class\+Reader@{Class\+Reader}}
+\index{Class\+Reader@{Class\+Reader}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{Class\+Reader()}{ClassReader()}}
+{\footnotesize\ttfamily Class\+Reader\+::\+Class\+Reader (\begin{DoxyParamCaption}\item[{std\+::vector$<$ uint8\+\_\+t $>$}]{data }\end{DoxyParamCaption})}
+
+
+
+Initialize the reader, with the binary {\ttfamily data} of the class file. 
+
+
+
 \subsection{Member Function Documentation}
 \mbox{\Hypertarget{classClassReader_a001cc48324c31430559b43976d731e8a}\label{classClassReader_a001cc48324c31430559b43976d731e8a}} 
 \index{Class\+Reader@{Class\+Reader}!deserialize@{deserialize}}
@@ -38,16 +69,96 @@ This class handles the parsation (deserialization and serialization) of Java\tex
 \subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
 {\footnotesize\ttfamily \hyperlink{classClassFileImpl}{Class\+File\+Impl} Class\+Reader\+::deserialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Parse an entire class file. This is the method that you most likely want to use. Here is the call graph for this function\+:\nopagebreak
+Parse an entire class file. This is the method that you most likely want to use. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classClassReader_a001cc48324c31430559b43976d731e8a_cgraph}
 \end{center}
 \end{figure}
+\mbox{\Hypertarget{classClassReader_a7f8a951758bdb961ebf36088301ac1b4}\label{classClassReader_a7f8a951758bdb961ebf36088301ac1b4}} 
+\index{Class\+Reader@{Class\+Reader}!expect\+\_\+cpool\+\_\+entry@{expect\+\_\+cpool\+\_\+entry}}
+\index{expect\+\_\+cpool\+\_\+entry@{expect\+\_\+cpool\+\_\+entry}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{expect\+\_\+cpool\+\_\+entry()}{expect\_cpool\_entry()}}
+{\footnotesize\ttfamily void Class\+Reader\+::expect\+\_\+cpool\+\_\+entry (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{cp\+\_\+info\+::\+Tag}}]{tag }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Asserts that {\ttfamily idx} is an index into the constant pool, tagged with {\ttfamily tag}. \mbox{\Hypertarget{classClassReader_ac4c0b613d45cf507b2e85c61c28541cb}\label{classClassReader_ac4c0b613d45cf507b2e85c61c28541cb}} 
+\index{Class\+Reader@{Class\+Reader}!parse\+\_\+cp\+\_\+info@{parse\+\_\+cp\+\_\+info}}
+\index{parse\+\_\+cp\+\_\+info@{parse\+\_\+cp\+\_\+info}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+cp\+\_\+info()}{parse\_cp\_info()}}
+{\footnotesize\ttfamily \hyperlink{structcp__info}{cp\+\_\+info} Class\+Reader\+::parse\+\_\+cp\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Parses a constant from the data buffer, and returns the data and how many slots it takes up in the constant table. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassReader_ac4c0b613d45cf507b2e85c61c28541cb_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassReader_a434b73f04e1502c936593ab63094d838}\label{classClassReader_a434b73f04e1502c936593ab63094d838}} 
+\index{Class\+Reader@{Class\+Reader}!parse\+\_\+field\+\_\+info@{parse\+\_\+field\+\_\+info}}
+\index{parse\+\_\+field\+\_\+info@{parse\+\_\+field\+\_\+info}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+field\+\_\+info()}{parse\_field\_info()}}
+{\footnotesize\ttfamily \hyperlink{structfield__info}{field\+\_\+info} Class\+Reader\+::parse\+\_\+field\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Parses a \hyperlink{structfield__info}{field\+\_\+info} struct from the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassReader_a434b73f04e1502c936593ab63094d838_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassReader_a0eb68204b1979e2a2758c05f200a7be3}\label{classClassReader_a0eb68204b1979e2a2758c05f200a7be3}} 
+\index{Class\+Reader@{Class\+Reader}!parse\+\_\+method\+\_\+info@{parse\+\_\+method\+\_\+info}}
+\index{parse\+\_\+method\+\_\+info@{parse\+\_\+method\+\_\+info}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{parse\+\_\+method\+\_\+info()}{parse\_method\_info()}}
+{\footnotesize\ttfamily \hyperlink{structmethod__info}{method\+\_\+info} Class\+Reader\+::parse\+\_\+method\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Parses a \hyperlink{structmethod__info}{method\+\_\+info} struct from the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassReader_a0eb68204b1979e2a2758c05f200a7be3_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classClassReader_a11f0ce7b430b8abd5cb74b4273ddaab0}\label{classClassReader_a11f0ce7b430b8abd5cb74b4273ddaab0}} 
+\index{Class\+Reader@{Class\+Reader}!m\+\_\+bparser@{m\+\_\+bparser}}
+\index{m\+\_\+bparser@{m\+\_\+bparser}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{m\+\_\+bparser}{m\_bparser}}
+{\footnotesize\ttfamily \hyperlink{classBytesParser}{Bytes\+Parser} Class\+Reader\+::m\+\_\+bparser\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The binary representation of the class being parser. 
+
+\mbox{\Hypertarget{classClassReader_ad27b767f0ccf0826b0364977291894bc}\label{classClassReader_ad27b767f0ccf0826b0364977291894bc}} 
+\index{Class\+Reader@{Class\+Reader}!m\+\_\+cf@{m\+\_\+cf}}
+\index{m\+\_\+cf@{m\+\_\+cf}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{m\+\_\+cf}{m\_cf}}
+{\footnotesize\ttfamily \hyperlink{classClassFileImpl}{Class\+File\+Impl} Class\+Reader\+::m\+\_\+cf\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The class file that is being populated as the parsing progresses. 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/classreader.\+h\item 
-src/classreader.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{classreader_8h}{classreader.\+h}\item 
+src/\hyperlink{classreader_8cpp}{classreader.\+cpp}\end{DoxyCompactItemize}

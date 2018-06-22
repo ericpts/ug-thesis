@@ -11,7 +11,8 @@ This struct handles the byte-\/by-\/byte parsing of a byte array.
 
 
 
-Collaboration diagram for Bytes\+Parser\+:\nopagebreak
+Collaboration diagram for Bytes\+Parser\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,33 +22,164 @@ Collaboration diagram for Bytes\+Parser\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classBytesParser_a18a5ff71458418a33c99d301ecc37579}\label{classBytesParser_a18a5ff71458418a33c99d301ecc37579}} 
-u1 \hyperlink{classBytesParser_a18a5ff71458418a33c99d301ecc37579}{next\+\_\+u1} ()
+\hyperlink{classBytesParser_ac0b263b48e9a2be675442237cdc11f6c}{Bytes\+Parser} (std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ data)
+\item 
+\hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} \hyperlink{classBytesParser_a18a5ff71458418a33c99d301ecc37579}{next\+\_\+u1} ()
 \begin{DoxyCompactList}\small\item\em Consumes and returns the next unsigned char, in network order. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}\label{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}} 
-u2 \hyperlink{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}{next\+\_\+u2} ()
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}{next\+\_\+u2} ()
 \begin{DoxyCompactList}\small\item\em Consumes and returns the next unsigned short, in network order. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}\label{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}} 
-u4 \hyperlink{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}{next\+\_\+u4} ()
+\hyperlink{types_8h_af3b2d4b29fd9faedc984db3e062b3d5d}{u4} \hyperlink{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}{next\+\_\+u4} ()
 \begin{DoxyCompactList}\small\item\em Consumes and returns the next unsigned int, in network order. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}\label{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}} 
-std\+::vector$<$ u1 $>$ \hyperlink{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}{next\+\_\+n} (int n)
+std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ \hyperlink{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}{next\+\_\+n} (int n)
 \begin{DoxyCompactList}\small\item\em Consumes and returns the next {\ttfamily n} bytes. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}\label{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}} 
 bool \hyperlink{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}{is\+\_\+end} () const
 \begin{DoxyCompactList}\small\item\em Returns whether all the data has been parsed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}\label{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}} 
 \hyperlink{structattribute__info}{attribute\+\_\+info} \hyperlink{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}{parse\+\_\+attribute\+\_\+info} ()
 \begin{DoxyCompactList}\small\item\em Parses an \hyperlink{structattribute__info}{attribute\+\_\+info} struct from the data buffer. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}\label{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}} 
 int \hyperlink{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}{bytes\+\_\+read} () const
 \begin{DoxyCompactList}\small\item\em Returns how many bytes have been parsed so far. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ \hyperlink{classBytesParser_a89b64c815664cea2869895e24d3e1ed3}{m\+\_\+data}
+\item 
+std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$\+::iterator \hyperlink{classBytesParser_a1116068a071fde3c2b634772c806af99}{m\+\_\+it}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This struct handles the byte-\/by-\/byte parsing of a byte array. 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBytesParser_ac0b263b48e9a2be675442237cdc11f6c}\label{classBytesParser_ac0b263b48e9a2be675442237cdc11f6c}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!Bytes\+Parser@{Bytes\+Parser}}
+\index{Bytes\+Parser@{Bytes\+Parser}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{Bytes\+Parser()}{BytesParser()}}
+{\footnotesize\ttfamily Bytes\+Parser\+::\+Bytes\+Parser (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$}]{data }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}\label{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!bytes\+\_\+read@{bytes\+\_\+read}}
+\index{bytes\+\_\+read@{bytes\+\_\+read}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{bytes\+\_\+read()}{bytes\_read()}}
+{\footnotesize\ttfamily int Bytes\+Parser\+::bytes\+\_\+read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns how many bytes have been parsed so far. 
+
+\mbox{\Hypertarget{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}\label{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!is\+\_\+end@{is\+\_\+end}}
+\index{is\+\_\+end@{is\+\_\+end}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{is\+\_\+end()}{is\_end()}}
+{\footnotesize\ttfamily bool Bytes\+Parser\+::is\+\_\+end (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether all the data has been parsed. 
+
+\mbox{\Hypertarget{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}\label{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!next\+\_\+n@{next\+\_\+n}}
+\index{next\+\_\+n@{next\+\_\+n}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{next\+\_\+n()}{next\_n()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ Bytes\+Parser\+::next\+\_\+n (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Consumes and returns the next {\ttfamily n} bytes. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBytesParser_a18a5ff71458418a33c99d301ecc37579}\label{classBytesParser_a18a5ff71458418a33c99d301ecc37579}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!next\+\_\+u1@{next\+\_\+u1}}
+\index{next\+\_\+u1@{next\+\_\+u1}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{next\+\_\+u1()}{next\_u1()}}
+{\footnotesize\ttfamily \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} Bytes\+Parser\+::next\+\_\+u1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Consumes and returns the next unsigned char, in network order. 
+
+\mbox{\Hypertarget{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}\label{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!next\+\_\+u2@{next\+\_\+u2}}
+\index{next\+\_\+u2@{next\+\_\+u2}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{next\+\_\+u2()}{next\_u2()}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Bytes\+Parser\+::next\+\_\+u2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Consumes and returns the next unsigned short, in network order. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}\label{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!next\+\_\+u4@{next\+\_\+u4}}
+\index{next\+\_\+u4@{next\+\_\+u4}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{next\+\_\+u4()}{next\_u4()}}
+{\footnotesize\ttfamily \hyperlink{types_8h_af3b2d4b29fd9faedc984db3e062b3d5d}{u4} Bytes\+Parser\+::next\+\_\+u4 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Consumes and returns the next unsigned int, in network order. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}\label{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!parse\+\_\+attribute\+\_\+info@{parse\+\_\+attribute\+\_\+info}}
+\index{parse\+\_\+attribute\+\_\+info@{parse\+\_\+attribute\+\_\+info}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{parse\+\_\+attribute\+\_\+info()}{parse\_attribute\_info()}}
+{\footnotesize\ttfamily \hyperlink{structattribute__info}{attribute\+\_\+info} Bytes\+Parser\+::parse\+\_\+attribute\+\_\+info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses an \hyperlink{structattribute__info}{attribute\+\_\+info} struct from the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classBytesParser_a89b64c815664cea2869895e24d3e1ed3}\label{classBytesParser_a89b64c815664cea2869895e24d3e1ed3}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!m\+\_\+data@{m\+\_\+data}}
+\index{m\+\_\+data@{m\+\_\+data}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{m\+\_\+data}{m\_data}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1}$>$ Bytes\+Parser\+::m\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBytesParser_a1116068a071fde3c2b634772c806af99}\label{classBytesParser_a1116068a071fde3c2b634772c806af99}} 
+\index{Bytes\+Parser@{Bytes\+Parser}!m\+\_\+it@{m\+\_\+it}}
+\index{m\+\_\+it@{m\+\_\+it}!Bytes\+Parser@{Bytes\+Parser}}
+\subsubsection{\texorpdfstring{m\+\_\+it}{m\_it}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1}$>$\+::iterator Bytes\+Parser\+::m\+\_\+it\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/bytesparser.\+h\item 
-src/bytesparser.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{bytesparser_8h}{bytesparser.\+h}\item 
+src/\hyperlink{bytesparser_8cpp}{bytesparser.\+cpp}\end{DoxyCompactItemize}

@@ -60,6 +60,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classClassWriter-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ClassWriter Class Reference</div>  </div>
@@ -71,20 +73,412 @@ $(function() {
 Collaboration diagram for ClassWriter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classClassWriter__coll__graph.png" border="0" usemap="#ClassWriter_coll__map" alt="Collaboration graph"/></div>
+<map name="ClassWriter_coll__map" id="ClassWriter_coll__map">
+<area shape="rect" id="node2" href="classClassFileImpl.html" title="This class represents an entire Java class. " alt="" coords="5,5,160,449"/>
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4335e4ecbd5dfe24d08137201a87a298"><td class="memItemLeft" align="right" valign="top"><a id="a4335e4ecbd5dfe24d08137201a87a298"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a4335e4ecbd5dfe24d08137201a87a298">ClassWriter</a> (const <a class="el" href="classClassFileImpl.html">ClassFileImpl</a> &amp;cf)</td></tr>
-<tr class="memdesc:a4335e4ecbd5dfe24d08137201a87a298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the parser, with the binary <code>data</code> of the class file. <br /></td></tr>
+<tr class="memitem:a4335e4ecbd5dfe24d08137201a87a298"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a4335e4ecbd5dfe24d08137201a87a298">ClassWriter</a> (const <a class="el" href="classClassFileImpl.html">ClassFileImpl</a> &amp;cf)</td></tr>
+<tr class="memdesc:a4335e4ecbd5dfe24d08137201a87a298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize the parser, with the binary <code>data</code> of the class file.  <a href="#a4335e4ecbd5dfe24d08137201a87a298">More...</a><br /></td></tr>
 <tr class="separator:a4335e4ecbd5dfe24d08137201a87a298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7be4d13b5665b1e85a8a350ec181951c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a7be4d13b5665b1e85a8a350ec181951c">serialize</a> ()</td></tr>
 <tr class="separator:a7be4d13b5665b1e85a8a350ec181951c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a07332eb8e8e5ead72834e286cf8a6bd4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4">put_u1</a> (<a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a> x)</td></tr>
+<tr class="memdesc:a07332eb8e8e5ead72834e286cf8a6bd4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts an unsigned char into the data buffer, in network order.  <a href="#a07332eb8e8e5ead72834e286cf8a6bd4">More...</a><br /></td></tr>
+<tr class="separator:a07332eb8e8e5ead72834e286cf8a6bd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0304019dd68dd830fac5c67971ed2070"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070">put_u2</a> (<a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> x)</td></tr>
+<tr class="memdesc:a0304019dd68dd830fac5c67971ed2070"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts an unsigned short into the data buffer, in network order.  <a href="#a0304019dd68dd830fac5c67971ed2070">More...</a><br /></td></tr>
+<tr class="separator:a0304019dd68dd830fac5c67971ed2070"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6a42ab1ec0c2f85c30896506d6dbfce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce">put_u4</a> (<a class="el" href="types_8h.html#af3b2d4b29fd9faedc984db3e062b3d5d">u4</a> x)</td></tr>
+<tr class="memdesc:aa6a42ab1ec0c2f85c30896506d6dbfce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts an unsigned int into the data buffer, in network order.  <a href="#aa6a42ab1ec0c2f85c30896506d6dbfce">More...</a><br /></td></tr>
+<tr class="separator:aa6a42ab1ec0c2f85c30896506d6dbfce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa527b917e9f3628ceaeccb95d30bfbb9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9">put_n</a> (const std::vector&lt; <a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a> &gt; &amp;x)</td></tr>
+<tr class="memdesc:aa527b917e9f3628ceaeccb95d30bfbb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts the given vector into the data buffer.  <a href="#aa527b917e9f3628ceaeccb95d30bfbb9">More...</a><br /></td></tr>
+<tr class="separator:aa527b917e9f3628ceaeccb95d30bfbb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47741e12ae2af256ce3a58a41b2d04d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a47741e12ae2af256ce3a58a41b2d04d6">put_cp_info</a> (<a class="el" href="structcp__info.html">cp_info</a> info)</td></tr>
+<tr class="separator:a47741e12ae2af256ce3a58a41b2d04d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb256dbd55728dcc9081560691da779b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#aeb256dbd55728dcc9081560691da779b">put_attribute_info</a> (<a class="el" href="structattribute__info.html">attribute_info</a> info)</td></tr>
+<tr class="memdesc:aeb256dbd55728dcc9081560691da779b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts an <a class="el" href="structattribute__info.html">attribute_info</a> struct into the data buffer.  <a href="#aeb256dbd55728dcc9081560691da779b">More...</a><br /></td></tr>
+<tr class="separator:aeb256dbd55728dcc9081560691da779b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfc5adcd821436ff9e399efac367c071"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#adfc5adcd821436ff9e399efac367c071">put_field_info</a> (<a class="el" href="structfield__info.html">field_info</a> info)</td></tr>
+<tr class="memdesc:adfc5adcd821436ff9e399efac367c071"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts a <a class="el" href="structfield__info.html">field_info</a> struct into the data buffer.  <a href="#adfc5adcd821436ff9e399efac367c071">More...</a><br /></td></tr>
+<tr class="separator:adfc5adcd821436ff9e399efac367c071"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3221090999bef5f0e05993de89600670"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a3221090999bef5f0e05993de89600670">put_method_info</a> (<a class="el" href="structmethod__info.html">method_info</a> info)</td></tr>
+<tr class="memdesc:a3221090999bef5f0e05993de89600670"><td class="mdescLeft">&#160;</td><td class="mdescRight">Puts a <a class="el" href="structmethod__info.html">method_info</a> struct into the data buffer.  <a href="#a3221090999bef5f0e05993de89600670">More...</a><br /></td></tr>
+<tr class="separator:a3221090999bef5f0e05993de89600670"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d862bf0c0cdcdae72fd07444fa1e67"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67">expect_cpool_entry</a> (int idx, <a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69">cp_info::Tag</a> tag) const</td></tr>
+<tr class="separator:aa0d862bf0c0cdcdae72fd07444fa1e67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a4c495c4307d3634865d0a4d4024d4a37"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classClassFileImpl.html">ClassFileImpl</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a4c495c4307d3634865d0a4d4024d4a37">m_cf</a></td></tr>
+<tr class="memdesc:a4c495c4307d3634865d0a4d4024d4a37"><td class="mdescLeft">&#160;</td><td class="mdescRight">The class file that is used to generate the data.  <a href="#a4c495c4307d3634865d0a4d4024d4a37">More...</a><br /></td></tr>
+<tr class="separator:a4c495c4307d3634865d0a4d4024d4a37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a5c126a562b0329307a15386ff389f8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassWriter.html#a8a5c126a562b0329307a15386ff389f8">m_data</a></td></tr>
+<tr class="memdesc:a8a5c126a562b0329307a15386ff389f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The buffer that is being filled with the serialization data of <code>m_cf</code>.  <a href="#a8a5c126a562b0329307a15386ff389f8">More...</a><br /></td></tr>
+<tr class="separator:a8a5c126a562b0329307a15386ff389f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class handles the serialization of Java's .class files. Normal usage should be: </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4335e4ecbd5dfe24d08137201a87a298"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4335e4ecbd5dfe24d08137201a87a298">&#9670;&nbsp;</a></span>ClassWriter()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ClassWriter::ClassWriter </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classClassFileImpl.html">ClassFileImpl</a> &amp;&#160;</td>
+          <td class="paramname"><em>cf</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize the parser, with the binary <code>data</code> of the class file. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa0d862bf0c0cdcdae72fd07444fa1e67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0d862bf0c0cdcdae72fd07444fa1e67">&#9670;&nbsp;</a></span>expect_cpool_entry()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::expect_cpool_entry </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69">cp_info::Tag</a>&#160;</td>
+          <td class="paramname"><em>tag</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Asserts that <code>idx</code> is an index into the constant pool, tagged with <code>tag</code>. </p>
+
+</div>
+</div>
+<a id="aeb256dbd55728dcc9081560691da779b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeb256dbd55728dcc9081560691da779b">&#9670;&nbsp;</a></span>put_attribute_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_attribute_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structattribute__info.html">attribute_info</a>&#160;</td>
+          <td class="paramname"><em>info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts an <a class="el" href="structattribute__info.html">attribute_info</a> struct into the data buffer. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_aeb256dbd55728dcc9081560691da779b_cgraph.png" border="0" usemap="#classClassWriter_aeb256dbd55728dcc9081560691da779b_cgraph" alt=""/></div>
+<map name="classClassWriter_aeb256dbd55728dcc9081560691da779b_cgraph" id="classClassWriter_aeb256dbd55728dcc9081560691da779b_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="439,22,577,49"/>
+<area shape="rect" id="node4" href="classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce" title="Puts an unsigned int into the data buffer, in network order. " alt="" coords="252,22,391,49"/>
+<area shape="rect" id="node5" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="443,73,573,99"/>
+<area shape="rect" id="node3" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="625,47,764,74"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a47741e12ae2af256ce3a58a41b2d04d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47741e12ae2af256ce3a58a41b2d04d6">&#9670;&nbsp;</a></span>put_cp_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_cp_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structcp__info.html">cp_info</a>&#160;</td>
+          <td class="paramname"><em>info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Puts a constant from the data buffer, and returns the data and how many slots it takes up in the constant table. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6_cgraph.png" border="0" usemap="#classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6_cgraph" alt=""/></div>
+<map name="classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6_cgraph" id="classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="407,22,545,49"/>
+<area shape="rect" id="node3" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="220,22,359,49"/>
+<area shape="rect" id="node4" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="224,73,355,99"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="adfc5adcd821436ff9e399efac367c071"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfc5adcd821436ff9e399efac367c071">&#9670;&nbsp;</a></span>put_field_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_field_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structfield__info.html">field_info</a>&#160;</td>
+          <td class="paramname"><em>info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts a <a class="el" href="structfield__info.html">field_info</a> struct into the data buffer. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_adfc5adcd821436ff9e399efac367c071_cgraph.png" border="0" usemap="#classClassWriter_adfc5adcd821436ff9e399efac367c071_cgraph" alt=""/></div>
+<map name="classClassWriter_adfc5adcd821436ff9e399efac367c071_cgraph" id="classClassWriter_adfc5adcd821436ff9e399efac367c071_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="663,45,801,71"/>
+<area shape="rect" id="node4" href="classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67" title="ClassWriter::expect\l_cpool_entry" alt="" coords="259,24,398,65"/>
+<area shape="rect" id="node5" href="classClassWriter.html#aeb256dbd55728dcc9081560691da779b" title="Puts an attribute_info struct into the data buffer. " alt="" coords="229,90,428,117"/>
+<area shape="rect" id="node3" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="849,82,988,109"/>
+<area shape="rect" id="node6" href="classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce" title="Puts an unsigned int into the data buffer, in network order. " alt="" coords="476,82,615,109"/>
+<area shape="rect" id="node7" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="667,107,797,134"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a3221090999bef5f0e05993de89600670"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3221090999bef5f0e05993de89600670">&#9670;&nbsp;</a></span>put_method_info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_method_info </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmethod__info.html">method_info</a>&#160;</td>
+          <td class="paramname"><em>info</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts a <a class="el" href="structmethod__info.html">method_info</a> struct into the data buffer. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_a3221090999bef5f0e05993de89600670_cgraph.png" border="0" usemap="#classClassWriter_a3221090999bef5f0e05993de89600670_cgraph" alt=""/></div>
+<map name="classClassWriter_a3221090999bef5f0e05993de89600670_cgraph" id="classClassWriter_a3221090999bef5f0e05993de89600670_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="681,44,820,71"/>
+<area shape="rect" id="node4" href="classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67" title="ClassWriter::expect\l_cpool_entry" alt="" coords="278,24,417,65"/>
+<area shape="rect" id="node5" href="classClassWriter.html#aeb256dbd55728dcc9081560691da779b" title="Puts an attribute_info struct into the data buffer. " alt="" coords="248,90,447,116"/>
+<area shape="rect" id="node3" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="868,82,1007,108"/>
+<area shape="rect" id="node6" href="classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce" title="Puts an unsigned int into the data buffer, in network order. " alt="" coords="495,82,633,108"/>
+<area shape="rect" id="node7" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="685,107,816,134"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa527b917e9f3628ceaeccb95d30bfbb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa527b917e9f3628ceaeccb95d30bfbb9">&#9670;&nbsp;</a></span>put_n()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_n </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; <a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts the given vector into the data buffer. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9_cgraph.png" border="0" usemap="#classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9_cgraph" alt=""/></div>
+<map name="classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9_cgraph" id="classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="184,5,323,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a07332eb8e8e5ead72834e286cf8a6bd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07332eb8e8e5ead72834e286cf8a6bd4">&#9670;&nbsp;</a></span>put_u1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_u1 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts an unsigned char into the data buffer, in network order. </p>
+
+</div>
+</div>
+<a id="a0304019dd68dd830fac5c67971ed2070"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0304019dd68dd830fac5c67971ed2070">&#9670;&nbsp;</a></span>put_u2()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_u2 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts an unsigned short into the data buffer, in network order. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_a0304019dd68dd830fac5c67971ed2070_cgraph.png" border="0" usemap="#classClassWriter_a0304019dd68dd830fac5c67971ed2070_cgraph" alt=""/></div>
+<map name="classClassWriter_a0304019dd68dd830fac5c67971ed2070_cgraph" id="classClassWriter_a0304019dd68dd830fac5c67971ed2070_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="192,5,331,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa6a42ab1ec0c2f85c30896506d6dbfce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6a42ab1ec0c2f85c30896506d6dbfce">&#9670;&nbsp;</a></span>put_u4()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClassWriter::put_u4 </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8h.html#af3b2d4b29fd9faedc984db3e062b3d5d">u4</a>&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Puts an unsigned int into the data buffer, in network order. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce_cgraph.png" border="0" usemap="#classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce_cgraph" alt=""/></div>
+<map name="classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce_cgraph" id="classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="192,5,331,32"/>
+<area shape="rect" id="node3" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="379,5,517,32"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a7be4d13b5665b1e85a8a350ec181951c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7be4d13b5665b1e85a8a350ec181951c">&#9670;&nbsp;</a></span>serialize()</h2>
 
@@ -100,12 +494,77 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Parse an entire class file. This is the method that you most likely want to use. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassWriter_a7be4d13b5665b1e85a8a350ec181951c_cgraph.png" border="0" usemap="#classClassWriter_a7be4d13b5665b1e85a8a350ec181951c_cgraph" alt=""/></div>
+<map name="classClassWriter_a7be4d13b5665b1e85a8a350ec181951c_cgraph" id="classClassWriter_a7be4d13b5665b1e85a8a350ec181951c_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce" title="Puts an unsigned int into the data buffer, in network order. " alt="" coords="703,118,842,145"/>
+<area shape="rect" id="node3" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="904,118,1043,145"/>
+<area shape="rect" id="node5" href="classClassWriter.html#a47741e12ae2af256ce3a58a41b2d04d6" title="ClassWriter::put_cp_info" alt="" coords="689,17,856,43"/>
+<area shape="rect" id="node7" href="classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67" title="ClassWriter::expect\l_cpool_entry" alt="" coords="473,303,611,344"/>
+<area shape="rect" id="node8" href="classClassWriter.html#adfc5adcd821436ff9e399efac367c071" title="Puts a field_info struct into the data buffer. " alt="" coords="209,270,385,297"/>
+<area shape="rect" id="node9" href="classClassWriter.html#aeb256dbd55728dcc9081560691da779b" title="Puts an attribute_info struct into the data buffer. " alt="" coords="443,179,641,206"/>
+<area shape="rect" id="node10" href="classClassWriter.html#a3221090999bef5f0e05993de89600670" title="Puts a method_info struct into the data buffer. " alt="" coords="200,219,395,246"/>
+<area shape="rect" id="node4" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="1091,67,1229,94"/>
+<area shape="rect" id="node6" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="908,67,1039,94"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a4c495c4307d3634865d0a4d4024d4a37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c495c4307d3634865d0a4d4024d4a37">&#9670;&nbsp;</a></span>m_cf</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="classClassFileImpl.html">ClassFileImpl</a>&amp; ClassWriter::m_cf</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The class file that is used to generate the data. </p>
+
+</div>
+</div>
+<a id="a8a5c126a562b0329307a15386ff389f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a5c126a562b0329307a15386ff389f8">&#9670;&nbsp;</a></span>m_data</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;uint8_t&gt; ClassWriter::m_data</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The buffer that is being filled with the serialization data of <code>m_cf</code>. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="classwriter_8h_source.html">classwriter.h</a></li>
-<li>src/classwriter.cpp</li>
+<li>src/<a class="el" href="classwriter_8cpp.html">classwriter.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

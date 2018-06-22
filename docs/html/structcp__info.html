@@ -59,7 +59,9 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structcp__info-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">cp_info Struct Reference</div>  </div>
@@ -73,23 +75,266 @@ Collaboration diagram for cp_info:</div>
 <div class="center"><img src="structcp__info__coll__graph.png" border="0" usemap="#cp__info_coll__map" alt="Collaboration graph"/></div>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:acdef8472ed83e12e3a87bca8d6001f69"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69">Tag</a> : u1 { <br />
+&#160;&#160;<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69adf4763ef84792f4fab0a07fcb179de22">Tag::CONSTANT_Class</a> = 7, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69ac4a7343d330901c964bc6d7a100d0e07">Tag::CONSTANT_Fieldref</a> = 9, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a134e81d65f8cc7c04abcbc28ecb5ebf6">Tag::CONSTANT_Methodref</a> = 10, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a475c27d2bacb9d567842963d43c30ae2">Tag::CONSTANT_InterfaceMethodref</a> = 11, 
+<br />
+&#160;&#160;<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69ab084121ff44655538433e0092625b757">Tag::CONSTANT_String</a> = 8, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69ae657037d317a6128b92247bd0b07c300">Tag::CONSTANT_Integer</a> = 3, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a706b340607da83ec3ae76605dd27b722">Tag::CONSTANT_Float</a> = 4, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a19c30801e986993747aabd3327b7a623">Tag::CONSTANT_Long</a> = 5, 
+<br />
+&#160;&#160;<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a71cd8d4c23581349260ab388e6629e98">Tag::CONSTANT_Double</a> = 6, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a454459b9eeb1bf297d97d91b04275643">Tag::CONSTANT_NameAndType</a> = 12, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a9b59fd6f1baef2be4b10cb0cfdffb4be">Tag::CONSTANT_Utf8_info</a> = 1, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a3c5a3d3a1f2c967a7eadba51cef03549">Tag::CONSTANT_MethodHandle</a> = 15, 
+<br />
+&#160;&#160;<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69adbdbd6fda169a3ae47194edf8d99ba0d">Tag::CONSTANT_MethodType</a> = 16, 
+<a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69a4820a591c800d6e0ed560e18ac786969">Tag::CONSTANT_InvokeDynamic</a> = 18
+<br />
+ }</td></tr>
+<tr class="separator:acdef8472ed83e12e3a87bca8d6001f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8bdd7454a673dea621f24569c4c6aa01"><td class="memItemLeft" align="right" valign="top"><a id="a8bdd7454a673dea621f24569c4c6aa01"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#a8bdd7454a673dea621f24569c4c6aa01">as_string</a> () const</td></tr>
-<tr class="memdesc:a8bdd7454a673dea621f24569c4c6aa01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>this</em> as string. <br /></td></tr>
+<tr class="memitem:a486b4be323e8194d6efcf388f3533fb1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#a486b4be323e8194d6efcf388f3533fb1">operator==</a> (const <a class="el" href="structcp__info.html">cp_info</a> &amp;other) const</td></tr>
+<tr class="separator:a486b4be323e8194d6efcf388f3533fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1371b901a960486462d8cc6efc0c6ee8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#a1371b901a960486462d8cc6efc0c6ee8">slots</a> () const</td></tr>
+<tr class="separator:a1371b901a960486462d8cc6efc0c6ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bdd7454a673dea621f24569c4c6aa01"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#a8bdd7454a673dea621f24569c4c6aa01">as_string</a> () const</td></tr>
+<tr class="memdesc:a8bdd7454a673dea621f24569c4c6aa01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns <em>this</em> as string.  <a href="#a8bdd7454a673dea621f24569c4c6aa01">More...</a><br /></td></tr>
 <tr class="separator:a8bdd7454a673dea621f24569c4c6aa01"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73e88cec575d05a03d73cbfcc91cd71b"><td class="memTemplParams" colspan="2"><a id="a73e88cec575d05a03d73cbfcc91cd71b"></a>
-template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a73e88cec575d05a03d73cbfcc91cd71b"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:a73e88cec575d05a03d73cbfcc91cd71b"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structcp__info.html#a73e88cec575d05a03d73cbfcc91cd71b">as</a> () const</td></tr>
-<tr class="memdesc:a73e88cec575d05a03d73cbfcc91cd71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This template will be explicitly specialized for the possible types. <br /></td></tr>
+<tr class="memdesc:a73e88cec575d05a03d73cbfcc91cd71b"><td class="mdescLeft">&#160;</td><td class="mdescRight">This template will be explicitly specialized for the possible types.  <a href="#a73e88cec575d05a03d73cbfcc91cd71b">More...</a><br /></td></tr>
 <tr class="separator:a73e88cec575d05a03d73cbfcc91cd71b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a032c6014839b743ea813f1e69df0e478"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:a032c6014839b743ea813f1e69df0e478"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structCONSTANT__GenericMethodref__info.html">CONSTANT_GenericMethodref_info</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structcp__info.html#a032c6014839b743ea813f1e69df0e478">as</a> () const</td></tr>
+<tr class="separator:a032c6014839b743ea813f1e69df0e478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c10a3fe7a296f25f0f25eb30d96979"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:aa1c10a3fe7a296f25f0f25eb30d96979"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structCONSTANT__Class__info.html">CONSTANT_Class_info</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structcp__info.html#aa1c10a3fe7a296f25f0f25eb30d96979">as</a> () const</td></tr>
+<tr class="separator:aa1c10a3fe7a296f25f0f25eb30d96979"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af14ec722b429cf5cb5b7fc52a7a955b8"><td class="memTemplParams" colspan="2">template&lt;&gt; </td></tr>
+<tr class="memitem:af14ec722b429cf5cb5b7fc52a7a955b8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structCONSTANT__NameAndType__info.html">CONSTANT_NameAndType_info</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structcp__info.html#af14ec722b429cf5cb5b7fc52a7a955b8">as</a> () const</td></tr>
+<tr class="separator:af14ec722b429cf5cb5b7fc52a7a955b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a9d61bf7aad6935bfe368e4ec509af6ec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69">Tag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#a9d61bf7aad6935bfe368e4ec509af6ec">tag</a></td></tr>
+<tr class="separator:a9d61bf7aad6935bfe368e4ec509af6ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca6cdfc0ccd687b71c824415258bc870"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcp__info.html#aca6cdfc0ccd687b71c824415258bc870">data</a></td></tr>
+<tr class="separator:aca6cdfc0ccd687b71c824415258bc870"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Each item in the constant_pool table must begin with a 1-byte tag indicating the kind of <a class="el" href="structcp__info.html">cp_info</a> entry. The contents of the info array vary with the value of tag. The valid tags and their values are included in the tag enum. Each tag byte must be followed by two or more bytes giving information about the specific constant. The format of the additional information varies with the tag value. </p>
-</div><hr/>The documentation for this struct was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Enumeration Documentation</h2>
+<a id="acdef8472ed83e12e3a87bca8d6001f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdef8472ed83e12e3a87bca8d6001f69">&#9670;&nbsp;</a></span>Tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69">cp_info::Tag</a> : <a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69adf4763ef84792f4fab0a07fcb179de22"></a>CONSTANT_Class&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69ac4a7343d330901c964bc6d7a100d0e07"></a>CONSTANT_Fieldref&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a134e81d65f8cc7c04abcbc28ecb5ebf6"></a>CONSTANT_Methodref&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a475c27d2bacb9d567842963d43c30ae2"></a>CONSTANT_InterfaceMethodref&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69ab084121ff44655538433e0092625b757"></a>CONSTANT_String&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69ae657037d317a6128b92247bd0b07c300"></a>CONSTANT_Integer&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a706b340607da83ec3ae76605dd27b722"></a>CONSTANT_Float&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a19c30801e986993747aabd3327b7a623"></a>CONSTANT_Long&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a71cd8d4c23581349260ab388e6629e98"></a>CONSTANT_Double&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a454459b9eeb1bf297d97d91b04275643"></a>CONSTANT_NameAndType&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a9b59fd6f1baef2be4b10cb0cfdffb4be"></a>CONSTANT_Utf8_info&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a3c5a3d3a1f2c967a7eadba51cef03549"></a>CONSTANT_MethodHandle&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69adbdbd6fda169a3ae47194edf8d99ba0d"></a>CONSTANT_MethodType&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="acdef8472ed83e12e3a87bca8d6001f69a4820a591c800d6e0ed560e18ac786969"></a>CONSTANT_InvokeDynamic&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a73e88cec575d05a03d73cbfcc91cd71b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73e88cec575d05a03d73cbfcc91cd71b">&#9670;&nbsp;</a></span>as() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T cp_info::as </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>This template will be explicitly specialized for the possible types. </p>
+
+</div>
+</div>
+<a id="a032c6014839b743ea813f1e69df0e478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a032c6014839b743ea813f1e69df0e478">&#9670;&nbsp;</a></span>as() <span class="overload">[2/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCONSTANT__GenericMethodref__info.html">CONSTANT_GenericMethodref_info</a> cp_info::as </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa1c10a3fe7a296f25f0f25eb30d96979"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1c10a3fe7a296f25f0f25eb30d96979">&#9670;&nbsp;</a></span>as() <span class="overload">[3/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCONSTANT__Class__info.html">CONSTANT_Class_info</a> cp_info::as </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af14ec722b429cf5cb5b7fc52a7a955b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af14ec722b429cf5cb5b7fc52a7a955b8">&#9670;&nbsp;</a></span>as() <span class="overload">[4/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCONSTANT__NameAndType__info.html">CONSTANT_NameAndType_info</a> cp_info::as </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8bdd7454a673dea621f24569c4c6aa01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8bdd7454a673dea621f24569c4c6aa01">&#9670;&nbsp;</a></span>as_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string cp_info::as_string </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns <em>this</em> as string. </p>
+
+</div>
+</div>
+<a id="a486b4be323e8194d6efcf388f3533fb1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486b4be323e8194d6efcf388f3533fb1">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool cp_info::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structcp__info.html">cp_info</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1371b901a960486462d8cc6efc0c6ee8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1371b901a960486462d8cc6efc0c6ee8">&#9670;&nbsp;</a></span>slots()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cp_info::slots </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="aca6cdfc0ccd687b71c824415258bc870"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca6cdfc0ccd687b71c824415258bc870">&#9670;&nbsp;</a></span>data</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="types_8h.html#a162f47a77ee24f6f77cd8c82ccd40ab7">u1</a>&gt; cp_info::data</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9d61bf7aad6935bfe368e4ec509af6ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d61bf7aad6935bfe368e4ec509af6ec">&#9670;&nbsp;</a></span>tag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69">Tag</a> cp_info::tag</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/<a class="el" href="types_8h_source.html">types.h</a></li>
-<li>src/types.cpp</li>
+<li>src/<a class="el" href="types_8cpp.html">types.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

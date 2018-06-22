@@ -6,36 +6,246 @@
 
 
 
-Collaboration diagram for Class\+Writer\+:\nopagebreak
+Collaboration diagram for Class\+Writer\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=163pt]{classClassWriter__coll__graph}
+\includegraphics[height=550pt]{classClassWriter__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}\label{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}} 
 \hyperlink{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}{Class\+Writer} (const \hyperlink{classClassFileImpl}{Class\+File\+Impl} \&cf)
 \begin{DoxyCompactList}\small\item\em Initialize the parser, with the binary {\ttfamily data} of the class file. \end{DoxyCompactList}\item 
 std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c}{serialize} ()
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classClassWriter_a07332eb8e8e5ead72834e286cf8a6bd4}{put\+\_\+u1} (\hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} x)
+\begin{DoxyCompactList}\small\item\em Puts an unsigned char into the data buffer, in network order. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_a0304019dd68dd830fac5c67971ed2070}{put\+\_\+u2} (\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} x)
+\begin{DoxyCompactList}\small\item\em Puts an unsigned short into the data buffer, in network order. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce}{put\+\_\+u4} (\hyperlink{types_8h_af3b2d4b29fd9faedc984db3e062b3d5d}{u4} x)
+\begin{DoxyCompactList}\small\item\em Puts an unsigned int into the data buffer, in network order. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9}{put\+\_\+n} (const std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ \&x)
+\begin{DoxyCompactList}\small\item\em Puts the given vector into the data buffer. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6}{put\+\_\+cp\+\_\+info} (\hyperlink{structcp__info}{cp\+\_\+info} info)
+\item 
+void \hyperlink{classClassWriter_aeb256dbd55728dcc9081560691da779b}{put\+\_\+attribute\+\_\+info} (\hyperlink{structattribute__info}{attribute\+\_\+info} info)
+\begin{DoxyCompactList}\small\item\em Puts an \hyperlink{structattribute__info}{attribute\+\_\+info} struct into the data buffer. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_adfc5adcd821436ff9e399efac367c071}{put\+\_\+field\+\_\+info} (\hyperlink{structfield__info}{field\+\_\+info} info)
+\begin{DoxyCompactList}\small\item\em Puts a \hyperlink{structfield__info}{field\+\_\+info} struct into the data buffer. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_a3221090999bef5f0e05993de89600670}{put\+\_\+method\+\_\+info} (\hyperlink{structmethod__info}{method\+\_\+info} info)
+\begin{DoxyCompactList}\small\item\em Puts a \hyperlink{structmethod__info}{method\+\_\+info} struct into the data buffer. \end{DoxyCompactList}\item 
+void \hyperlink{classClassWriter_aa0d862bf0c0cdcdae72fd07444fa1e67}{expect\+\_\+cpool\+\_\+entry} (int idx, \hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{cp\+\_\+info\+::\+Tag} tag) const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{classClassFileImpl}{Class\+File\+Impl} \& \hyperlink{classClassWriter_a4c495c4307d3634865d0a4d4024d4a37}{m\+\_\+cf}
+\begin{DoxyCompactList}\small\item\em The class file that is used to generate the data. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classClassWriter_a8a5c126a562b0329307a15386ff389f8}{m\+\_\+data}
+\begin{DoxyCompactList}\small\item\em The buffer that is being filled with the serialization data of {\ttfamily m\+\_\+cf}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class handles the serialization of Java\textquotesingle{}s .class files. Normal usage should be\+: 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}\label{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}} 
+\index{Class\+Writer@{Class\+Writer}!Class\+Writer@{Class\+Writer}}
+\index{Class\+Writer@{Class\+Writer}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{Class\+Writer()}{ClassWriter()}}
+{\footnotesize\ttfamily Class\+Writer\+::\+Class\+Writer (\begin{DoxyParamCaption}\item[{const \hyperlink{classClassFileImpl}{Class\+File\+Impl} \&}]{cf }\end{DoxyParamCaption})}
+
+
+
+Initialize the parser, with the binary {\ttfamily data} of the class file. 
+
+
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classClassWriter_aa0d862bf0c0cdcdae72fd07444fa1e67}\label{classClassWriter_aa0d862bf0c0cdcdae72fd07444fa1e67}} 
+\index{Class\+Writer@{Class\+Writer}!expect\+\_\+cpool\+\_\+entry@{expect\+\_\+cpool\+\_\+entry}}
+\index{expect\+\_\+cpool\+\_\+entry@{expect\+\_\+cpool\+\_\+entry}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{expect\+\_\+cpool\+\_\+entry()}{expect\_cpool\_entry()}}
+{\footnotesize\ttfamily void Class\+Writer\+::expect\+\_\+cpool\+\_\+entry (\begin{DoxyParamCaption}\item[{int}]{idx,  }\item[{\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{cp\+\_\+info\+::\+Tag}}]{tag }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Asserts that {\ttfamily idx} is an index into the constant pool, tagged with {\ttfamily tag}. \mbox{\Hypertarget{classClassWriter_aeb256dbd55728dcc9081560691da779b}\label{classClassWriter_aeb256dbd55728dcc9081560691da779b}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+attribute\+\_\+info@{put\+\_\+attribute\+\_\+info}}
+\index{put\+\_\+attribute\+\_\+info@{put\+\_\+attribute\+\_\+info}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+attribute\+\_\+info()}{put\_attribute\_info()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+attribute\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structattribute__info}{attribute\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts an \hyperlink{structattribute__info}{attribute\+\_\+info} struct into the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassWriter_aeb256dbd55728dcc9081560691da779b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6}\label{classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+cp\+\_\+info@{put\+\_\+cp\+\_\+info}}
+\index{put\+\_\+cp\+\_\+info@{put\+\_\+cp\+\_\+info}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+cp\+\_\+info()}{put\_cp\_info()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+cp\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structcp__info}{cp\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Puts a constant from the data buffer, and returns the data and how many slots it takes up in the constant table. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassWriter_a47741e12ae2af256ce3a58a41b2d04d6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassWriter_adfc5adcd821436ff9e399efac367c071}\label{classClassWriter_adfc5adcd821436ff9e399efac367c071}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+field\+\_\+info@{put\+\_\+field\+\_\+info}}
+\index{put\+\_\+field\+\_\+info@{put\+\_\+field\+\_\+info}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+field\+\_\+info()}{put\_field\_info()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+field\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structfield__info}{field\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts a \hyperlink{structfield__info}{field\+\_\+info} struct into the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassWriter_adfc5adcd821436ff9e399efac367c071_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassWriter_a3221090999bef5f0e05993de89600670}\label{classClassWriter_a3221090999bef5f0e05993de89600670}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+method\+\_\+info@{put\+\_\+method\+\_\+info}}
+\index{put\+\_\+method\+\_\+info@{put\+\_\+method\+\_\+info}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+method\+\_\+info()}{put\_method\_info()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+method\+\_\+info (\begin{DoxyParamCaption}\item[{\hyperlink{structmethod__info}{method\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts a \hyperlink{structmethod__info}{method\+\_\+info} struct into the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassWriter_a3221090999bef5f0e05993de89600670_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9}\label{classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+n@{put\+\_\+n}}
+\index{put\+\_\+n@{put\+\_\+n}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+n()}{put\_n()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+n (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ \&}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts the given vector into the data buffer. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{classClassWriter_aa527b917e9f3628ceaeccb95d30bfbb9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassWriter_a07332eb8e8e5ead72834e286cf8a6bd4}\label{classClassWriter_a07332eb8e8e5ead72834e286cf8a6bd4}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+u1@{put\+\_\+u1}}
+\index{put\+\_\+u1@{put\+\_\+u1}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+u1()}{put\_u1()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+u1 (\begin{DoxyParamCaption}\item[{\hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1}}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts an unsigned char into the data buffer, in network order. 
+
+\mbox{\Hypertarget{classClassWriter_a0304019dd68dd830fac5c67971ed2070}\label{classClassWriter_a0304019dd68dd830fac5c67971ed2070}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+u2@{put\+\_\+u2}}
+\index{put\+\_\+u2@{put\+\_\+u2}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+u2()}{put\_u2()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+u2 (\begin{DoxyParamCaption}\item[{\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2}}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts an unsigned short into the data buffer, in network order. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{classClassWriter_a0304019dd68dd830fac5c67971ed2070_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce}\label{classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce}} 
+\index{Class\+Writer@{Class\+Writer}!put\+\_\+u4@{put\+\_\+u4}}
+\index{put\+\_\+u4@{put\+\_\+u4}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{put\+\_\+u4()}{put\_u4()}}
+{\footnotesize\ttfamily void Class\+Writer\+::put\+\_\+u4 (\begin{DoxyParamCaption}\item[{\hyperlink{types_8h_af3b2d4b29fd9faedc984db3e062b3d5d}{u4}}]{x }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Puts an unsigned int into the data buffer, in network order. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassWriter_aa6a42ab1ec0c2f85c30896506d6dbfce_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c}\label{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c}} 
 \index{Class\+Writer@{Class\+Writer}!serialize@{serialize}}
 \index{serialize@{serialize}!Class\+Writer@{Class\+Writer}}
 \subsubsection{\texorpdfstring{serialize()}{serialize()}}
 {\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Class\+Writer\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-Parse an entire class file. This is the method that you most likely want to use. 
+Parse an entire class file. This is the method that you most likely want to use. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classClassWriter_a4c495c4307d3634865d0a4d4024d4a37}\label{classClassWriter_a4c495c4307d3634865d0a4d4024d4a37}} 
+\index{Class\+Writer@{Class\+Writer}!m\+\_\+cf@{m\+\_\+cf}}
+\index{m\+\_\+cf@{m\+\_\+cf}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{m\+\_\+cf}{m\_cf}}
+{\footnotesize\ttfamily const \hyperlink{classClassFileImpl}{Class\+File\+Impl}\& Class\+Writer\+::m\+\_\+cf\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The class file that is used to generate the data. 
+
+\mbox{\Hypertarget{classClassWriter_a8a5c126a562b0329307a15386ff389f8}\label{classClassWriter_a8a5c126a562b0329307a15386ff389f8}} 
+\index{Class\+Writer@{Class\+Writer}!m\+\_\+data@{m\+\_\+data}}
+\index{m\+\_\+data@{m\+\_\+data}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{m\+\_\+data}{m\_data}}
+{\footnotesize\ttfamily std\+::vector$<$uint8\+\_\+t$>$ Class\+Writer\+::m\+\_\+data\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The buffer that is being filled with the serialization data of {\ttfamily m\+\_\+cf}. 
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/classwriter.\+h\item 
-src/classwriter.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{classwriter_8h}{classwriter.\+h}\item 
+src/\hyperlink{classwriter_8cpp}{classwriter.\+cpp}\end{DoxyCompactItemize}

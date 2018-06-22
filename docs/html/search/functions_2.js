@@ -2,6 +2,7 @@ var searchData=
 [
   ['called_5fmethods',['called_methods',['../classMethod.html#a378e12e19cf0c8f21bfc13071382d15e',1,'Method']]],
   ['class_5ffile',['class_file',['../classMethod.html#ac6eecb9ebb1eb23098c8556752353a81',1,'Method']]],
+  ['class_5fis_5fdescendant',['class_is_descendant',['../classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834',1,'Project']]],
   ['class_5fname',['class_name',['../classClassFileImpl.html#a6b505e3750863370ca70c708d051a00c',1,'ClassFileImpl']]],
   ['classfiles',['classfiles',['../classProject.html#a74b0dfe1d19f11e859489922a8d277c7',1,'Project']]],
   ['classreader',['ClassReader',['../classClassReader.html#a3470778a3f6fe462416950a69c305ff0',1,'ClassReader']]],

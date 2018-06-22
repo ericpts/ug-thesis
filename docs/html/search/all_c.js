@@ -1,8 +1,28 @@
 var searchData=
 [
-  ['save',['save',['../classProject.html#aff5e62e0e0e3e8c7123a7dd6ae51cb3f',1,'Project']]],
-  ['save_5fin_5fplace',['save_in_place',['../classProject.html#aecff214fd8b3fc5e855ec925ebe93f59',1,'Project']]],
-  ['serialize',['serialize',['../classClassFileImpl.html#a4e2a4657d4b102369ba7305251d41d00',1,'ClassFileImpl::serialize()'],['../classClassWriter.html#a7be4d13b5665b1e85a8a350ec181951c',1,'ClassWriter::serialize()']]],
-  ['sibling_5fmethods',['sibling_methods',['../classProject.html#afee58125bfee1c7a1871be7805e855fa',1,'Project']]],
-  ['super_5fclass_5fname',['super_class_name',['../classClassFileImpl.html#afd7229efcf341804086bcf6c00bb4820',1,'ClassFileImpl']]]
+  ['m_5fbparser',['m_bparser',['../classClassReader.html#a11f0ce7b430b8abd5cb74b4273ddaab0',1,'ClassReader']]],
+  ['m_5fcf',['m_cf',['../classClassReader.html#ad27b767f0ccf0826b0364977291894bc',1,'ClassReader::m_cf()'],['../classClassWriter.html#a4c495c4307d3634865d0a4d4024d4a37',1,'ClassWriter::m_cf()']]],
+  ['m_5fclass_5ffile',['m_class_file',['../classMethod.html#a6dddd514810b6e9230d554ceb5507a4c',1,'Method']]],
+  ['m_5fdata',['m_data',['../classBytesParser.html#a89b64c815664cea2869895e24d3e1ed3',1,'BytesParser::m_data()'],['../classClassWriter.html#a8a5c126a562b0329307a15386ff389f8',1,'ClassWriter::m_data()']]],
+  ['m_5ffiles',['m_files',['../classProject.html#a33de2bfb90183333d5e7c422bc5d6396',1,'Project']]],
+  ['m_5fit',['m_it',['../classBytesParser.html#a1116068a071fde3c2b634772c806af99',1,'BytesParser']]],
+  ['m_5fmethod_5findex',['m_method_index',['../classMethod.html#a6d573fa18b21d15b361111bf03f48a74',1,'Method']]],
+  ['magic',['magic',['../classClassFileImpl.html#a31b4b986030442ae22f0630532032ded',1,'ClassFileImpl']]],
+  ['main',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main.cpp']]],
+  ['main_2ecpp',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['main_5fmethod',['main_method',['../classMethod.html#a74801df628f1be6e2c616cf5feb328b1',1,'Method::main_method()'],['../classProject.html#a8122de9e7b4bc2a63e1391727c881474',1,'Project::main_method()']]],
+  ['major_5fversion',['major_version',['../classClassFileImpl.html#ac48ee85570e9e8b06f7a568a4246c2da',1,'ClassFileImpl']]],
+  ['max_5flocals',['max_locals',['../structCode__attribute.html#ad710ec86a1d37c6daa999383f8f2fd35',1,'Code_attribute']]],
+  ['max_5fstack',['max_stack',['../structCode__attribute.html#a300885ff1326f01f7c86e7b4425f0d35',1,'Code_attribute']]],
+  ['method',['Method',['../classMethod.html',1,'Method'],['../classMethod.html#aba8db898e71ab542920887eba94e6234',1,'Method::Method()']]],
+  ['method_2ecpp',['method.cpp',['../method_8cpp.html',1,'']]],
+  ['method_2eh',['method.h',['../method_8h.html',1,'']]],
+  ['method_5fcall_5fgraph',['method_call_graph',['../classProject.html#ac4d866eaedfd1083d4736530382c7b7c',1,'Project']]],
+  ['method_5fcount',['method_count',['../classClassFileImpl.html#a9643bb90606a32fa3f4a35f2ff468e5b',1,'ClassFileImpl']]],
+  ['method_5finfo',['method_info',['../structmethod__info.html',1,'']]],
+  ['method_5fname',['method_name',['../classMethod.html#ab0855cbda89f070acc27ebff025ffd15',1,'Method']]],
+  ['method_5ftype',['method_type',['../classMethod.html#a86015f24da420dc7502bdac6138a4a47',1,'Method']]],
+  ['methods',['methods',['../classClassFileImpl.html#a9142d753fc1a3b06ce26606506b2e9c1',1,'ClassFileImpl']]],
+  ['minor_5fversion',['minor_version',['../classClassFileImpl.html#abec30809bc428ce5e31eebcd60a166e1',1,'ClassFileImpl']]],
+  ['multianewarray',['multianewarray',['../code_8h.html#a060088bd6d36c88d90b4c4a8fc4085b9a78c2236f760ab5744da6cef3a3a8327f',1,'code.h']]]
 ];

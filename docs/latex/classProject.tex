@@ -11,7 +11,8 @@ A \hyperlink{classProject}{Project} is a collection of class files, together wit
 
 
 
-Collaboration diagram for Project\+:\nopagebreak
+Collaboration diagram for Project\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,52 +22,189 @@ Collaboration diagram for Project\+:\nopagebreak
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classProject_a2ec0981bc841bcbac0ca8072f3b960b5}\label{classProject_a2ec0981bc841bcbac0ca8072f3b960b5}} 
-std\+::optional$<$ Class\+File $>$ \hyperlink{classProject_a2ec0981bc841bcbac0ca8072f3b960b5}{resolve\+\_\+classfile} (const std\+::string \&class\+\_\+name) const
+\hyperlink{classProject_aa263ab552c113e7a9db9e90c3dac0879}{Project} (std\+::vector$<$ std\+::experimental\+::filesystem\+::path $>$ class\+\_\+files)
+\item 
+std\+::optional$<$ \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} $>$ \hyperlink{classProject_a2ec0981bc841bcbac0ca8072f3b960b5}{resolve\+\_\+classfile} (const std\+::string \&class\+\_\+name) const
 \begin{DoxyCompactList}\small\item\em Find the appropiate class file given the name. \end{DoxyCompactList}\item 
+std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classProject_a2bf65efcb1e91bfe76d2faab76127c11}{resolve\+\_\+symbolic\+\_\+reference} (const std\+::string \&class\+\_\+name, const std\+::string \&method\+\_\+name, const std\+::string \&method\+\_\+type) const
+\item 
 std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classProject_afee58125bfee1c7a1871be7805e855fa}{sibling\+\_\+methods} (const \hyperlink{classMethod}{Method} \&m) const
 \item 
-\mbox{\Hypertarget{classProject_a8122de9e7b4bc2a63e1391727c881474}\label{classProject_a8122de9e7b4bc2a63e1391727c881474}} 
 \hyperlink{classMethod}{Method} \hyperlink{classProject_a8122de9e7b4bc2a63e1391727c881474}{main\+\_\+method} () const
 \begin{DoxyCompactList}\small\item\em Find the main entry point of the entire project. \end{DoxyCompactList}\item 
 void \hyperlink{classProject_af5f35c59d1175af1cfa659a597bb6353}{remove\+\_\+unused\+\_\+methods} ()
 \item 
-\mbox{\Hypertarget{classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f}\label{classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f}} 
 void \hyperlink{classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f}{save} (std\+::experimental\+::filesystem\+::path path) const
 \begin{DoxyCompactList}\small\item\em Save all of the class files in the given location. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classProject_aecff214fd8b3fc5e855ec925ebe93f59}\label{classProject_aecff214fd8b3fc5e855ec925ebe93f59}} 
 void \hyperlink{classProject_aecff214fd8b3fc5e855ec925ebe93f59}{save\+\_\+in\+\_\+place} (std\+::vector$<$ std\+::experimental\+::filesystem\+::path $>$ filenames) const
 \begin{DoxyCompactList}\small\item\em Save all of the files in-\/place. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classProject_a74b0dfe1d19f11e859489922a8d277c7}\label{classProject_a74b0dfe1d19f11e859489922a8d277c7}} 
-std\+::vector$<$ Class\+File $>$ \hyperlink{classProject_a74b0dfe1d19f11e859489922a8d277c7}{classfiles} () const
+std\+::vector$<$ \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} $>$ \hyperlink{classProject_a74b0dfe1d19f11e859489922a8d277c7}{classfiles} () const
 \begin{DoxyCompactList}\small\item\em Returns all of the class files. \end{DoxyCompactList}\item 
 std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classProject_ac4d866eaedfd1083d4736530382c7b7c}{method\+\_\+call\+\_\+graph} (const \hyperlink{classMethod}{Method} \&m) const
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classProject_a6ef93527bbe86e9bdfbc6d624eab0834}{class\+\_\+is\+\_\+descendant} (const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&down, const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&up) const
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} $>$ \hyperlink{classProject_a33de2bfb90183333d5e7c422bc5d6396}{m\+\_\+files}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A \hyperlink{classProject}{Project} is a collection of class files, together with a main entry point. 
 
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classProject_aa263ab552c113e7a9db9e90c3dac0879}\label{classProject_aa263ab552c113e7a9db9e90c3dac0879}} 
+\index{Project@{Project}!Project@{Project}}
+\index{Project@{Project}!Project@{Project}}
+\subsubsection{\texorpdfstring{Project()}{Project()}}
+{\footnotesize\ttfamily Project\+::\+Project (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::experimental\+::filesystem\+::path $>$}]{class\+\_\+files }\end{DoxyParamCaption})}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classProject_aa263ab552c113e7a9db9e90c3dac0879_cgraph}
+\end{center}
+\end{figure}
+
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classProject_a6ef93527bbe86e9bdfbc6d624eab0834}\label{classProject_a6ef93527bbe86e9bdfbc6d624eab0834}} 
+\index{Project@{Project}!class\+\_\+is\+\_\+descendant@{class\+\_\+is\+\_\+descendant}}
+\index{class\+\_\+is\+\_\+descendant@{class\+\_\+is\+\_\+descendant}!Project@{Project}}
+\subsubsection{\texorpdfstring{class\+\_\+is\+\_\+descendant()}{class\_is\_descendant()}}
+{\footnotesize\ttfamily bool Project\+::class\+\_\+is\+\_\+descendant (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{down,  }\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{up }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+Returns whether the two classes are in some way related\+: there is a path in the directed inheritance graph from down to up. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classProject_a6ef93527bbe86e9bdfbc6d624eab0834_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classProject_a74b0dfe1d19f11e859489922a8d277c7}\label{classProject_a74b0dfe1d19f11e859489922a8d277c7}} 
+\index{Project@{Project}!classfiles@{classfiles}}
+\index{classfiles@{classfiles}!Project@{Project}}
+\subsubsection{\texorpdfstring{classfiles()}{classfiles()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} $>$ Project\+::classfiles (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns all of the class files. 
+
+\mbox{\Hypertarget{classProject_a8122de9e7b4bc2a63e1391727c881474}\label{classProject_a8122de9e7b4bc2a63e1391727c881474}} 
+\index{Project@{Project}!main\+\_\+method@{main\+\_\+method}}
+\index{main\+\_\+method@{main\+\_\+method}!Project@{Project}}
+\subsubsection{\texorpdfstring{main\+\_\+method()}{main\_method()}}
+{\footnotesize\ttfamily \hyperlink{classMethod}{Method} Project\+::main\+\_\+method (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Find the main entry point of the entire project. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classProject_a8122de9e7b4bc2a63e1391727c881474_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classProject_ac4d866eaedfd1083d4736530382c7b7c}\label{classProject_ac4d866eaedfd1083d4736530382c7b7c}} 
 \index{Project@{Project}!method\+\_\+call\+\_\+graph@{method\+\_\+call\+\_\+graph}}
 \index{method\+\_\+call\+\_\+graph@{method\+\_\+call\+\_\+graph}!Project@{Project}}
 \subsubsection{\texorpdfstring{method\+\_\+call\+\_\+graph()}{method\_call\_graph()}}
 {\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ Project\+::method\+\_\+call\+\_\+graph (\begin{DoxyParamCaption}\item[{const \hyperlink{classMethod}{Method} \&}]{m }\end{DoxyParamCaption}) const}
 
-Returns all of the methods which are reachable by a series of calls from the given method. \mbox{\Hypertarget{classProject_af5f35c59d1175af1cfa659a597bb6353}\label{classProject_af5f35c59d1175af1cfa659a597bb6353}} 
+Returns all of the methods which are reachable by a series of calls from the given method. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classProject_ac4d866eaedfd1083d4736530382c7b7c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classProject_af5f35c59d1175af1cfa659a597bb6353}\label{classProject_af5f35c59d1175af1cfa659a597bb6353}} 
 \index{Project@{Project}!remove\+\_\+unused\+\_\+methods@{remove\+\_\+unused\+\_\+methods}}
 \index{remove\+\_\+unused\+\_\+methods@{remove\+\_\+unused\+\_\+methods}!Project@{Project}}
 \subsubsection{\texorpdfstring{remove\+\_\+unused\+\_\+methods()}{remove\_unused\_methods()}}
 {\footnotesize\ttfamily void Project\+::remove\+\_\+unused\+\_\+methods (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-This is for now not purely functional, due to the global resolution of method references via the {\ttfamily project()} function.
+This is for now not purely functional, due to the global resolution of method references via the {\ttfamily \hyperlink{project_8cpp_a3c33c839f231786a482d8b5a76c269d3}{project()}} function.
 
-As Class\+Files are actively modified for each removed method, all references needs need to be re-\/resolved after every deletion, because they are reindexed. Due to the way external references work (class A references a method of class B), based on name and type, it is only necessary to update the methods from within the modified Class\+File. Here is the call graph for this function\+:\nopagebreak
+As Class\+Files are actively modified for each removed method, all references needs need to be re-\/resolved after every deletion, because they are reindexed. Due to the way external references work (class A references a method of class B), based on name and type, it is only necessary to update the methods from within the modified Class\+File. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classProject_af5f35c59d1175af1cfa659a597bb6353_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classProject_a2ec0981bc841bcbac0ca8072f3b960b5}\label{classProject_a2ec0981bc841bcbac0ca8072f3b960b5}} 
+\index{Project@{Project}!resolve\+\_\+classfile@{resolve\+\_\+classfile}}
+\index{resolve\+\_\+classfile@{resolve\+\_\+classfile}!Project@{Project}}
+\subsubsection{\texorpdfstring{resolve\+\_\+classfile()}{resolve\_classfile()}}
+{\footnotesize\ttfamily std\+::optional$<$ \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} $>$ Project\+::resolve\+\_\+classfile (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{class\+\_\+name }\end{DoxyParamCaption}) const}
+
+
+
+Find the appropiate class file given the name. 
+
+\mbox{\Hypertarget{classProject_a2bf65efcb1e91bfe76d2faab76127c11}\label{classProject_a2bf65efcb1e91bfe76d2faab76127c11}} 
+\index{Project@{Project}!resolve\+\_\+symbolic\+\_\+reference@{resolve\+\_\+symbolic\+\_\+reference}}
+\index{resolve\+\_\+symbolic\+\_\+reference@{resolve\+\_\+symbolic\+\_\+reference}!Project@{Project}}
+\subsubsection{\texorpdfstring{resolve\+\_\+symbolic\+\_\+reference()}{resolve\_symbolic\_reference()}}
+{\footnotesize\ttfamily std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ Project\+::resolve\+\_\+symbolic\+\_\+reference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{class\+\_\+name,  }\item[{const std\+::string \&}]{method\+\_\+name,  }\item[{const std\+::string \&}]{method\+\_\+type }\end{DoxyParamCaption}) const}
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classProject_a2bf65efcb1e91bfe76d2faab76127c11_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f}\label{classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f}} 
+\index{Project@{Project}!save@{save}}
+\index{save@{save}!Project@{Project}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Project\+::save (\begin{DoxyParamCaption}\item[{std\+::experimental\+::filesystem\+::path}]{path }\end{DoxyParamCaption}) const}
+
+
+
+Save all of the class files in the given location. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classProject_aecff214fd8b3fc5e855ec925ebe93f59}\label{classProject_aecff214fd8b3fc5e855ec925ebe93f59}} 
+\index{Project@{Project}!save\+\_\+in\+\_\+place@{save\+\_\+in\+\_\+place}}
+\index{save\+\_\+in\+\_\+place@{save\+\_\+in\+\_\+place}!Project@{Project}}
+\subsubsection{\texorpdfstring{save\+\_\+in\+\_\+place()}{save\_in\_place()}}
+{\footnotesize\ttfamily void Project\+::save\+\_\+in\+\_\+place (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::experimental\+::filesystem\+::path $>$}]{filenames }\end{DoxyParamCaption}) const}
+
+
+
+Save all of the files in-\/place. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classProject_aecff214fd8b3fc5e855ec925ebe93f59_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classProject_afee58125bfee1c7a1871be7805e855fa}\label{classProject_afee58125bfee1c7a1871be7805e855fa}} 
@@ -77,7 +215,8 @@ As Class\+Files are actively modified for each removed method, all references ne
 
 Returns all of the methods which have the same name and type as {\ttfamily m}, and belong to related classes.
 
-For instance, a method of a descendant in the inheritance chart, because it might be that that method is called due to polymorphism. Here is the call graph for this function\+:\nopagebreak
+For instance, a method of a descendant in the inheritance chart, because it might be that that method is called due to polymorphism. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -86,7 +225,16 @@ For instance, a method of a descendant in the inheritance chart, because it migh
 \end{figure}
 
 
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classProject_a33de2bfb90183333d5e7c422bc5d6396}\label{classProject_a33de2bfb90183333d5e7c422bc5d6396}} 
+\index{Project@{Project}!m\+\_\+files@{m\+\_\+files}}
+\index{m\+\_\+files@{m\+\_\+files}!Project@{Project}}
+\subsubsection{\texorpdfstring{m\+\_\+files}{m\_files}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File}$>$ Project\+::m\+\_\+files\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/project.\+h\item 
-src/project.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{project_8h}{project.\+h}\item 
+src/\hyperlink{project_8cpp}{project.\+cpp}\end{DoxyCompactItemize}

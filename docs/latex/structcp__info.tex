@@ -13,21 +13,198 @@ Collaboration diagram for cp\+\_\+info\+:\nopagebreak
 \includegraphics[width=159pt]{structcp__info__coll__graph}
 \end{center}
 \end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{Tag} \+: u1 \{ \newline
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69adf4763ef84792f4fab0a07fcb179de22}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class} = 7, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ac4a7343d330901c964bc6d7a100d0e07}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref} = 9, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a134e81d65f8cc7c04abcbc28ecb5ebf6}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref} = 10, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a475c27d2bacb9d567842963d43c30ae2}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref} = 11, 
+\newline
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ab084121ff44655538433e0092625b757}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String} = 8, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ae657037d317a6128b92247bd0b07c300}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer} = 3, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a706b340607da83ec3ae76605dd27b722}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float} = 4, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a19c30801e986993747aabd3327b7a623}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long} = 5, 
+\newline
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a71cd8d4c23581349260ab388e6629e98}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double} = 6, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a454459b9eeb1bf297d97d91b04275643}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type} = 12, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a9b59fd6f1baef2be4b10cb0cfdffb4be}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\+\_\+info} = 1, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a3c5a3d3a1f2c967a7eadba51cef03549}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Handle} = 15, 
+\newline
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69adbdbd6fda169a3ae47194edf8d99ba0d}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Type} = 16, 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a4820a591c800d6e0ed560e18ac786969}{Tag\+::\+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Invoke\+Dynamic} = 18
+ \}
+\end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}\label{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}} 
+bool \hyperlink{structcp__info_a486b4be323e8194d6efcf388f3533fb1}{operator==} (const \hyperlink{structcp__info}{cp\+\_\+info} \&other) const
+\item 
+int \hyperlink{structcp__info_a1371b901a960486462d8cc6efc0c6ee8}{slots} () const
+\item 
 std\+::string \hyperlink{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}{as\+\_\+string} () const
 \begin{DoxyCompactList}\small\item\em Returns {\itshape this} as string. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}\label{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}} 
 {\footnotesize template$<$typename T $>$ }\\T \hyperlink{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}{as} () const
-\begin{DoxyCompactList}\small\item\em This template will be explicitly specialized for the possible types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em This template will be explicitly specialized for the possible types. \end{DoxyCompactList}\item 
+{\footnotesize template$<$$>$ }\\\hyperlink{structCONSTANT__GenericMethodref__info}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Generic\+Methodref\+\_\+info} \hyperlink{structcp__info_a032c6014839b743ea813f1e69df0e478}{as} () const
+\item 
+{\footnotesize template$<$$>$ }\\\hyperlink{structCONSTANT__Class__info}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class\+\_\+info} \hyperlink{structcp__info_aa1c10a3fe7a296f25f0f25eb30d96979}{as} () const
+\item 
+{\footnotesize template$<$$>$ }\\\hyperlink{structCONSTANT__NameAndType__info}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type\+\_\+info} \hyperlink{structcp__info_af14ec722b429cf5cb5b7fc52a7a955b8}{as} () const
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{Tag} \hyperlink{structcp__info_a9d61bf7aad6935bfe368e4ec509af6ec}{tag}
+\item 
+std\+::vector$<$ \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1} $>$ \hyperlink{structcp__info_aca6cdfc0ccd687b71c824415258bc870}{data}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Each item in the constant\+\_\+pool table must begin with a 1-\/byte tag indicating the kind of \hyperlink{structcp__info}{cp\+\_\+info} entry. The contents of the info array vary with the value of tag. The valid tags and their values are included in the tag enum. Each tag byte must be followed by two or more bytes giving information about the specific constant. The format of the additional information varies with the tag value. 
 
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!Tag@{Tag}}
+\index{Tag@{Tag}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{Tag}{Tag}}
+{\footnotesize\ttfamily enum \hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{cp\+\_\+info\+::\+Tag} \+: \hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1}\hspace{0.3cm}{\ttfamily [strong]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69adf4763ef84792f4fab0a07fcb179de22}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69adf4763ef84792f4fab0a07fcb179de22}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ac4a7343d330901c964bc6d7a100d0e07}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ac4a7343d330901c964bc6d7a100d0e07}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Fieldref&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a134e81d65f8cc7c04abcbc28ecb5ebf6}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a134e81d65f8cc7c04abcbc28ecb5ebf6}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Methodref&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a475c27d2bacb9d567842963d43c30ae2}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a475c27d2bacb9d567842963d43c30ae2}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Interface\+Methodref&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ab084121ff44655538433e0092625b757}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ab084121ff44655538433e0092625b757}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+String&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ae657037d317a6128b92247bd0b07c300}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69ae657037d317a6128b92247bd0b07c300}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Integer&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a706b340607da83ec3ae76605dd27b722}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a706b340607da83ec3ae76605dd27b722}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Float&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a19c30801e986993747aabd3327b7a623}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a19c30801e986993747aabd3327b7a623}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Long&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a71cd8d4c23581349260ab388e6629e98}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a71cd8d4c23581349260ab388e6629e98}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Double&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a454459b9eeb1bf297d97d91b04275643}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a454459b9eeb1bf297d97d91b04275643}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\+\_\+info@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\+\_\+info}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\+\_\+info@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\+\_\+info}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a9b59fd6f1baef2be4b10cb0cfdffb4be}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a9b59fd6f1baef2be4b10cb0cfdffb4be}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Utf8\+\_\+info&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Handle@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Handle}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Handle@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Handle}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a3c5a3d3a1f2c967a7eadba51cef03549}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a3c5a3d3a1f2c967a7eadba51cef03549}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Handle&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Type@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Type}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Type@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Type}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69adbdbd6fda169a3ae47194edf8d99ba0d}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69adbdbd6fda169a3ae47194edf8d99ba0d}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Method\+Type&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Invoke\+Dynamic@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Invoke\+Dynamic}!cp\+\_\+info@{cp\+\_\+info}}\index{cp\+\_\+info@{cp\+\_\+info}!C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Invoke\+Dynamic@{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Invoke\+Dynamic}}}\mbox{\Hypertarget{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a4820a591c800d6e0ed560e18ac786969}\label{structcp__info_acdef8472ed83e12e3a87bca8d6001f69a4820a591c800d6e0ed560e18ac786969}} 
+C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Invoke\+Dynamic&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}\label{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!as@{as}}
+\index{as@{as}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{as()}{as()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T cp\+\_\+info\+::as (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+This template will be explicitly specialized for the possible types. 
+
+\mbox{\Hypertarget{structcp__info_a032c6014839b743ea813f1e69df0e478}\label{structcp__info_a032c6014839b743ea813f1e69df0e478}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!as@{as}}
+\index{as@{as}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{as()}{as()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+\hyperlink{structCONSTANT__GenericMethodref__info}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Generic\+Methodref\+\_\+info} cp\+\_\+info\+::as (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structcp__info_aa1c10a3fe7a296f25f0f25eb30d96979}\label{structcp__info_aa1c10a3fe7a296f25f0f25eb30d96979}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!as@{as}}
+\index{as@{as}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{as()}{as()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+\hyperlink{structCONSTANT__Class__info}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Class\+\_\+info} cp\+\_\+info\+::as (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structcp__info_af14ec722b429cf5cb5b7fc52a7a955b8}\label{structcp__info_af14ec722b429cf5cb5b7fc52a7a955b8}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!as@{as}}
+\index{as@{as}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{as()}{as()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$$>$ \\
+\hyperlink{structCONSTANT__NameAndType__info}{C\+O\+N\+S\+T\+A\+N\+T\+\_\+\+Name\+And\+Type\+\_\+info} cp\+\_\+info\+::as (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}\label{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!as\+\_\+string@{as\+\_\+string}}
+\index{as\+\_\+string@{as\+\_\+string}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{as\+\_\+string()}{as\_string()}}
+{\footnotesize\ttfamily std\+::string cp\+\_\+info\+::as\+\_\+string (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns {\itshape this} as string. 
+
+\mbox{\Hypertarget{structcp__info_a486b4be323e8194d6efcf388f3533fb1}\label{structcp__info_a486b4be323e8194d6efcf388f3533fb1}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!operator==@{operator==}}
+\index{operator==@{operator==}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool cp\+\_\+info\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{structcp__info}{cp\+\_\+info} \&}]{other }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{structcp__info_a1371b901a960486462d8cc6efc0c6ee8}\label{structcp__info_a1371b901a960486462d8cc6efc0c6ee8}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!slots@{slots}}
+\index{slots@{slots}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{slots()}{slots()}}
+{\footnotesize\ttfamily int cp\+\_\+info\+::slots (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{structcp__info_aca6cdfc0ccd687b71c824415258bc870}\label{structcp__info_aca6cdfc0ccd687b71c824415258bc870}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!data@{data}}
+\index{data@{data}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{types_8h_a162f47a77ee24f6f77cd8c82ccd40ab7}{u1}$>$ cp\+\_\+info\+::data}
+
+\mbox{\Hypertarget{structcp__info_a9d61bf7aad6935bfe368e4ec509af6ec}\label{structcp__info_a9d61bf7aad6935bfe368e4ec509af6ec}} 
+\index{cp\+\_\+info@{cp\+\_\+info}!tag@{tag}}
+\index{tag@{tag}!cp\+\_\+info@{cp\+\_\+info}}
+\subsubsection{\texorpdfstring{tag}{tag}}
+{\footnotesize\ttfamily \hyperlink{structcp__info_acdef8472ed83e12e3a87bca8d6001f69}{Tag} cp\+\_\+info\+::tag}
+
+
+
 The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/types.\+h\item 
-src/types.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{types_8h}{types.\+h}\item 
+src/\hyperlink{types_8cpp}{types.\+cpp}\end{DoxyCompactItemize}

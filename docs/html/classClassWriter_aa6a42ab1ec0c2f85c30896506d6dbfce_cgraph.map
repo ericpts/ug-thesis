@@ -1,0 +1,4 @@
+<map id="ClassWriter::put_u4" name="ClassWriter::put_u4">
+<area shape="rect" id="node2" href="$classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="192,5,331,32"/>
+<area shape="rect" id="node3" href="$classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="379,5,517,32"/>
+</map>

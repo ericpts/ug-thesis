@@ -3,5 +3,5 @@ digraph "Method"
   bgcolor="transparent";
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{Method\n||+ refresh()\l+ class_file()\l+ code_attribute()\l+ method_name()\l+ method_type()\l+ format()\l+ called_methods()\l+ with_this_method_removed()\l+ is_abstract()\l+ operator==()\l+ from_owner()\l+ from_symbolic_reference()\l+ all_from_classfile()\l+ main_method()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 [label="{Method\n|- m_class_file\l- m_method_index\l|+ refresh()\l+ class_file()\l+ code_attribute()\l+ method_name()\l+ method_type()\l+ format()\l+ called_methods()\l+ with_this_method_removed()\l+ is_abstract()\l+ operator==()\l+ from_owner()\l+ from_symbolic_reference()\l+ all_from_classfile()\l+ main_method()\l- Method()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
 }

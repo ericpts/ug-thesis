@@ -1,0 +1,5 @@
+<map id="Project::main_method" name="Project::main_method">
+<area shape="rect" id="node2" href="$classMethod.html#ad977afdb14569e1108c6b6849fe0b007" title="Method::from_owner" alt="" coords="203,5,344,32"/>
+<area shape="rect" id="node3" href="$classMethod.html#aba8db898e71ab542920887eba94e6234" title="Constructs the method from the ClassFile and the method index. " alt="" coords="392,5,508,32"/>
+<area shape="rect" id="node4" href="$classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="556,5,684,32"/>
+</map>

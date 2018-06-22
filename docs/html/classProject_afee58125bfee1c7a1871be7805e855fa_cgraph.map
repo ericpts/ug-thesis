@@ -1,5 +1,9 @@
 <map id="Project::sibling_methods" name="Project::sibling_methods">
-<area shape="rect" id="node2" href="$classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="222,5,370,32"/>
-<area shape="rect" id="node3" href="$classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="219,56,373,83"/>
-<area shape="rect" id="node4" href="$classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="232,107,360,133"/>
+<area shape="rect" id="node2" href="$classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="470,115,618,141"/>
+<area shape="rect" id="node3" href="$classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="676,140,804,167"/>
+<area shape="rect" id="node4" href="$classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="467,216,621,243"/>
+<area shape="rect" id="node5" href="$classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834" title="Project::class_is_descendant" alt="" coords="219,64,412,91"/>
+<area shape="rect" id="node7" href="$classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="228,216,403,243"/>
+<area shape="rect" id="node8" href="$classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6" title="Method::format" alt="" coords="260,165,371,192"/>
+<area shape="rect" id="node6" href="$classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="460,64,628,91"/>
 </map>

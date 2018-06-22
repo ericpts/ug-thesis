@@ -4,7 +4,12 @@ digraph "Method::code_attribute"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node0 [label="Method::code_attribute",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="attribute_info::as",height=0.2,width=0.4,color="black",URL="$structattribute__info.html#ace33b133435450d7d161751a3393de11",tooltip="This template will be explicitly specialized for the possible types. "];
+  Node26 [label="Method::code_attribute",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node26 -> Node27 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node27 [label="Method::class_file",height=0.2,width=0.4,color="black",URL="$classMethod.html#ac6eecb9ebb1eb23098c8556752353a81",tooltip="Returns the class file where this class belongs. "];
+  Node26 -> Node28 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node28 [label="attribute_info::as",height=0.2,width=0.4,color="black",URL="$structattribute__info.html#ace33b133435450d7d161751a3393de11",tooltip="This template will be explicitly specialized for the possible types. "];
+  Node26 -> Node29 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node29 [label="Method::is_abstract",height=0.2,width=0.4,color="black",URL="$classMethod.html#a6dfb75c6faf8961c6e04a86eca6e97e8",tooltip="Returns whether this method is abstract. "];
+  Node29 -> Node27 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
 }

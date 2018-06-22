@@ -1,0 +1,33 @@
+digraph "skip_instruction"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="skip_instruction",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node0 -> Node1 [color="midnightblue",fontsize="10",style="solid"];
+  Node1 [label="nbytes_skip",height=0.2,width=0.4,color="black",URL="$code_8cpp.html#a89610720a1fdc96cd38d29040df09415"];
+  Node0 -> Node2 [color="midnightblue",fontsize="10",style="solid"];
+  Node2 [label="BytesParser::next_n",height=0.2,width=0.4,color="black",URL="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e",tooltip="Consumes and returns the next n bytes. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node3 [label="BytesParser::next_u1",height=0.2,width=0.4,color="black",URL="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579",tooltip="Consumes and returns the next unsigned char, in network order. "];
+  Node0 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 [label="handle_lookupswitch",height=0.2,width=0.4,color="black",URL="$code_8cpp.html#aa5d483694c6174731ff9fac5002cd8ae"];
+  Node4 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node5 [label="BytesParser::bytes_read",height=0.2,width=0.4,color="black",URL="$classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a",tooltip="Returns how many bytes have been parsed so far. "];
+  Node4 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node4 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="BytesParser::next_u4",height=0.2,width=0.4,color="black",URL="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884",tooltip="Consumes and returns the next unsigned int, in network order. "];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="BytesParser::next_u2",height=0.2,width=0.4,color="black",URL="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a",tooltip="Consumes and returns the next unsigned short, in network order. "];
+  Node7 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node0 -> Node8 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 [label="handle_tableswitch",height=0.2,width=0.4,color="black",URL="$code_8cpp.html#a298b725ea8fc55e54ac45da455ce740f"];
+  Node8 -> Node5 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node8 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node0 -> Node9 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 [label="handle_wide",height=0.2,width=0.4,color="black",URL="$code_8cpp.html#a705b8e4b481bd9b6a16e78e1457e18f6"];
+  Node9 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
+  Node9 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+}

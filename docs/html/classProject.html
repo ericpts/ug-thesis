@@ -60,6 +60,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classProject-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Project Class Reference</div>  </div>
@@ -74,40 +76,183 @@ $(function() {
 Collaboration diagram for Project:</div>
 <div class="dyncontent">
 <div class="center"><img src="classProject__coll__graph.png" border="0" usemap="#Project_coll__map" alt="Collaboration graph"/></div>
+<map name="Project_coll__map" id="Project_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2ec0981bc841bcbac0ca8072f3b960b5"><td class="memItemLeft" align="right" valign="top"><a id="a2ec0981bc841bcbac0ca8072f3b960b5"></a>
-std::optional&lt; ClassFile &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5">resolve_classfile</a> (const std::string &amp;class_name) const</td></tr>
-<tr class="memdesc:a2ec0981bc841bcbac0ca8072f3b960b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the appropiate class file given the name. <br /></td></tr>
+<tr class="memitem:aa263ab552c113e7a9db9e90c3dac0879"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#aa263ab552c113e7a9db9e90c3dac0879">Project</a> (std::vector&lt; std::experimental::filesystem::path &gt; class_files)</td></tr>
+<tr class="separator:aa263ab552c113e7a9db9e90c3dac0879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2ec0981bc841bcbac0ca8072f3b960b5"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5">resolve_classfile</a> (const std::string &amp;class_name) const</td></tr>
+<tr class="memdesc:a2ec0981bc841bcbac0ca8072f3b960b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the appropiate class file given the name.  <a href="#a2ec0981bc841bcbac0ca8072f3b960b5">More...</a><br /></td></tr>
 <tr class="separator:a2ec0981bc841bcbac0ca8072f3b960b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bf65efcb1e91bfe76d2faab76127c11"><td class="memItemLeft" align="right" valign="top">std::optional&lt; <a class="el" href="classMethod.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a2bf65efcb1e91bfe76d2faab76127c11">resolve_symbolic_reference</a> (const std::string &amp;class_name, const std::string &amp;method_name, const std::string &amp;method_type) const</td></tr>
+<tr class="separator:a2bf65efcb1e91bfe76d2faab76127c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afee58125bfee1c7a1871be7805e855fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classMethod.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#afee58125bfee1c7a1871be7805e855fa">sibling_methods</a> (const <a class="el" href="classMethod.html">Method</a> &amp;m) const</td></tr>
 <tr class="separator:afee58125bfee1c7a1871be7805e855fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8122de9e7b4bc2a63e1391727c881474"><td class="memItemLeft" align="right" valign="top"><a id="a8122de9e7b4bc2a63e1391727c881474"></a>
-<a class="el" href="classMethod.html">Method</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a8122de9e7b4bc2a63e1391727c881474">main_method</a> () const</td></tr>
-<tr class="memdesc:a8122de9e7b4bc2a63e1391727c881474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the main entry point of the entire project. <br /></td></tr>
+<tr class="memitem:a8122de9e7b4bc2a63e1391727c881474"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMethod.html">Method</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a8122de9e7b4bc2a63e1391727c881474">main_method</a> () const</td></tr>
+<tr class="memdesc:a8122de9e7b4bc2a63e1391727c881474"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the main entry point of the entire project.  <a href="#a8122de9e7b4bc2a63e1391727c881474">More...</a><br /></td></tr>
 <tr class="separator:a8122de9e7b4bc2a63e1391727c881474"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5f35c59d1175af1cfa659a597bb6353"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#af5f35c59d1175af1cfa659a597bb6353">remove_unused_methods</a> ()</td></tr>
 <tr class="separator:af5f35c59d1175af1cfa659a597bb6353"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff5e62e0e0e3e8c7123a7dd6ae51cb3f"><td class="memItemLeft" align="right" valign="top"><a id="aff5e62e0e0e3e8c7123a7dd6ae51cb3f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#aff5e62e0e0e3e8c7123a7dd6ae51cb3f">save</a> (std::experimental::filesystem::path path) const</td></tr>
-<tr class="memdesc:aff5e62e0e0e3e8c7123a7dd6ae51cb3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save all of the class files in the given location. <br /></td></tr>
+<tr class="memitem:aff5e62e0e0e3e8c7123a7dd6ae51cb3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#aff5e62e0e0e3e8c7123a7dd6ae51cb3f">save</a> (std::experimental::filesystem::path path) const</td></tr>
+<tr class="memdesc:aff5e62e0e0e3e8c7123a7dd6ae51cb3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save all of the class files in the given location.  <a href="#aff5e62e0e0e3e8c7123a7dd6ae51cb3f">More...</a><br /></td></tr>
 <tr class="separator:aff5e62e0e0e3e8c7123a7dd6ae51cb3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecff214fd8b3fc5e855ec925ebe93f59"><td class="memItemLeft" align="right" valign="top"><a id="aecff214fd8b3fc5e855ec925ebe93f59"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#aecff214fd8b3fc5e855ec925ebe93f59">save_in_place</a> (std::vector&lt; std::experimental::filesystem::path &gt; filenames) const</td></tr>
-<tr class="memdesc:aecff214fd8b3fc5e855ec925ebe93f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save all of the files in-place. <br /></td></tr>
+<tr class="memitem:aecff214fd8b3fc5e855ec925ebe93f59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#aecff214fd8b3fc5e855ec925ebe93f59">save_in_place</a> (std::vector&lt; std::experimental::filesystem::path &gt; filenames) const</td></tr>
+<tr class="memdesc:aecff214fd8b3fc5e855ec925ebe93f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save all of the files in-place.  <a href="#aecff214fd8b3fc5e855ec925ebe93f59">More...</a><br /></td></tr>
 <tr class="separator:aecff214fd8b3fc5e855ec925ebe93f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74b0dfe1d19f11e859489922a8d277c7"><td class="memItemLeft" align="right" valign="top"><a id="a74b0dfe1d19f11e859489922a8d277c7"></a>
-std::vector&lt; ClassFile &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a74b0dfe1d19f11e859489922a8d277c7">classfiles</a> () const</td></tr>
-<tr class="memdesc:a74b0dfe1d19f11e859489922a8d277c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all of the class files. <br /></td></tr>
+<tr class="memitem:a74b0dfe1d19f11e859489922a8d277c7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a74b0dfe1d19f11e859489922a8d277c7">classfiles</a> () const</td></tr>
+<tr class="memdesc:a74b0dfe1d19f11e859489922a8d277c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns all of the class files.  <a href="#a74b0dfe1d19f11e859489922a8d277c7">More...</a><br /></td></tr>
 <tr class="separator:a74b0dfe1d19f11e859489922a8d277c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4d866eaedfd1083d4736530382c7b7c"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classMethod.html">Method</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#ac4d866eaedfd1083d4736530382c7b7c">method_call_graph</a> (const <a class="el" href="classMethod.html">Method</a> &amp;m) const</td></tr>
 <tr class="separator:ac4d866eaedfd1083d4736530382c7b7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a6ef93527bbe86e9bdfbc6d624eab0834"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834">class_is_descendant</a> (const <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &amp;down, const <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &amp;up) const</td></tr>
+<tr class="separator:a6ef93527bbe86e9bdfbc6d624eab0834"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a33de2bfb90183333d5e7c422bc5d6396"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classProject.html#a33de2bfb90183333d5e7c422bc5d6396">m_files</a></td></tr>
+<tr class="separator:a33de2bfb90183333d5e7c422bc5d6396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A <a class="el" href="classProject.html" title="A Project is a collection of class files, together with a main entry point. ">Project</a> is a collection of class files, together with a main entry point. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa263ab552c113e7a9db9e90c3dac0879"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa263ab552c113e7a9db9e90c3dac0879">&#9670;&nbsp;</a></span>Project()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Project::Project </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::experimental::filesystem::path &gt;&#160;</td>
+          <td class="paramname"><em>class_files</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_aa263ab552c113e7a9db9e90c3dac0879_cgraph.png" border="0" usemap="#classProject_aa263ab552c113e7a9db9e90c3dac0879_cgraph" alt=""/></div>
+<map name="classProject_aa263ab552c113e7a9db9e90c3dac0879_cgraph" id="classProject_aa263ab552c113e7a9db9e90c3dac0879_cgraph">
+<area shape="rect" id="node2" href="classClassFileImpl.html#abdfa46cef80b0ec30115f1c0c9bb1db6" title="Deserialize the binary data into a class file. " alt="" coords="165,215,337,242"/>
+<area shape="rect" id="node14" href="util_8cpp.html#ae66b9ea389cea5cfd364a144d4a83fa0" title="read_entire_file" alt="" coords="196,266,307,293"/>
+<area shape="rect" id="node3" href="classClassReader.html#a001cc48324c31430559b43976d731e8a" title="ClassReader::deserialize" alt="" coords="385,215,553,242"/>
+<area shape="rect" id="node4" href="classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="983,71,1131,98"/>
+<area shape="rect" id="node5" href="classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1179,173,1327,199"/>
+<area shape="rect" id="node7" href="classClassReader.html#ac4c0b613d45cf507b2e85c61c28541cb" title="ClassReader::parse\l_cp_info" alt="" coords="987,5,1126,47"/>
+<area shape="rect" id="node9" href="classClassReader.html#a7f8a951758bdb961ebf36088301ac1b4" title="ClassReader::expect\l_cpool_entry" alt="" coords="789,240,935,281"/>
+<area shape="rect" id="node10" href="classClassReader.html#a434b73f04e1502c936593ab63094d838" title="Parses a field_info struct from the data buffer. " alt="" coords="602,240,741,281"/>
+<area shape="rect" id="node11" href="classBytesParser.html#ab7c84f75bd3dc2bcac74fd3ff4c6510a" title="Parses an attribute_info struct from the data buffer. " alt="" coords="795,123,929,164"/>
+<area shape="rect" id="node12" href="classClassReader.html#a0eb68204b1979e2a2758c05f200a7be3" title="Parses a method_info struct from the data buffer. " alt="" coords="602,175,741,216"/>
+<area shape="rect" id="node13" href="classBytesParser.html#a0cef47c62af80c1a50fc507c5a869757" title="Returns whether all the data has been parsed. " alt="" coords="601,407,741,434"/>
+<area shape="rect" id="node6" href="classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1375,93,1523,119"/>
+<area shape="rect" id="node8" href="classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1182,93,1323,119"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6ef93527bbe86e9bdfbc6d624eab0834"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ef93527bbe86e9bdfbc6d624eab0834">&#9670;&nbsp;</a></span>class_is_descendant()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Project::class_is_descendant </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &amp;&#160;</td>
+          <td class="paramname"><em>down</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &amp;&#160;</td>
+          <td class="paramname"><em>up</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returns whether the two classes are in some way related: there is a path in the directed inheritance graph from down to up. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_a6ef93527bbe86e9bdfbc6d624eab0834_cgraph.png" border="0" usemap="#classProject_a6ef93527bbe86e9bdfbc6d624eab0834_cgraph" alt=""/></div>
+<map name="classProject_a6ef93527bbe86e9bdfbc6d624eab0834_cgraph" id="classProject_a6ef93527bbe86e9bdfbc6d624eab0834_cgraph">
+<area shape="rect" id="node2" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="247,5,415,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a74b0dfe1d19f11e859489922a8d277c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b0dfe1d19f11e859489922a8d277c7">&#9670;&nbsp;</a></span>classfiles()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &gt; Project::classfiles </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns all of the class files. </p>
+
+</div>
+</div>
+<a id="a8122de9e7b4bc2a63e1391727c881474"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8122de9e7b4bc2a63e1391727c881474">&#9670;&nbsp;</a></span>main_method()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classMethod.html">Method</a> Project::main_method </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the main entry point of the entire project. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_a8122de9e7b4bc2a63e1391727c881474_cgraph.png" border="0" usemap="#classProject_a8122de9e7b4bc2a63e1391727c881474_cgraph" alt=""/></div>
+<map name="classProject_a8122de9e7b4bc2a63e1391727c881474_cgraph" id="classProject_a8122de9e7b4bc2a63e1391727c881474_cgraph">
+<area shape="rect" id="node2" href="classMethod.html#ad977afdb14569e1108c6b6849fe0b007" title="Method::from_owner" alt="" coords="203,5,344,32"/>
+<area shape="rect" id="node3" href="classMethod.html#aba8db898e71ab542920887eba94e6234" title="Constructs the method from the ClassFile and the method index. " alt="" coords="392,5,508,32"/>
+<area shape="rect" id="node4" href="classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="556,5,684,32"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ac4d866eaedfd1083d4736530382c7b7c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac4d866eaedfd1083d4736530382c7b7c">&#9670;&nbsp;</a></span>method_call_graph()</h2>
 
@@ -124,6 +269,38 @@ std::vector&lt; ClassFile &gt;&#160;</td><td class="memItemRight" valign="bottom
       </table>
 </div><div class="memdoc">
 <p>Returns all of the methods which are reachable by a series of calls from the given method. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_ac4d866eaedfd1083d4736530382c7b7c_cgraph.png" border="0" usemap="#classProject_ac4d866eaedfd1083d4736530382c7b7c_cgraph" alt=""/></div>
+<map name="classProject_ac4d866eaedfd1083d4736530382c7b7c_cgraph" id="classProject_ac4d866eaedfd1083d4736530382c7b7c_cgraph">
+<area shape="rect" id="node2" href="classProject.html#afee58125bfee1c7a1871be7805e855fa" title="Project::sibling_methods" alt="" coords="195,664,360,691"/>
+<area shape="rect" id="node10" href="classMethod.html#a378e12e19cf0c8f21bfc13071382d15e" title="Returns all the methods that this method calls directly. " alt="" coords="195,411,359,437"/>
+<area shape="rect" id="node3" href="classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="661,664,809,691"/>
+<area shape="rect" id="node4" href="classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="893,512,1021,539"/>
+<area shape="rect" id="node5" href="classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="658,563,813,589"/>
+<area shape="rect" id="node6" href="classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834" title="Project::class_is_descendant" alt="" coords="408,765,601,792"/>
+<area shape="rect" id="node8" href="classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="869,852,1044,879"/>
+<area shape="rect" id="node9" href="classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6" title="Method::format" alt="" coords="449,547,560,573"/>
+<area shape="rect" id="node7" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="873,797,1041,824"/>
+<area shape="rect" id="node11" href="classMethod.html#af92b40aa1a81df3a6827d688adc005bf" title="Method::code_attribute" alt="" coords="427,411,582,437"/>
+<area shape="rect" id="node14" href="classMethod.html#adddc54ce699dfb1ba305595507085a29" title="Method::from_symbolic\l_reference" alt="" coords="425,598,584,639"/>
+<area shape="rect" id="node17" href="code_8cpp.html#a864472e12a8f68c47532fa4775c8ed02" title="skip_instruction" alt="" coords="448,183,561,209"/>
+<area shape="rect" id="node12" href="structattribute__info.html#ace33b133435450d7d161751a3393de11" title="This template will be explicitly specialized for the possible types. " alt="" coords="676,360,795,387"/>
+<area shape="rect" id="node13" href="classMethod.html#a6dfb75c6faf8961c6e04a86eca6e97e8" title="Returns whether this method is abstract. " alt="" coords="667,461,804,488"/>
+<area shape="rect" id="node15" href="project_8cpp.html#a3c33c839f231786a482d8b5a76c269d3" title="For now, there is a single global project for the entire application. " alt="" coords="705,613,766,640"/>
+<area shape="rect" id="node16" href="classProject.html#a2bf65efcb1e91bfe76d2faab76127c11" title="Project::resolve_symbolic\l_reference" alt="" coords="649,817,821,858"/>
+<area shape="rect" id="node18" href="code_8cpp.html#a89610720a1fdc96cd38d29040df09415" title="nbytes_skip" alt="" coords="689,259,781,285"/>
+<area shape="rect" id="node19" href="classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1095,5,1237,32"/>
+<area shape="rect" id="node21" href="code_8cpp.html#aa5d483694c6174731ff9fac5002cd8ae" title="handle_lookupswitch" alt="" coords="664,107,807,133"/>
+<area shape="rect" id="node25" href="code_8cpp.html#a298b725ea8fc55e54ac45da455ce740f" title="handle_tableswitch" alt="" coords="669,157,802,184"/>
+<area shape="rect" id="node26" href="code_8cpp.html#a705b8e4b481bd9b6a16e78e1457e18f6" title="handle_wide" alt="" coords="909,259,1004,285"/>
+<area shape="rect" id="node20" href="classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1288,132,1436,159"/>
+<area shape="rect" id="node22" href="classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a" title="Returns how many bytes have been parsed so far. " alt="" coords="873,157,1040,184"/>
+<area shape="rect" id="node23" href="classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="883,107,1031,133"/>
+<area shape="rect" id="node24" href="classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1092,132,1240,159"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -141,17 +318,161 @@ std::vector&lt; ClassFile &gt;&#160;</td><td class="memItemRight" valign="bottom
         </tr>
       </table>
 </div><div class="memdoc">
-<p>This is for now not purely functional, due to the global resolution of method references via the <code>project()</code> function.</p>
+<p>This is for now not purely functional, due to the global resolution of method references via the <code><a class="el" href="project_8cpp.html#a3c33c839f231786a482d8b5a76c269d3" title="For now, there is a single global project for the entire application. ">project()</a></code> function.</p>
 <p>As ClassFiles are actively modified for each removed method, all references needs need to be re-resolved after every deletion, because they are reindexed. Due to the way external references work (class A references a method of class B), based on name and type, it is only necessary to update the methods from within the modified ClassFile. </p>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classProject_af5f35c59d1175af1cfa659a597bb6353_cgraph.png" border="0" usemap="#classProject_af5f35c59d1175af1cfa659a597bb6353_cgraph" alt=""/></div>
 <map name="classProject_af5f35c59d1175af1cfa659a597bb6353_cgraph" id="classProject_af5f35c59d1175af1cfa659a597bb6353_cgraph">
-<area shape="rect" id="node2" href="classProject.html#a8122de9e7b4bc2a63e1391727c881474" title="Find the main entry point of the entire project. " alt="" coords="229,5,378,32"/>
-<area shape="rect" id="node4" href="classProject.html#ac4d866eaedfd1083d4736530382c7b7c" title="Project::method_call\l_graph" alt="" coords="233,57,374,98"/>
-<area shape="rect" id="node5" href="classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="216,123,391,149"/>
-<area shape="rect" id="node3" href="classMethod.html#ad977afdb14569e1108c6b6849fe0b007" title="Method::from_owner" alt="" coords="439,5,580,32"/>
+<area shape="rect" id="node2" href="classProject.html#a8122de9e7b4bc2a63e1391727c881474" title="Find the main entry point of the entire project. " alt="" coords="216,68,365,95"/>
+<area shape="rect" id="node6" href="project_8cpp.html#a3c33c839f231786a482d8b5a76c269d3" title="For now, there is a single global project for the entire application. " alt="" coords="923,195,985,221"/>
+<area shape="rect" id="node7" href="classProject.html#ac4d866eaedfd1083d4736530382c7b7c" title="Project::method_call\l_graph" alt="" coords="220,297,361,338"/>
+<area shape="rect" id="node13" href="classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="1088,43,1263,69"/>
+<area shape="rect" id="node3" href="classMethod.html#ad977afdb14569e1108c6b6849fe0b007" title="Method::from_owner" alt="" coords="425,43,567,69"/>
+<area shape="rect" id="node4" href="classMethod.html#aba8db898e71ab542920887eba94e6234" title="Constructs the method from the ClassFile and the method index. " alt="" coords="665,43,781,69"/>
+<area shape="rect" id="node5" href="classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="1111,439,1239,465"/>
+<area shape="rect" id="node8" href="classProject.html#afee58125bfee1c7a1871be7805e855fa" title="Project::sibling_methods" alt="" coords="413,304,579,331"/>
+<area shape="rect" id="node15" href="classMethod.html#a378e12e19cf0c8f21bfc13071382d15e" title="Returns all the methods that this method calls directly. " alt="" coords="414,515,578,541"/>
+<area shape="rect" id="node9" href="classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="880,413,1028,440"/>
+<area shape="rect" id="node10" href="classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="877,363,1031,389"/>
+<area shape="rect" id="node11" href="classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834" title="Project::class_is_descendant" alt="" coords="627,195,820,221"/>
+<area shape="rect" id="node14" href="classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6" title="Method::format" alt="" coords="668,464,779,491"/>
+<area shape="rect" id="node12" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="1091,173,1259,200"/>
+<area shape="rect" id="node16" href="classMethod.html#af92b40aa1a81df3a6827d688adc005bf" title="Method::code_attribute" alt="" coords="646,591,801,617"/>
+<area shape="rect" id="node19" href="classMethod.html#adddc54ce699dfb1ba305595507085a29" title="Method::from_symbolic\l_reference" alt="" coords="644,297,803,338"/>
+<area shape="rect" id="node21" href="code_8cpp.html#a864472e12a8f68c47532fa4775c8ed02" title="skip_instruction" alt="" coords="667,793,780,820"/>
+<area shape="rect" id="node17" href="structattribute__info.html#ace33b133435450d7d161751a3393de11" title="This template will be explicitly specialized for the possible types. " alt="" coords="895,565,1013,592"/>
+<area shape="rect" id="node18" href="classMethod.html#a6dfb75c6faf8961c6e04a86eca6e97e8" title="Returns whether this method is abstract. " alt="" coords="885,667,1023,693"/>
+<area shape="rect" id="node20" href="classProject.html#a2bf65efcb1e91bfe76d2faab76127c11" title="Project::resolve_symbolic\l_reference" alt="" coords="868,246,1040,287"/>
+<area shape="rect" id="node22" href="code_8cpp.html#a89610720a1fdc96cd38d29040df09415" title="nbytes_skip" alt="" coords="908,717,1000,744"/>
+<area shape="rect" id="node23" href="classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1314,945,1455,972"/>
+<area shape="rect" id="node25" href="code_8cpp.html#aa5d483694c6174731ff9fac5002cd8ae" title="handle_lookupswitch" alt="" coords="883,768,1025,795"/>
+<area shape="rect" id="node29" href="code_8cpp.html#a298b725ea8fc55e54ac45da455ce740f" title="handle_tableswitch" alt="" coords="887,819,1021,845"/>
+<area shape="rect" id="node30" href="code_8cpp.html#a705b8e4b481bd9b6a16e78e1457e18f6" title="handle_wide" alt="" coords="1128,895,1223,921"/>
+<area shape="rect" id="node24" href="classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1507,844,1655,871"/>
+<area shape="rect" id="node26" href="classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a" title="Returns how many bytes have been parsed so far. " alt="" coords="1092,743,1259,769"/>
+<area shape="rect" id="node27" href="classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="1101,844,1249,871"/>
+<area shape="rect" id="node28" href="classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1311,844,1459,871"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2ec0981bc841bcbac0ca8072f3b960b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ec0981bc841bcbac0ca8072f3b960b5">&#9670;&nbsp;</a></span>resolve_classfile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a> &gt; Project::resolve_classfile </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>class_name</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the appropiate class file given the name. </p>
+
+</div>
+</div>
+<a id="a2bf65efcb1e91bfe76d2faab76127c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bf65efcb1e91bfe76d2faab76127c11">&#9670;&nbsp;</a></span>resolve_symbolic_reference()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; <a class="el" href="classMethod.html">Method</a> &gt; Project::resolve_symbolic_reference </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>class_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>method_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>method_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_a2bf65efcb1e91bfe76d2faab76127c11_cgraph.png" border="0" usemap="#classProject_a2bf65efcb1e91bfe76d2faab76127c11_cgraph" alt=""/></div>
+<map name="classProject_a2bf65efcb1e91bfe76d2faab76127c11_cgraph" id="classProject_a2bf65efcb1e91bfe76d2faab76127c11_cgraph">
+<area shape="rect" id="node2" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="229,5,397,32"/>
+<area shape="rect" id="node3" href="classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="225,56,400,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aff5e62e0e0e3e8c7123a7dd6ae51cb3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff5e62e0e0e3e8c7123a7dd6ae51cb3f">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Project::save </td>
+          <td>(</td>
+          <td class="paramtype">std::experimental::filesystem::path&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save all of the class files in the given location. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f_cgraph.png" border="0" usemap="#classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f_cgraph" alt=""/></div>
+<map name="classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f_cgraph" id="classProject_aff5e62e0e0e3e8c7123a7dd6ae51cb3f_cgraph">
+<area shape="rect" id="node2" href="project_8cpp.html#a1d4c3111b2c5f87781ba35f906291397" title="write_classfile_to_file" alt="" coords="152,5,299,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aecff214fd8b3fc5e855ec925ebe93f59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecff214fd8b3fc5e855ec925ebe93f59">&#9670;&nbsp;</a></span>save_in_place()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Project::save_in_place </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::experimental::filesystem::path &gt;&#160;</td>
+          <td class="paramname"><em>filenames</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Save all of the files in-place. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classProject_aecff214fd8b3fc5e855ec925ebe93f59_cgraph.png" border="0" usemap="#classProject_aecff214fd8b3fc5e855ec925ebe93f59_cgraph" alt=""/></div>
+<map name="classProject_aecff214fd8b3fc5e855ec925ebe93f59_cgraph" id="classProject_aecff214fd8b3fc5e855ec925ebe93f59_cgraph">
+<area shape="rect" id="node2" href="project_8cpp.html#a1d4c3111b2c5f87781ba35f906291397" title="write_classfile_to_file" alt="" coords="208,5,355,32"/>
 </map>
 </div>
 
@@ -179,17 +500,44 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classProject_afee58125bfee1c7a1871be7805e855fa_cgraph.png" border="0" usemap="#classProject_afee58125bfee1c7a1871be7805e855fa_cgraph" alt=""/></div>
 <map name="classProject_afee58125bfee1c7a1871be7805e855fa_cgraph" id="classProject_afee58125bfee1c7a1871be7805e855fa_cgraph">
-<area shape="rect" id="node2" href="classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="222,5,370,32"/>
-<area shape="rect" id="node3" href="classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="219,56,373,83"/>
-<area shape="rect" id="node4" href="classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="232,107,360,133"/>
+<area shape="rect" id="node2" href="classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="470,115,618,141"/>
+<area shape="rect" id="node3" href="classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="676,140,804,167"/>
+<area shape="rect" id="node4" href="classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="467,216,621,243"/>
+<area shape="rect" id="node5" href="classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834" title="Project::class_is_descendant" alt="" coords="219,64,412,91"/>
+<area shape="rect" id="node7" href="classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="228,216,403,243"/>
+<area shape="rect" id="node8" href="classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6" title="Method::format" alt="" coords="260,165,371,192"/>
+<area shape="rect" id="node6" href="classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="460,64,628,91"/>
 </map>
 </div>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a33de2bfb90183333d5e7c422bc5d6396"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33de2bfb90183333d5e7c422bc5d6396">&#9670;&nbsp;</a></span>m_files</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="classfile_8h.html#a00b46b60bc40e813e9fb1bb049174346">ClassFile</a>&gt; Project::m_files</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="project_8h_source.html">project.h</a></li>
-<li>src/project.cpp</li>
+<li>src/<a class="el" href="project_8cpp.html">project.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

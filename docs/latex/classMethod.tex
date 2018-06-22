@@ -11,7 +11,8 @@ This represents a view into a method reference of a class file.
 
 
 
-Collaboration diagram for Method\+:\nopagebreak
+Collaboration diagram for Method\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,33 +22,28 @@ Collaboration diagram for Method\+:\nopagebreak
 \subsection*{Public Types}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}\label{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}} 
-enum \hyperlink{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}{F\+L\+A\+GS} \begin{DoxyCompactList}\small\item\em Enum of the access flags for a given method. \end{DoxyCompactList}
+enum \hyperlink{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}{F\+L\+A\+GS} \{ \hyperlink{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1adaade04c031729a1f18ba2bb86e7aeddfc}{F\+L\+A\+G\+S\+::\+A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT} = 0x0400
+ \}\begin{DoxyCompactList}\small\item\em Enum of the access flags for a given method. \end{DoxyCompactList}
 \end{DoxyCompactItemize}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classMethod}{Method} \hyperlink{classMethod_ac6a47d5797a62c5ffbb39df54ff7171d}{refresh} (const Class\+File \&new\+\_\+file) const
+\hyperlink{classMethod}{Method} \hyperlink{classMethod_ac6a47d5797a62c5ffbb39df54ff7171d}{refresh} (const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&new\+\_\+file) const
 \item 
-\mbox{\Hypertarget{classMethod_ac6eecb9ebb1eb23098c8556752353a81}\label{classMethod_ac6eecb9ebb1eb23098c8556752353a81}} 
-const Class\+File \& \hyperlink{classMethod_ac6eecb9ebb1eb23098c8556752353a81}{class\+\_\+file} () const
+const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \& \hyperlink{classMethod_ac6eecb9ebb1eb23098c8556752353a81}{class\+\_\+file} () const
 \begin{DoxyCompactList}\small\item\em Returns the class file where this class belongs. \end{DoxyCompactList}\item 
 std\+::optional$<$ \hyperlink{structCode__attribute}{Code\+\_\+attribute} $>$ \hyperlink{classMethod_af92b40aa1a81df3a6827d688adc005bf}{code\+\_\+attribute} () const
 \item 
-\mbox{\Hypertarget{classMethod_ab0855cbda89f070acc27ebff025ffd15}\label{classMethod_ab0855cbda89f070acc27ebff025ffd15}} 
 std\+::string \hyperlink{classMethod_ab0855cbda89f070acc27ebff025ffd15}{method\+\_\+name} () const
 \begin{DoxyCompactList}\small\item\em Returns the name of this method. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classMethod_a86015f24da420dc7502bdac6138a4a47}\label{classMethod_a86015f24da420dc7502bdac6138a4a47}} 
 std\+::string \hyperlink{classMethod_a86015f24da420dc7502bdac6138a4a47}{method\+\_\+type} () const
 \begin{DoxyCompactList}\small\item\em Returns the type of this method. \end{DoxyCompactList}\item 
 std\+::string \hyperlink{classMethod_a3f6d55a368a1e2727bea0799c3cdc0f6}{format} () const
 \item 
-\mbox{\Hypertarget{classMethod_a378e12e19cf0c8f21bfc13071382d15e}\label{classMethod_a378e12e19cf0c8f21bfc13071382d15e}} 
 std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_a378e12e19cf0c8f21bfc13071382d15e}{called\+\_\+methods} () const
 \begin{DoxyCompactList}\small\item\em Returns all the methods that {\itshape this} method calls directly. \end{DoxyCompactList}\item 
-Class\+File \hyperlink{classMethod_a52e769352ce657232db3a1b936e930b1}{with\+\_\+this\+\_\+method\+\_\+removed} () const
+\hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \hyperlink{classMethod_a52e769352ce657232db3a1b936e930b1}{with\+\_\+this\+\_\+method\+\_\+removed} () const
 \item 
-\mbox{\Hypertarget{classMethod_a6dfb75c6faf8961c6e04a86eca6e97e8}\label{classMethod_a6dfb75c6faf8961c6e04a86eca6e97e8}} 
 bool \hyperlink{classMethod_a6dfb75c6faf8961c6e04a86eca6e97e8}{is\+\_\+abstract} () const
 \begin{DoxyCompactList}\small\item\em Returns whether this method is abstract. \end{DoxyCompactList}\item 
 bool \hyperlink{classMethod_afa02f09f3037782d08463433465181b6}{operator==} (const \hyperlink{classMethod}{Method} \&o) const
@@ -55,33 +51,122 @@ bool \hyperlink{classMethod_afa02f09f3037782d08463433465181b6}{operator==} (cons
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{classMethod}{Method} \hyperlink{classMethod_ad977afdb14569e1108c6b6849fe0b007}{from\+\_\+owner} (const Class\+File \&file, int index, \hyperlink{structmethod__info}{method\+\_\+info} info)
+static \hyperlink{classMethod}{Method} \hyperlink{classMethod_ad977afdb14569e1108c6b6849fe0b007}{from\+\_\+owner} (const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&file, int index, \hyperlink{structmethod__info}{method\+\_\+info} info)
 \item 
-static std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_adddc54ce699dfb1ba305595507085a29}{from\+\_\+symbolic\+\_\+reference} (const Class\+File \&file, int cp\+\_\+index, \hyperlink{structcp__info}{cp\+\_\+info} info)
+static std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_adddc54ce699dfb1ba305595507085a29}{from\+\_\+symbolic\+\_\+reference} (const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&file, int cp\+\_\+index, \hyperlink{structcp__info}{cp\+\_\+info} info)
 \item 
-\mbox{\Hypertarget{classMethod_a7b631e75e7438bb79c285b1bc6a712ab}\label{classMethod_a7b631e75e7438bb79c285b1bc6a712ab}} 
-static std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_a7b631e75e7438bb79c285b1bc6a712ab}{all\+\_\+from\+\_\+classfile} (const Class\+File \&file)
+static std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_a7b631e75e7438bb79c285b1bc6a712ab}{all\+\_\+from\+\_\+classfile} (const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&file)
 \begin{DoxyCompactList}\small\item\em Returns all the methods referenced in {\ttfamily file}. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classMethod_a74801df628f1be6e2c616cf5feb328b1}\label{classMethod_a74801df628f1be6e2c616cf5feb328b1}} 
-static std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_a74801df628f1be6e2c616cf5feb328b1}{main\+\_\+method} (const Class\+File \&file)
+static std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ \hyperlink{classMethod_a74801df628f1be6e2c616cf5feb328b1}{main\+\_\+method} (const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&file)
 \begin{DoxyCompactList}\small\item\em Tries to retrieve the main method of {\ttfamily file}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMethod_aba8db898e71ab542920887eba94e6234}{Method} (\hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} file, int index)
+\begin{DoxyCompactList}\small\item\em Constructs the method from the Class\+File and the method index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \hyperlink{classMethod_a6dddd514810b6e9230d554ceb5507a4c}{m\+\_\+class\+\_\+file}
+\begin{DoxyCompactList}\small\item\em The class file where this method belongs. \end{DoxyCompactList}\item 
+int \hyperlink{classMethod_a6d573fa18b21d15b361111bf03f48a74}{m\+\_\+method\+\_\+index}
+\begin{DoxyCompactList}\small\item\em The index of this method in the class file method table. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This represents a view into a method reference of a class file. 
 
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}\label{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}} 
+\index{Method@{Method}!F\+L\+A\+GS@{F\+L\+A\+GS}}
+\index{F\+L\+A\+GS@{F\+L\+A\+GS}!Method@{Method}}
+\subsubsection{\texorpdfstring{F\+L\+A\+GS}{FLAGS}}
+{\footnotesize\ttfamily enum \hyperlink{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1ad}{Method\+::\+F\+L\+A\+GS}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Enum of the access flags for a given method. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT@{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT}!Method@{Method}}\index{Method@{Method}!A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT@{A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT}}}\mbox{\Hypertarget{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1adaade04c031729a1f18ba2bb86e7aeddfc}\label{classMethod_a142a92c7e2c79cbbedb7fd08a8a8e1adaade04c031729a1f18ba2bb86e7aeddfc}} 
+A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMethod_aba8db898e71ab542920887eba94e6234}\label{classMethod_aba8db898e71ab542920887eba94e6234}} 
+\index{Method@{Method}!Method@{Method}}
+\index{Method@{Method}!Method@{Method}}
+\subsubsection{\texorpdfstring{Method()}{Method()}}
+{\footnotesize\ttfamily Method\+::\+Method (\begin{DoxyParamCaption}\item[{\hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File}}]{file,  }\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Constructs the method from the Class\+File and the method index. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=299pt]{classMethod_aba8db898e71ab542920887eba94e6234_cgraph}
+\end{center}
+\end{figure}
+
+
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMethod_a7b631e75e7438bb79c285b1bc6a712ab}\label{classMethod_a7b631e75e7438bb79c285b1bc6a712ab}} 
+\index{Method@{Method}!all\+\_\+from\+\_\+classfile@{all\+\_\+from\+\_\+classfile}}
+\index{all\+\_\+from\+\_\+classfile@{all\+\_\+from\+\_\+classfile}!Method@{Method}}
+\subsubsection{\texorpdfstring{all\+\_\+from\+\_\+classfile()}{all\_from\_classfile()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ Method\+::all\+\_\+from\+\_\+classfile (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns all the methods referenced in {\ttfamily file}. 
+
+\mbox{\Hypertarget{classMethod_a378e12e19cf0c8f21bfc13071382d15e}\label{classMethod_a378e12e19cf0c8f21bfc13071382d15e}} 
+\index{Method@{Method}!called\+\_\+methods@{called\+\_\+methods}}
+\index{called\+\_\+methods@{called\+\_\+methods}!Method@{Method}}
+\subsubsection{\texorpdfstring{called\+\_\+methods()}{called\_methods()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ Method\+::called\+\_\+methods (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns all the methods that {\itshape this} method calls directly. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMethod_a378e12e19cf0c8f21bfc13071382d15e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_ac6eecb9ebb1eb23098c8556752353a81}\label{classMethod_ac6eecb9ebb1eb23098c8556752353a81}} 
+\index{Method@{Method}!class\+\_\+file@{class\+\_\+file}}
+\index{class\+\_\+file@{class\+\_\+file}!Method@{Method}}
+\subsubsection{\texorpdfstring{class\+\_\+file()}{class\_file()}}
+{\footnotesize\ttfamily const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \& Method\+::class\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the class file where this class belongs. 
+
 \mbox{\Hypertarget{classMethod_af92b40aa1a81df3a6827d688adc005bf}\label{classMethod_af92b40aa1a81df3a6827d688adc005bf}} 
 \index{Method@{Method}!code\+\_\+attribute@{code\+\_\+attribute}}
 \index{code\+\_\+attribute@{code\+\_\+attribute}!Method@{Method}}
 \subsubsection{\texorpdfstring{code\+\_\+attribute()}{code\_attribute()}}
 {\footnotesize\ttfamily std\+::optional$<$ \hyperlink{structCode__attribute}{Code\+\_\+attribute} $>$ Method\+::code\+\_\+attribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Returns the code attribute struct corresponding to this method. If this method is abstract, then it does not contain any code. Here is the call graph for this function\+:\nopagebreak
+Returns the code attribute struct corresponding to this method. If this method is abstract, then it does not contain any code. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=321pt]{classMethod_af92b40aa1a81df3a6827d688adc005bf_cgraph}
+\includegraphics[width=350pt]{classMethod_af92b40aa1a81df3a6827d688adc005bf_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMethod_a3f6d55a368a1e2727bea0799c3cdc0f6}\label{classMethod_a3f6d55a368a1e2727bea0799c3cdc0f6}} 
@@ -90,33 +175,130 @@ Returns the code attribute struct corresponding to this method. If this method i
 \subsubsection{\texorpdfstring{format()}{format()}}
 {\footnotesize\ttfamily std\+::string Method\+::format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Format this method for human view with the class name, method name and method type. This can be used for method comparison if the methods belong to updated class files, as the string is independent of the method\textquotesingle{}s index. \mbox{\Hypertarget{classMethod_ad977afdb14569e1108c6b6849fe0b007}\label{classMethod_ad977afdb14569e1108c6b6849fe0b007}} 
+Format this method for human view with the class name, method name and method type. This can be used for method comparison if the methods belong to updated class files, as the string is independent of the method\textquotesingle{}s index. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMethod_a3f6d55a368a1e2727bea0799c3cdc0f6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_ad977afdb14569e1108c6b6849fe0b007}\label{classMethod_ad977afdb14569e1108c6b6849fe0b007}} 
 \index{Method@{Method}!from\+\_\+owner@{from\+\_\+owner}}
 \index{from\+\_\+owner@{from\+\_\+owner}!Method@{Method}}
 \subsubsection{\texorpdfstring{from\+\_\+owner()}{from\_owner()}}
-{\footnotesize\ttfamily \hyperlink{classMethod}{Method} Method\+::from\+\_\+owner (\begin{DoxyParamCaption}\item[{const Class\+File \&}]{file,  }\item[{int}]{index,  }\item[{\hyperlink{structmethod__info}{method\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily \hyperlink{classMethod}{Method} Method\+::from\+\_\+owner (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{file,  }\item[{int}]{index,  }\item[{\hyperlink{structmethod__info}{method\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 Static constructors for a method struct. They require a third redundant parameter in order to assert that they are being called correctly.
 
 Constructs the method from the Class\+File which owns this method, and the method info.
 
-This should be called as such\+: \hyperlink{classMethod_ad977afdb14569e1108c6b6849fe0b007}{Method\+::from\+\_\+owner}(file, index, file.\+methods\mbox{[}index\mbox{]}). \mbox{\Hypertarget{classMethod_adddc54ce699dfb1ba305595507085a29}\label{classMethod_adddc54ce699dfb1ba305595507085a29}} 
+This should be called as such\+: \hyperlink{classMethod_ad977afdb14569e1108c6b6849fe0b007}{Method\+::from\+\_\+owner}(file, index, file.\+methods\mbox{[}index\mbox{]}). Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMethod_ad977afdb14569e1108c6b6849fe0b007_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_adddc54ce699dfb1ba305595507085a29}\label{classMethod_adddc54ce699dfb1ba305595507085a29}} 
 \index{Method@{Method}!from\+\_\+symbolic\+\_\+reference@{from\+\_\+symbolic\+\_\+reference}}
 \index{from\+\_\+symbolic\+\_\+reference@{from\+\_\+symbolic\+\_\+reference}!Method@{Method}}
 \subsubsection{\texorpdfstring{from\+\_\+symbolic\+\_\+reference()}{from\_symbolic\_reference()}}
-{\footnotesize\ttfamily std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ Method\+::from\+\_\+symbolic\+\_\+reference (\begin{DoxyParamCaption}\item[{const Class\+File \&}]{file,  }\item[{int}]{cp\+\_\+index,  }\item[{\hyperlink{structcp__info}{cp\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ Method\+::from\+\_\+symbolic\+\_\+reference (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{file,  }\item[{int}]{cp\+\_\+index,  }\item[{\hyperlink{structcp__info}{cp\+\_\+info}}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 This method is referenced by {\ttfamily file} at the index {\ttfamily cp\+\_\+index} of the constant pool. We first have to resolve the reference, and then instantiate the method. This returns an optional, instead of the method itself, because the refernce may point to a library method, which we do not have access to.
 
 This should be called as such\+: \hyperlink{classMethod_adddc54ce699dfb1ba305595507085a29}{Method\+::from\+\_\+symbolic\+\_\+reference}(file, index, file.\+constant\+\_\+pool\mbox{[}index\mbox{]}).
 
-This method implicitly relies on the global project state, because the referenced method may not always be part of the current class. \mbox{\Hypertarget{classMethod_afa02f09f3037782d08463433465181b6}\label{classMethod_afa02f09f3037782d08463433465181b6}} 
+This method implicitly relies on the global project state, because the referenced method may not always be part of the current class. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMethod_adddc54ce699dfb1ba305595507085a29_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_a6dfb75c6faf8961c6e04a86eca6e97e8}\label{classMethod_a6dfb75c6faf8961c6e04a86eca6e97e8}} 
+\index{Method@{Method}!is\+\_\+abstract@{is\+\_\+abstract}}
+\index{is\+\_\+abstract@{is\+\_\+abstract}!Method@{Method}}
+\subsubsection{\texorpdfstring{is\+\_\+abstract()}{is\_abstract()}}
+{\footnotesize\ttfamily bool Method\+::is\+\_\+abstract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether this method is abstract. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=315pt]{classMethod_a6dfb75c6faf8961c6e04a86eca6e97e8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_a74801df628f1be6e2c616cf5feb328b1}\label{classMethod_a74801df628f1be6e2c616cf5feb328b1}} 
+\index{Method@{Method}!main\+\_\+method@{main\+\_\+method}}
+\index{main\+\_\+method@{main\+\_\+method}!Method@{Method}}
+\subsubsection{\texorpdfstring{main\+\_\+method()}{main\_method()}}
+{\footnotesize\ttfamily std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ Method\+::main\+\_\+method (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{file }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Tries to retrieve the main method of {\ttfamily file}. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classMethod_a74801df628f1be6e2c616cf5feb328b1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_ab0855cbda89f070acc27ebff025ffd15}\label{classMethod_ab0855cbda89f070acc27ebff025ffd15}} 
+\index{Method@{Method}!method\+\_\+name@{method\+\_\+name}}
+\index{method\+\_\+name@{method\+\_\+name}!Method@{Method}}
+\subsubsection{\texorpdfstring{method\+\_\+name()}{method\_name()}}
+{\footnotesize\ttfamily std\+::string Method\+::method\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the name of this method. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=328pt]{classMethod_ab0855cbda89f070acc27ebff025ffd15_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_a86015f24da420dc7502bdac6138a4a47}\label{classMethod_a86015f24da420dc7502bdac6138a4a47}} 
+\index{Method@{Method}!method\+\_\+type@{method\+\_\+type}}
+\index{method\+\_\+type@{method\+\_\+type}!Method@{Method}}
+\subsubsection{\texorpdfstring{method\+\_\+type()}{method\_type()}}
+{\footnotesize\ttfamily std\+::string Method\+::method\+\_\+type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the type of this method. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classMethod_a86015f24da420dc7502bdac6138a4a47_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classMethod_afa02f09f3037782d08463433465181b6}\label{classMethod_afa02f09f3037782d08463433465181b6}} 
 \index{Method@{Method}!operator==@{operator==}}
 \index{operator==@{operator==}!Method@{Method}}
 \subsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily bool Method\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classMethod}{Method} \&}]{o }\end{DoxyParamCaption}) const}
 
-This compares based based on class file and index, not on actual value. In other words, updating the class file will cause methods to compre unequal. Here is the call graph for this function\+:\nopagebreak
+This compares based based on class file and index, not on actual value. In other words, updating the class file will cause methods to compre unequal. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -127,24 +309,56 @@ This compares based based on class file and index, not on actual value. In other
 \index{Method@{Method}!refresh@{refresh}}
 \index{refresh@{refresh}!Method@{Method}}
 \subsubsection{\texorpdfstring{refresh()}{refresh()}}
-{\footnotesize\ttfamily \hyperlink{classMethod}{Method} Method\+::refresh (\begin{DoxyParamCaption}\item[{const Class\+File \&}]{new\+\_\+file }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \hyperlink{classMethod}{Method} Method\+::refresh (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{new\+\_\+file }\end{DoxyParamCaption}) const}
 
-After a class file has been changed, {\itshape this} method will still reference the old one. In order to resolve this method in the new class file, it has to search for the new index and create a new struct. Here is the call graph for this function\+:\nopagebreak
+After a class file has been changed, {\itshape this} method will still reference the old one. In order to resolve this method in the new class file, it has to search for the new index and create a new struct. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=332pt]{classMethod_ac6a47d5797a62c5ffbb39df54ff7171d_cgraph}
+\includegraphics[width=350pt]{classMethod_ac6a47d5797a62c5ffbb39df54ff7171d_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classMethod_a52e769352ce657232db3a1b936e930b1}\label{classMethod_a52e769352ce657232db3a1b936e930b1}} 
 \index{Method@{Method}!with\+\_\+this\+\_\+method\+\_\+removed@{with\+\_\+this\+\_\+method\+\_\+removed}}
 \index{with\+\_\+this\+\_\+method\+\_\+removed@{with\+\_\+this\+\_\+method\+\_\+removed}!Method@{Method}}
 \subsubsection{\texorpdfstring{with\+\_\+this\+\_\+method\+\_\+removed()}{with\_this\_method\_removed()}}
-{\footnotesize\ttfamily Class\+File Method\+::with\+\_\+this\+\_\+method\+\_\+removed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+{\footnotesize\ttfamily \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} Method\+::with\+\_\+this\+\_\+method\+\_\+removed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Removes {\itshape this} method from the original class file, returning a new one with this method removed. 
+Removes {\itshape this} method from the original class file, returning a new one with this method removed. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classMethod_a52e769352ce657232db3a1b936e930b1_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classMethod_a6dddd514810b6e9230d554ceb5507a4c}\label{classMethod_a6dddd514810b6e9230d554ceb5507a4c}} 
+\index{Method@{Method}!m\+\_\+class\+\_\+file@{m\+\_\+class\+\_\+file}}
+\index{m\+\_\+class\+\_\+file@{m\+\_\+class\+\_\+file}!Method@{Method}}
+\subsubsection{\texorpdfstring{m\+\_\+class\+\_\+file}{m\_class\_file}}
+{\footnotesize\ttfamily \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} Method\+::m\+\_\+class\+\_\+file\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The class file where this method belongs. 
+
+\mbox{\Hypertarget{classMethod_a6d573fa18b21d15b361111bf03f48a74}\label{classMethod_a6d573fa18b21d15b361111bf03f48a74}} 
+\index{Method@{Method}!m\+\_\+method\+\_\+index@{m\+\_\+method\+\_\+index}}
+\index{m\+\_\+method\+\_\+index@{m\+\_\+method\+\_\+index}!Method@{Method}}
+\subsubsection{\texorpdfstring{m\+\_\+method\+\_\+index}{m\_method\_index}}
+{\footnotesize\ttfamily int Method\+::m\+\_\+method\+\_\+index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The index of this method in the class file method table. 
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/method.\+h\item 
-src/method.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{method_8h}{method.\+h}\item 
+src/\hyperlink{method_8cpp}{method.\+cpp}\end{DoxyCompactItemize}

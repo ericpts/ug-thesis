@@ -3,5 +3,5 @@ digraph "BytesParser"
   bgcolor="transparent";
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
-  Node1 [label="{BytesParser\n||+ BytesParser()\l+ next_u1()\l+ next_u2()\l+ next_u4()\l+ next_n()\l+ is_end()\l+ parse_attribute_info()\l+ bytes_read()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 [label="{BytesParser\n|- m_data\l- m_it\l|+ BytesParser()\l+ next_u1()\l+ next_u2()\l+ next_u4()\l+ next_n()\l+ is_end()\l+ parse_attribute_info()\l+ bytes_read()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
 }

@@ -1,0 +1,36 @@
+<map id="main" name="main">
+<area shape="rect" id="node2" href="$project_8cpp.html#afbc27c23d1ebcd7202e909126c44852a" title="set_project" alt="" coords="142,359,229,386"/>
+<area shape="rect" id="node3" href="$project_8cpp.html#a3c33c839f231786a482d8b5a76c269d3" title="For now, there is a single global project for the entire application. " alt="" coords="1022,418,1083,444"/>
+<area shape="rect" id="node4" href="$classProject.html#af5f35c59d1175af1cfa659a597bb6353" title="Project::remove_unused\l_methods" alt="" coords="104,410,267,452"/>
+<area shape="rect" id="node33" href="$classProject.html#aff5e62e0e0e3e8c7123a7dd6ae51cb3f" title="Save all of the class files in the given location. " alt="" coords="136,548,235,575"/>
+<area shape="rect" id="node35" href="$classProject.html#aecff214fd8b3fc5e855ec925ebe93f59" title="Save all of the files in&#45;place. " alt="" coords="108,599,263,626"/>
+<area shape="rect" id="node5" href="$classProject.html#a8122de9e7b4bc2a63e1391727c881474" title="Find the main entry point of the entire project. " alt="" coords="315,447,464,474"/>
+<area shape="rect" id="node9" href="$classProject.html#ac4d866eaedfd1083d4736530382c7b7c" title="Project::method_call\l_graph" alt="" coords="319,330,460,372"/>
+<area shape="rect" id="node15" href="$classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="1187,43,1361,70"/>
+<area shape="rect" id="node6" href="$classMethod.html#ad977afdb14569e1108c6b6849fe0b007" title="Method::from_owner" alt="" coords="524,611,665,638"/>
+<area shape="rect" id="node7" href="$classMethod.html#aba8db898e71ab542920887eba94e6234" title="Constructs the method from the ClassFile and the method index. " alt="" coords="764,650,880,676"/>
+<area shape="rect" id="node8" href="$classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="1210,416,1338,443"/>
+<area shape="rect" id="node10" href="$classProject.html#afee58125bfee1c7a1871be7805e855fa" title="Project::sibling_methods" alt="" coords="512,203,677,230"/>
+<area shape="rect" id="node17" href="$classMethod.html#a378e12e19cf0c8f21bfc13071382d15e" title="Returns all the methods that this method calls directly. " alt="" coords="513,523,677,550"/>
+<area shape="rect" id="node11" href="$classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="979,262,1127,288"/>
+<area shape="rect" id="node12" href="$classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="975,363,1130,390"/>
+<area shape="rect" id="node13" href="$classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834" title="Project::class_is_descendant" alt="" coords="725,98,919,124"/>
+<area shape="rect" id="node16" href="$classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6" title="Method::format" alt="" coords="767,254,877,280"/>
+<area shape="rect" id="node14" href="$classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="1190,123,1358,150"/>
+<area shape="rect" id="node18" href="$classMethod.html#af92b40aa1a81df3a6827d688adc005bf" title="Method::code_attribute" alt="" coords="745,574,899,600"/>
+<area shape="rect" id="node21" href="$classMethod.html#adddc54ce699dfb1ba305595507085a29" title="Method::from_symbolic\l_reference" alt="" coords="743,356,901,397"/>
+<area shape="rect" id="node23" href="$code_8cpp.html#a864472e12a8f68c47532fa4775c8ed02" title="skip_instruction" alt="" coords="765,798,879,824"/>
+<area shape="rect" id="node19" href="$structattribute__info.html#ace33b133435450d7d161751a3393de11" title="This template will be explicitly specialized for the possible types. " alt="" coords="993,620,1112,647"/>
+<area shape="rect" id="node20" href="$classMethod.html#a6dfb75c6faf8961c6e04a86eca6e97e8" title="Returns whether this method is abstract. " alt="" coords="984,570,1121,596"/>
+<area shape="rect" id="node22" href="$classProject.html#a2bf65efcb1e91bfe76d2faab76127c11" title="Project::resolve_symbolic\l_reference" alt="" coords="967,145,1139,186"/>
+<area shape="rect" id="node24" href="$code_8cpp.html#a89610720a1fdc96cd38d29040df09415" title="nbytes_skip" alt="" coords="1007,722,1099,748"/>
+<area shape="rect" id="node25" href="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1413,975,1554,1002"/>
+<area shape="rect" id="node27" href="$code_8cpp.html#aa5d483694c6174731ff9fac5002cd8ae" title="handle_lookupswitch" alt="" coords="981,874,1124,900"/>
+<area shape="rect" id="node31" href="$code_8cpp.html#a298b725ea8fc55e54ac45da455ce740f" title="handle_tableswitch" alt="" coords="986,823,1119,850"/>
+<area shape="rect" id="node32" href="$code_8cpp.html#a705b8e4b481bd9b6a16e78e1457e18f6" title="handle_wide" alt="" coords="1227,722,1321,748"/>
+<area shape="rect" id="node26" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1605,823,1753,850"/>
+<area shape="rect" id="node28" href="$classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a" title="Returns how many bytes have been parsed so far. " alt="" coords="1191,874,1357,900"/>
+<area shape="rect" id="node29" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="1200,823,1348,850"/>
+<area shape="rect" id="node30" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1409,823,1557,850"/>
+<area shape="rect" id="node34" href="$project_8cpp.html#a1d4c3111b2c5f87781ba35f906291397" title="write_classfile_to_file" alt="" coords="316,574,463,600"/>
+</map>

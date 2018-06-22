@@ -1,0 +1,11 @@
+<map id="skip_instruction" name="skip_instruction">
+<area shape="rect" id="node2" href="$code_8cpp.html#a89610720a1fdc96cd38d29040df09415" title="nbytes_skip" alt="" coords="192,5,284,32"/>
+<area shape="rect" id="node3" href="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="575,56,717,83"/>
+<area shape="rect" id="node5" href="$code_8cpp.html#aa5d483694c6174731ff9fac5002cd8ae" title="handle_lookupswitch" alt="" coords="167,157,309,184"/>
+<area shape="rect" id="node9" href="$code_8cpp.html#a298b725ea8fc55e54ac45da455ce740f" title="handle_tableswitch" alt="" coords="171,208,305,235"/>
+<area shape="rect" id="node10" href="$code_8cpp.html#a705b8e4b481bd9b6a16e78e1457e18f6" title="handle_wide" alt="" coords="393,309,488,336"/>
+<area shape="rect" id="node4" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="768,183,916,209"/>
+<area shape="rect" id="node6" href="$classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a" title="Returns how many bytes have been parsed so far. " alt="" coords="357,208,524,235"/>
+<area shape="rect" id="node7" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="367,157,515,184"/>
+<area shape="rect" id="node8" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="572,183,720,209"/>
+</map>

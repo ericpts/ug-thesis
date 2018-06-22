@@ -1,2 +1,4 @@
 <map id="ClassReader" name="ClassReader">
+<area shape="rect" id="node2" href="$classClassFileImpl.html" title="This class represents an entire Java class. " alt="" coords="5,5,160,449"/>
+<area shape="rect" id="node3" href="$classBytesParser.html" title="This struct handles the byte&#45;by&#45;byte parsing of a byte array. " alt="" coords="185,130,341,325"/>
 </map>

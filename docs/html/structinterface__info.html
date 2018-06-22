@@ -59,6 +59,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structinterface__info-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">interface_info Struct Reference</div>  </div>
@@ -71,11 +73,56 @@ Collaboration diagram for interface_info:</div>
 <div class="dyncontent">
 <div class="center"><img src="structinterface__info__coll__graph.png" border="0" usemap="#interface__info_coll__map" alt="Collaboration graph"/></div>
 </div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a5c19fb8052240030f2cc96876e78ed07"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinterface__info.html#a5c19fb8052240030f2cc96876e78ed07">operator==</a> (const <a class="el" href="structinterface__info.html">interface_info</a> &amp;other) const</td></tr>
+<tr class="separator:a5c19fb8052240030f2cc96876e78ed07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a81fa7682cd2b314e79cb6ace44fda442"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structinterface__info.html#a81fa7682cd2b314e79cb6ace44fda442">idx</a></td></tr>
+<tr class="separator:a81fa7682cd2b314e79cb6ace44fda442"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Each value in the interfaces array must be a valid index into the constant_pool table. The constant_pool entry at each value of interfaces[i], where 0 &lt;= i &lt; interfaces_count, must be tagged with cp_info::Tag::CONSTANT_Class representing an interface that is a direct superinterface of this class or interface type, in the left-to-right order given in the source for the type. </p>
-</div><hr/>The documentation for this struct was generated from the following files:<ul>
+<div class="textblock"><p>Each value in the interfaces array must be a valid index into the constant_pool table. The constant_pool entry at each value of interfaces[i], where 0 &lt;= i &lt; interfaces_count, must be tagged with <a class="el" href="structcp__info.html#acdef8472ed83e12e3a87bca8d6001f69adf4763ef84792f4fab0a07fcb179de22">cp_info::Tag::CONSTANT_Class</a> representing an interface that is a direct superinterface of this class or interface type, in the left-to-right order given in the source for the type. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5c19fb8052240030f2cc96876e78ed07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c19fb8052240030f2cc96876e78ed07">&#9670;&nbsp;</a></span>operator==()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool interface_info::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structinterface__info.html">interface_info</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a81fa7682cd2b314e79cb6ace44fda442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81fa7682cd2b314e79cb6ace44fda442">&#9670;&nbsp;</a></span>idx</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> interface_info::idx</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>src/<a class="el" href="types_8h_source.html">types.h</a></li>
-<li>src/types.cpp</li>
+<li>src/<a class="el" href="types_8cpp.html">types.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

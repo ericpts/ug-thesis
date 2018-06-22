@@ -1,0 +1,13 @@
+<map id="ClassFileImpl::deserialize" name="ClassFileImpl::deserialize">
+<area shape="rect" id="node2" href="$classClassReader.html#a001cc48324c31430559b43976d731e8a" title="ClassReader::deserialize" alt="" coords="225,215,393,242"/>
+<area shape="rect" id="node3" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="823,71,971,98"/>
+<area shape="rect" id="node4" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1019,173,1167,199"/>
+<area shape="rect" id="node6" href="$classClassReader.html#ac4c0b613d45cf507b2e85c61c28541cb" title="ClassReader::parse\l_cp_info" alt="" coords="827,5,966,47"/>
+<area shape="rect" id="node8" href="$classClassReader.html#a7f8a951758bdb961ebf36088301ac1b4" title="ClassReader::expect\l_cpool_entry" alt="" coords="629,240,775,281"/>
+<area shape="rect" id="node9" href="$classClassReader.html#a434b73f04e1502c936593ab63094d838" title="Parses a field_info struct from the data buffer. " alt="" coords="442,240,581,281"/>
+<area shape="rect" id="node10" href="$classBytesParser.html#ab7c84f75bd3dc2bcac74fd3ff4c6510a" title="Parses an attribute_info struct from the data buffer. " alt="" coords="635,123,769,164"/>
+<area shape="rect" id="node11" href="$classClassReader.html#a0eb68204b1979e2a2758c05f200a7be3" title="Parses a method_info struct from the data buffer. " alt="" coords="442,175,581,216"/>
+<area shape="rect" id="node12" href="$classBytesParser.html#a0cef47c62af80c1a50fc507c5a869757" title="Returns whether all the data has been parsed. " alt="" coords="441,407,581,434"/>
+<area shape="rect" id="node5" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1215,93,1363,119"/>
+<area shape="rect" id="node7" href="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1022,93,1163,119"/>
+</map>

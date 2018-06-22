@@ -1,0 +1,27 @@
+<map id="Project::method_call_graph" name="Project::method_call_graph">
+<area shape="rect" id="node2" href="$classProject.html#afee58125bfee1c7a1871be7805e855fa" title="Project::sibling_methods" alt="" coords="195,664,360,691"/>
+<area shape="rect" id="node10" href="$classMethod.html#a378e12e19cf0c8f21bfc13071382d15e" title="Returns all the methods that this method calls directly. " alt="" coords="195,411,359,437"/>
+<area shape="rect" id="node3" href="$classMethod.html#a86015f24da420dc7502bdac6138a4a47" title="Returns the type of this method. " alt="" coords="661,664,809,691"/>
+<area shape="rect" id="node4" href="$classMethod.html#ac6eecb9ebb1eb23098c8556752353a81" title="Returns the class file where this class belongs. " alt="" coords="893,512,1021,539"/>
+<area shape="rect" id="node5" href="$classMethod.html#ab0855cbda89f070acc27ebff025ffd15" title="Returns the name of this method. " alt="" coords="658,563,813,589"/>
+<area shape="rect" id="node6" href="$classProject.html#a6ef93527bbe86e9bdfbc6d624eab0834" title="Project::class_is_descendant" alt="" coords="408,765,601,792"/>
+<area shape="rect" id="node8" href="$classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="869,852,1044,879"/>
+<area shape="rect" id="node9" href="$classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6" title="Method::format" alt="" coords="449,547,560,573"/>
+<area shape="rect" id="node7" href="$classProject.html#a2ec0981bc841bcbac0ca8072f3b960b5" title="Find the appropiate class file given the name. " alt="" coords="873,797,1041,824"/>
+<area shape="rect" id="node11" href="$classMethod.html#af92b40aa1a81df3a6827d688adc005bf" title="Method::code_attribute" alt="" coords="427,411,582,437"/>
+<area shape="rect" id="node14" href="$classMethod.html#adddc54ce699dfb1ba305595507085a29" title="Method::from_symbolic\l_reference" alt="" coords="425,598,584,639"/>
+<area shape="rect" id="node17" href="$code_8cpp.html#a864472e12a8f68c47532fa4775c8ed02" title="skip_instruction" alt="" coords="448,183,561,209"/>
+<area shape="rect" id="node12" href="$structattribute__info.html#ace33b133435450d7d161751a3393de11" title="This template will be explicitly specialized for the possible types. " alt="" coords="676,360,795,387"/>
+<area shape="rect" id="node13" href="$classMethod.html#a6dfb75c6faf8961c6e04a86eca6e97e8" title="Returns whether this method is abstract. " alt="" coords="667,461,804,488"/>
+<area shape="rect" id="node15" href="$project_8cpp.html#a3c33c839f231786a482d8b5a76c269d3" title="For now, there is a single global project for the entire application. " alt="" coords="705,613,766,640"/>
+<area shape="rect" id="node16" href="$classProject.html#a2bf65efcb1e91bfe76d2faab76127c11" title="Project::resolve_symbolic\l_reference" alt="" coords="649,817,821,858"/>
+<area shape="rect" id="node18" href="$code_8cpp.html#a89610720a1fdc96cd38d29040df09415" title="nbytes_skip" alt="" coords="689,259,781,285"/>
+<area shape="rect" id="node19" href="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1095,5,1237,32"/>
+<area shape="rect" id="node21" href="$code_8cpp.html#aa5d483694c6174731ff9fac5002cd8ae" title="handle_lookupswitch" alt="" coords="664,107,807,133"/>
+<area shape="rect" id="node25" href="$code_8cpp.html#a298b725ea8fc55e54ac45da455ce740f" title="handle_tableswitch" alt="" coords="669,157,802,184"/>
+<area shape="rect" id="node26" href="$code_8cpp.html#a705b8e4b481bd9b6a16e78e1457e18f6" title="handle_wide" alt="" coords="909,259,1004,285"/>
+<area shape="rect" id="node20" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1288,132,1436,159"/>
+<area shape="rect" id="node22" href="$classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a" title="Returns how many bytes have been parsed so far. " alt="" coords="873,157,1040,184"/>
+<area shape="rect" id="node23" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="883,107,1031,133"/>
+<area shape="rect" id="node24" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1092,132,1240,159"/>
+</map>

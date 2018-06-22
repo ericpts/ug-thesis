@@ -1,8 +1,12 @@
 <map id="ClassReader::deserialize" name="ClassReader::deserialize">
-<area shape="rect" id="node2" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="409,5,557,32"/>
-<area shape="rect" id="node3" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="605,107,753,133"/>
-<area shape="rect" id="node4" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="801,183,949,209"/>
-<area shape="rect" id="node5" href="$classBytesParser.html#ab7c84f75bd3dc2bcac74fd3ff4c6510a" title="Parses an attribute_info struct from the data buffer. " alt="" coords="224,41,359,82"/>
-<area shape="rect" id="node6" href="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="413,107,554,133"/>
-<area shape="rect" id="node7" href="$classBytesParser.html#a0cef47c62af80c1a50fc507c5a869757" title="Returns whether all the data has been parsed. " alt="" coords="221,259,361,285"/>
+<area shape="rect" id="node2" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="603,71,751,98"/>
+<area shape="rect" id="node3" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="799,173,947,199"/>
+<area shape="rect" id="node5" href="$classClassReader.html#ac4c0b613d45cf507b2e85c61c28541cb" title="ClassReader::parse\l_cp_info" alt="" coords="607,5,746,47"/>
+<area shape="rect" id="node7" href="$classClassReader.html#a7f8a951758bdb961ebf36088301ac1b4" title="ClassReader::expect\l_cpool_entry" alt="" coords="409,240,555,281"/>
+<area shape="rect" id="node8" href="$classClassReader.html#a434b73f04e1502c936593ab63094d838" title="Parses a field_info struct from the data buffer. " alt="" coords="222,240,361,281"/>
+<area shape="rect" id="node9" href="$classBytesParser.html#ab7c84f75bd3dc2bcac74fd3ff4c6510a" title="Parses an attribute_info struct from the data buffer. " alt="" coords="415,123,549,164"/>
+<area shape="rect" id="node10" href="$classClassReader.html#a0eb68204b1979e2a2758c05f200a7be3" title="Parses a method_info struct from the data buffer. " alt="" coords="222,175,361,216"/>
+<area shape="rect" id="node11" href="$classBytesParser.html#a0cef47c62af80c1a50fc507c5a869757" title="Returns whether all the data has been parsed. " alt="" coords="221,407,361,434"/>
+<area shape="rect" id="node4" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="995,93,1143,119"/>
+<area shape="rect" id="node6" href="$classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="802,93,943,119"/>
 </map>

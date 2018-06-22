@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['format',['format',['../classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6',1,'Method']]],
-  ['from_5fowner',['from_owner',['../classMethod.html#ad977afdb14569e1108c6b6849fe0b007',1,'Method']]],
-  ['from_5fsymbolic_5freference',['from_symbolic_reference',['../classMethod.html#adddc54ce699dfb1ba305595507085a29',1,'Method']]]
+  ['expect_5fcpool_5fentry',['expect_cpool_entry',['../classClassReader.html#a7f8a951758bdb961ebf36088301ac1b4',1,'ClassReader::expect_cpool_entry()'],['../classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67',1,'ClassWriter::expect_cpool_entry()']]]
 ];

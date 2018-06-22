@@ -4,9 +4,9 @@ digraph "ClassFileImpl::cp_index_is_string"
   edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
   node [fontname="Helvetica",fontsize="10",shape=record];
   rankdir="LR";
-  Node2 [label="ClassFileImpl::cp_index\l_is_string",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid"];
-  Node3 [label="ClassFileImpl::cp_index\l_as_string",height=0.2,width=0.4,color="black",URL="$classClassFileImpl.html#abf8923075c93d6d5bd1755a7b3ced362"];
-  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid"];
-  Node4 [label="ClassFileImpl::is_cp\l_index",height=0.2,width=0.4,color="black",URL="$classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08"];
+  Node5 [label="ClassFileImpl::cp_index\l_is_string",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node5 -> Node6 [color="midnightblue",fontsize="10",style="solid"];
+  Node6 [label="ClassFileImpl::cp_index\l_as_string",height=0.2,width=0.4,color="black",URL="$classClassFileImpl.html#abf8923075c93d6d5bd1755a7b3ced362"];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid"];
+  Node7 [label="ClassFileImpl::is_cp\l_index",height=0.2,width=0.4,color="black",URL="$classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08"];
 }

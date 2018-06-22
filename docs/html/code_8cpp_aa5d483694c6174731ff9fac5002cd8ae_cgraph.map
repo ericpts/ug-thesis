@@ -1,0 +1,6 @@
+<map id="handle_lookupswitch" name="handle_lookupswitch">
+<area shape="rect" id="node2" href="$classBytesParser.html#a37f2e2e19b23ba08982241c7ed53b43a" title="Returns how many bytes have been parsed so far. " alt="" coords="196,5,363,32"/>
+<area shape="rect" id="node3" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="607,81,755,108"/>
+<area shape="rect" id="node4" href="$classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="205,107,353,133"/>
+<area shape="rect" id="node5" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="411,107,559,133"/>
+</map>

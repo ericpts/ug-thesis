@@ -61,6 +61,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classClassFileImpl-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ClassFileImpl Class Reference</div>  </div>
@@ -81,45 +82,102 @@ Collaboration diagram for ClassFileImpl:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a1f15226f5107cb036e81d480531cda08"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08">is_cp_index</a> (int index) const</td></tr>
 <tr class="separator:a1f15226f5107cb036e81d480531cda08"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8f4fcb051aa9d8c04d67373abe12c43"><td class="memItemLeft" align="right" valign="top"><a id="ad8f4fcb051aa9d8c04d67373abe12c43"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ad8f4fcb051aa9d8c04d67373abe12c43">is_method_index</a> (int index) const</td></tr>
-<tr class="memdesc:ad8f4fcb051aa9d8c04d67373abe12c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether <code>index</code> is actually an index into the methods array. <br /></td></tr>
+<tr class="memitem:ad8f4fcb051aa9d8c04d67373abe12c43"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ad8f4fcb051aa9d8c04d67373abe12c43">is_method_index</a> (int index) const</td></tr>
+<tr class="memdesc:ad8f4fcb051aa9d8c04d67373abe12c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether <code>index</code> is actually an index into the methods array.  <a href="#ad8f4fcb051aa9d8c04d67373abe12c43">More...</a><br /></td></tr>
 <tr class="separator:ad8f4fcb051aa9d8c04d67373abe12c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab84cd50d25d163274a299ba682f57610"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ab84cd50d25d163274a299ba682f57610">cp_index_is_string</a> (int index, const std::string &amp;s) const</td></tr>
 <tr class="separator:ab84cd50d25d163274a299ba682f57610"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf8923075c93d6d5bd1755a7b3ced362"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#abf8923075c93d6d5bd1755a7b3ced362">cp_index_as_string</a> (int index) const</td></tr>
 <tr class="separator:abf8923075c93d6d5bd1755a7b3ced362"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6b505e3750863370ca70c708d051a00c"><td class="memItemLeft" align="right" valign="top"><a id="a6b505e3750863370ca70c708d051a00c"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a6b505e3750863370ca70c708d051a00c">class_name</a> () const</td></tr>
-<tr class="memdesc:a6b505e3750863370ca70c708d051a00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the class corresponding to this classfile. <br /></td></tr>
+<tr class="memitem:a6b505e3750863370ca70c708d051a00c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a6b505e3750863370ca70c708d051a00c">class_name</a> () const</td></tr>
+<tr class="memdesc:a6b505e3750863370ca70c708d051a00c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the class corresponding to this classfile.  <a href="#a6b505e3750863370ca70c708d051a00c">More...</a><br /></td></tr>
 <tr class="separator:a6b505e3750863370ca70c708d051a00c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd7229efcf341804086bcf6c00bb4820"><td class="memItemLeft" align="right" valign="top"><a id="afd7229efcf341804086bcf6c00bb4820"></a>
-std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#afd7229efcf341804086bcf6c00bb4820">super_class_name</a> () const</td></tr>
-<tr class="memdesc:afd7229efcf341804086bcf6c00bb4820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the super class. <br /></td></tr>
+<tr class="memitem:afd7229efcf341804086bcf6c00bb4820"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#afd7229efcf341804086bcf6c00bb4820">super_class_name</a> () const</td></tr>
+<tr class="memdesc:afd7229efcf341804086bcf6c00bb4820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the name of the super class.  <a href="#afd7229efcf341804086bcf6c00bb4820">More...</a><br /></td></tr>
 <tr class="separator:afd7229efcf341804086bcf6c00bb4820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade64e9cb17003aa71ef596785ab8c575"><td class="memItemLeft" align="right" valign="top"><a id="ade64e9cb17003aa71ef596785ab8c575"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ade64e9cb17003aa71ef596785ab8c575">is_interface</a> () const</td></tr>
-<tr class="memdesc:ade64e9cb17003aa71ef596785ab8c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this is actually an interface, and not a class. <br /></td></tr>
+<tr class="memitem:ade64e9cb17003aa71ef596785ab8c575"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ade64e9cb17003aa71ef596785ab8c575">is_interface</a> () const</td></tr>
+<tr class="memdesc:ade64e9cb17003aa71ef596785ab8c575"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns whether this is actually an interface, and not a class.  <a href="#ade64e9cb17003aa71ef596785ab8c575">More...</a><br /></td></tr>
 <tr class="separator:ade64e9cb17003aa71ef596785ab8c575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3772a57b8eaadf252a9a9f36c063ab93"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a3772a57b8eaadf252a9a9f36c063ab93">is_class</a> () const</td></tr>
 <tr class="separator:a3772a57b8eaadf252a9a9f36c063ab93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad2154cb52119b87cd74b722b69730dee"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ad2154cb52119b87cd74b722b69730dee">interface_names</a> () const</td></tr>
 <tr class="separator:ad2154cb52119b87cd74b722b69730dee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e2a4657d4b102369ba7305251d41d00"><td class="memItemLeft" align="right" valign="top"><a id="a4e2a4657d4b102369ba7305251d41d00"></a>
-std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a4e2a4657d4b102369ba7305251d41d00">serialize</a> () const</td></tr>
-<tr class="memdesc:a4e2a4657d4b102369ba7305251d41d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize the class file into binary data. <br /></td></tr>
+<tr class="memitem:a4e2a4657d4b102369ba7305251d41d00"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a4e2a4657d4b102369ba7305251d41d00">serialize</a> () const</td></tr>
+<tr class="memdesc:a4e2a4657d4b102369ba7305251d41d00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Serialize the class file into binary data.  <a href="#a4e2a4657d4b102369ba7305251d41d00">More...</a><br /></td></tr>
 <tr class="separator:a4e2a4657d4b102369ba7305251d41d00"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:abdfa46cef80b0ec30115f1c0c9bb1db6"><td class="memItemLeft" align="right" valign="top"><a id="abdfa46cef80b0ec30115f1c0c9bb1db6"></a>
-static <a class="el" href="classClassFileImpl.html">ClassFileImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#abdfa46cef80b0ec30115f1c0c9bb1db6">deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
-<tr class="memdesc:abdfa46cef80b0ec30115f1c0c9bb1db6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize the binary data into a class file. <br /></td></tr>
+<tr class="memitem:abdfa46cef80b0ec30115f1c0c9bb1db6"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classClassFileImpl.html">ClassFileImpl</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#abdfa46cef80b0ec30115f1c0c9bb1db6">deserialize</a> (const std::vector&lt; uint8_t &gt; &amp;data)</td></tr>
+<tr class="memdesc:abdfa46cef80b0ec30115f1c0c9bb1db6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deserialize the binary data into a class file.  <a href="#abdfa46cef80b0ec30115f1c0c9bb1db6">More...</a><br /></td></tr>
 <tr class="separator:abdfa46cef80b0ec30115f1c0c9bb1db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:a31b4b986030442ae22f0630532032ded"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#af3b2d4b29fd9faedc984db3e062b3d5d">u4</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a31b4b986030442ae22f0630532032ded">magic</a></td></tr>
+<tr class="separator:a31b4b986030442ae22f0630532032ded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abec30809bc428ce5e31eebcd60a166e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#abec30809bc428ce5e31eebcd60a166e1">minor_version</a></td></tr>
+<tr class="separator:abec30809bc428ce5e31eebcd60a166e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac48ee85570e9e8b06f7a568a4246c2da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ac48ee85570e9e8b06f7a568a4246c2da">major_version</a></td></tr>
+<tr class="separator:ac48ee85570e9e8b06f7a568a4246c2da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1cf3a358e54bf290b8602808f2d3a0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ad1cf3a358e54bf290b8602808f2d3a0b">constant_pool_count</a></td></tr>
+<tr class="separator:ad1cf3a358e54bf290b8602808f2d3a0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3a364b19cfd1a647309dcf385e8d064"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structcp__info.html">cp_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ac3a364b19cfd1a647309dcf385e8d064">constant_pool</a></td></tr>
+<tr class="separator:ac3a364b19cfd1a647309dcf385e8d064"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae7bcc5b644d2164290c53a8727d36fb0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ae7bcc5b644d2164290c53a8727d36fb0">access_flags</a></td></tr>
+<tr class="separator:ae7bcc5b644d2164290c53a8727d36fb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63d984dbdc45e796e6599e2c0b982f36"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a63d984dbdc45e796e6599e2c0b982f36">this_class</a></td></tr>
+<tr class="separator:a63d984dbdc45e796e6599e2c0b982f36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa85098174076217a362065cbf00d804b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#aa85098174076217a362065cbf00d804b">super_class</a></td></tr>
+<tr class="separator:aa85098174076217a362065cbf00d804b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8948beaa9ebac1d5df2c73ec62602c8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ae8948beaa9ebac1d5df2c73ec62602c8">interface_count</a></td></tr>
+<tr class="separator:ae8948beaa9ebac1d5df2c73ec62602c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a449222435f48682e0f680432cf03f49b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structinterface__info.html">interface_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a449222435f48682e0f680432cf03f49b">interfaces</a></td></tr>
+<tr class="separator:a449222435f48682e0f680432cf03f49b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0144ff86144e3548e32779faf4e0dab9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a0144ff86144e3548e32779faf4e0dab9">field_count</a></td></tr>
+<tr class="separator:a0144ff86144e3548e32779faf4e0dab9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0ba1073f7566cdb21c47d33198ecab0"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structfield__info.html">field_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#af0ba1073f7566cdb21c47d33198ecab0">fields</a></td></tr>
+<tr class="separator:af0ba1073f7566cdb21c47d33198ecab0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9643bb90606a32fa3f4a35f2ff468e5b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a9643bb90606a32fa3f4a35f2ff468e5b">method_count</a></td></tr>
+<tr class="separator:a9643bb90606a32fa3f4a35f2ff468e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9142d753fc1a3b06ce26606506b2e9c1"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structmethod__info.html">method_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a9142d753fc1a3b06ce26606506b2e9c1">methods</a></td></tr>
+<tr class="separator:a9142d753fc1a3b06ce26606506b2e9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1085cebfdbb8a2469d9de9782d0576d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#ac1085cebfdbb8a2469d9de9782d0576d">attribute_count</a></td></tr>
+<tr class="separator:ac1085cebfdbb8a2469d9de9782d0576d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25689268cd6201a1b970a6dd41ac6fce"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="structattribute__info.html">attribute_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClassFileImpl.html#a25689268cd6201a1b970a6dd41ac6fce">attributes</a></td></tr>
+<tr class="separator:a25689268cd6201a1b970a6dd41ac6fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents an entire Java class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a6b505e3750863370ca70c708d051a00c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b505e3750863370ca70c708d051a00c">&#9670;&nbsp;</a></span>class_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ClassFileImpl::class_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of the class corresponding to this classfile. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassFileImpl_a6b505e3750863370ca70c708d051a00c_cgraph.png" border="0" usemap="#classClassFileImpl_a6b505e3750863370ca70c708d051a00c_cgraph" alt=""/></div>
+<map name="classClassFileImpl_a6b505e3750863370ca70c708d051a00c_cgraph" id="classClassFileImpl_a6b505e3750863370ca70c708d051a00c_cgraph">
+<area shape="rect" id="node2" href="classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08" title="ClassFileImpl::is_cp\l_index" alt="" coords="444,5,585,47"/>
+<area shape="rect" id="node3" href="classClassFileImpl.html#abf8923075c93d6d5bd1755a7b3ced362" title="ClassFileImpl::cp_index\l_as_string" alt="" coords="233,35,396,76"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="abf8923075c93d6d5bd1755a7b3ced362"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf8923075c93d6d5bd1755a7b3ced362">&#9670;&nbsp;</a></span>cp_index_as_string()</h2>
 
@@ -185,6 +243,52 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="abdfa46cef80b0ec30115f1c0c9bb1db6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdfa46cef80b0ec30115f1c0c9bb1db6">&#9670;&nbsp;</a></span>deserialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classClassFileImpl.html">ClassFileImpl</a> ClassFileImpl::deserialize </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; uint8_t &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deserialize the binary data into a class file. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6_cgraph.png" border="0" usemap="#classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6_cgraph" alt=""/></div>
+<map name="classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6_cgraph" id="classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6_cgraph">
+<area shape="rect" id="node2" href="classClassReader.html#a001cc48324c31430559b43976d731e8a" title="ClassReader::deserialize" alt="" coords="225,215,393,242"/>
+<area shape="rect" id="node3" href="classBytesParser.html#a1023beb9a406a24c4080c95fbe8fd884" title="Consumes and returns the next unsigned int, in network order. " alt="" coords="823,71,971,98"/>
+<area shape="rect" id="node4" href="classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="1019,173,1167,199"/>
+<area shape="rect" id="node6" href="classClassReader.html#ac4c0b613d45cf507b2e85c61c28541cb" title="ClassReader::parse\l_cp_info" alt="" coords="827,5,966,47"/>
+<area shape="rect" id="node8" href="classClassReader.html#a7f8a951758bdb961ebf36088301ac1b4" title="ClassReader::expect\l_cpool_entry" alt="" coords="629,240,775,281"/>
+<area shape="rect" id="node9" href="classClassReader.html#a434b73f04e1502c936593ab63094d838" title="Parses a field_info struct from the data buffer. " alt="" coords="442,240,581,281"/>
+<area shape="rect" id="node10" href="classBytesParser.html#ab7c84f75bd3dc2bcac74fd3ff4c6510a" title="Parses an attribute_info struct from the data buffer. " alt="" coords="635,123,769,164"/>
+<area shape="rect" id="node11" href="classClassReader.html#a0eb68204b1979e2a2758c05f200a7be3" title="Parses a method_info struct from the data buffer. " alt="" coords="442,175,581,216"/>
+<area shape="rect" id="node12" href="classBytesParser.html#a0cef47c62af80c1a50fc507c5a869757" title="Returns whether all the data has been parsed. " alt="" coords="441,407,581,434"/>
+<area shape="rect" id="node5" href="classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="1215,93,1363,119"/>
+<area shape="rect" id="node7" href="classBytesParser.html#acb95ccefd93aa90ae9c74aaec13b497e" title="Consumes and returns the next n bytes. " alt="" coords="1022,93,1163,119"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ad2154cb52119b87cd74b722b69730dee"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad2154cb52119b87cd74b722b69730dee">&#9670;&nbsp;</a></span>interface_names()</h2>
 
@@ -200,6 +304,15 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p>Returns a vector containing the names of all the interfaces directly implemented by <em>this</em>. Note that this does not include transitive dependencies. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassFileImpl_ad2154cb52119b87cd74b722b69730dee_cgraph.png" border="0" usemap="#classClassFileImpl_ad2154cb52119b87cd74b722b69730dee_cgraph" alt=""/></div>
+<map name="classClassFileImpl_ad2154cb52119b87cd74b722b69730dee_cgraph" id="classClassFileImpl_ad2154cb52119b87cd74b722b69730dee_cgraph">
+<area shape="rect" id="node2" href="classClassFileImpl.html#abf8923075c93d6d5bd1755a7b3ced362" title="ClassFileImpl::cp_index\l_as_string" alt="" coords="213,5,376,47"/>
+<area shape="rect" id="node3" href="classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08" title="ClassFileImpl::is_cp\l_index" alt="" coords="424,5,565,47"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -248,9 +361,337 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a id="ade64e9cb17003aa71ef596785ab8c575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade64e9cb17003aa71ef596785ab8c575">&#9670;&nbsp;</a></span>is_interface()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ClassFileImpl::is_interface </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether this is actually an interface, and not a class. </p>
+
+</div>
+</div>
+<a id="ad8f4fcb051aa9d8c04d67373abe12c43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8f4fcb051aa9d8c04d67373abe12c43">&#9670;&nbsp;</a></span>is_method_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ClassFileImpl::is_method_index </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns whether <code>index</code> is actually an index into the methods array. </p>
+
+</div>
+</div>
+<a id="a4e2a4657d4b102369ba7305251d41d00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e2a4657d4b102369ba7305251d41d00">&#9670;&nbsp;</a></span>serialize()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; uint8_t &gt; ClassFileImpl::serialize </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Serialize the class file into binary data. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00_cgraph.png" border="0" usemap="#classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00_cgraph" alt=""/></div>
+<map name="classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00_cgraph" id="classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00_cgraph">
+<area shape="rect" id="node2" href="classClassWriter.html#a7be4d13b5665b1e85a8a350ec181951c" title="ClassWriter::serialize" alt="" coords="212,169,359,195"/>
+<area shape="rect" id="node3" href="classClassWriter.html#aa6a42ab1ec0c2f85c30896506d6dbfce" title="Puts an unsigned int into the data buffer, in network order. " alt="" coords="910,118,1049,145"/>
+<area shape="rect" id="node4" href="classClassWriter.html#a0304019dd68dd830fac5c67971ed2070" title="Puts an unsigned short into the data buffer, in network order. " alt="" coords="1111,118,1249,145"/>
+<area shape="rect" id="node6" href="classClassWriter.html#a47741e12ae2af256ce3a58a41b2d04d6" title="ClassWriter::put_cp_info" alt="" coords="896,17,1063,43"/>
+<area shape="rect" id="node8" href="classClassWriter.html#aa0d862bf0c0cdcdae72fd07444fa1e67" title="ClassWriter::expect\l_cpool_entry" alt="" coords="679,303,818,344"/>
+<area shape="rect" id="node9" href="classClassWriter.html#adfc5adcd821436ff9e399efac367c071" title="Puts a field_info struct into the data buffer. " alt="" coords="416,270,592,297"/>
+<area shape="rect" id="node10" href="classClassWriter.html#aeb256dbd55728dcc9081560691da779b" title="Puts an attribute_info struct into the data buffer. " alt="" coords="649,179,848,206"/>
+<area shape="rect" id="node11" href="classClassWriter.html#a3221090999bef5f0e05993de89600670" title="Puts a method_info struct into the data buffer. " alt="" coords="407,219,601,246"/>
+<area shape="rect" id="node5" href="classClassWriter.html#a07332eb8e8e5ead72834e286cf8a6bd4" title="Puts an unsigned char into the data buffer, in network order. " alt="" coords="1297,67,1436,94"/>
+<area shape="rect" id="node7" href="classClassWriter.html#aa527b917e9f3628ceaeccb95d30bfbb9" title="Puts the given vector into the data buffer. " alt="" coords="1115,67,1245,94"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afd7229efcf341804086bcf6c00bb4820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd7229efcf341804086bcf6c00bb4820">&#9670;&nbsp;</a></span>super_class_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string ClassFileImpl::super_class_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the name of the super class. </p>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classClassFileImpl_afd7229efcf341804086bcf6c00bb4820_cgraph.png" border="0" usemap="#classClassFileImpl_afd7229efcf341804086bcf6c00bb4820_cgraph" alt=""/></div>
+<map name="classClassFileImpl_afd7229efcf341804086bcf6c00bb4820_cgraph" id="classClassFileImpl_afd7229efcf341804086bcf6c00bb4820_cgraph">
+<area shape="rect" id="node2" href="classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08" title="ClassFileImpl::is_cp\l_index" alt="" coords="407,5,548,47"/>
+<area shape="rect" id="node3" href="classClassFileImpl.html#abf8923075c93d6d5bd1755a7b3ced362" title="ClassFileImpl::cp_index\l_as_string" alt="" coords="196,35,359,76"/>
+</map>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ae7bcc5b644d2164290c53a8727d36fb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae7bcc5b644d2164290c53a8727d36fb0">&#9670;&nbsp;</a></span>access_flags</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::access_flags</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac1085cebfdbb8a2469d9de9782d0576d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1085cebfdbb8a2469d9de9782d0576d">&#9670;&nbsp;</a></span>attribute_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::attribute_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a25689268cd6201a1b970a6dd41ac6fce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25689268cd6201a1b970a6dd41ac6fce">&#9670;&nbsp;</a></span>attributes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structattribute__info.html">attribute_info</a>&gt; ClassFileImpl::attributes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac3a364b19cfd1a647309dcf385e8d064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3a364b19cfd1a647309dcf385e8d064">&#9670;&nbsp;</a></span>constant_pool</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structcp__info.html">cp_info</a>&gt; ClassFileImpl::constant_pool</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1cf3a358e54bf290b8602808f2d3a0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1cf3a358e54bf290b8602808f2d3a0b">&#9670;&nbsp;</a></span>constant_pool_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::constant_pool_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0144ff86144e3548e32779faf4e0dab9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0144ff86144e3548e32779faf4e0dab9">&#9670;&nbsp;</a></span>field_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::field_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af0ba1073f7566cdb21c47d33198ecab0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0ba1073f7566cdb21c47d33198ecab0">&#9670;&nbsp;</a></span>fields</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structfield__info.html">field_info</a>&gt; ClassFileImpl::fields</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae8948beaa9ebac1d5df2c73ec62602c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8948beaa9ebac1d5df2c73ec62602c8">&#9670;&nbsp;</a></span>interface_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::interface_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a449222435f48682e0f680432cf03f49b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a449222435f48682e0f680432cf03f49b">&#9670;&nbsp;</a></span>interfaces</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structinterface__info.html">interface_info</a>&gt; ClassFileImpl::interfaces</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a31b4b986030442ae22f0630532032ded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31b4b986030442ae22f0630532032ded">&#9670;&nbsp;</a></span>magic</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#af3b2d4b29fd9faedc984db3e062b3d5d">u4</a> ClassFileImpl::magic</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac48ee85570e9e8b06f7a568a4246c2da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac48ee85570e9e8b06f7a568a4246c2da">&#9670;&nbsp;</a></span>major_version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::major_version</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9643bb90606a32fa3f4a35f2ff468e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9643bb90606a32fa3f4a35f2ff468e5b">&#9670;&nbsp;</a></span>method_count</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::method_count</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9142d753fc1a3b06ce26606506b2e9c1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9142d753fc1a3b06ce26606506b2e9c1">&#9670;&nbsp;</a></span>methods</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;<a class="el" href="structmethod__info.html">method_info</a>&gt; ClassFileImpl::methods</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abec30809bc428ce5e31eebcd60a166e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abec30809bc428ce5e31eebcd60a166e1">&#9670;&nbsp;</a></span>minor_version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::minor_version</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa85098174076217a362065cbf00d804b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa85098174076217a362065cbf00d804b">&#9670;&nbsp;</a></span>super_class</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::super_class</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a63d984dbdc45e796e6599e2c0b982f36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63d984dbdc45e796e6599e2c0b982f36">&#9670;&nbsp;</a></span>this_class</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="types_8h.html#ae676e9207f57fb921dca7366b2f59c53">u2</a> ClassFileImpl::this_class</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/<a class="el" href="classfile_8h_source.html">classfile.h</a></li>
-<li>src/classfile.cpp</li>
+<li>src/<a class="el" href="classfile_8cpp.html">classfile.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -23,48 +23,96 @@ Collaboration diagram for Class\+File\+Impl\+:\nopagebreak
 \item 
 bool \hyperlink{classClassFileImpl_a1f15226f5107cb036e81d480531cda08}{is\+\_\+cp\+\_\+index} (int index) const
 \item 
-\mbox{\Hypertarget{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}\label{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}} 
 bool \hyperlink{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}{is\+\_\+method\+\_\+index} (int index) const
 \begin{DoxyCompactList}\small\item\em Returns whether {\ttfamily index} is actually an index into the methods array. \end{DoxyCompactList}\item 
 bool \hyperlink{classClassFileImpl_ab84cd50d25d163274a299ba682f57610}{cp\+\_\+index\+\_\+is\+\_\+string} (int index, const std\+::string \&s) const
 \item 
 std\+::string \hyperlink{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362}{cp\+\_\+index\+\_\+as\+\_\+string} (int index) const
 \item 
-\mbox{\Hypertarget{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}\label{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}} 
 std\+::string \hyperlink{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}{class\+\_\+name} () const
 \begin{DoxyCompactList}\small\item\em Returns the name of the class corresponding to this classfile. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}\label{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}} 
 std\+::string \hyperlink{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}{super\+\_\+class\+\_\+name} () const
 \begin{DoxyCompactList}\small\item\em Returns the name of the super class. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}\label{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}} 
 bool \hyperlink{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}{is\+\_\+interface} () const
 \begin{DoxyCompactList}\small\item\em Returns whether this is actually an interface, and not a class. \end{DoxyCompactList}\item 
 bool \hyperlink{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}{is\+\_\+class} () const
 \item 
 std\+::vector$<$ std\+::string $>$ \hyperlink{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee}{interface\+\_\+names} () const
 \item 
-\mbox{\Hypertarget{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}\label{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}} 
 std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}{serialize} () const
 \begin{DoxyCompactList}\small\item\em Serialize the class file into binary data. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}\label{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}} 
 static \hyperlink{classClassFileImpl}{Class\+File\+Impl} \hyperlink{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}{deserialize} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
 \begin{DoxyCompactList}\small\item\em Deserialize the binary data into a class file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{types_8h_af3b2d4b29fd9faedc984db3e062b3d5d}{u4} \hyperlink{classClassFileImpl_a31b4b986030442ae22f0630532032ded}{magic}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_abec30809bc428ce5e31eebcd60a166e1}{minor\+\_\+version}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_ac48ee85570e9e8b06f7a568a4246c2da}{major\+\_\+version}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_ad1cf3a358e54bf290b8602808f2d3a0b}{constant\+\_\+pool\+\_\+count}
+\item 
+std\+::vector$<$ \hyperlink{structcp__info}{cp\+\_\+info} $>$ \hyperlink{classClassFileImpl_ac3a364b19cfd1a647309dcf385e8d064}{constant\+\_\+pool}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_ae7bcc5b644d2164290c53a8727d36fb0}{access\+\_\+flags}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_a63d984dbdc45e796e6599e2c0b982f36}{this\+\_\+class}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_aa85098174076217a362065cbf00d804b}{super\+\_\+class}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_ae8948beaa9ebac1d5df2c73ec62602c8}{interface\+\_\+count}
+\item 
+std\+::vector$<$ \hyperlink{structinterface__info}{interface\+\_\+info} $>$ \hyperlink{classClassFileImpl_a449222435f48682e0f680432cf03f49b}{interfaces}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_a0144ff86144e3548e32779faf4e0dab9}{field\+\_\+count}
+\item 
+std\+::vector$<$ \hyperlink{structfield__info}{field\+\_\+info} $>$ \hyperlink{classClassFileImpl_af0ba1073f7566cdb21c47d33198ecab0}{fields}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_a9643bb90606a32fa3f4a35f2ff468e5b}{method\+\_\+count}
+\item 
+std\+::vector$<$ \hyperlink{structmethod__info}{method\+\_\+info} $>$ \hyperlink{classClassFileImpl_a9142d753fc1a3b06ce26606506b2e9c1}{methods}
+\item 
+\hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} \hyperlink{classClassFileImpl_ac1085cebfdbb8a2469d9de9782d0576d}{attribute\+\_\+count}
+\item 
+std\+::vector$<$ \hyperlink{structattribute__info}{attribute\+\_\+info} $>$ \hyperlink{classClassFileImpl_a25689268cd6201a1b970a6dd41ac6fce}{attributes}
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class represents an entire Java class. 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}\label{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!class\+\_\+name@{class\+\_\+name}}
+\index{class\+\_\+name@{class\+\_\+name}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{class\+\_\+name()}{class\_name()}}
+{\footnotesize\ttfamily std\+::string Class\+File\+Impl\+::class\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the name of the class corresponding to this classfile. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_a6b505e3750863370ca70c708d051a00c_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362}\label{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362}} 
 \index{Class\+File\+Impl@{Class\+File\+Impl}!cp\+\_\+index\+\_\+as\+\_\+string@{cp\+\_\+index\+\_\+as\+\_\+string}}
 \index{cp\+\_\+index\+\_\+as\+\_\+string@{cp\+\_\+index\+\_\+as\+\_\+string}!Class\+File\+Impl@{Class\+File\+Impl}}
 \subsubsection{\texorpdfstring{cp\+\_\+index\+\_\+as\+\_\+string()}{cp\_index\_as\_string()}}
 {\footnotesize\ttfamily std\+::string Class\+File\+Impl\+::cp\+\_\+index\+\_\+as\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
 
-Asserts that the constant at index {\ttfamily index} is an utf8 string, and returns it. Here is the call graph for this function\+:\nopagebreak
+Asserts that the constant at index {\ttfamily index} is an utf8 string, and returns it. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -77,11 +125,30 @@ Asserts that the constant at index {\ttfamily index} is an utf8 string, and retu
 \subsubsection{\texorpdfstring{cp\+\_\+index\+\_\+is\+\_\+string()}{cp\_index\_is\_string()}}
 {\footnotesize\ttfamily bool Class\+File\+Impl\+::cp\+\_\+index\+\_\+is\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{const std\+::string \&}]{s }\end{DoxyParamCaption}) const}
 
-Returns whether the index {\ttfamily index} is a string, and corresponds to the string {\ttfamily s}. Note that this asserts that the index is actually contained within the constant pool. Here is the call graph for this function\+:\nopagebreak
+Returns whether the index {\ttfamily index} is a string, and corresponds to the string {\ttfamily s}. Note that this asserts that the index is actually contained within the constant pool. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classClassFileImpl_ab84cd50d25d163274a299ba682f57610_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}\label{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily \hyperlink{classClassFileImpl}{Class\+File\+Impl} Class\+File\+Impl\+::deserialize (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ uint8\+\_\+t $>$ \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Deserialize the binary data into a class file. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee}\label{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee}} 
@@ -90,13 +157,22 @@ Returns whether the index {\ttfamily index} is a string, and corresponds to the 
 \subsubsection{\texorpdfstring{interface\+\_\+names()}{interface\_names()}}
 {\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Class\+File\+Impl\+::interface\+\_\+names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Returns a vector containing the names of all the interfaces directly implemented by {\itshape this}. Note that this does not include transitive dependencies. \mbox{\Hypertarget{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}\label{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}} 
+Returns a vector containing the names of all the interfaces directly implemented by {\itshape this}. Note that this does not include transitive dependencies. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}\label{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}} 
 \index{Class\+File\+Impl@{Class\+File\+Impl}!is\+\_\+class@{is\+\_\+class}}
 \index{is\+\_\+class@{is\+\_\+class}!Class\+File\+Impl@{Class\+File\+Impl}}
 \subsubsection{\texorpdfstring{is\+\_\+class()}{is\_class()}}
 {\footnotesize\ttfamily bool Class\+File\+Impl\+::is\+\_\+class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Returns whether this .class file represents an actual class, as opposed to an interface. Here is the call graph for this function\+:\nopagebreak
+Returns whether this .class file represents an actual class, as opposed to an interface. Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -109,9 +185,164 @@ Returns whether this .class file represents an actual class, as opposed to an in
 \subsubsection{\texorpdfstring{is\+\_\+cp\+\_\+index()}{is\_cp\_index()}}
 {\footnotesize\ttfamily bool Class\+File\+Impl\+::is\+\_\+cp\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
 
-Returns whether {\ttfamily index} is actually an index into the constant pool array. 
+Returns whether {\ttfamily index} is actually an index into the constant pool array. \mbox{\Hypertarget{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}\label{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!is\+\_\+interface@{is\+\_\+interface}}
+\index{is\+\_\+interface@{is\+\_\+interface}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{is\+\_\+interface()}{is\_interface()}}
+{\footnotesize\ttfamily bool Class\+File\+Impl\+::is\+\_\+interface (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether this is actually an interface, and not a class. 
+
+\mbox{\Hypertarget{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}\label{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!is\+\_\+method\+\_\+index@{is\+\_\+method\+\_\+index}}
+\index{is\+\_\+method\+\_\+index@{is\+\_\+method\+\_\+index}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{is\+\_\+method\+\_\+index()}{is\_method\_index()}}
+{\footnotesize\ttfamily bool Class\+File\+Impl\+::is\+\_\+method\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+Returns whether {\ttfamily index} is actually an index into the methods array. 
+
+\mbox{\Hypertarget{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}\label{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!serialize@{serialize}}
+\index{serialize@{serialize}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Class\+File\+Impl\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Serialize the class file into binary data. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}\label{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!super\+\_\+class\+\_\+name@{super\+\_\+class\+\_\+name}}
+\index{super\+\_\+class\+\_\+name@{super\+\_\+class\+\_\+name}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{super\+\_\+class\+\_\+name()}{super\_class\_name()}}
+{\footnotesize\ttfamily std\+::string Class\+File\+Impl\+::super\+\_\+class\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the name of the super class. 
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820_cgraph}
+\end{center}
+\end{figure}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classClassFileImpl_ae7bcc5b644d2164290c53a8727d36fb0}\label{classClassFileImpl_ae7bcc5b644d2164290c53a8727d36fb0}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!access\+\_\+flags@{access\+\_\+flags}}
+\index{access\+\_\+flags@{access\+\_\+flags}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{access\+\_\+flags}{access\_flags}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::access\+\_\+flags}
+
+\mbox{\Hypertarget{classClassFileImpl_ac1085cebfdbb8a2469d9de9782d0576d}\label{classClassFileImpl_ac1085cebfdbb8a2469d9de9782d0576d}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!attribute\+\_\+count@{attribute\+\_\+count}}
+\index{attribute\+\_\+count@{attribute\+\_\+count}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{attribute\+\_\+count}{attribute\_count}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::attribute\+\_\+count}
+
+\mbox{\Hypertarget{classClassFileImpl_a25689268cd6201a1b970a6dd41ac6fce}\label{classClassFileImpl_a25689268cd6201a1b970a6dd41ac6fce}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!attributes@{attributes}}
+\index{attributes@{attributes}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{attributes}{attributes}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{structattribute__info}{attribute\+\_\+info}$>$ Class\+File\+Impl\+::attributes}
+
+\mbox{\Hypertarget{classClassFileImpl_ac3a364b19cfd1a647309dcf385e8d064}\label{classClassFileImpl_ac3a364b19cfd1a647309dcf385e8d064}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!constant\+\_\+pool@{constant\+\_\+pool}}
+\index{constant\+\_\+pool@{constant\+\_\+pool}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{constant\+\_\+pool}{constant\_pool}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{structcp__info}{cp\+\_\+info}$>$ Class\+File\+Impl\+::constant\+\_\+pool}
+
+\mbox{\Hypertarget{classClassFileImpl_ad1cf3a358e54bf290b8602808f2d3a0b}\label{classClassFileImpl_ad1cf3a358e54bf290b8602808f2d3a0b}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!constant\+\_\+pool\+\_\+count@{constant\+\_\+pool\+\_\+count}}
+\index{constant\+\_\+pool\+\_\+count@{constant\+\_\+pool\+\_\+count}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{constant\+\_\+pool\+\_\+count}{constant\_pool\_count}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::constant\+\_\+pool\+\_\+count}
+
+\mbox{\Hypertarget{classClassFileImpl_a0144ff86144e3548e32779faf4e0dab9}\label{classClassFileImpl_a0144ff86144e3548e32779faf4e0dab9}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!field\+\_\+count@{field\+\_\+count}}
+\index{field\+\_\+count@{field\+\_\+count}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{field\+\_\+count}{field\_count}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::field\+\_\+count}
+
+\mbox{\Hypertarget{classClassFileImpl_af0ba1073f7566cdb21c47d33198ecab0}\label{classClassFileImpl_af0ba1073f7566cdb21c47d33198ecab0}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!fields@{fields}}
+\index{fields@{fields}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{fields}{fields}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{structfield__info}{field\+\_\+info}$>$ Class\+File\+Impl\+::fields}
+
+\mbox{\Hypertarget{classClassFileImpl_ae8948beaa9ebac1d5df2c73ec62602c8}\label{classClassFileImpl_ae8948beaa9ebac1d5df2c73ec62602c8}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!interface\+\_\+count@{interface\+\_\+count}}
+\index{interface\+\_\+count@{interface\+\_\+count}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{interface\+\_\+count}{interface\_count}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::interface\+\_\+count}
+
+\mbox{\Hypertarget{classClassFileImpl_a449222435f48682e0f680432cf03f49b}\label{classClassFileImpl_a449222435f48682e0f680432cf03f49b}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!interfaces@{interfaces}}
+\index{interfaces@{interfaces}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{interfaces}{interfaces}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{structinterface__info}{interface\+\_\+info}$>$ Class\+File\+Impl\+::interfaces}
+
+\mbox{\Hypertarget{classClassFileImpl_a31b4b986030442ae22f0630532032ded}\label{classClassFileImpl_a31b4b986030442ae22f0630532032ded}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!magic@{magic}}
+\index{magic@{magic}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{magic}{magic}}
+{\footnotesize\ttfamily \hyperlink{types_8h_af3b2d4b29fd9faedc984db3e062b3d5d}{u4} Class\+File\+Impl\+::magic}
+
+\mbox{\Hypertarget{classClassFileImpl_ac48ee85570e9e8b06f7a568a4246c2da}\label{classClassFileImpl_ac48ee85570e9e8b06f7a568a4246c2da}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!major\+\_\+version@{major\+\_\+version}}
+\index{major\+\_\+version@{major\+\_\+version}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{major\+\_\+version}{major\_version}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::major\+\_\+version}
+
+\mbox{\Hypertarget{classClassFileImpl_a9643bb90606a32fa3f4a35f2ff468e5b}\label{classClassFileImpl_a9643bb90606a32fa3f4a35f2ff468e5b}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!method\+\_\+count@{method\+\_\+count}}
+\index{method\+\_\+count@{method\+\_\+count}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{method\+\_\+count}{method\_count}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::method\+\_\+count}
+
+\mbox{\Hypertarget{classClassFileImpl_a9142d753fc1a3b06ce26606506b2e9c1}\label{classClassFileImpl_a9142d753fc1a3b06ce26606506b2e9c1}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!methods@{methods}}
+\index{methods@{methods}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{methods}{methods}}
+{\footnotesize\ttfamily std\+::vector$<$\hyperlink{structmethod__info}{method\+\_\+info}$>$ Class\+File\+Impl\+::methods}
+
+\mbox{\Hypertarget{classClassFileImpl_abec30809bc428ce5e31eebcd60a166e1}\label{classClassFileImpl_abec30809bc428ce5e31eebcd60a166e1}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!minor\+\_\+version@{minor\+\_\+version}}
+\index{minor\+\_\+version@{minor\+\_\+version}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{minor\+\_\+version}{minor\_version}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::minor\+\_\+version}
+
+\mbox{\Hypertarget{classClassFileImpl_aa85098174076217a362065cbf00d804b}\label{classClassFileImpl_aa85098174076217a362065cbf00d804b}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!super\+\_\+class@{super\+\_\+class}}
+\index{super\+\_\+class@{super\+\_\+class}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{super\+\_\+class}{super\_class}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::super\+\_\+class}
+
+\mbox{\Hypertarget{classClassFileImpl_a63d984dbdc45e796e6599e2c0b982f36}\label{classClassFileImpl_a63d984dbdc45e796e6599e2c0b982f36}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!this\+\_\+class@{this\+\_\+class}}
+\index{this\+\_\+class@{this\+\_\+class}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{this\+\_\+class}{this\_class}}
+{\footnotesize\ttfamily \hyperlink{types_8h_ae676e9207f57fb921dca7366b2f59c53}{u2} Class\+File\+Impl\+::this\+\_\+class}
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-src/classfile.\+h\item 
-src/classfile.\+cpp\end{DoxyCompactItemize}
+src/\hyperlink{classfile_8h}{classfile.\+h}\item 
+src/\hyperlink{classfile_8cpp}{classfile.\+cpp}\end{DoxyCompactItemize}

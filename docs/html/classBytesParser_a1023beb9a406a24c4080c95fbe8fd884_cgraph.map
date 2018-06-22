@@ -1,0 +1,4 @@
+<map id="BytesParser::next_u4" name="BytesParser::next_u4">
+<area shape="rect" id="node2" href="$classBytesParser.html#a8c1d8a37eabff268351e38706a78ce2a" title="Consumes and returns the next unsigned short, in network order. " alt="" coords="201,5,349,32"/>
+<area shape="rect" id="node3" href="$classBytesParser.html#a18a5ff71458418a33c99d301ecc37579" title="Consumes and returns the next unsigned char, in network order. " alt="" coords="397,5,545,32"/>
+</map>

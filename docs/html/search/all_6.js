@@ -1,11 +1,12 @@
 var searchData=
 [
-  ['interface_5finfo',['interface_info',['../structinterface__info.html',1,'']]],
-  ['interface_5fnames',['interface_names',['../classClassFileImpl.html#ad2154cb52119b87cd74b722b69730dee',1,'ClassFileImpl']]],
-  ['is_5fabstract',['is_abstract',['../classMethod.html#a6dfb75c6faf8961c6e04a86eca6e97e8',1,'Method']]],
-  ['is_5fclass',['is_class',['../classClassFileImpl.html#a3772a57b8eaadf252a9a9f36c063ab93',1,'ClassFileImpl']]],
-  ['is_5fcp_5findex',['is_cp_index',['../classClassFileImpl.html#a1f15226f5107cb036e81d480531cda08',1,'ClassFileImpl']]],
-  ['is_5fend',['is_end',['../classBytesParser.html#a0cef47c62af80c1a50fc507c5a869757',1,'BytesParser']]],
-  ['is_5finterface',['is_interface',['../classClassFileImpl.html#ade64e9cb17003aa71ef596785ab8c575',1,'ClassFileImpl']]],
-  ['is_5fmethod_5findex',['is_method_index',['../classClassFileImpl.html#ad8f4fcb051aa9d8c04d67373abe12c43',1,'ClassFileImpl']]]
+  ['field_5fcount',['field_count',['../classClassFileImpl.html#a0144ff86144e3548e32779faf4e0dab9',1,'ClassFileImpl']]],
+  ['field_5finfo',['field_info',['../structfield__info.html',1,'']]],
+  ['fields',['fields',['../classClassFileImpl.html#af0ba1073f7566cdb21c47d33198ecab0',1,'ClassFileImpl']]],
+  ['flags',['FLAGS',['../classMethod.html#a142a92c7e2c79cbbedb7fd08a8a8e1ad',1,'Method']]],
+  ['fload',['fload',['../code_8h.html#a060088bd6d36c88d90b4c4a8fc4085b9ac696238f1e5662630e2156b9e64804ae',1,'code.h']]],
+  ['format',['format',['../classMethod.html#a3f6d55a368a1e2727bea0799c3cdc0f6',1,'Method']]],
+  ['from_5fowner',['from_owner',['../classMethod.html#ad977afdb14569e1108c6b6849fe0b007',1,'Method']]],
+  ['from_5fsymbolic_5freference',['from_symbolic_reference',['../classMethod.html#adddc54ce699dfb1ba305595507085a29',1,'Method']]],
+  ['fstore',['fstore',['../code_8h.html#a060088bd6d36c88d90b4c4a8fc4085b9a426a2d63dee4a3e2a1662f450cd94323',1,'code.h']]]
 ];
