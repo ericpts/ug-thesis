@@ -37,18 +37,18 @@ def run_android():
 
 def run_tap():
     exe = Path(os.getcwd()) / 'build' / 'thesis'
-    tap = Path(os.getcwd()) / 'test'/ 'fixtures' / 'tap'
+    tap = Path(os.getcwd()) / 'test'/ 'fixtures' / 'TAP'
     test_dir = Path(os.getcwd()) / 'test' / '_current'
 
-    def run_homework(hw: path):
-        print_color(Fore.BLUE, 'testing on {}...'.format(hw))
+    def run_homework(hw: Path):
+        print_color(Fore.BLUE, 'Testing on {}...'.format(hw))
         run('rm', '-rf', test_dir)
         run('cp', '-r', hw, test_dir)
 
         thesis_output = run(exe, *list(map(str, test_dir.glob('*.class'))), '--in-place')
         (test_dir / 'thesis.log').write_text(thesis_output)
 
-        run('java', 'main', cwd=hw)
+        run('java', 'Main', cwd=hw)
 
     for f in tap.glob('*'):
         for g in f.glob('*'):
@@ -78,9 +78,8 @@ def init():
 
 def main():
     init()
-    # run_fixtures()
-    # run_tap()
-    run_android()
+    run_fixtures()
+    run_tap()
 
 if __name__ == '__main__':
     main()
