@@ -1,0 +1,16 @@
+digraph "Project::remove_unused_methods"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="Project::remove_unused\l_methods",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="Project::main_method",height=0.2,width=0.4,color="black",URL="$classProject.html#a8122de9e7b4bc2a63e1391727c881474",tooltip="Find the main entry point of the entire project. "];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Method::from_owner",height=0.2,width=0.4,color="black",URL="$classMethod.html#ad977afdb14569e1108c6b6849fe0b007"];
+  Node1 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Project::method_call\l_graph",height=0.2,width=0.4,color="black",URL="$classProject.html#ac4d866eaedfd1083d4736530382c7b7c"];
+  Node1 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="Method::all_from_classfile",height=0.2,width=0.4,color="black",URL="$classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab",tooltip="Returns all the methods referenced in file. "];
+}

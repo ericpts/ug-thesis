@@ -1,0 +1,53 @@
+\hypertarget{classClassReader}{}\section{Class\+Reader Class Reference}
+\label{classClassReader}\index{Class\+Reader@{Class\+Reader}}
+
+
+{\ttfamily \#include $<$classreader.\+h$>$}
+
+
+
+Collaboration diagram for Class\+Reader\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classClassReader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classClassReader_a3470778a3f6fe462416950a69c305ff0}\label{classClassReader_a3470778a3f6fe462416950a69c305ff0}} 
+\hyperlink{classClassReader_a3470778a3f6fe462416950a69c305ff0}{Class\+Reader} (std\+::vector$<$ uint8\+\_\+t $>$ data)
+\begin{DoxyCompactList}\small\item\em Initialize the reader, with the binary {\ttfamily data} of the class file. \end{DoxyCompactList}\item 
+\hyperlink{classClassFileImpl}{Class\+File\+Impl} \hyperlink{classClassReader_a001cc48324c31430559b43976d731e8a}{deserialize} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class handles the parsation (deserialization and serialization) of Java\textquotesingle{}s .class files. Normal usage should be\+:
+\begin{DoxyEnumerate}
+\item Reading the binary data (for example, from a file on disk)
+\item Instantiating this \hyperlink{classClassReader}{Class\+Reader}.
+\item Parsing the actual file. 
+\end{DoxyEnumerate}
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classClassReader_a001cc48324c31430559b43976d731e8a}\label{classClassReader_a001cc48324c31430559b43976d731e8a}} 
+\index{Class\+Reader@{Class\+Reader}!deserialize@{deserialize}}
+\index{deserialize@{deserialize}!Class\+Reader@{Class\+Reader}}
+\subsubsection{\texorpdfstring{deserialize()}{deserialize()}}
+{\footnotesize\ttfamily \hyperlink{classClassFileImpl}{Class\+File\+Impl} Class\+Reader\+::deserialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Parse an entire class file. This is the method that you most likely want to use. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassReader_a001cc48324c31430559b43976d731e8a_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classreader.\+h\item 
+src/classreader.\+cpp\end{DoxyCompactItemize}

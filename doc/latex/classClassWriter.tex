@@ -1,0 +1,41 @@
+\hypertarget{classClassWriter}{}\section{Class\+Writer Class Reference}
+\label{classClassWriter}\index{Class\+Writer@{Class\+Writer}}
+
+
+{\ttfamily \#include $<$classwriter.\+h$>$}
+
+
+
+Collaboration diagram for Class\+Writer\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classClassWriter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}\label{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}} 
+\hyperlink{classClassWriter_a4335e4ecbd5dfe24d08137201a87a298}{Class\+Writer} (const \hyperlink{classClassFileImpl}{Class\+File\+Impl} \&cf)
+\begin{DoxyCompactList}\small\item\em Initialize the parser, with the binary {\ttfamily data} of the class file. \end{DoxyCompactList}\item 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c}{serialize} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class handles the serialization of Java\textquotesingle{}s .class files. Normal usage should be\+: 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c}\label{classClassWriter_a7be4d13b5665b1e85a8a350ec181951c}} 
+\index{Class\+Writer@{Class\+Writer}!serialize@{serialize}}
+\index{serialize@{serialize}!Class\+Writer@{Class\+Writer}}
+\subsubsection{\texorpdfstring{serialize()}{serialize()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Class\+Writer\+::serialize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Parse an entire class file. This is the method that you most likely want to use. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classwriter.\+h\item 
+src/classwriter.\+cpp\end{DoxyCompactItemize}

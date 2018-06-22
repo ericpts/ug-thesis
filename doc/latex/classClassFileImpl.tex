@@ -1,0 +1,118 @@
+\hypertarget{classClassFileImpl}{}\section{Class\+File\+Impl Class Reference}
+\label{classClassFileImpl}\index{Class\+File\+Impl@{Class\+File\+Impl}}
+
+
+This class represents an entire Java class.  
+
+
+
+
+{\ttfamily \#include $<$classfile.\+h$>$}
+
+
+
+Collaboration diagram for Class\+File\+Impl\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classClassFileImpl__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classClassFileImpl_a1f15226f5107cb036e81d480531cda08}{is\+\_\+cp\+\_\+index} (int index) const
+\item 
+\mbox{\Hypertarget{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}\label{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}} 
+bool \hyperlink{classClassFileImpl_ad8f4fcb051aa9d8c04d67373abe12c43}{is\+\_\+method\+\_\+index} (int index) const
+\begin{DoxyCompactList}\small\item\em Returns whether {\ttfamily index} is actually an index into the methods array. \end{DoxyCompactList}\item 
+bool \hyperlink{classClassFileImpl_ab84cd50d25d163274a299ba682f57610}{cp\+\_\+index\+\_\+is\+\_\+string} (int index, const std\+::string \&s) const
+\item 
+std\+::string \hyperlink{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362}{cp\+\_\+index\+\_\+as\+\_\+string} (int index) const
+\item 
+\mbox{\Hypertarget{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}\label{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}} 
+std\+::string \hyperlink{classClassFileImpl_a6b505e3750863370ca70c708d051a00c}{class\+\_\+name} () const
+\begin{DoxyCompactList}\small\item\em Returns the name of the class corresponding to this classfile. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}\label{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}} 
+std\+::string \hyperlink{classClassFileImpl_afd7229efcf341804086bcf6c00bb4820}{super\+\_\+class\+\_\+name} () const
+\begin{DoxyCompactList}\small\item\em Returns the name of the super class. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}\label{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}} 
+bool \hyperlink{classClassFileImpl_ade64e9cb17003aa71ef596785ab8c575}{is\+\_\+interface} () const
+\begin{DoxyCompactList}\small\item\em Returns whether this is actually an interface, and not a class. \end{DoxyCompactList}\item 
+bool \hyperlink{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}{is\+\_\+class} () const
+\item 
+std\+::vector$<$ std\+::string $>$ \hyperlink{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee}{interface\+\_\+names} () const
+\item 
+\mbox{\Hypertarget{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}\label{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}} 
+std\+::vector$<$ uint8\+\_\+t $>$ \hyperlink{classClassFileImpl_a4e2a4657d4b102369ba7305251d41d00}{serialize} () const
+\begin{DoxyCompactList}\small\item\em Serialize the class file into binary data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}\label{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}} 
+static \hyperlink{classClassFileImpl}{Class\+File\+Impl} \hyperlink{classClassFileImpl_abdfa46cef80b0ec30115f1c0c9bb1db6}{deserialize} (const std\+::vector$<$ uint8\+\_\+t $>$ \&data)
+\begin{DoxyCompactList}\small\item\em Deserialize the binary data into a class file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class represents an entire Java class. 
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362}\label{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!cp\+\_\+index\+\_\+as\+\_\+string@{cp\+\_\+index\+\_\+as\+\_\+string}}
+\index{cp\+\_\+index\+\_\+as\+\_\+string@{cp\+\_\+index\+\_\+as\+\_\+string}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{cp\+\_\+index\+\_\+as\+\_\+string()}{cp\_index\_as\_string()}}
+{\footnotesize\ttfamily std\+::string Class\+File\+Impl\+::cp\+\_\+index\+\_\+as\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+Asserts that the constant at index {\ttfamily index} is an utf8 string, and returns it. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classClassFileImpl_abf8923075c93d6d5bd1755a7b3ced362_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassFileImpl_ab84cd50d25d163274a299ba682f57610}\label{classClassFileImpl_ab84cd50d25d163274a299ba682f57610}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!cp\+\_\+index\+\_\+is\+\_\+string@{cp\+\_\+index\+\_\+is\+\_\+string}}
+\index{cp\+\_\+index\+\_\+is\+\_\+string@{cp\+\_\+index\+\_\+is\+\_\+string}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{cp\+\_\+index\+\_\+is\+\_\+string()}{cp\_index\_is\_string()}}
+{\footnotesize\ttfamily bool Class\+File\+Impl\+::cp\+\_\+index\+\_\+is\+\_\+string (\begin{DoxyParamCaption}\item[{int}]{index,  }\item[{const std\+::string \&}]{s }\end{DoxyParamCaption}) const}
+
+Returns whether the index {\ttfamily index} is a string, and corresponds to the string {\ttfamily s}. Note that this asserts that the index is actually contained within the constant pool. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_ab84cd50d25d163274a299ba682f57610_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee}\label{classClassFileImpl_ad2154cb52119b87cd74b722b69730dee}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!interface\+\_\+names@{interface\+\_\+names}}
+\index{interface\+\_\+names@{interface\+\_\+names}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{interface\+\_\+names()}{interface\_names()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ Class\+File\+Impl\+::interface\+\_\+names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns a vector containing the names of all the interfaces directly implemented by {\itshape this}. Note that this does not include transitive dependencies. \mbox{\Hypertarget{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}\label{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!is\+\_\+class@{is\+\_\+class}}
+\index{is\+\_\+class@{is\+\_\+class}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{is\+\_\+class()}{is\_class()}}
+{\footnotesize\ttfamily bool Class\+File\+Impl\+::is\+\_\+class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Returns whether this .class file represents an actual class, as opposed to an interface. Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classClassFileImpl_a3772a57b8eaadf252a9a9f36c063ab93_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classClassFileImpl_a1f15226f5107cb036e81d480531cda08}\label{classClassFileImpl_a1f15226f5107cb036e81d480531cda08}} 
+\index{Class\+File\+Impl@{Class\+File\+Impl}!is\+\_\+cp\+\_\+index@{is\+\_\+cp\+\_\+index}}
+\index{is\+\_\+cp\+\_\+index@{is\+\_\+cp\+\_\+index}!Class\+File\+Impl@{Class\+File\+Impl}}
+\subsubsection{\texorpdfstring{is\+\_\+cp\+\_\+index()}{is\_cp\_index()}}
+{\footnotesize\ttfamily bool Class\+File\+Impl\+::is\+\_\+cp\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+Returns whether {\ttfamily index} is actually an index into the constant pool array. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/classfile.\+h\item 
+src/classfile.\+cpp\end{DoxyCompactItemize}

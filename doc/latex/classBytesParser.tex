@@ -1,0 +1,53 @@
+\hypertarget{classBytesParser}{}\section{Bytes\+Parser Class Reference}
+\label{classBytesParser}\index{Bytes\+Parser@{Bytes\+Parser}}
+
+
+This struct handles the byte-\/by-\/byte parsing of a byte array.  
+
+
+
+
+{\ttfamily \#include $<$bytesparser.\+h$>$}
+
+
+
+Collaboration diagram for Bytes\+Parser\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classBytesParser__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBytesParser_a18a5ff71458418a33c99d301ecc37579}\label{classBytesParser_a18a5ff71458418a33c99d301ecc37579}} 
+u1 \hyperlink{classBytesParser_a18a5ff71458418a33c99d301ecc37579}{next\+\_\+u1} ()
+\begin{DoxyCompactList}\small\item\em Consumes and returns the next unsigned char, in network order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}\label{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}} 
+u2 \hyperlink{classBytesParser_a8c1d8a37eabff268351e38706a78ce2a}{next\+\_\+u2} ()
+\begin{DoxyCompactList}\small\item\em Consumes and returns the next unsigned short, in network order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}\label{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}} 
+u4 \hyperlink{classBytesParser_a1023beb9a406a24c4080c95fbe8fd884}{next\+\_\+u4} ()
+\begin{DoxyCompactList}\small\item\em Consumes and returns the next unsigned int, in network order. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}\label{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}} 
+std\+::vector$<$ u1 $>$ \hyperlink{classBytesParser_acb95ccefd93aa90ae9c74aaec13b497e}{next\+\_\+n} (int n)
+\begin{DoxyCompactList}\small\item\em Consumes and returns the next {\ttfamily n} bytes. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}\label{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}} 
+bool \hyperlink{classBytesParser_a0cef47c62af80c1a50fc507c5a869757}{is\+\_\+end} () const
+\begin{DoxyCompactList}\small\item\em Returns whether all the data has been parsed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}\label{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}} 
+\hyperlink{structattribute__info}{attribute\+\_\+info} \hyperlink{classBytesParser_ab7c84f75bd3dc2bcac74fd3ff4c6510a}{parse\+\_\+attribute\+\_\+info} ()
+\begin{DoxyCompactList}\small\item\em Parses an \hyperlink{structattribute__info}{attribute\+\_\+info} struct from the data buffer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}\label{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}} 
+int \hyperlink{classBytesParser_a37f2e2e19b23ba08982241c7ed53b43a}{bytes\+\_\+read} () const
+\begin{DoxyCompactList}\small\item\em Returns how many bytes have been parsed so far. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This struct handles the byte-\/by-\/byte parsing of a byte array. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/bytesparser.\+h\item 
+src/bytesparser.\+cpp\end{DoxyCompactItemize}

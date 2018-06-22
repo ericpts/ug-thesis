@@ -1,0 +1,7 @@
+digraph "Project"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Project\n||+ Project()\l+ resolve_classfile()\l+ resolve_symbolic_reference()\l+ sibling_methods()\l+ main_method()\l+ remove_unused_methods()\l+ save()\l+ save_in_place()\l+ classfiles()\l+ method_call_graph()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

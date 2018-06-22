@@ -1,0 +1,6 @@
+<map id="Project::remove_unused_methods" name="Project::remove_unused_methods">
+<area shape="rect" id="node2" href="$classProject.html#a8122de9e7b4bc2a63e1391727c881474" title="Find the main entry point of the entire project. " alt="" coords="229,5,378,32"/>
+<area shape="rect" id="node4" href="$classProject.html#ac4d866eaedfd1083d4736530382c7b7c" title="Project::method_call\l_graph" alt="" coords="233,57,374,98"/>
+<area shape="rect" id="node5" href="$classMethod.html#a7b631e75e7438bb79c285b1bc6a712ab" title="Returns all the methods referenced in file. " alt="" coords="216,123,391,149"/>
+<area shape="rect" id="node3" href="$classMethod.html#ad977afdb14569e1108c6b6849fe0b007" title="Method::from_owner" alt="" coords="439,5,580,32"/>
+</map>

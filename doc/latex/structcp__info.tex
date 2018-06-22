@@ -1,0 +1,34 @@
+\hypertarget{structcp__info}{}\section{cp\+\_\+info Struct Reference}
+\label{structcp__info}\index{cp\+\_\+info@{cp\+\_\+info}}
+
+
+{\ttfamily \#include $<$types.\+h$>$}
+
+
+
+Collaboration diagram for cp\+\_\+info\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=159pt]{structcp__info__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}\label{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}} 
+std\+::string \hyperlink{structcp__info_a8bdd7454a673dea621f24569c4c6aa01}{as\+\_\+string} () const
+\begin{DoxyCompactList}\small\item\em Returns {\itshape this} as string. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}\label{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}} 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{structcp__info_a73e88cec575d05a03d73cbfcc91cd71b}{as} () const
+\begin{DoxyCompactList}\small\item\em This template will be explicitly specialized for the possible types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Each item in the constant\+\_\+pool table must begin with a 1-\/byte tag indicating the kind of \hyperlink{structcp__info}{cp\+\_\+info} entry. The contents of the info array vary with the value of tag. The valid tags and their values are included in the tag enum. Each tag byte must be followed by two or more bytes giving information about the specific constant. The format of the additional information varies with the tag value. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/types.\+h\item 
+src/types.\+cpp\end{DoxyCompactItemize}

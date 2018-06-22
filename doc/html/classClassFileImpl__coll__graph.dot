@@ -1,0 +1,7 @@
+digraph "ClassFileImpl"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{ClassFileImpl\n|+ magic\l+ minor_version\l+ major_version\l+ constant_pool_count\l+ constant_pool\l+ access_flags\l+ this_class\l+ super_class\l+ interface_count\l+ interfaces\l+ field_count\l+ fields\l+ method_count\l+ methods\l+ attribute_count\l+ attributes\l|+ is_cp_index()\l+ is_method_index()\l+ cp_index_is_string()\l+ cp_index_as_string()\l+ class_name()\l+ super_class_name()\l+ is_interface()\l+ is_class()\l+ interface_names()\l+ serialize()\l+ deserialize()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

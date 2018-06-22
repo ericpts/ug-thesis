@@ -1,0 +1,7 @@
+digraph "Code_attribute"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{Code_attribute\n|+ attribute_name_index\l+ attribute_length\l+ max_stack\l+ max_locals\l+ code_length\l+ code\l+ exception_table_length\l+ exception_table\l+ attributes_count\l+ attributes\l|}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}
