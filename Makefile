@@ -8,10 +8,10 @@ build:
 doc:
 	doxygen Doxyfile
 
-	cp doc/latex/classMethod__coll__graph.pdf paper/
+	cp docs/latex/classMethod__coll__graph.pdf paper/
 	cd paper; convert classMethod__coll__graph.pdf classMethod__coll__graph.eps
 
-	cp doc/latex/classProject__coll__graph.pdf paper/
+	cp docs/latex/classProject__coll__graph.pdf paper/
 	cd paper; convert classProject__coll__graph.pdf classProject__coll__graph.eps
 
 	cd paper; make clean; make
