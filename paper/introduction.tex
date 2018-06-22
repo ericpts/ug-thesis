@@ -125,8 +125,10 @@ această instrucțiune.
 \subsubsection{Funcții lambda}
 
 Funcțiile lambda (sau funcțiile anonime) sunt o adiție recentă în limbajul Java.
-Implementarea folosește invocarea dinamică atunci când o astfel de funcție
-este instanțiată.
+Implementarea mașinii virtuale folosește invocarea dinamică atunci când o astfel
+de funcție este \textit{instanțiată}~\cite{jvm_lambdas}.
+Cu alte cuvinte, funcțiile lambda nu sunt instanțiate (i.e., codul acestora nu
+este procesat) decât abia la rulare.
 Așadar, dacă un program folosește funcții anonime, acesta va încălca
 presupunerile făcute și nu va putea fi optimizat corect.
 

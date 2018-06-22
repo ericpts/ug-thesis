@@ -32,6 +32,11 @@ Matthew Arnold, Stephen Fink, David Grove, and Michael Hind.
 \newblock Dynamic compilation and adaptive optimization in virtual machines.
 \newblock 2006.
 
+\bibitem{jvm_lambdas}
+Java Language~Architect Brian~Goetz.
+\newblock
+  \url{http://wiki.jvmlangsummit.com/images/1/1e/2011_Goetz_Lambda.pdf}.
+
 \bibitem{the_halting_problem}
 L~Burkholder.
 \newblock The halting problem.

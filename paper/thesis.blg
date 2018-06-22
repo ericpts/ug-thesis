@@ -13,45 +13,45 @@ Warning--to sort, need author or key in instruction_format
 Warning--to sort, need author or key in java_main
 Warning--to sort, need author or key in javap
 Warning--empty journal in arnold2006dynamic
-You've used 23 entries,
+You've used 24 entries,
             2118 wiz_defined-function locations,
-            585 strings with 6510 characters,
-and the built_in function-call counts, 4621 in all, are:
-= -- 430
-> -- 129
+            588 strings with 6626 characters,
+and the built_in function-call counts, 4815 in all, are:
+= -- 447
+> -- 136
 < -- 0
-+ -- 61
-- -- 36
-* -- 194
-:= -- 686
-add.period$ -- 51
-call.type$ -- 23
-change.case$ -- 74
++ -- 64
+- -- 38
+* -- 199
+:= -- 718
+add.period$ -- 53
+call.type$ -- 24
+change.case$ -- 77
 chr.to.int$ -- 0
-cite$ -- 33
-duplicate$ -- 176
-empty$ -- 524
-format.name$ -- 36
-if$ -- 1039
+cite$ -- 34
+duplicate$ -- 183
+empty$ -- 546
+format.name$ -- 38
+if$ -- 1082
 int.to.chr$ -- 0
-int.to.str$ -- 23
+int.to.str$ -- 24
 missing$ -- 4
-newline$ -- 100
-num.names$ -- 28
-pop$ -- 183
+newline$ -- 104
+num.names$ -- 30
+pop$ -- 192
 preamble$ -- 1
-purify$ -- 64
+purify$ -- 67
 quote$ -- 0
-skip$ -- 180
+skip$ -- 188
 stack$ -- 0
-substring$ -- 182
-swap$ -- 22
+substring$ -- 187
+swap$ -- 23
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 92
+type$ -- 96
 warning$ -- 10
-while$ -- 33
-width$ -- 25
-write$ -- 182
+while$ -- 35
+width$ -- 26
+write$ -- 189
 (There were 10 warnings)

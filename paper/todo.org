@@ -10,7 +10,7 @@ Lipseste partea de evaluare - Sunt doar cateva proiecte foarte mici ca test
 tot cu documentatie si suport unit test pentru a putea fi continuata pe
 viitor.
 
-[ ] Capitolul 5 -
+[X] Capitolul 5 -
 Mi-ar fi placut insa sa vad ca autorul implementeaza solutii si pentru
 functiile create dinamic (e.g.  lambda functions).
 De asemenea, lucrarea nu abordeaza decat eliminarea functiilor. Ar fi fost
