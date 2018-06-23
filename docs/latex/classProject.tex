@@ -11,8 +11,7 @@ A \hyperlink{classProject}{Project} is a collection of class files, together wit
 
 
 
-Collaboration diagram for Project\+:
-\nopagebreak
+Collaboration diagram for Project\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -64,8 +63,7 @@ A \hyperlink{classProject}{Project} is a collection of class files, together wit
 \subsubsection{\texorpdfstring{Project()}{Project()}}
 {\footnotesize\ttfamily Project\+::\+Project (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::experimental\+::filesystem\+::path $>$}]{class\+\_\+files }\end{DoxyParamCaption})}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -81,8 +79,7 @@ Here is the call graph for this function\+:
 \subsubsection{\texorpdfstring{class\+\_\+is\+\_\+descendant()}{class\_is\_descendant()}}
 {\footnotesize\ttfamily bool Project\+::class\+\_\+is\+\_\+descendant (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{down,  }\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{up }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
-Returns whether the two classes are in some way related\+: there is a path in the directed inheritance graph from down to up. Here is the call graph for this function\+:
-\nopagebreak
+Returns whether the two classes are in some way related\+: there is a path in the directed inheritance graph from down to up. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -109,8 +106,7 @@ Returns all of the class files.
 
 Find the main entry point of the entire project. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -123,8 +119,7 @@ Here is the call graph for this function\+:
 \subsubsection{\texorpdfstring{method\+\_\+call\+\_\+graph()}{method\_call\_graph()}}
 {\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classMethod}{Method} $>$ Project\+::method\+\_\+call\+\_\+graph (\begin{DoxyParamCaption}\item[{const \hyperlink{classMethod}{Method} \&}]{m }\end{DoxyParamCaption}) const}
 
-Returns all of the methods which are reachable by a series of calls from the given method. Here is the call graph for this function\+:
-\nopagebreak
+Returns all of the methods which are reachable by a series of calls from the given method. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -139,8 +134,7 @@ Returns all of the methods which are reachable by a series of calls from the giv
 
 This is for now not purely functional, due to the global resolution of method references via the {\ttfamily \hyperlink{project_8cpp_a3c33c839f231786a482d8b5a76c269d3}{project()}} function.
 
-As Class\+Files are actively modified for each removed method, all references needs need to be re-\/resolved after every deletion, because they are reindexed. Due to the way external references work (class A references a method of class B), based on name and type, it is only necessary to update the methods from within the modified Class\+File. Here is the call graph for this function\+:
-\nopagebreak
+As Class\+Files are actively modified for each removed method, all references needs need to be re-\/resolved after every deletion, because they are reindexed. Due to the way external references work (class A references a method of class B), based on name and type, it is only necessary to update the methods from within the modified Class\+File. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -163,8 +157,7 @@ Find the appropiate class file given the name.
 \subsubsection{\texorpdfstring{resolve\+\_\+symbolic\+\_\+reference()}{resolve\_symbolic\_reference()}}
 {\footnotesize\ttfamily std\+::optional$<$ \hyperlink{classMethod}{Method} $>$ Project\+::resolve\+\_\+symbolic\+\_\+reference (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{class\+\_\+name,  }\item[{const std\+::string \&}]{method\+\_\+name,  }\item[{const std\+::string \&}]{method\+\_\+type }\end{DoxyParamCaption}) const}
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -181,8 +174,7 @@ Here is the call graph for this function\+:
 
 Save all of the class files in the given location. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -199,8 +191,7 @@ Here is the call graph for this function\+:
 
 Save all of the files in-\/place. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -215,8 +206,7 @@ Here is the call graph for this function\+:
 
 Returns all of the methods which have the same name and type as {\ttfamily m}, and belong to related classes.
 
-For instance, a method of a descendant in the inheritance chart, because it might be that that method is called due to polymorphism. Here is the call graph for this function\+:
-\nopagebreak
+For instance, a method of a descendant in the inheritance chart, because it might be that that method is called due to polymorphism. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

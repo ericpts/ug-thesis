@@ -11,8 +11,7 @@ This represents a view into a method reference of a class file.
 
 
 
-Collaboration diagram for Method\+:
-\nopagebreak
+Collaboration diagram for Method\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -106,8 +105,7 @@ A\+C\+C\+\_\+\+A\+B\+S\+T\+R\+A\+CT&\\
 
 Constructs the method from the Class\+File and the method index. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -137,8 +135,7 @@ Returns all the methods referenced in {\ttfamily file}.
 
 Returns all the methods that {\itshape this} method calls directly. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -161,8 +158,7 @@ Returns the class file where this class belongs.
 \subsubsection{\texorpdfstring{code\+\_\+attribute()}{code\_attribute()}}
 {\footnotesize\ttfamily std\+::optional$<$ \hyperlink{structCode__attribute}{Code\+\_\+attribute} $>$ Method\+::code\+\_\+attribute (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Returns the code attribute struct corresponding to this method. If this method is abstract, then it does not contain any code. Here is the call graph for this function\+:
-\nopagebreak
+Returns the code attribute struct corresponding to this method. If this method is abstract, then it does not contain any code. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -175,8 +171,7 @@ Returns the code attribute struct corresponding to this method. If this method i
 \subsubsection{\texorpdfstring{format()}{format()}}
 {\footnotesize\ttfamily std\+::string Method\+::format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Format this method for human view with the class name, method name and method type. This can be used for method comparison if the methods belong to updated class files, as the string is independent of the method\textquotesingle{}s index. Here is the call graph for this function\+:
-\nopagebreak
+Format this method for human view with the class name, method name and method type. This can be used for method comparison if the methods belong to updated class files, as the string is independent of the method\textquotesingle{}s index. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -193,8 +188,7 @@ Static constructors for a method struct. They require a third redundant paramete
 
 Constructs the method from the Class\+File which owns this method, and the method info.
 
-This should be called as such\+: \hyperlink{classMethod_ad977afdb14569e1108c6b6849fe0b007}{Method\+::from\+\_\+owner}(file, index, file.\+methods\mbox{[}index\mbox{]}). Here is the call graph for this function\+:
-\nopagebreak
+This should be called as such\+: \hyperlink{classMethod_ad977afdb14569e1108c6b6849fe0b007}{Method\+::from\+\_\+owner}(file, index, file.\+methods\mbox{[}index\mbox{]}). Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -211,8 +205,7 @@ This method is referenced by {\ttfamily file} at the index {\ttfamily cp\+\_\+in
 
 This should be called as such\+: \hyperlink{classMethod_adddc54ce699dfb1ba305595507085a29}{Method\+::from\+\_\+symbolic\+\_\+reference}(file, index, file.\+constant\+\_\+pool\mbox{[}index\mbox{]}).
 
-This method implicitly relies on the global project state, because the referenced method may not always be part of the current class. Here is the call graph for this function\+:
-\nopagebreak
+This method implicitly relies on the global project state, because the referenced method may not always be part of the current class. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -229,8 +222,7 @@ This method implicitly relies on the global project state, because the reference
 
 Returns whether this method is abstract. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -247,8 +239,7 @@ Here is the call graph for this function\+:
 
 Tries to retrieve the main method of {\ttfamily file}. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -265,8 +256,7 @@ Here is the call graph for this function\+:
 
 Returns the name of this method. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -283,8 +273,7 @@ Here is the call graph for this function\+:
 
 Returns the type of this method. 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -297,8 +286,7 @@ Here is the call graph for this function\+:
 \subsubsection{\texorpdfstring{operator==()}{operator==()}}
 {\footnotesize\ttfamily bool Method\+::operator== (\begin{DoxyParamCaption}\item[{const \hyperlink{classMethod}{Method} \&}]{o }\end{DoxyParamCaption}) const}
 
-This compares based based on class file and index, not on actual value. In other words, updating the class file will cause methods to compre unequal. Here is the call graph for this function\+:
-\nopagebreak
+This compares based based on class file and index, not on actual value. In other words, updating the class file will cause methods to compre unequal. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -311,8 +299,7 @@ This compares based based on class file and index, not on actual value. In other
 \subsubsection{\texorpdfstring{refresh()}{refresh()}}
 {\footnotesize\ttfamily \hyperlink{classMethod}{Method} Method\+::refresh (\begin{DoxyParamCaption}\item[{const \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} \&}]{new\+\_\+file }\end{DoxyParamCaption}) const}
 
-After a class file has been changed, {\itshape this} method will still reference the old one. In order to resolve this method in the new class file, it has to search for the new index and create a new struct. Here is the call graph for this function\+:
-\nopagebreak
+After a class file has been changed, {\itshape this} method will still reference the old one. In order to resolve this method in the new class file, it has to search for the new index and create a new struct. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -325,8 +312,7 @@ After a class file has been changed, {\itshape this} method will still reference
 \subsubsection{\texorpdfstring{with\+\_\+this\+\_\+method\+\_\+removed()}{with\_this\_method\_removed()}}
 {\footnotesize\ttfamily \hyperlink{classfile_8h_a00b46b60bc40e813e9fb1bb049174346}{Class\+File} Method\+::with\+\_\+this\+\_\+method\+\_\+removed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
 
-Removes {\itshape this} method from the original class file, returning a new one with this method removed. Here is the call graph for this function\+:
-\nopagebreak
+Removes {\itshape this} method from the original class file, returning a new one with this method removed. Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

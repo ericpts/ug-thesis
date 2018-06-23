@@ -9,7 +9,7 @@
 std::vector<u1> read_entire_file(const std::string &filename);
 
 // Whether to enable debugging output.
-const bool DO_DEBUG = false;
+const bool DO_DEBUG = true;
 
 struct DebugOstream {
     template <typename T> DebugOstream &operator<<(const T &t)

@@ -12,9 +12,11 @@ std::vector<Project> fixtures()
 {
     fs::path fixtures = fs::path(__FILE__).parent_path().parent_path() / "fixtures";
 
-    auto next_project = [i = 0, &fixtures] () -> std::optional<fs::path>
+    int i = 0;
+    auto next_project = [&i, &fixtures] () -> std::optional<fs::path>
     {
             fs::path p = (fixtures / ("project" + std::to_string(i)));
+            i++;
             if (fs::exists(p)) {
                 return p;
             }
